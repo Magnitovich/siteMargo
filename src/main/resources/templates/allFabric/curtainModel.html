@@ -6,6 +6,9 @@
     <link href="css/oldMenu.css" rel="stylesheet" type="text/css"/>
     <link href="css/links.css" rel="stylesheet" type="text/css"/>
     <link href="css/back.css" rel="stylesheet" type="text/css"/>
+    <script src="js/fabric/curtain.js"></script>
+
+
 </head>
 <body class="background">
 <div class="top">
@@ -139,15 +142,14 @@
 </div>
 <!--ADD, EDIT, DELETE-->
 <p align="right">
-    <input type="submit" style="width: 60px" name="addWhisky" id="addWhisky"
-           onclick="addNewCurtain()" sec:authorize="hasAuthority('admin')" class="buttons" value="Add"/>
+    <input type="submit"  style="width: 60px" name="addWhisky" id="addWhisky"
+           onclick="addNewCurtain()" sec:authorize="hasAuthority('admin')" class="searchMenu" value="Add"/>
     <!--</form>-->
     <input type="submit" style="width: 60px" sec:authorize="hasAuthority('admin')" onclick="editInfoCurtain()"
-           name="EditWhisky" id="EditYacht"
-           class="buttons" value="Edit"/>
-    <input type="submit" style="width: 60px" sec:authorize="hasAuthority('admin')"
-           onclick="deleteSelectedElementsCurtain()" name="DeleteYacht" id="DeleteYacht"
-           class="buttons" value="Delete"/>
+           name="EditWhisky" id="EditYacht" class="searchMenu" value="Edit"/>
+
+    <input type="submit" style="width: 60px" sec:authorize="hasAuthority('admin')" onclick="deleteSelectedElementsCurtain()"
+           name="DeleteYacht" id="DeleteYacht" class="searchMenu" value="Delete"/>
 </p>
 <table align="center" width="90%">
     <tr>
@@ -157,6 +159,7 @@
 
                     <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
                            sec:authorize="hasAuthority('admin')"/>
+                    <br/>
 
                     <a th:href="@{~/buyCurtains(hiddenYachtName=${curtain.id})}"
                        style="text-decoration: none" >
