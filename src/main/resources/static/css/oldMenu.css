@@ -1,0 +1,51 @@
+*{
+
+margin: 0;
+padding: 0;
+}
+#nav{
+/*height: 30px;*/
+    text-align: center;
+}
+#nav ul{list-style: none}
+/*horizontal menu*/
+#nav > ul > li{
+    float: left;
+    width: auto;
+    position: relative;
+    padding: 10px;
+}
+#nav ul.menu a{
+background: transparent;
+}
+#nav li.second a {
+    display: block;
+/*/backgroung you can choice;*/
+    background: #363636;
+    font-style: inherit;
+    opacity: 0.9;
+    border: 0px solid #5e5e5e;
+/*text color in li*/
+    color: #ffffff;
+    padding: 5px;
+    text-align: left;
+}
+#nav li.second a:hover{
+background-color: #181818;
+
+
+}
+#nav ul.second{
+/*hiding all li*/
+display: none;
+/*opacity: 1;*/
+    position: absolute;
+top: 100%;
+}
+/*show hiding li*/
+#nav li:hover .second{
+display: block;
+}
+#nav li li {
+width: 230px;
+}

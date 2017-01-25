@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <!--<link href="css/selectColor.css" rel="stylesheet" type="text/css"/>-->
+    <link href="../../static/css/selectColor.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<table border="1" align="center"><p/>
+    <form action="addSuccessfulNewYachts"  th:object = "${addFabricNew}" method="post" enctype="multipart/form-data">
+        <input class="buttons" type="hidden" th:field="*{idForEditCurtain}"/>
+        <p/>
+        <p/><br/>
+
+        <tr>
+        <tr th:if="${param.id}">
+            <td>Current photo</td>
+            <td>
+                <img th:attr="src=*{photoCurtain}" style="max-width: 200px; max-height: 180px;"/>
+            </td>
+
+        </tr>
+        <td>Path to new photo</td>
+        <td>
+            <input type="hidden" th:field="*{idCurtain}" />
+            <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain}"/>
+        </td>
+        </tr>
+        <tr>
+            <td>Current photo01</td>
+            <td>
+                <img th:attr="src=*{photoCurtain01}" style="max-width: 200px; max-height: 140px;"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Path to new photo</td>
+            <td>
+                <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain01}" name="objectPhotoYacht"
+                       id="objectPhotoYacht01" />
+            </td>
+        </tr>
+        <tr>
+            <td>Current photo02</td>
+            <td>
+                <img th:attr="src=*{photoCurtain02}" style="max-width: 200px; max-height: 140px;"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Path to new photo</td>
+            <td>
+                <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain02}" name="objectPhotoYacht"
+                       id="objectPhotoYacht02" />
+            </td>
+        </tr>
+        <tr>
+            <td>Current photo03</td>
+            <td>
+                <img th:attr="src=*{photoCurtain03}" style="max-width: 200px; max-height: 140px;"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Path to new photo</td>
+            <td>
+                <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain03}" name="objectPhotoYacht"
+                       id="objectPhotoYacht03" />
+            </td>
+        </tr>
+        <tr>
+            <td>Current photo04</td>
+            <td>
+                <img th:attr="src=*{photoCurtain04}" style="max-width: 200px; max-height: 140px;"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Path to new photo</td>
+            <td>
+                <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain04}" name="objectPhotoYacht"
+                       id="objectPhotoYacht04" />
+            </td>
+        </tr>
+        <tr>
+            <td>Current photo05</td>
+            <td>
+                <img th:attr="src=*{photoCurtain05}" style="max-width: 200px; max-height: 140px;"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Path to new photo</td>
+            <td>
+                <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain05}"/>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Name Yacht </td>
+            <td><input class="buttons" type="text"
+
+                       th:field="*{nameCurtain}" style="width: 255px" name="name" id="name"/>
+
+                <span style="font-style: italic; font-size: 10px" th:if="${#fields.hasErrors('nameCurtain')}"
+                      th:errors="*{nameCurtain}">Error</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Describe about yacht</td>
+            <td>
+
+                <!--<textarea class="buttons" rows="8" cols="35" th:field="*{descriptions}" name="describeCars"-->
+                <!--id="describeCars" maxlength="455"-->
+                <!--placeholder="max length 255">-->
+            <textarea class="buttons" rows="8" cols="35" th:field="*{descriptionsCurtain}"  name="describeYacht"
+                      id="describeYacht" maxlength="255" placeholder="max length 255"></textarea></td>
+        </tr>
+        <tr>
+            <td>
+                Структура
+            </td>
+            <td>
+                <input type="radio" name="structureRbn" id="len" value="Лен" checked="checked"/>Лен
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="thread" value="Нити"/>Нити&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="twoLayers" value="Двухслойная"/>Двухслойная
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="squeeze" value="Жатая"/>Жатая&nbsp;
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="jacard" value="Жаккард "/>Жаккард
+                <br/>
+                <input type="radio" name="structureRbn" id="sateen" value="Сатин" />Сатин
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="taffeta" value="Тафта"/>Тафта&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="twoSides" value="Двухсторонняя"/>Двухсторонняя
+                &nbsp;
+                <input type="radio" name="structureRbn" id="velvet" value="Бархат"/>Бархат&nbsp;
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="cover" value="Покрывальная "/>Для покрывал
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Рисунок
+            </td>
+            <td>
+                <input type="radio" name="paintRbn" id="abstract" value="Абстрактный" checked="checked"/>Абстрактный
+                <input type="radio" name="paintRbn" id="geometrical" value="Геометрический"/>Геометрический
+                <input type="radio" name="paintRbn" id="classical" value="Классический"/>Классический
+                <input type="radio" name="paintRbn" id="monophonic" value="Однотонный"/>Однотонный&nbsp;
+                <input type="radio" name="paintRbn" id="strip" value="Полоска "/>Полоска
+                <br/>
+                <input type="radio" name="paintRbn" id="vegetative" value="Растительный" />Растительный
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Высота
+            </td>
+            <td>
+                <input type="radio" name="heightRbn" id="27" value="2,7-2,9м" checked="checked"/>2,7-2,9м
+                <input type="radio" name="heightRbn" id="29" value="2,9-3,0м"/>2,9-3,0м
+                <input type="radio" name="heightRbn" id="30" value="3,0-3,15м"/>3,0-3,15м
+                <input type="radio" name="heightRbn" id="315" value=">3,15м"/>>3,15м&nbsp;
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Цвет:
+                <br/>
+                <div class="colorDiv"></div>
+            </td>
+
+            <td>
+                <input type="radio" name="rbn" id="white" value="Белый" checked="checked"/>Белый
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="rbn" id="beige" value="Бежевый"/>Бежевый&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="rbn" id="cream" value="Кремовый"/>Кремовый
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="rbn" id="gold" value="Золотой"/>Золотой&nbsp;
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="rbn" id="yellow" value="Желтый"/>Желтый
+                <br/>
+                <input type="radio" name="rbn" id="orange"  value="Оранжевый"/>Оранжевый
+                <input type="radio" name="rbn" id="peach" value="Персиковый"/>Персиковый
+                <input type="radio" name="rbn" id="terracotta" value="Терракотовый"/>Терракотовый
+                <input type="radio" name="rbn" id="coffe" value="Кофейный"/>Кофейный&nbsp;
+                <input type="radio" name="rbn" id="browne" value="Коричневый"/>Коричневый
+                <br/>
+                <input type="radio" name="rbn" id="rose"  value="Розовый"/>Розовый
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="rbn" id="red" value="Красный"/>Красный
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="rbn" id="claret" value="Бордовый"/>Бордовый
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="rbn" id="lime" value="Салатовый"/>Салатовый
+                <input type="radio" name="rbn" id="green" value="Зеленый"/>Зеленый
+                <br/>
+                <input type="radio" name="rbn" id="sky" value="Голубой"/>Голубой
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="rbn" id="blue" value="Синий"/>Синий
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="rbn" id="violet" value="Фиолетовый"/>Фиолетовый
+                &nbsp;&nbsp;
+                <input type="radio" name="rbn" id="grey" value="Серый"/>Серый
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="rbn" id="black" value="Черный"/>Черный
+                <br/>
+                <div class="colorDiv"></div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Quantity yachts in warehouse </td>
+            <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}"
+                       th:field="*{quantityCurtain}" name="quantityYacht" id="quantityYacht"/> </td>
+        </tr>
+        <tr>
+            <td>Price </td>
+            <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}" th:field="*{priceCurtain}" value="1" name="priceYacht" id="priceYacht"/> </td>
+        </tr>
+        <tr>
+            <!--<form action="../yacht.html">-->
+
+            <td colspan="2" align="right">
+                <input type="submit" class="buttons" formaction="addSuccessfulCurtain" style="width: 65px" name="enter"
+                       id="enter" value="Enter"/> </td>
+
+        </tr>
+    </form>
+</table>
+
+</body>
+</html>

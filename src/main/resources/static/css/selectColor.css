@@ -1,0 +1,68 @@
+.colorDiv{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    background: #fdf6ff;
+    width: 130px;
+    height: 100px;
+    transition: .5s;
+    border-top: black 1px solid;
+    border-left: black 1px solid;
+    border-right: black 1px solid;
+    border-bottom: black 1px solid;
+}
+#beige:checked~.colorDiv{
+    background: beige;
+}
+#cream:checked~.colorDiv{
+    background: #F5DEB3;
+}
+#gold:checked~.colorDiv{
+    background: gold;
+}
+#yellow:checked~.colorDiv{
+    background: #ffff4f;
+}
+#orange:checked~.colorDiv{
+    background: #ff9604;
+}
+#peach:checked~.colorDiv{
+    background: #ffe684;
+}
+#terracotta:checked~.colorDiv{
+    background: #A94442;
+}
+#coffe:checked~.colorDiv{
+    background: #6F4E37;
+}
+#browne:checked~.colorDiv{
+    background:  #A52A2A;
+}
+#rose:checked~.colorDiv{
+    background: #ff809e;
+}
+#red:checked~.colorDiv{
+    background: red;
+}
+#claret:checked~.colorDiv{
+    background: #670000;
+}#lime:checked~.colorDiv{
+    background: limegreen;
+}
+#green:checked~.colorDiv{
+    background: green;
+}
+#sky:checked~.colorDiv{
+    background: deepskyblue;
+}#blue:checked~.colorDiv{
+    background: blue;
+}
+#violet:checked~.colorDiv{
+    background: violet;
+}
+#grey:checked~.colorDiv{
+    background: grey;
+}
+#black:checked~.colorDiv{
+    background: black;
+}
+
