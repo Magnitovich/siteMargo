@@ -7,7 +7,7 @@
 </head>
 <body>
 <table border="1" align="center"><p/>
-    <form action="addSuccessfulNewYachts"  th:object = "${addFabricNew}" method="post" enctype="multipart/form-data">
+    <form action="addSuccessfulNewYachts"  th:object = "${comparePhotoNameWithDB}" method="post" enctype="multipart/form-data">
         <input class="buttons" type="hidden" th:field="*{idForEditCurtain}"/>
         <p/>
         <p/><br/>
@@ -16,20 +16,20 @@
         <tr th:if="${param.id}">
             <td>Current photo</td>
             <td>
-                <img th:attr="src=*{photoCurtain}" style="max-width: 200px; max-height: 180px;"/>
+                <img th:attr="src=*{photo}" style="max-width: 200px; max-height: 180px;"/>
             </td>
 
         </tr>
         <td>Path to new photo</td>
         <td>
-            <input type="hidden" th:field="*{idCurtain}" />
+            <input type="hidden" th:field="*{id}" />
             <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain}"/>
         </td>
         </tr>
         <tr>
             <td>Current photo01</td>
             <td>
-                <img th:attr="src=*{photoCurtain01}" style="max-width: 200px; max-height: 140px;"/>
+                <img th:attr="src=*{photo01}" style="max-width: 200px; max-height: 140px;"/>
             </td>
         </tr>
         <tr>
@@ -42,7 +42,7 @@
         <tr>
             <td>Current photo02</td>
             <td>
-                <img th:attr="src=*{photoCurtain02}" style="max-width: 200px; max-height: 140px;"/>
+                <img th:attr="src=*{photo02}" style="max-width: 200px; max-height: 140px;"/>
             </td>
         </tr>
         <tr>
@@ -55,7 +55,7 @@
         <tr>
             <td>Current photo03</td>
             <td>
-                <img th:attr="src=*{photoCurtain03}" style="max-width: 200px; max-height: 140px;"/>
+                <img th:attr="src=*{photo03}" style="max-width: 200px; max-height: 140px;"/>
             </td>
         </tr>
         <tr>
@@ -68,7 +68,7 @@
         <tr>
             <td>Current photo04</td>
             <td>
-                <img th:attr="src=*{photoCurtain04}" style="max-width: 200px; max-height: 140px;"/>
+                <img th:attr="src=*{photo04}" style="max-width: 200px; max-height: 140px;"/>
             </td>
         </tr>
         <tr>
@@ -81,7 +81,7 @@
         <tr>
             <td>Current photo05</td>
             <td>
-                <img th:attr="src=*{photoCurtain05}" style="max-width: 200px; max-height: 140px;"/>
+                <img th:attr="src=*{photo05}" style="max-width: 200px; max-height: 140px;"/>
             </td>
         </tr>
         <tr>
@@ -96,10 +96,10 @@
             <td>Name Yacht </td>
             <td><input class="buttons" type="text"
 
-                       th:field="*{nameCurtain}" style="width: 255px" name="name" id="name"/>
+                       th:field="*{name}" style="width: 255px" name="name" id="name"/>
 
-                <span style="font-style: italic; font-size: 10px" th:if="${#fields.hasErrors('nameCurtain')}"
-                      th:errors="*{nameCurtain}">Error</span>
+                <span style="font-style: italic; font-size: 10px" th:if="${#fields.hasErrors('name')}"
+                      th:errors="*{name}">Error</span>
             </td>
         </tr>
         <tr>
@@ -109,7 +109,7 @@
                 <!--<textarea class="buttons" rows="8" cols="35" th:field="*{descriptions}" name="describeCars"-->
                 <!--id="describeCars" maxlength="455"-->
                 <!--placeholder="max length 255">-->
-            <textarea class="buttons" rows="8" cols="35" th:field="*{descriptionsCurtain}"  name="describeYacht"
+            <textarea class="buttons" rows="8" cols="35" th:field="*{description}"  name="describeYacht"
                       id="describeYacht" maxlength="255" placeholder="max length 255"></textarea></td>
         </tr>
         <tr>
@@ -117,23 +117,23 @@
                 Структура
             </td>
             <td>
-                <input type="radio" name="structureRbn" id="len" value="Лен" checked="checked"/>Лен
+                <input type="radio" name="structureRbn" id="len" th:field="*{structure}" value="Лен" checked="checked"/>Лен
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="thread" value="Нити"/>Нити&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="twoLayers" value="Двухслойная"/>Двухслойная
+                <input type="radio" name="structureRbn" id="thread" th:field="*{structure}" value="Нити"/>Нити&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="twoLayers" th:field="*{structure}" value="Двухслойная"/>Двухслойная
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="squeeze" value="Жатая"/>Жатая&nbsp;
+                <input type="radio" name="structureRbn" id="squeeze" th:field="*{structure}" value="Жатая"/>Жатая&nbsp;
                 &nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="jacard" value="Жаккард "/>Жаккард
+                <input type="radio" name="structureRbn" id="jacard" th:field="*{structure}" value="Жаккард "/>Жаккард
                 <br/>
-                <input type="radio" name="structureRbn" id="sateen" value="Сатин" />Сатин
+                <input type="radio" name="structureRbn" id="sateen" th:field="*{structure}" value="Сатин" />Сатин
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="taffeta" value="Тафта"/>Тафта&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="twoSides" value="Двухсторонняя"/>Двухсторонняя
+                <input type="radio" name="structureRbn" id="taffeta" th:field="*{structure}" value="Тафта"/>Тафта&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="twoSides" th:field="*{structure}" value="Двухсторонняя"/>Двухсторонняя
                 &nbsp;
-                <input type="radio" name="structureRbn" id="velvet" value="Бархат"/>Бархат&nbsp;
+                <input type="radio" name="structureRbn" id="velvet" th:field="*{structure}" value="Бархат"/>Бархат&nbsp;
                 &nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="cover" value="Покрывальная "/>Для покрывал
+                <input type="radio" name="structureRbn" id="cover" th:field="*{structure}" value="Покрывальная "/>Для покрывал
             </td>
         </tr>
         <tr>
@@ -141,13 +141,13 @@
                 Рисунок
             </td>
             <td>
-                <input type="radio" name="paintRbn" id="abstract" value="Абстрактный" checked="checked"/>Абстрактный
-                <input type="radio" name="paintRbn" id="geometrical" value="Геометрический"/>Геометрический
-                <input type="radio" name="paintRbn" id="classical" value="Классический"/>Классический
-                <input type="radio" name="paintRbn" id="monophonic" value="Однотонный"/>Однотонный&nbsp;
-                <input type="radio" name="paintRbn" id="strip" value="Полоска "/>Полоска
+                <input type="radio" name="paintRbn" id="abstract" th:field="*{paint}" value="Абстрактный" checked="checked"/>Абстрактный
+                <input type="radio" name="paintRbn" id="geometrical" th:field="*{paint}" value="Геометрический"/>Геометрический
+                <input type="radio" name="paintRbn" id="classical" th:field="*{paint}" value="Классический"/>Классический
+                <input type="radio" name="paintRbn" id="monophonic" th:field="*{paint}" value="Однотонный"/>Однотонный&nbsp;
+                <input type="radio" name="paintRbn" id="strip" th:field="*{paint}" value="Полоска "/>Полоска
                 <br/>
-                <input type="radio" name="paintRbn" id="vegetative" value="Растительный" />Растительный
+                <input type="radio" name="paintRbn" id="vegetative" th:field="*{paint}" value="Растительный" />Растительный
             </td>
         </tr>
         <tr>
@@ -155,10 +155,10 @@
                 Высота
             </td>
             <td>
-                <input type="radio" name="heightRbn" id="27" value="2,7-2,9м" checked="checked"/>2,7-2,9м
-                <input type="radio" name="heightRbn" id="29" value="2,9-3,0м"/>2,9-3,0м
-                <input type="radio" name="heightRbn" id="30" value="3,0-3,15м"/>3,0-3,15м
-                <input type="radio" name="heightRbn" id="315" value=">3,15м"/>>3,15м&nbsp;
+                <input type="radio" name="heightRbn" th:field="*{height}" id="27" value="2,7-2,9м" checked="checked"/>2,7-2,9м
+                <input type="radio" name="heightRbn"  th:field="*{height}" id="29" value="2,9-3,0м"/>2,9-3,0м
+                <input type="radio" name="heightRbn"  th:field="*{height}" id="30" value="3,0-3,15м"/>3,0-3,15м
+                <input type="radio" name="heightRbn"  th:field="*{height}" id="315" value=">3,15м"/>>3,15м&nbsp;
 
             </td>
         </tr>
@@ -170,39 +170,39 @@
             </td>
 
             <td>
-                <input type="radio" name="rbn" id="white" value="Белый" checked="checked"/>Белый
+                <input type="radio" name="rbn" id="white"  th:field="*{color}" value="Белый" checked="checked"/>Белый
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="rbn" id="beige" value="Бежевый"/>Бежевый&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="rbn" id="cream" value="Кремовый"/>Кремовый
+                <input type="radio" name="rbn" id="beige"  th:field="*{color}" value="Бежевый"/>Бежевый&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="rbn" id="cream"  th:field="*{color}" value="Кремовый"/>Кремовый
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="rbn" id="gold" value="Золотой"/>Золотой&nbsp;
+                <input type="radio" name="rbn" id="gold"  th:field="*{color}" value="Золотой"/>Золотой&nbsp;
                 &nbsp;&nbsp;&nbsp;
                 <input type="radio" name="rbn" id="yellow" value="Желтый"/>Желтый
                 <br/>
-                <input type="radio" name="rbn" id="orange"  value="Оранжевый"/>Оранжевый
-                <input type="radio" name="rbn" id="peach" value="Персиковый"/>Персиковый
-                <input type="radio" name="rbn" id="terracotta" value="Терракотовый"/>Терракотовый
-                <input type="radio" name="rbn" id="coffe" value="Кофейный"/>Кофейный&nbsp;
-                <input type="radio" name="rbn" id="browne" value="Коричневый"/>Коричневый
+                <input type="radio" name="rbn" id="orange"  th:field="*{color}" value="Оранжевый"/>Оранжевый
+                <input type="radio" name="rbn" id="peach"  th:field="*{color}" value="Персиковый"/>Персиковый
+                <input type="radio" name="rbn" id="terracotta"  th:field="*{color}" value="Терракотовый"/>Терракотовый
+                <input type="radio" name="rbn" id="coffe"  th:field="*{color}" value="Кофейный"/>Кофейный&nbsp;
+                <input type="radio" name="rbn" id="browne"  th:field="*{color}" value="Коричневый"/>Коричневый
                 <br/>
-                <input type="radio" name="rbn" id="rose"  value="Розовый"/>Розовый
+                <input type="radio" name="rbn" id="rose"  th:field="*{color}" value="Розовый"/>Розовый
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="rbn" id="red" value="Красный"/>Красный
+                <input type="radio" name="rbn" id="red"  th:field="*{color}" value="Красный"/>Красный
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="rbn" id="claret" value="Бордовый"/>Бордовый
+                <input type="radio" name="rbn" id="claret"  th:field="*{color}" value="Бордовый"/>Бордовый
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="rbn" id="lime" value="Салатовый"/>Салатовый
-                <input type="radio" name="rbn" id="green" value="Зеленый"/>Зеленый
+                <input type="radio" name="rbn" id="lime" th:field="*{color}" value="Салатовый"/>Салатовый
+                <input type="radio" name="rbn" id="green" th:field="*{color}" value="Зеленый"/>Зеленый
                 <br/>
-                <input type="radio" name="rbn" id="sky" value="Голубой"/>Голубой
+                <input type="radio" name="rbn" id="sky" th:field="*{color}" value="Голубой"/>Голубой
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="rbn" id="blue" value="Синий"/>Синий
+                <input type="radio" name="rbn" id="blue" th:field="*{color}" value="Синий"/>Синий
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="rbn" id="violet" value="Фиолетовый"/>Фиолетовый
+                <input type="radio" name="rbn" id="violet" th:field="*{color}" value="Фиолетовый"/>Фиолетовый
                 &nbsp;&nbsp;
-                <input type="radio" name="rbn" id="grey" value="Серый"/>Серый
+                <input type="radio" name="rbn" id="grey" th:field="*{color}" value="Серый"/>Серый
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="rbn" id="black" value="Черный"/>Черный
+                <input type="radio" name="rbn" id="black" th:field="*{color}" value="Черный"/>Черный
                 <br/>
                 <div class="colorDiv"></div>
             </td>
@@ -211,11 +211,11 @@
         <tr>
             <td>Quantity yachts in warehouse </td>
             <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}"
-                       th:field="*{quantityCurtain}" name="quantityYacht" id="quantityYacht"/> </td>
+                       th:field="*{quantity}" name="quantityYacht" id="quantityYacht"/> </td>
         </tr>
         <tr>
             <td>Price </td>
-            <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}" th:field="*{priceCurtain}" value="1" name="priceYacht" id="priceYacht"/> </td>
+            <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}" th:field="*{price}" value="1" name="priceYacht" id="priceYacht"/> </td>
         </tr>
         <tr>
             <!--<form action="../yacht.html">-->

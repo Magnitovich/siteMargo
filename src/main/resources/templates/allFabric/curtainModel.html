@@ -157,10 +157,6 @@
             <div th:each="curtain : ${allCurtain}">
                 <div class="pic">
 
-                    <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
-                           sec:authorize="hasAuthority('admin')"/>
-                    <br/>
-
                     <a th:href="@{~/buyCurtains(hiddenYachtName=${curtain.id})}"
                        style="text-decoration: none" >
 
@@ -184,6 +180,8 @@
                                  sec:authorize="hasAuthority('user')">
                                 <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
                             </div>
+                            <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
+                                   sec:authorize="hasAuthority('admin')" style="background-color: #0f0f0f"/>
                         </div>
                     </a>
                 </div>

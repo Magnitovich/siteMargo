@@ -1,9 +1,6 @@
 package margo.model.allCurtains;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -22,8 +19,9 @@ public class UpholsteryFabricModel {
     private String photo04;
     @Column(name = "PHOTO05")
     private String photo05;
-    @Column(name = "ID")
     @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     @Column
     private String name;

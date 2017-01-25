@@ -3,6 +3,8 @@ package margo.service.fabric;
 import margo.dao.fabric.ClothFabricRepository;
 import margo.model.allCurtains.ClothFabricModel;
 import margo.model.modelDTO.allCurtainsDTO.ClothFabricDTO;
+import margo.model.modelDTO.allCurtainsDTO.CurtainDTO;
+import margo.service.adminService.AdminRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ public class ClothFabricService {
 
     @Autowired
     private ClothFabricRepository repository;
+    @Autowired
+    private AdminRoleService adminRoleService;
 
     public ClothFabricDTO convertModelToDto(ClothFabricModel model){
 
@@ -48,8 +52,28 @@ public class ClothFabricService {
     public List<ClothFabricDTO> seeAllCloth(){
         Iterable<ClothFabricModel> models = repository.findAll();
         List<ClothFabricDTO>  clothFabricDTOs = convertListModelToDTO((List<ClothFabricModel>) models);
+        List<ClothFabricDTO> curtainDTOsWithZERO = new ArrayList<>(); //if commodity =0
 
-        return clothFabricDTOs;
-    }
+        String role = adminRoleService.userRole();
+        System.out.println("ROLE="+role);
+        if (role.equals("user")) {
 
-}
+//       Hiding of items which are equal to 0
+
+            for (ClothFabricDTO curtain : clothFabricDTOs) {
+                if (curtain.getQuantity() > 0) {
+                    curtainDTOsWithZERO.add(curtain);
+                } else {
+                    System.out.println("Name: "+curtain.getName()+" Quantity "+curtain.getQuantity());
+                }
+            }
+            return curtainDTOsWithZERO;
+
+        } else if (role.equals("admin")) {
+
+            return clothFabricDTOs;
+        } else {
+            //moderator
+            return null;
+        }
+    }}

@@ -5,6 +5,7 @@ import margo.model.allCurtains.CurtainModel;
 import margo.model.allCurtains.TulleModel;
 import margo.model.modelDTO.allCurtainsDTO.CurtainDTO;
 import margo.model.modelDTO.allCurtainsDTO.TulleDTO;
+import margo.service.adminService.AdminRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,8 @@ import java.util.List;
 public class TulleService {
     @Autowired
     private TulleRepository repository;
+    @Autowired
+    private AdminRoleService adminRoleService;
 
     public TulleDTO convertModelToDto(TulleModel model){
 
@@ -49,7 +52,29 @@ public class TulleService {
     public List<TulleDTO> seeAllModels(){
         Iterable<TulleModel> models = repository.findAll();
         List<TulleDTO>  fabricDTOs = convertListModelToDTO((List<TulleModel>) models);
+        List<TulleDTO> curtainDTOsWithZERO = new ArrayList<>(); //if commodity =0
 
-        return fabricDTOs;
+        String role = adminRoleService.userRole();
+        System.out.println("ROLE="+role);
+        if (role.equals("user")) {
+
+//       Hiding of items which are equal to 0
+
+            for (TulleDTO curtain : fabricDTOs) {
+                if (curtain.getQuantity() > 0) {
+                    curtainDTOsWithZERO.add(curtain);
+                } else {
+                    System.out.println("Name: "+curtain.getName()+" Quantity "+curtain.getQuantity());
+                }
+            }
+            return curtainDTOsWithZERO;
+
+        } else if (role.equals("admin")) {
+
+            return fabricDTOs;
+        } else {
+            //moderator
+            return null;
+        }
     }
 }

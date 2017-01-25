@@ -23,7 +23,7 @@
     background: #ffff4f;
 }
 #orange:checked~.colorDiv{
-    background: #ff9604;
+    background: #ffaf33;
 }
 #peach:checked~.colorDiv{
     background: #ffe684;

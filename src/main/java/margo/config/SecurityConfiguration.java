@@ -48,7 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/")
                 .permitAll()
-                .antMatchers("/addRadio")
+                .antMatchers("/addInfoAboutNewCurtain")
                 .permitAll()
                 .antMatchers("/history")
                 .permitAll()
