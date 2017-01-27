@@ -159,7 +159,11 @@ public class CurtainService {
         curtainModel.setPrice(price);
         repository.save(curtainModel);
     }
-
+    public String convertIdToName(Long id){
+        CurtainModel one = repository.findOne(id);
+        CurtainDTO curtainDTO = convertModelToDto(one);
+        return curtainDTO.getName();
+    }
 
 
 

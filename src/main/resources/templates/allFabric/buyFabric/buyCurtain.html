@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml"  xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Портьерыб Шторы, ткань, curtain</title>
+    <link href="css/oldMenu.css" rel="stylesheet" type="text/css"/>
+    <link href="css/links.css" rel="stylesheet" type="text/css"/>
+    <link href="css/back.css" rel="stylesheet" type="text/css"/>
+    <script src="js/fabric/curtain.js"></script>
+    <script src="js/jquery-1.12.3.min.js" type="text/javascript"></script>
+
+    <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="css/bootstrap/js/bootstrap.min.js"/>
+</head>
+<body class="background">
+<div class="top">
+    <table bgcolor="black" border="0" width="100%">
+        <tr>
+            <td>
+                <table style="float: left" border="0">
+
+                    <tr>
+                        <td> <img src="backgrounds/phone32.png" /></td>
+                        <td> <span>  &nbsp; +38 067 112 1281 &nbsp; &nbsp; </span> </td>
+
+                        <td> <img src="backgrounds/phone32.png" /></td>
+                        <td><span>&nbsp;+38 063 880 5153 &nbsp; &nbsp;</span></td>
+                        <td> <img src="backgrounds/phone32.png" /></td>
+                        <td><span>&nbsp; +38 099 049 5777 </span></td>
+                    </tr>
+                </table>
+            </td>
+            <td align="left">
+                <a href="/" ><img src="backgrounds/name.png"/></a>
+            </td>
+            <td align="right">
+                <a href="index.html" class="linkTop" > &nbsp; ОПЛАТА&nbsp;&nbsp;   </a> </td>
+            <td align="right">
+                <a href="index.html" class="linkTop"> &nbsp; ДОСТАВКА&nbsp;&nbsp;   </a> </td>
+            <td  align="right">
+                <!--Registration-->
+                <div align="center" th:if="${not #authorization.expression('isAuthenticated()')}" >
+                    <div style="color: #feff82;">
+                        <a href="/login" data-toggle="modal" data-target="#go" class="linkTop">
+                            &nbsp; ВОЙТИ&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!--Name users when authorized -->
+                <div style="width: 90%" align="right"  th:if="${#authorization.expression('isAuthenticated()')}">
+                    <div align="right">
+                        <a  href="/logout" class="linkTop">Logout&nbsp;&nbsp;</a>
+                        <!--<div align="right" th:if="${#authorization.expression('isAuthenticated()')}"/>-->
+                        <!--//Эта строка выводит имя пользователя, когда он зарегистрируется.-->
+                    </div>
+                    <div align="left">
+                        <span>Welcome&nbsp;</span>
+                     <span  th:if="${#authorization.expression('isAuthenticated()')}"
+                            th:text="${#authentication.name}">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+</div>
+<div style=" height: 3px; background: #feff82;">&nbsp;</div>
+
+<!--*************************************SEARCH******************************************-->
+<div class="top" align="center">
+    <table align="center"  border="0" width="90%">
+        <tr>
+            <td>
+                <form action="searchOnTheSite" method="post">
+                    <input type="search" autocomplete="off" name="searchRequest" id="searchRequest"
+                           placeholder=" Search" class="searchMenu" />
+                </form>
+            </td>
+            <td>
+                <!--*************************************MENU******************************************-->
+                <nav id="nav" style="resize: none">
+                    <ul  class="menu">
+                        <li ><a  href="#" style="font-size: large;
+                              text-decoration: none; font-family: 'Arial'; ">
+                            <span>&nbsp;&nbsp;&nbsp;ТКАНИ&nbsp;&nbsp;&nbsp;</span></a>
+
+                            <ul class="second" style="font-size: small">
+                                <li class="second"> <a href = "#">ПОРТЬЕРЫ</a></li>
+                                <li class="second"><a href = "#">ТЮЛЬ</a></li>
+                                <li class="second"><a href = "#">ЗАКАЗНЫЕ</a></li>
+                                <li class="second"><a href = "#">ОБИВОЧНЫЕ ТКАНИ</a></li>
+                                <li class="second"><a href = "clothModel">ТКАНИ ДЛЯ СКАТЕРТЕЙ</a></li>
+                            </ul>
+                        </li>
+                        <li ><a  href="#" style="font-size: large;
+                                    text-decoration: none; font-family: 'Arial'; ">
+                            <span>&nbsp;&nbsp;&nbsp;ГОТОВЫЕ ИЗДЕЛИЯ&nbsp;&nbsp;&nbsp;</span></a>
+
+                            <ul class="second" style="font-size: small">
+                                <li class="second"><a href = "#">ДЛЯ ГОСТИННОЙ</a></li>
+                                <li class="second"><a href = "#">ДЛЯ ДЕТСКОЙ</a></li>
+                                <li class="second"><a href = "#">ДЛЯ КАБИНЕТА</a></li>
+                                <li class="second"><a href = "#">ДЛЯ  КУХНИ</a></li>
+                                <li class="second"><a href = "#">ДЛЯ СПАЛЬНИ</a></li>
+                                <li class="second"><a href = "#">ЛАМБРИКЕНЫ</a></li>
+                                <li class="second"><a href = "#">ТЮЛЬ</a></li>
+                                <li class="second"><a href = "#">ШТОРЫ</a></li>
+                            </ul>
+                        </li>
+                        <li ><a  href="#" style="font-size: large;
+                    text-decoration: none; font-family: 'Arial'; ">
+                            <span>&nbsp;&nbsp;&nbsp;ИНТЕРЬЕРНЫЕ МЕЛОЧИ&nbsp;&nbsp;&nbsp;</span></a>
+                        </li>
+                        <li ><a  href="#" style="font-size: large;
+                            text-decoration: none; font-family: 'Arial'; ">
+                            <span>&nbsp;&nbsp;&nbsp;ФУРНИТУРА&nbsp;&nbsp;&nbsp;</span></a>
+
+                            <ul class="second" style="font-size: small">
+                                <li class="second"><a href = "#">КИСТИ И БАХРОМА</a></li>
+                                <li class="second"><a href = "#">ЛЮВЕРСЫ</a></li>
+                                <li class="second"><a href = "#">ПОДХВАТЫ</a></li>
+                                <li class="second"><a href = "#">РАЗНОЕ</a></li>
+                                <li class="second"><a href = "#">ТЕСЬМА</a></li>
+                            </ul>
+                        </li>
+                        <li ><a  href="#" style="font-size: large;
+                             text-decoration: none; font-family: 'Arial'; ">
+                            <span>&nbsp;&nbsp;&nbsp;УСЛУГИ&nbsp;&nbsp;&nbsp;</span></a>
+                        </li>
+                        <li ><a  href="#" style="font-size: large;
+                    text-decoration: none; font-family: 'Arial'; ">
+                            <span>&nbsp;&nbsp;&nbsp;АКЦИИ&nbsp;&nbsp;&nbsp;</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </td>
+            <!--***************************** CART*******************************-->
+            <td align="left" style="color: white">
+                $ <span id="totalCart"> </span>
+                <button  id="whiskyCart" onclick="cartOpen()">
+                    <img src="backgrounds/main/Shopping-Cart-icon32.png"/></button>
+            </td>
+        </tr>
+    </table>
+</div>
+<!--***********************//////////////***********SHOW***********\\\\\\\\\\\\\\\\\\\\\********************-->
+
+<div th:each="curtain : ${selectedCurtain}" align="center">
+    <table border="1" width="80%">
+        <!--<form action="buyYachtSucceed" th:object = "${bayYachts}" method="post" >-->
+        <tr >
+            <td align="center" width="45%" height="10%">
+
+                <a href="" data-toggle="modal" data-target="#goImage">
+                    <img th:attr="src=${curtain.photo}" width="400" height="280"/><br/>
+                    <img th:unless="${curtain.photo01}==null" th:attr="src=${curtain.photo01}" width="100" height="70" />
+                    <img id="smallImg02" th:unless="${curtain.photo02}==null" th:attr="src=${curtain.photo02}" width="100" height="70"/>
+                    <img id="smallImg03" th:unless="${curtain.photo03}==null" th:attr="src=${curtain.photo03}" width="100" height="70"/>
+                    <img id="smallImg04" th:unless="${curtain.photo04}==null" th:attr="src=${curtain.photo04}" width="100" height="70"/>
+                    <img id="smallImg05" th:unless="${curtain.photo05}==null" th:attr="src=${curtain.photo05}" width="100" height="70"/>
+                </a>
+
+                <!--****************************MODAL WINDOW FOR IMAGE**********************************-->
+                <div class="modal fade" tabindex="-1" role="dialog" id="goImage" >
+                    <div class="modal-dialog" align="left" >
+                        <div class="modal-content" style="background-color: black; ">
+                            <div class="modal-header" style="background-color: black; ">
+                                <button type="button" class="close" data-dismiss="modal" style=" color: white; opacity: 100"  aria-label="Close">
+                                <span aria-hidden="true" style="opacity: 30"> &times;
+                                </span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div align="center" >
+                                    <img   th:unless="${curtain.photo05}==null" th:attr="src=${curtain.photo05}" width="500px" height="336px" />
+                                    <img   th:unless="${curtain.photo04}==null" th:attr="src=${curtain.photo04}" width="500px" height="336px" />
+                                    <img   th:unless="${curtain.photo03}==null" th:attr="src=${curtain.photo03}" width="500px" height="336px" />
+                                    <img   th:unless="${curtain.photo02}==null" th:attr="src=${curtain.photo02}" width="500px" height="336px"  />
+                                    <img   th:unless="${curtain.photo01}==null" th:attr="src=${curtain.photo01}" width="500px" height="336px"  />
+                                    <img  th:attr="src=${curtain.photo}" width="500px" height="336px" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+
+
+            <td class="buy" width="25%"><span th:text="${curtain.name}" >Name</span>
+                <p/>Описание:
+            <span th:text="${curtain.description}">description</span>
+            <p/>
+                Структура:
+                <span th:text="${curtain.structure}">structure</span>
+            <p/>
+                Рисунок: <span th:text="${curtain.paint}">paint</span>
+            <p/>
+                Высота: <span th:text="${curtain.height}">height</span>
+            <p/>
+                Цвет: <span th:text="${curtain.color}">color</span>
+            </td>
+            <!--<td width="100" >-->
+
+            <!--озн, что *{moduleAtributeQuantity} присоединяется к  baySuccessfulCars-->
+            <!--<input type="number"  size="5px" id="quantityYachts"-->
+            <!--name="quantityYachts" class="buttons" min="1"-->
+            <!--th:attr="max=${viewBuyYacht.number}" style="text-align: center" />-->
+            <!--</td>-->
+            <td class="buy" width="15%" th:text="${curtain.price}">Name</td>
+
+        </tr>
+        <tr th:each="curtain : ${selectedCurtain}">
+            <td colspan="5" align="Right" width="80">
+                <input type="hidden" name="quantityWhiskeyInDB" id="quantityWhiskeyInDB" th:value="${curtain.quantity}"/>
+                <input type="hidden"  id="describeID" th:value="${curtain.description}"/>
+                <input type="hidden" name="photoId" id="photoId" th:value="${curtain.photo}"/>
+                <input type="hidden" name="priceID" id="priceID" th:value="${curtain.price}"/>
+
+                <!--********************************NameWhisky*********************************-->
+                <input type="hidden" id="nameWhiskey" name="nameWhiskey" th:value="${curtain.name}" />
+
+
+                <input class="searchMenu" type="submit"  data-toggle="modal" data-target="#go"  style="width: 60px" value="buy"/>
+
+                <!--****************************MODAL WINDOW****************************-->
+                <div class="modal fade" tabindex="-1" role="dialog" id="go">
+                    <div class="modal-dialog" align="left">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                </button>
+                                <h4 class="modal-title">Корзина</h4>
+                            </div>
+                            <div class="modal-body">
+
+                                <div align="center">
+
+                                    <table border="0">
+                                        <tr>
+                                            <td>
+                                                <img  th:attr="src=${curtain.photo}" width="50" height="80"/>
+                                            </td>
+
+                                            <!--<div style="border-left:1px solid red; padding:5px">-->
+                                            <td class="verticalLine" >
+                                                <span th:text="${curtain.name}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </td>
+                                            <!--<div style="border-width: 0 0 0 1px;/*толщина*/ border-style: solid; padding-left: 10px;/*отступ слева*/">-->
+                                            <td class="verticalLine">
+                                                <input  type="number" style="width: 100px" min="1" autofocus=""
+                                                        th:attr="max=${curtain.quantity}" placeholder="Enter quantity"
+                                                        name="numberOrderWhisky" id="numberOrderWhisky" required="" />
+                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                                <br/>
+                                                <span id="errorQuantity" style="display: none; font-size: smaller">
+                                                  <i><b> You can max. order: <span th:text="${curtain.quantity}"/> </b></i>
+                                                </span>
+                                                <span id="errorQuantityZERO" style="display: none; font-size: smaller">
+                                                     <i><b> You can't order: 0</b></i>
+                                                </span>
+                                                <span id="errorSummQuantity" style="display: none;  font-size: smaller">
+                                                    <i><b> you ordered these goods earlier
+                                                    <br/> and your summary order more
+                                                    <br/>than we have on warehouse:
+                                                        <span th:text="${curtain.quantity}"/> </b></i>
+                                                </span>
+                                            </td>
+                                            <td class="verticalLine" th:text="${curtain.price}">Price
+                                                <span id="changePrice"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <input type="button" class="btn btn-primary" id="buyFromJS"  value="Buy"/>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+
+                </div><!-- /.modal -->
+
+            </td>
+        </tr>
+   </table>
+</div>
+<!--</form>-->
+
+    <!--</table>-->
+<!--</div>-->
+
+</body>
+</html>

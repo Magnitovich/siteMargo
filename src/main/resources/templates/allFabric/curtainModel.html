@@ -7,7 +7,8 @@
     <link href="css/links.css" rel="stylesheet" type="text/css"/>
     <link href="css/back.css" rel="stylesheet" type="text/css"/>
     <script src="js/fabric/curtain.js"></script>
-
+    <script src="js/fabric/searchCurtain.js"></script>
+    <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
 
 </head>
 <body class="background">
@@ -151,44 +152,96 @@
     <input type="submit" style="width: 60px" sec:authorize="hasAuthority('admin')" onclick="deleteSelectedElementsCurtain()"
            name="DeleteYacht" id="DeleteYacht" class="searchMenu" value="Delete"/>
 </p>
-<table align="center" width="90%">
-    <tr>
-        <td >
-            <div th:each="curtain : ${allCurtain}">
-                <div class="pic">
+<!--********************************SHOW*******************************-->
 
-                    <a th:href="@{~/buyCurtains(hiddenYachtName=${curtain.id})}"
-                       style="text-decoration: none" >
+    <table border="0" width="95%">
+        <tr>
+            <td class="main">
+                <div th:each="curtain : ${allCurtain}">
+                    <div class="pic">
 
-                        <img th:attr="src=${curtain.photo}"  width="200" height="280"/>
-                        <div align="center">
-                            <b>   <span th:text="${curtain.name}">Name</span></b>
+                        <a th:href="@{~/buyCurtain(hiddenCurtainId=${curtain.id})}"
+                        style="text-decoration: none" >
 
-                        </div>
-                        <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
-                             sec:authorize="hasAuthority('admin')">
-                            Quantity: &nbsp; <span  th:text="${curtain.quantity}">quantity</span>m.
-                            <!--<input type="hidden" id="quantity"  th:value="${curtain.quantityCurtain}"/>-->
-                        </div>
+                            <img th:attr="src=${curtain.photo}"  width="200" height="280"/>
+                            <div align="center">
+                                <b>   <span th:text="${curtain.name}">Name</span></b>
+                            </div>
+                            <div align="center"  sec:authorize="hasAuthority('admin')">
+                                Quantity: &nbsp; <span  th:text="${curtain.quantity}">quantity</span>m.
+                            </div>
 
-                        <div align="center" style="font-family: 'Times New Roman'; color: black">
-                            <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
-                                 sec:authorize="isAnonymous()">
+                            <div align="center" style="font-family: 'Times New Roman'; color: black">
+                                <div align="center"  sec:authorize="isAnonymous()">
                                 <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
                             </div>
-                            <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
-                                 sec:authorize="hasAuthority('user')">
+                            <div align="center" sec:authorize="hasAuthority('user')">
                                 <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
                             </div>
                             <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
                                    sec:authorize="hasAuthority('admin')" style="background-color: #0f0f0f"/>
-                        </div>
-                    </a>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </td>
-    </tr>
+            </td>
+            <td class="searchPlane">
+                <!--<form action="searchCurtain"  method="post">-->
+                    <!--th:object = "${searchSelectedCurtain}"-->
+                Фильтр:<p/>
+                Цена до:
+                    <input type="text" pattern="[0-9]{1,4}" align="right" width="20px" style="width: 80px"
+                           name="searchPrice" id="searchPrice"/>
+                    <!--th:field="*{price}"-->
+                    <p/>
+                <div class="searchColor"> Цвет:<br/>
+                    <input type="checkbox" name="rbn" id="white"  value="Белый" checked="checked"/>Белый
+                    <br/>
+                    <input type="checkbox" name="rbn" id="beige"   value="Бежевый"/>Бежевый
+                    <br/>
+                    <input type="checkbox" name="rbn" id="cream"   value="Кремовый"/>Кремовый
+                    <br/>
+                    <input type="checkbox" name="rbn" id="gold"  value="Золотой"/>Золотой
+                    <br/>
+                    <input type="checkbox" name="rbn" id="yellow" value="Желтый"/>Желтый
+                    <br/>
+                    <input type="checkbox" name="rbn" id="orange"  value="Оранжевый"/>Оранжевый
+                    <br/>
+                    <input type="checkbox" name="rbn" id="peach"   value="Персиковый"/>Персиковый
+                    <br/>
+                    <input type="checkbox" name="rbn" id="terracotta"   value="Терракотовый"/>Терракотовый
+                    <br/>
+                    <input type="checkbox" name="rbn" id="coffe"   value="Кофейный"/>Кофейный&nbsp;
+                    <br/>
+                    <input type="checkbox" name="rbn" id="browne"  value="Коричневый"/>Коричневый
+                    <br/>
+                    <input type="checkbox" name="rbn" id="rose"  value="Розовый"/>Розовый
+                    <br/>
+                    <input type="checkbox" name="rbn" id="red"   value="Красный"/>Красный
+                    <br/>
+                    <input type="checkbox" name="rbn" id="claret"   value="Бордовый"/>Бордовый
+                    <br/>
+                    <input type="checkbox" name="rbn" id="lime"  value="Салатовый"/>Салатовый
+                    <br/>
+                    <input type="checkbox" name="rbn" id="green"  value="Зеленый"/>Зеленый
+                    <br/>
+                    <input type="checkbox" name="rbn" id="sky"  value="Голубой"/>Голубой
+                    <br/>
+                    <input type="checkbox" name="rbn" id="blue"  value="Синий"/>Синий
+                    <br/>
+                    <input type="checkbox" name="rbn" id="violet"  value="Фиолетовый"/>Фиолетовый
+                    <br/>
+                    <input type="checkbox" name="rbn" id="grey"  value="Серый"/>Серый
+                    <br/>
+                    <input type="checkbox" name="rbn" id="black"  value="Черный"/>Черный
+                    <br/>
+                </div>
+                    <input type="submit" onclick="showSelectedSearch()" value="Search"/><br/>
 
+                <!--</form>-->
+            </td>
+    </tr>
 </table>
+
 </body>
 </html>

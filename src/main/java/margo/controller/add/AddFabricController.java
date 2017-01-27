@@ -45,12 +45,12 @@ public class AddFabricController {
             System.out.println(id);
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.addObject("comparePhotoNameWithDB", curtain);
-            modelAndView.setViewName("addFabric/addFabricNew");
+            modelAndView.setViewName("allFabric/addFabric/addFabricNew");
             return modelAndView;
 
         } else {
             ModelAndView modelAndView = new ModelAndView();
-            modelAndView.setViewName("addFabric/addFabricNew");
+            modelAndView.setViewName("allFabric/addFabric/addFabricNew");
             return modelAndView;
         }
     }

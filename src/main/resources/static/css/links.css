@@ -1,7 +1,6 @@
 
 .linkTop{background-color: transparent}
-.linkTop:hover {    background-color: #5e5e5e;
-    border-radius: 10px;}
+.linkTop:hover {    background-color: #5e5e5e;     border-radius: 10px;}
 
 a.linkTop  {
     text-decoration: none;
@@ -9,16 +8,6 @@ a.linkTop  {
     color: white;
     font-size: medium;
 }
-/*a:link {    background-color: black}*/
-
-/*a:visited {    background-color: #000000*/
-/*}*/
-
-/*a:hover {    background-color: #959595;*/
-    /*border-radius: 10px;}*/
-
-/*a:active {    background-color: gold;}*/
-
 
 .menu {background-color: transparent;
 
@@ -30,7 +19,15 @@ a.linkTop  {
     /*background-color: #150023;*/
     color: #959595;
     /*font-weight:bold;*/
-
 }
 
 /*.menu:active{background-color: green}*/
+/*a:link {    background-color: black}*/
+
+/*a:visited {    background-color: #000000*/
+/*}*/
+
+/*a:hover {    background-color: #959595;*/
+/*border-radius: 10px;}*/
+
+/*a:active {    background-color: gold;}*/
