@@ -78,15 +78,15 @@
                 <!--*************************************MENU******************************************-->
                 <nav id="nav" style="resize: none">
                     <ul  class="menu">
-                        <li ><a  href="#" style="font-size: large;
+                        <li ><a  href="allModel" style="font-size: large;
                               text-decoration: none; font-family: 'Arial'; ">
                             <span>&nbsp;&nbsp;&nbsp;ТКАНИ&nbsp;&nbsp;&nbsp;</span></a>
 
                             <ul class="second" style="font-size: small">
-                                <li class="second"> <a href = "#">ПОРТЬЕРЫ</a></li>
-                                <li class="second"><a href = "#">ТЮЛЬ</a></li>
-                                <li class="second"><a href = "#">ЗАКАЗНЫЕ</a></li>
-                                <li class="second"><a href = "#">ОБИВОЧНЫЕ ТКАНИ</a></li>
+                                <li class="second"> <a href = "curtainModels">ПОРТЬЕРЫ</a></li>
+                                <li class="second"><a href = "tulleModel">ТЮЛЬ</a></li>
+                                <li class="second"><a href = "orderFabric">ЗАКАЗНЫЕ</a></li>
+                                <li class="second"><a href = "upholsteryFabric">ОБИВОЧНЫЕ ТКАНИ</a></li>
                                 <li class="second"><a href = "clothModel">ТКАНИ ДЛЯ СКАТЕРТЕЙ</a></li>
                             </ul>
                         </li>
@@ -158,7 +158,7 @@
         <tr>
             <td class="main">
                 <div th:each="curtain : ${allCurtain}">
-                    <div class="pic">
+                    <div class="pic" id="mainDiv">
 
                         <a th:href="@{~/buyCurtain(hiddenCurtainId=${curtain.id})}"
                         style="text-decoration: none" >
@@ -166,6 +166,8 @@
                             <img th:attr="src=${curtain.photo}"  width="200" height="280"/>
                             <div align="center">
                                 <b>   <span th:text="${curtain.name}">Name</span></b>
+                               <span th:text="${curtain.color}"/>
+                                <input type="hidden" th:value="${curtain.paint}">
                             </div>
                             <div align="center"  sec:authorize="hasAuthority('admin')">
                                 Quantity: &nbsp; <span  th:text="${curtain.quantity}">quantity</span>m.
@@ -189,12 +191,14 @@
                 <!--<form action="searchCurtain"  method="post">-->
                     <!--th:object = "${searchSelectedCurtain}"-->
                 Фильтр:<p/>
-                Цена до:
+                <div class="searchColor">
+                    <div class="searchTextColor"> Цена до:</div>
                     <input type="text" pattern="[0-9]{1,4}" align="right" width="20px" style="width: 80px"
-                           name="searchPrice" id="searchPrice"/>
+                           name="searchPrice" id="searchPrice" class="searchInput"/>
                     <!--th:field="*{price}"-->
+                </div>
                     <p/>
-                <div class="searchColor"> Цвет:<br/>
+                <div class="searchColor" id="colorDiv"> <div class="searchTextColor"> Цвет: </div>
                     <input type="checkbox" name="rbn" id="white"  value="Белый" checked="checked"/>Белый
                     <br/>
                     <input type="checkbox" name="rbn" id="beige"   value="Бежевый"/>Бежевый
@@ -235,6 +239,20 @@
                     <br/>
                     <input type="checkbox" name="rbn" id="black"  value="Черный"/>Черный
                     <br/>
+                </div>
+                <div class="searchColor" id="searchPaint">
+                    <div class="searchTextColor"> Рисунок:</div>
+                    <input type="radio" name="paintRbn" id="abstract"  value="Абстрактный" checked="checked"/>Абстрактный
+                    <br/>
+                    <input type="radio" name="paintRbn" id="geometrical"  value="Геометрический"/>Геометрический
+                    <br/>
+                    <input type="radio" name="paintRbn" id="classical" value="Классический"/>Классический
+                    <br/>
+                    <input type="radio" name="paintRbn" id="monophonic" value="Однотонный"/>Однотонный&nbsp;
+                    <br/>
+                    <input type="radio" name="paintRbn" id="strip" value="Полоска "/>Полоска
+                    <br/>
+                    <input type="radio" name="paintRbn" id="vegetative" value="Растительный" />Растительный
                 </div>
                     <input type="submit" onclick="showSelectedSearch()" value="Search"/><br/>
 

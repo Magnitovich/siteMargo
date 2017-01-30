@@ -183,7 +183,7 @@ public class AddFabricController {
     public ModelAndView viewExeption() {
 
         ModelAndView andView = new ModelAndView();
-        andView.setViewName("addFabric/addFabricNew");
+        andView.setViewName("allFabric/addFabric/addFabricNew");
         return andView;
 
     }

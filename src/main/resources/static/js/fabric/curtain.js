@@ -14,7 +14,7 @@ function addNewCurtain(){
 
 function editInfoCurtain() {
 
-    var selectedForEdit = $('input:checked')
+    var selectedForEdit = $('#mainDiv input:checked')
 
     if (selectedForEdit.length>1) {
         alert("You selected more one yacht")

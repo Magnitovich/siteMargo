@@ -52,7 +52,18 @@ td.searchPlane{
     float: right;
 }
 td.main{
-    width: 900px;
+    width: 1100px;
+}
+.searchTextColor {
+    background-color: grey;
+    color: white;
+    font-size: medium;
+    font-family: "Times New Roman";
+    border-radius: 5px;
+    padding-left: 15px;
+}
+.searchInput{
+    margin-top: 10px;
 }
 .searchColor{
     border: solid 1px white;
@@ -60,7 +71,7 @@ td.main{
     /*border-right: white 1px solid;*/
     /*border-top: white 1px solid;*/
     /*border-bottom: white 1px solid;*/
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
 
 
