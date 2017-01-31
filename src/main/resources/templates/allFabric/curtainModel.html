@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Curtain, ткани, портьеры</title>
+    <link href="css/filterColor.css" rel="stylesheet" type="text/css"/>
     <link href="css/oldMenu.css" rel="stylesheet" type="text/css"/>
     <link href="css/links.css" rel="stylesheet" type="text/css"/>
     <link href="css/back.css" rel="stylesheet" type="text/css"/>
-    <script src="js/fabric/curtain.js"></script>
-    <script src="js/fabric/searchCurtain.js"></script>
+    <script src="js/fabric/curtain.js" ></script>
     <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/fabric/searchCurtain.js"></script>
+
 
 </head>
 <body class="background">
@@ -158,33 +161,35 @@
         <tr>
             <td class="main">
                 <div th:each="curtain : ${allCurtain}">
+                    <div class="container">
+                        <div class="mix" th:classappend="${curtain.color}">
                     <div class="pic" id="mainDiv">
 
-                        <a th:href="@{~/buyCurtain(hiddenCurtainId=${curtain.id})}"
-                        style="text-decoration: none" >
+                            <!--class="test"-->
+                            <a th:href="@{~/buyCurtain(hiddenCurtainId=${curtain.id})}" style="text-decoration: none" >
 
-                            <img th:attr="src=${curtain.photo}"  width="200" height="280"/>
-                            <div align="center">
-                                <b>   <span th:text="${curtain.name}">Name</span></b>
-                               <span th:text="${curtain.color}"/>
-                                <input type="hidden" th:value="${curtain.paint}">
-                            </div>
-                            <div align="center"  sec:authorize="hasAuthority('admin')">
-                                Quantity: &nbsp; <span  th:text="${curtain.quantity}">quantity</span>m.
-                            </div>
-
-                            <div align="center" style="font-family: 'Times New Roman'; color: black">
-                                <div align="center"  sec:authorize="isAnonymous()">
-                                <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
-                            </div>
-                            <div align="center" sec:authorize="hasAuthority('user')">
-                                <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
-                            </div>
-                            <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
+                                <img th:attr="src=${curtain.photo}"  width="200" height="280"/>
+                                <div align="center">
+                                    <b>   <span th:text="${curtain.name}">Name</span></b>
+                                <span th:text="${curtain.color}"/>
+                                    <input type="hidden" th:value="${curtain.paint}"/>
+                                </div>
+                                <div align="center"  sec:authorize="hasAuthority('admin')">
+                                    Quantity: &nbsp; <span  th:text="${curtain.quantity}">quantity</span>m.
+                                </div>
+                                <div align="center" style="font-family: 'Times New Roman'; color: black">
+                                    <div align="center"  sec:authorize="isAnonymous()">
+                                    <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
+                                </div>
+                                <div align="center" sec:authorize="hasAuthority('user')">
+                                    <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
+                                </div>
+                                <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
                                    sec:authorize="hasAuthority('admin')" style="background-color: #0f0f0f"/>
-                            </div>
-                        </a>
-                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div></div>
                 </div>
             </td>
             <td class="searchPlane">
@@ -199,7 +204,7 @@
                 </div>
                     <p/>
                 <div class="searchColor" id="colorDiv"> <div class="searchTextColor"> Цвет: </div>
-                    <input type="checkbox" name="rbn" id="white"  value="Белый" checked="checked"/>Белый
+                    <input type="checkbox" name="rbn" id="white"  value="Белый" />Белый
                     <br/>
                     <input type="checkbox" name="rbn" id="beige"   value="Бежевый"/>Бежевый
                     <br/>
@@ -209,7 +214,8 @@
                     <br/>
                     <input type="checkbox" name="rbn" id="yellow" value="Желтый"/>Желтый
                     <br/>
-                    <input type="checkbox" name="rbn" id="orange"  value="Оранжевый"/>Оранжевый
+                    <input type="checkbox" name="rbn" id="orange" class="filter"  data-filter=".Оранжевый" value="Оранжевый"/>Оранжевый
+                    <!--<input type="checkbox" name="rbn" id="orange" class="orange"  value="Оранжевый"/>Оранжевый-->
                     <br/>
                     <input type="checkbox" name="rbn" id="peach"   value="Персиковый"/>Персиковый
                     <br/>
@@ -235,9 +241,11 @@
                     <br/>
                     <input type="checkbox" name="rbn" id="violet"  value="Фиолетовый"/>Фиолетовый
                     <br/>
-                    <input type="checkbox" name="rbn" id="grey"  value="Серый"/>Серый
+                    <input type="button" name="rbn" id="grey" class="filter" data-filter=".Серый" value="Серый"/>Серый
+                    <!--<input type="checkbox" name="rbn" id="grey" class="grey" value="Серый"/>Серый-->
                     <br/>
-                    <input type="checkbox" name="rbn" id="black"  value="Черный"/>Черный
+                    <input type="button" name="rbn" id="black"  class="filter" data-filter=".Черный" value="Черный"/>Черный
+                    <!--<input type="checkbox" name="rbn" id="black"  class="black" value="Черный"/>Черный-->
                     <br/>
                 </div>
                 <div class="searchColor" id="searchPaint">

@@ -1,4 +1,47 @@
+
+$(function(){
+
+    $('.container').mixItUp({
+
+
+    });
+});
+
+
+//jQuery(document).ready(function() {
+//    var fActive = '';
+//
+//    function filterColor(color) {
+//        if (fActive != color) {
+//          if($("#test007").equalTo(color)){
+//              $("#test007").slideDown();
+//          }
+//            $('.test').filter(' ' + color).slideDown();
+//            $('.test').filter(':not( ' + color + ')').slideUp();
+//            fActive = color;
+//        }
+//    }
+//
+//    $('.orange').click(function () {
+//        filterColor('Оранжевый');
+//    });
+//    $('.grey').click(function () {
+//        filterColor('Серый');
+//    });
+//    $('.black').click(function () {
+//        filterColor('Черный');
+//    });
+//});
+//$('.f-all').click(function(){
+//    $('div').slideDown();
+//    fActive = 'all';
+//});
+
+
+
 function showSelectedSearch(){
+
+    var main = [];
 
     var price = $("#searchPrice").val();
     console.log(price);
