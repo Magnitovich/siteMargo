@@ -67,54 +67,18 @@ td.main{
 }
 .searchColor{
     border: solid 1px white;
-    /*border-left: white 1px solid;*/
-    /*border-right: white 1px solid;*/
-    /*border-top: white 1px solid;*/
-    /*border-bottom: white 1px solid;*/
     padding: 10px;
     border-radius: 10px;
-
-
 }
-/*!*это для модального окна jquery.leanModal.min*!*/
-/*#lean_overlay {*/
-    /*position: fixed;*/
-    /*z-index:100;*/
-    /*top: 0px;*/
-    /*left: 0px;*/
-    /*height:100%;*/
-    /*width:100%;*/
-    /*background: #000;*/
-    /*display: none;*/
-/*}*/
-
-/*.backRegistration*/
-/*{*/
-    /*background-image: url("../backgrounds/registration.jpg");*/
-    /*-moz-background-size: 100%; !* Firefox 3.6+ *!*/
-    /*-webkit-background-size: 100%; !* Safari 3.1+ и Chrome 4.0+ *!*/
-    /*-o-background-size: 100%; !* Opera 9.6+ *!*/
-    /*background-size: 100%; !* Современные браузеры *!*/
-
-/*}*/
+.searchPrice{
+    border: solid 1px white;
+    padding: 10px;
+    border-radius: 10px;
+}
 
 a {
     text-decoration: none; /* Отменяем подчеркивание у ссылки */
 }
-/*div .showAll{*/
-    /*width:99%;*/
-/*}*/
-/*div.main{*/
-    /*padding: 5px; !* Поля вокруг текста *!*/
-    /*float: left; !* Обтекание по правому краю *!*/
-    /*width: 80%; !* Ширина слоя *!*/
-/*}*/
-/*div.searchDiv{*/
-    /*color: white;*/
-    /*padding: 5px; !* Поля вокруг текста *!*/
-    /*width: 19%; !* Ширина слоя *!*/
-    /*float: left; !* Обтекание по правому краю *!*/
-/*}*/
 .pic {
     border:7px solid #0b0a26;
     /*border:5px solid #333;*/

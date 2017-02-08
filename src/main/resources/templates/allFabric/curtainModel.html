@@ -1,149 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"  xmlns:sec="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Curtain, ткани, портьеры</title>
-    <link href="css/filterColor.css" rel="stylesheet" type="text/css"/>
-    <link href="css/oldMenu.css" rel="stylesheet" type="text/css"/>
-    <link href="css/links.css" rel="stylesheet" type="text/css"/>
-    <link href="css/back.css" rel="stylesheet" type="text/css"/>
-    <script src="js/fabric/curtain.js" ></script>
-    <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/fabric/searchCurtain.js"></script>
 
+<head th:replace="headerMain :: header-libs"></head>
+<head>
+    <title>Curtain, ткани, портьеры</title>
+
+    <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="js/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <!--<link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>-->
+    <!--<script src="css/bootstrap/js/bootstrap.min.js"/>-->
+    <script src="js/fabric/curtain.js" ></script>
+    <script src="js/fabric/searchCurtain.js"></script>
+    <!--<link href="css/filterColor.css" rel="stylesheet" type="text/css"/>-->
 
 </head>
 <body class="background">
-<div class="top">
-    <table bgcolor="black" border="0" width="100%">
-        <tr>
-            <td>
-                <table style="float: left" border="0">
+<div th:replace="headerMain :: header"></div>
 
-                    <tr>
-                        <td> <img src="backgrounds/phone32.png" /></td>
-                        <td> <span>  &nbsp; +38 067 112 1281 &nbsp; &nbsp; </span> </td>
-
-                        <td> <img src="backgrounds/phone32.png" /></td>
-                        <td><span>&nbsp;+38 063 880 5153 &nbsp; &nbsp;</span></td>
-                        <td> <img src="backgrounds/phone32.png" /></td>
-                        <td><span>&nbsp; +38 099 049 5777 </span></td>
-                    </tr>
-                </table>
-            </td>
-            <td align="left">
-                <a href="/" ><img src="backgrounds/name.png"/></a>
-            </td>
-            <td align="right">
-                <a href="index.html" class="linkTop" > &nbsp; ОПЛАТА&nbsp;&nbsp;   </a> </td>
-            <td align="right">
-                <a href="index.html" class="linkTop"> &nbsp; ДОСТАВКА&nbsp;&nbsp;   </a> </td>
-            <td  align="right">
-                <!--Registration-->
-                <div align="center" th:if="${not #authorization.expression('isAuthenticated()')}" >
-                    <div style="color: #feff82;">
-                        <a href="/login" data-toggle="modal" data-target="#go" class="linkTop">
-                            &nbsp; ВОЙТИ&nbsp;&nbsp;&nbsp;</a>
-                    </div>
-                </div>
-                <!--Name users when authorized -->
-                <div style="width: 90%" align="right"  th:if="${#authorization.expression('isAuthenticated()')}">
-                    <div align="right">
-                        <a  href="/logout" class="linkTop">Logout&nbsp;&nbsp;</a>
-                        <!--<div align="right" th:if="${#authorization.expression('isAuthenticated()')}"/>-->
-                        <!--//Эта строка выводит имя пользователя, когда он зарегистрируется.-->
-                    </div>
-                    <div align="left">
-                        <span>Welcome&nbsp;</span>
-                     <span  th:if="${#authorization.expression('isAuthenticated()')}"
-                            th:text="${#authentication.name}">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    </div>
-                </div>
-
-            </td>
-        </tr>
-    </table>
-</div>
-<div style=" height: 3px; background: #feff82;">&nbsp;</div>
-
-<!--*************************************SEARCH******************************************-->
-<div class="top" align="center">
-    <table align="center"  border="0" width="90%">
-        <tr>
-            <td>
-                <form action="searchOnTheSite" method="post">
-                    <input type="search" autocomplete="off" name="searchRequest" id="searchRequest"
-                           placeholder=" Search" class="searchMenu" />
-                </form>
-            </td>
-            <td>
-                <!--*************************************MENU******************************************-->
-                <nav id="nav" style="resize: none">
-                    <ul  class="menu">
-                        <li ><a  href="allModel" style="font-size: large;
-                              text-decoration: none; font-family: 'Arial'; ">
-                            <span>&nbsp;&nbsp;&nbsp;ТКАНИ&nbsp;&nbsp;&nbsp;</span></a>
-
-                            <ul class="second" style="font-size: small">
-                                <li class="second"> <a href = "curtainModels">ПОРТЬЕРЫ</a></li>
-                                <li class="second"><a href = "tulleModel">ТЮЛЬ</a></li>
-                                <li class="second"><a href = "orderFabric">ЗАКАЗНЫЕ</a></li>
-                                <li class="second"><a href = "upholsteryFabric">ОБИВОЧНЫЕ ТКАНИ</a></li>
-                                <li class="second"><a href = "clothModel">ТКАНИ ДЛЯ СКАТЕРТЕЙ</a></li>
-                            </ul>
-                        </li>
-                        <li ><a  href="#" style="font-size: large;
-                                    text-decoration: none; font-family: 'Arial'; ">
-                            <span>&nbsp;&nbsp;&nbsp;ГОТОВЫЕ ИЗДЕЛИЯ&nbsp;&nbsp;&nbsp;</span></a>
-
-                            <ul class="second" style="font-size: small">
-                                <li class="second"><a href = "#">ДЛЯ ГОСТИННОЙ</a></li>
-                                <li class="second"><a href = "#">ДЛЯ ДЕТСКОЙ</a></li>
-                                <li class="second"><a href = "#">ДЛЯ КАБИНЕТА</a></li>
-                                <li class="second"><a href = "#">ДЛЯ  КУХНИ</a></li>
-                                <li class="second"><a href = "#">ДЛЯ СПАЛЬНИ</a></li>
-                                <li class="second"><a href = "#">ЛАМБРИКЕНЫ</a></li>
-                                <li class="second"><a href = "#">ТЮЛЬ</a></li>
-                                <li class="second"><a href = "#">ШТОРЫ</a></li>
-                            </ul>
-                        </li>
-                        <li ><a  href="#" style="font-size: large;
-                    text-decoration: none; font-family: 'Arial'; ">
-                            <span>&nbsp;&nbsp;&nbsp;ИНТЕРЬЕРНЫЕ МЕЛОЧИ&nbsp;&nbsp;&nbsp;</span></a>
-                        </li>
-                        <li ><a  href="#" style="font-size: large;
-                            text-decoration: none; font-family: 'Arial'; ">
-                            <span>&nbsp;&nbsp;&nbsp;ФУРНИТУРА&nbsp;&nbsp;&nbsp;</span></a>
-
-                            <ul class="second" style="font-size: small">
-                                <li class="second"><a href = "#">КИСТИ И БАХРОМА</a></li>
-                                <li class="second"><a href = "#">ЛЮВЕРСЫ</a></li>
-                                <li class="second"><a href = "#">ПОДХВАТЫ</a></li>
-                                <li class="second"><a href = "#">РАЗНОЕ</a></li>
-                                <li class="second"><a href = "#">ТЕСЬМА</a></li>
-                            </ul>
-                        </li>
-                        <li ><a  href="#" style="font-size: large;
-                             text-decoration: none; font-family: 'Arial'; ">
-                            <span>&nbsp;&nbsp;&nbsp;УСЛУГИ&nbsp;&nbsp;&nbsp;</span></a>
-                        </li>
-                        <li ><a  href="#" style="font-size: large;
-                    text-decoration: none; font-family: 'Arial'; ">
-                            <span>&nbsp;&nbsp;&nbsp;АКЦИИ&nbsp;&nbsp;&nbsp;</span></a>
-                        </li>
-                    </ul>
-                </nav>
-            </td>
-            <!--***************************** CART*******************************-->
-            <td align="left" style="color: white">
-                $ <span id="totalCart"> </span>
-                <button  id="whiskyCart" onclick="cartOpen()">
-                    <img src="backgrounds/main/Shopping-Cart-icon32.png"/></button>
-            </td>
-        </tr>
-    </table>
-</div>
 <!--ADD, EDIT, DELETE-->
 <p align="right">
     <input type="submit"  style="width: 60px" name="addWhisky" id="addWhisky"
@@ -161,8 +35,11 @@
         <tr>
             <td class="main">
                 <div th:each="curtain : ${allCurtain}">
-                    <div class="container">
-                        <div class="mix" th:classappend="${curtain.color}">
+                    <div class="color" th:classappend="${curtain.color} +' '+ ${curtain.paint}+ ' '
+                    +${curtain.price}">
+                      <!--<div th:class="${curtain.color}">-->
+                    <!--<div class="color" >-->
+
                     <div class="pic" id="mainDiv">
 
                             <!--class="test"-->
@@ -179,10 +56,14 @@
                                 </div>
                                 <div align="center" style="font-family: 'Times New Roman'; color: black">
                                     <div align="center"  sec:authorize="isAnonymous()">
-                                    <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
+                                    <b> $&nbsp;
+                                        <span class="priceSSS" th:text="${curtain.price}"/>
+                                        <span th:text="${curtain.paint}"/>
+                                        <!--<span  th:text="${curtain.price}">Price</span>-->
+                                        </b>
                                 </div>
                                 <div align="center" sec:authorize="hasAuthority('user')">
-                                    <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
+                                    <b> $&nbsp; <input type="text"  th:value="${curtain.price}">Price</input></b>
                                 </div>
                                 <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
                                    sec:authorize="hasAuthority('admin')" style="background-color: #0f0f0f"/>
@@ -190,20 +71,26 @@
                             </a>
                         </div>
                     </div></div>
-                </div>
+                <!--</div>-->
             </td>
             <td class="searchPlane">
                 <!--<form action="searchCurtain"  method="post">-->
                     <!--th:object = "${searchSelectedCurtain}"-->
                 Фильтр:<p/>
-                <div class="searchColor">
+                <div class="searchColor" id="filterPrice">
                     <div class="searchTextColor"> Цена до:</div>
-                    <input type="text" pattern="[0-9]{1,4}" align="right" width="20px" style="width: 80px"
-                           name="searchPrice" id="searchPrice" class="searchInput"/>
+                        <!--id="priceSelected"-->
+                        <input class="priceSelected"  type="checkbox" id="price01" value="1"/> 0 - 800грн <br/>
+                        <input class="priceSelected" type="checkbox" id="price02" value="2"/>800 - 1600грн<br/>
+                        <input class="priceSelected" type="checkbox" id="price03" value="3"/>>1600грн
+                    <!--<input type="text" pattern="[0-9]{1,4}" align="right" width="20px" style="width: 80px"-->
+                           <!--name="searchPrice" id="searchPrice" class="searchInput"/>-->
                     <!--th:field="*{price}"-->
                 </div>
                     <p/>
-                <div class="searchColor" id="colorDiv"> <div class="searchTextColor"> Цвет: </div>
+                <div class="searchColor" id="filterColor">
+                    <div class="searchTextColor"> Цвет: </div>
+
                     <input type="checkbox" name="rbn" id="white"  value="Белый" />Белый
                     <br/>
                     <input type="checkbox" name="rbn" id="beige"   value="Бежевый"/>Бежевый
@@ -214,8 +101,8 @@
                     <br/>
                     <input type="checkbox" name="rbn" id="yellow" value="Желтый"/>Желтый
                     <br/>
-                    <input type="checkbox" name="rbn" id="orange" class="filter"  data-filter=".Оранжевый" value="Оранжевый"/>Оранжевый
-                    <!--<input type="checkbox" name="rbn" id="orange" class="orange"  value="Оранжевый"/>Оранжевый-->
+                    <!--<input type="checkbox" name="rbn" id="orange" class="filter"  data-filter=".Оранжевый" value="Оранжевый"/>Оранжевый-->
+                    <input type="checkbox" name="rbn" id="orange" class="orange"  value="Оранжевый"/>Оранжевый
                     <br/>
                     <input type="checkbox" name="rbn" id="peach"   value="Персиковый"/>Персиковый
                     <br/>
@@ -241,26 +128,28 @@
                     <br/>
                     <input type="checkbox" name="rbn" id="violet"  value="Фиолетовый"/>Фиолетовый
                     <br/>
-                    <input type="button" name="rbn" id="grey" class="filter" data-filter=".Серый" value="Серый"/>Серый
+                    <input type="checkbox" name="rbn" id="grey" class="filter" data-filter=".Серый" value="Серый"/>Серый
                     <!--<input type="checkbox" name="rbn" id="grey" class="grey" value="Серый"/>Серый-->
                     <br/>
-                    <input type="button" name="rbn" id="black"  class="filter" data-filter=".Черный" value="Черный"/>Черный
+                    <input type="checkbox" name="rbn" id="black"  class="filter" data-filter=".Черный" value="Черный"/>Черный
                     <!--<input type="checkbox" name="rbn" id="black"  class="black" value="Черный"/>Черный-->
                     <br/>
                 </div>
                 <div class="searchColor" id="searchPaint">
                     <div class="searchTextColor"> Рисунок:</div>
-                    <input type="radio" name="paintRbn" id="abstract"  value="Абстрактный" checked="checked"/>Абстрактный
-                    <br/>
-                    <input type="radio" name="paintRbn" id="geometrical"  value="Геометрический"/>Геометрический
-                    <br/>
-                    <input type="radio" name="paintRbn" id="classical" value="Классический"/>Классический
-                    <br/>
-                    <input type="radio" name="paintRbn" id="monophonic" value="Однотонный"/>Однотонный&nbsp;
-                    <br/>
-                    <input type="radio" name="paintRbn" id="strip" value="Полоска "/>Полоска
-                    <br/>
-                    <input type="radio" name="paintRbn" id="vegetative" value="Растительный" />Растительный
+                    <!--<div class="paintSelect">-->
+                        <input type="checkbox" name="paintRbn" id="abstract"  value="Абстрактный" />Абстрактный
+                        <br/>
+                        <input type="checkbox" name="paintRbn" id="geometrical"  value="Геометрический"/>Геометрический
+                        <br/>
+                        <input type="checkbox" name="paintRbn" id="classical" value="Классический"/>Классический
+                        <br/>
+                        <input type="checkbox" name="paintRbn" id="monophonic" value="Однотонный"/>Однотонный&nbsp;
+                        <br/>
+                        <input type="checkbox" name="paintRbn" id="strip" value="Полоска "/>Полоска
+                        <br/>
+                        <input type="checkbox" name="paintRbn" id="vegetative" value="Растительный" />Растительный
+                    <!--</div>-->
                 </div>
                     <input type="submit" onclick="showSelectedSearch()" value="Search"/><br/>
 

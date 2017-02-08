@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="header-libs">
+    <link rel="stylesheet" type="text/css" href="css/registrationLoginForm/style2.css" />
+    <link rel="stylesheet" type="text/css" href="css/registrationLoginForm/animate-custom.css" />
+
+    <script src="js/jquery-1.12.3.min.js" type="text/javascript"></script>
+    <script src="js/modalWindow.js" type="text/javascript"></script>
+    <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="js/jquery.validate.js" type="text/javascript"></script>
+    <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="css/bootstrap/js/bootstrap.min.js"/>
+
+
+    <link href="css/oldMenu.css" rel="stylesheet" type="text/css"/>
+    <link href="css/links.css" rel="stylesheet" type="text/css"/>
+    <link href="css/back.css" rel="stylesheet" type="text/css"/>
+</head>
+<body class="background">
+<div class="top" th:fragment="header">
+    <table bgcolor="black" border="0" width="100%">
+        <tr>
+            <td>
+                <table style="float: left" border="0">
+
+                    <tr>
+                        <td> <img src="backgrounds/phone32.png" /></td>
+                        <td> <span>  &nbsp; +38 067 112 1281 &nbsp; &nbsp; </span> </td>
+
+                        <td> <img src="backgrounds/phone32.png" /></td>
+                        <td><span>&nbsp;+38 063 880 5153 &nbsp; &nbsp;</span></td>
+                        <td> <img src="backgrounds/phone32.png" /></td>
+                        <td><span>&nbsp; +38 099 049 5777 </span></td>
+                    </tr>
+                </table>
+            </td>
+            <td align="left">
+                <a href="/" ><img src="backgrounds/name.png"/></a>
+            </td>
+            <td align="right">
+                <a href="index.html" class="linkTop" > &nbsp; ОПЛАТА&nbsp;&nbsp;   </a> </td>
+            <td align="right">
+                <a href="index.html" class="linkTop"> &nbsp; ДОСТАВКА&nbsp;&nbsp;   </a> </td>
+            <td  align="right">
+                <!--Registration-->
+                <div align="center" th:if="${not #authorization.expression('isAuthenticated()')}" >
+                    <div style="color: #feff82;">
+                        <a href="#" data-toggle="modal" data-target="#go" class="linkTop">
+                            &nbsp; ВОЙТИ&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!--Name users when authorized -->
+                <div style="width: 90%" align="right"  th:if="${#authorization.expression('isAuthenticated()')}">
+                    <div align="right">
+                        <a  href="/logout" class="linkTop">Logout&nbsp;&nbsp;</a>
+                        <!--<div align="right" th:if="${#authorization.expression('isAuthenticated()')}"/>-->
+                        <!--//Эта строка выводит имя пользователя, когда он зарегистрируется.-->
+                    </div>
+                    <div align="left">
+                        <span>Welcome&nbsp;</span>
+                     <span  th:if="${#authorization.expression('isAuthenticated()')}"
+                            th:text="${#authentication.name}">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+</div>
+<div style=" height: 3px; background: #feff82;" >&nbsp;</div>
+
+<!--*************************************SEARCH******************************************-->
+<div class="top" align="center" th:fragment="header">
+    <table align="center"  border="0" width="90%">
+        <tr>
+            <td>
+                <form action="searchOnTheSite" method="post">
+                    <input type="search" autocomplete="off" name="searchRequest" id="searchRequest"
+                           placeholder=" Search" class="searchMenu" />
+                </form>
+            </td>
+            <td>
+                <!--*************************************MENU******************************************-->
+                <nav id="nav" style="resize: none">
+                    <ul  class="menu">
+                        <li ><a  href="allModel" style="font-size: large;
+                              text-decoration: none; font-family: 'Arial'; ">
+                            <span>&nbsp;&nbsp;&nbsp;ТКАНИ&nbsp;&nbsp;&nbsp;</span></a>
+
+                            <ul class="second" style="font-size: small">
+                                <li class="second"> <a href = "curtainModels">ПОРТЬЕРЫ</a></li>
+                                <li class="second"><a href = "tulleModel">ТЮЛЬ</a></li>
+                                <li class="second"><a href = "orderFabric">ЗАКАЗНЫЕ</a></li>
+                                <li class="second"><a href = "upholsteryFabric">ОБИВОЧНЫЕ ТКАНИ</a></li>
+                                <li class="second"><a href = "clothModel">ТКАНИ ДЛЯ СКАТЕРТЕЙ</a></li>
+                            </ul>
+                        </li>
+                        <li ><a  href="#" style="font-size: large;
+                                    text-decoration: none; font-family: 'Arial'; ">
+                            <span>&nbsp;&nbsp;&nbsp;ГОТОВЫЕ ИЗДЕЛИЯ&nbsp;&nbsp;&nbsp;</span></a>
+
+                            <ul class="second" style="font-size: small">
+                                <li class="second"><a href = "#">ДЛЯ ГОСТИННОЙ</a></li>
+                                <li class="second"><a href = "#">ДЛЯ ДЕТСКОЙ</a></li>
+                                <li class="second"><a href = "#">ДЛЯ КАБИНЕТА</a></li>
+                                <li class="second"><a href = "#">ДЛЯ  КУХНИ</a></li>
+                                <li class="second"><a href = "#">ДЛЯ СПАЛЬНИ</a></li>
+                                <li class="second"><a href = "#">ЛАМБРИКЕНЫ</a></li>
+                                <li class="second"><a href = "#">ТЮЛЬ</a></li>
+                                <li class="second"><a href = "#">ШТОРЫ</a></li>
+                            </ul>
+                        </li>
+                        <li ><a  href="#" style="font-size: large;
+                    text-decoration: none; font-family: 'Arial'; ">
+                            <span>&nbsp;&nbsp;&nbsp;ИНТЕРЬЕРНЫЕ МЕЛОЧИ&nbsp;&nbsp;&nbsp;</span></a>
+                        </li>
+                        <li ><a  href="#" style="font-size: large;
+                            text-decoration: none; font-family: 'Arial'; ">
+                            <span>&nbsp;&nbsp;&nbsp;ФУРНИТУРА&nbsp;&nbsp;&nbsp;</span></a>
+
+                            <ul class="second" style="font-size: small">
+                                <li class="second"><a href = "#">КИСТИ И БАХРОМА</a></li>
+                                <li class="second"><a href = "#">ЛЮВЕРСЫ</a></li>
+                                <li class="second"><a href = "#">ПОДХВАТЫ</a></li>
+                                <li class="second"><a href = "#">РАЗНОЕ</a></li>
+                                <li class="second"><a href = "#">ТЕСЬМА</a></li>
+                            </ul>
+                        </li>
+                        <li ><a  href="#" style="font-size: large;
+                             text-decoration: none; font-family: 'Arial'; ">
+                            <span>&nbsp;&nbsp;&nbsp;УСЛУГИ&nbsp;&nbsp;&nbsp;</span></a>
+                        </li>
+                        <li ><a  href="#" style="font-size: large;
+                    text-decoration: none; font-family: 'Arial'; ">
+                            <span>&nbsp;&nbsp;&nbsp;АКЦИИ&nbsp;&nbsp;&nbsp;</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </td>
+            <!--***************************** CART*******************************-->
+            <td align="left" style="color: white">
+                $ <span id="totalCart"> </span>
+                <button  id="whiskyCart" onclick="cartOpen()">
+                    <img src="backgrounds/main/Shopping-Cart-icon32.png"/></button>
+            </td>
+        </tr>
+    </table>
+    <!--******************************Modal Window***********************************-->
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="go">
+        <div class="modal-dialog" align="center">
+
+            <div id="container_demo" >
+                <a class="hiddenanchor" id="toregister"></a>
+                <a class="hiddenanchor" id="tologin"></a>
+                <div id="wrapper">
+                    <div id="login" class="animate form">
+                        <form  th:action="@{/login}"
+                               authentication-success-handler-ref="authenticationSuccessHandler" method="post"
+                               id="signInFrm" autocomplete="on">
+
+                            <h1>Log in</h1>
+                            <p>
+                                <label for="username" class="uname" data-icon="u"  > Your email or username </label>
+                                <input name="username" id="username" required="required" type="text"
+                                       th:placeholder="Name" autofocus=""/>
+                            </p>
+                                         <span id="nickErrorSingIn" style="display: none; color: snow">
+                                            You not authorized, pls. see email
+                                        </span>
+                            <p>
+                                <label for="password" class="youpasswd" data-icon="p"> Password </label>
+                                <input name="password" id="password" type="password"
+                                       th:placeholder="password" required="" />
+                            </p>
+                            <p class="keeplogin">
+                                <input type="checkbox" name="remember-me" id="remember-me"  value="loginkeeping" />
+                                <label for="remember-me"> <h5>Remember me</h5></label>
+                            </p>
+                            <p class="login button">
+                                <input type="submit" value="Login" />
+                            </p>
+                            <p class="change_link">
+                                Not a member yet ?
+                                <a href="#toregister" class="to_register">Join us</a>
+                            </p>
+                        </form>
+                    </div>
+
+                    <div id="register" class="animate form">
+
+                        <form  method="post" id="signupSubmitFrm" >
+
+                            <h1> Sign up </h1>
+
+                            <label for="NickName" class="NickName" data-icon="u">Your username</label>
+                            <input name="NickName" id="NickName"  type="text"
+                                   pattern="[A-Za-z0-9._]{3,}" required=""
+                                   th:placeholder="Name" autofocus="" />
+                            <!--required="required"-->
+                            <span id="nickError" style="display: none; color: black"> NickName exist, try another</span>
+                            <p/>
+                            <label for="Phone"  data-icon="ph">Phone number</label>
+                            <input type="phone"  id="Phone" name="Phone" placeholder="***-***-**-**"
+                                   pattern="[0-9-]{10,}" required=""/>
+                            <p/>
+                            <label for="Email" class="Email" data-icon="e" > Your email</label>
+                            <input type="email" name="Email" id="Email"  class="form-control" th:placeholder="#{.key.Email}"
+                                   pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+                                   required=""   />
+                            <span id="emailError" style="display: none; color: black"> Email exist </span>
+
+                            <p/>
+                            <!--required="required"-->
+                            <label for="password" class="password" data-icon="p">Your password </label>
+                            <input type="password" name="signUpPassword" id="signUpPassword"
+                                   placeholder="Password" required=""/>
+
+                            <p class="signin button">
+                                <input type="submit" id="SignUpBtn" value="Sign up"/>
+                            </p>
+                            <p class="change_link">
+                                Already a member ?
+                                <a href="#tologin" class="to_register"> Go and log in </a>
+                            </p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>
