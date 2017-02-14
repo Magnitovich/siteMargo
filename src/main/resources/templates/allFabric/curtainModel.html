@@ -11,7 +11,7 @@
     <!--<link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>-->
     <!--<script src="css/bootstrap/js/bootstrap.min.js"/>-->
     <script src="js/fabric/curtain.js" ></script>
-    <script src="js/fabric/searchCurtain.js"></script>
+    <script src="js/fabric/searchCurtainN.js"></script>
     <!--<link href="css/filterColor.css" rel="stylesheet" type="text/css"/>-->
 
 </head>
@@ -36,9 +36,10 @@
             <td class="main">
                 <div th:each="curtain : ${allCurtain}">
                     <div class="color" th:classappend="${curtain.color} +' '+ ${curtain.paint}+ ' '
-                    +${curtain.price}">
-                      <!--<div th:class="${curtain.color}">-->
-                    <!--<div class="color" >-->
+                    +${curtain.price}+' '+${curtain.structure}">
+                        <!--+' '+${curtain.height}-->
+                        <div class="height"  th:classappend="${curtain.height}">
+
 
                     <div class="pic" id="mainDiv">
 
@@ -63,12 +64,17 @@
                                         </b>
                                 </div>
                                 <div align="center" sec:authorize="hasAuthority('user')">
-                                    <b> $&nbsp; <input type="text"  th:value="${curtain.price}">Price</input></b>
+                                    <b> $&nbsp;
+                                        <span class="priceSSS" th:text="${curtain.price}"/>
+                                        <span th:text="${curtain.paint}"/>
+                                    </b>
+                                    <!--<b> $&nbsp; <input type="text"  th:value="${curtain.price}">Price</input></b>-->
                                 </div>
                                 <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
                                    sec:authorize="hasAuthority('admin')" style="background-color: #0f0f0f"/>
                                 </div>
                             </a>
+                        </div>
                         </div>
                     </div></div>
                 <!--</div>-->
@@ -128,11 +134,10 @@
                     <br/>
                     <input type="checkbox" name="rbn" id="violet"  value="Фиолетовый"/>Фиолетовый
                     <br/>
-                    <input type="checkbox" name="rbn" id="grey" class="filter" data-filter=".Серый" value="Серый"/>Серый
-                    <!--<input type="checkbox" name="rbn" id="grey" class="grey" value="Серый"/>Серый-->
+                    <!--<input type="checkbox" name="rbn" id="grey" value="Серый"/>Серый-->
+                    <input type="checkbox" name="rbn" id="grey" class="grey" value="Серый"/>Серый
                     <br/>
-                    <input type="checkbox" name="rbn" id="black"  class="filter" data-filter=".Черный" value="Черный"/>Черный
-                    <!--<input type="checkbox" name="rbn" id="black"  class="black" value="Черный"/>Черный-->
+                    <input type="checkbox" name="rbn" id="black"  class="black" value="Черный"/>Черный
                     <br/>
                 </div>
                 <div class="searchColor" id="searchPaint">
@@ -151,7 +156,28 @@
                         <input type="checkbox" name="paintRbn" id="vegetative" value="Растительный" />Растительный
                     <!--</div>-->
                 </div>
-                    <input type="submit" onclick="showSelectedSearch()" value="Search"/><br/>
+                <div class="searchColor" id="filterStructure">
+                    <div class="searchTextColor"> Фактура:</div>
+                    <input type="checkbox" name="structureRbn" id="len" value="Лен" />Лен<br/>
+                    <input type="checkbox" name="structureRbn" id="thread" value="Нити"/>Нити<br/>
+                    <input type="checkbox" name="structureRbn" id="twoLayers" value="Двухслойная"/>Двухслойная<br/>
+                    <input type="checkbox" name="structureRbn" id="squeeze"  value="Жатая"/>Жатая<br/>
+                    <input type="checkbox" name="structureRbn" id="jacard" value="Жаккард "/>Жаккард <br/>
+                    <input type="checkbox" name="structureRbn" id="sateen"  value="Сатин" />Сатин <br/>
+                    <input type="checkbox" name="structureRbn" id="taffeta" value="Тафта"/>Тафта<br/>
+                    <input type="checkbox" name="structureRbn" id="twoSides"  value="Двухсторонняя"/>Двухсторонняя<br/>
+                    <input type="checkbox" name="structureRbn" id="velvet" value="Бархат"/>Бархат&nbsp;<br/>
+                    <input type="checkbox" name="structureRbn" id="cover" value="Покрывальная "/>Для покрывал<br/>
+                </div>
+                <div class="searchColor" id="filterHeight">
+                    <div class="searchTextColor"> Высота:</div>
+                    <input type="checkbox" id="27" value="2.7-2.9м" />2,7-2,9м<br/>
+                    <input type="checkbox" id="29" value="2.9-3.0м"/>2,9-3,0м<br/>
+                    <input type="checkbox"  id="30" value="3.0-3.15м"/>3,0-3,15м<br/>
+                    <input type="checkbox"  id="315" value="3.15м"/>>3,15м&nbsp;
+                </div>
+
+                    <!--<input type="submit" onclick="showSelectedSearch()" value="Search"/><br/>-->
 
                 <!--</form>-->
             </td>

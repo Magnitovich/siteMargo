@@ -3,55 +3,68 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
-    <link href="../static/css/filterColor.css" rel="stylesheet" type="text/css"/>
+    <!--<link href="../static/css/filterColor.css" rel="stylesheet" type="text/css"/>-->
     <script src="../static/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 
     <script src="../static/js/fabric/searchCurtainHello.js" type="text/javascript"></script>
 </head>
 <body>
-<h1>Hello world!!!</h1>
-<table border="0">
+
+<table>
     <tr>
-        <td width="20%" >
-            <div id="triangleRed" class="color Red triangle"></div>
-            <div id="triangleBlue" class="color Blue triangle"></div>
-            <div id="triangleGreen" class="color Green triangle"></div>
-            <div id="triangleGold" class="color Gold triangle"></div>
-        </td><td width="20%" align="center">
-            <div id="squareRed" class="color Red square"></div>
-            <div id="squareBlue" class="color Blue square"></div>
-            <div id="squareGreen" class="color Green square"></div>
-            <div id="squareGold" class="color Gold square"></div>
-        </td>        <td width="40%" align="center">
-            <div id="circleRed" class="color Red circle"></div>
-            <div id="circleBlue" class="color Blue circle"></div>
-            <div id="circleGreen" class="color Green circle"></div>
-            <div id="circleGold" class="color Gold circle"></div>
+        <td width="50%">
+            <div align="center"  style="color: #1b6d85">
+                <div class="color 10.10"><span class="numberSSS">10.10</span></div><p/>
+                <div class="color 22.22"><span class="numberSSS">22.22</span></div><p/>
+                <div class="color 33.33"><span class="numberSSS">33.33</span></div><p/>
+                <div class="color 44.44"><span class="numberSSS">44.44</span></div><p/>
+                <div class="color 15.15"><span class="numberSSS">15.15</span></div><p/>
+                <div class="color 64.10"><span class="numberSSS">64.10</span></div><p/>
+            </div>
         </td>
+
+        <!--<td width="20%" >-->
+            <!--<div id="triangleRed" class="color Red triangle 10"><span class="number">10</span></div>-->
+            <!--<div id="triangleBlue" class="color Blue triangle 20"><span class="number">20</span></div>-->
+            <!--<div id="triangleGreen" class="color Green triangle 30"><span class="number">30</span></div>-->
+            <!--<div id="triangleGold" class="color Gold triangle 40"><span class="number">40</span></div>-->
+        <!--</td><td width="20%" align="center">-->
+            <!--<div id="squareRed" class="color Red square 30"><span class="number">30</span></div>-->
+            <!--<div id="squareBlue" class="color Blue square 40"><span class="number">40</span></div>-->
+            <!--<div id="squareGreen" class="color Green square 10"><span class="number">10</span></div>-->
+            <!--<div id="squareGold" class="color Gold square 20"><span class="number">20</span></div>-->
+        <!--</td>        <td width="40%" align="center">-->
+            <!--<div id="circleRed" class="color Red circle 40"><span class="number">40</span></div>-->
+            <!--<div id="circleBlue" class="color Blue circle 30"><span class="number">30</span></div>-->
+            <!--<div id="circleGreen" class="color Green circle 20"><span class="number">10</span></div>-->
+            <!--<div id="circleGold" class="color Gold circle 10"><span class="number">10</span></div>-->
+        <!--</td>-->
         <td width="40%" >
             Filter:
             <br/>
             <div class="searchColor" id="filterColor">
-                <div class="searchTextColor"> Color: </div>
-
-                <input type="checkbox"  id="Red"  value="Red" />Red
-                <br/>
-                <input type="checkbox"  id="Blue"   value="Blue"/>Blue
-                <br/>
-                <input type="checkbox"  id="Green"  value="Green"/>Green
-                <br/>
-                <input type="checkbox" id="Gold"   value="Gold"/>Gold
-                <p/>
+                 Color: <br/>
+                <input type="checkbox"  id="Red"  value="Red" />Red                <br/>
+                <input type="checkbox"  id="Blue"   value="Blue"/>Blue                <br/>
+                <input type="checkbox"  id="Green"  value="Green"/>Green                <br/>
+                <input type="checkbox" id="Gold"   value="Gold"/>Gold                <p/>
             </div>
             <div class="searchColor" id="searchShape">
-                <div class="searchShape"> Shape:</div>
+               Shape:<br/>
                 <div class="paintSelect">
-                    <input type="checkbox" id="triangle"  value="triangle" />triangle
-                    <br/>
-                    <input type="checkbox" id="circle"  value="circle"/>circle
-                    <br/>
+                    <input type="checkbox" id="triangle"  value="triangle" />triangle                    <br/>
+                    <input type="checkbox" id="circle"  value="circle"/>circle                    <br/>
                     <input type="checkbox" id="square" value="square"/>square
                 </div>
+            </div>
+            <div class="searchColor" id="filterNumber">
+                Number:<br/>
+                <input type="checkbox" id="number01"  value="1" />10-30
+                <br/>
+                <input type="checkbox" id="number02"  value="2"/>20-40
+                <br/>
+                <input type="checkbox" id="number03" value="3"/>30-40
+
             </div>
         </td>
     </tr>
