@@ -62,34 +62,26 @@ $(document).ready(function() {
             if($("#filterPrice input:checked").length > 0){
                 var arr = [];
                 $("#filterPrice input:checked").each(function(){
-                    var s = $(this).attr('value');
+                    var s = $(this).attr('value'); //the same $(this).val();
                     for (i=0; i<arrayMax.length; i++) {
                     if(s == "1"){
                         if (arrayPrice[i] > 0 && arrayPrice[i] <= 800) {
+                            //concat - copy value from selected array, now we copy in arr all info from arrayPrice[i]
+                            //which to be in the selected range
                          arr = arr.concat((arrayPrice[i]));
-
-                            //console.log("Price ARRAY~ "+arr);
-                            //arr = arr.concat([10,20,30]);
                         }
                     }else if(s == "2") {
                         if (arrayPrice[i] > 800 && arrayPrice[i] <= 1600) {
                             arr = arr.concat(arrayPrice[i]);
-                            //arr = arr.concat([20,30,40]);
                         }
                         } else {
                             if (arrayPrice[i] > 1600) {
                                 arr = arr.concat(arrayPrice[i]);
-
-                                //arr = arr.concat([30,40]);
                             }
                         }
                     }
                     });
                 console.log("Before Arr.forEach: "+arr);
-                //var result = $.map(arr, function (el) {
-                //    return el.replace(/\./,'\\\\.')
-                //});
-                //console.log(result);
                 arr.forEach(function(ele){
                     if(price.indexOf(ele) == -1)
                         price.push(ele);
@@ -123,7 +115,7 @@ $(document).ready(function() {
                 var temp = [];
                 paint.forEach(function(oe){
                     price.forEach(function(ie){
-                        temp.push(oe +"."+ie);
+                        temp.push(oe +"."+ie.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" ));
                     });
                 });
                 showSelectedElement(temp);
@@ -131,7 +123,7 @@ $(document).ready(function() {
                 var temp = [];
                 color.forEach(function(oe){
                     price.forEach(function(ie){
-                        temp.push(oe +"."+ie);
+                        temp.push(oe +"."+ie.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" ));
                     });
                 });
                 showSelectedElement(temp);
@@ -140,7 +132,7 @@ $(document).ready(function() {
                 color.forEach(function(oe){
                     price.forEach(function(ie){
                         paint.forEach(function(iie){
-                            temp.push(oe +"."+ie + "." + iie);
+                            temp.push(oe +"."+ie.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" ) + "." + iie);
                         });
                     });
                 });
