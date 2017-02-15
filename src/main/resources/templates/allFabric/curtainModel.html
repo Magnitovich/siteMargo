@@ -36,14 +36,10 @@
             <td class="main">
                 <div th:each="curtain : ${allCurtain}">
                     <div class="color" th:classappend="${curtain.color} +' '+ ${curtain.paint}+ ' '
-                    +${curtain.price}+' '+${curtain.structure}">
-                        <!--+' '+${curtain.height}-->
-                        <div class="height"  th:classappend="${curtain.height}">
-
+                    +${curtain.price}+' '+${curtain.structure}+' '+${curtain.height}">
 
                     <div class="pic" id="mainDiv">
 
-                            <!--class="test"-->
                             <a th:href="@{~/buyCurtain(hiddenCurtainId=${curtain.id})}" style="text-decoration: none" >
 
                                 <img th:attr="src=${curtain.photo}"  width="200" height="280"/>
@@ -60,7 +56,6 @@
                                     <b> $&nbsp;
                                         <span class="priceSSS" th:text="${curtain.price}"/>
                                         <span th:text="${curtain.paint}"/>
-                                        <!--<span  th:text="${curtain.price}">Price</span>-->
                                         </b>
                                 </div>
                                 <div align="center" sec:authorize="hasAuthority('user')">
@@ -75,13 +70,10 @@
                                 </div>
                             </a>
                         </div>
-                        </div>
-                    </div></div>
-                <!--</div>-->
+                    </div>
+                </div>
             </td>
             <td class="searchPlane">
-                <!--<form action="searchCurtain"  method="post">-->
-                    <!--th:object = "${searchSelectedCurtain}"-->
                 Фильтр:<p/>
                 <div class="searchColor" id="filterPrice">
                     <div class="searchTextColor"> Цена до:</div>
@@ -89,9 +81,6 @@
                         <input class="priceSelected"  type="checkbox" id="price01" value="1"/> 0 - 800грн <br/>
                         <input class="priceSelected" type="checkbox" id="price02" value="2"/>800 - 1600грн<br/>
                         <input class="priceSelected" type="checkbox" id="price03" value="3"/>>1600грн
-                    <!--<input type="text" pattern="[0-9]{1,4}" align="right" width="20px" style="width: 80px"-->
-                           <!--name="searchPrice" id="searchPrice" class="searchInput"/>-->
-                    <!--th:field="*{price}"-->
                 </div>
                     <p/>
                 <div class="searchColor" id="filterColor">
@@ -170,7 +159,7 @@
                     <input type="checkbox" name="structureRbn" id="cover" value="Покрывальная "/>Для покрывал<br/>
                 </div>
                 <div class="searchColor" id="filterHeight">
-                    <div class="searchTextColor"> Высота:</div>
+                    <div class="searchTextColor" > Высота:</div>
                     <input type="checkbox" id="27" value="2.7-2.9м" />2,7-2,9м<br/>
                     <input type="checkbox" id="29" value="2.9-3.0м"/>2,9-3,0м<br/>
                     <input type="checkbox"  id="30" value="3.0-3.15м"/>3,0-3,15м<br/>

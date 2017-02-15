@@ -30,7 +30,7 @@ $(document).ready(function() {
 
 
         if($("#filterColor input:checked").length == 0 && $("#filterPrice input:checked").length == 0 &&
-            $("#searchPaint input:checked").length == 0
+            $("#searchPaint input:checked").length == 0 && $("#filterHeight input:checked").length == 0
             && $("#filterStructure input:checked").length == 0
         ){
             $('.color').show();
@@ -42,6 +42,8 @@ $(document).ready(function() {
             var structure = ["Лен","Нити","Двухслойная", "Жатая","Жаккард","Сатин", "Тафта", "Двухсторонняя","Бархат",
                 "Покрывальная"];
             var price = [];
+            var height = ["2.7-2.9м", "2.9-3.0м", "3.0-3.15м", ">3.15м"];
+
 
             if($("#filterColor input:not(:checked)").length > 0){
                 $("#filterColor input:not(:checked)").each(function(){
@@ -52,13 +54,20 @@ $(document).ready(function() {
             }
             console.log("color: "+color);
 
+            if($("#filterHeight input:not(:checked)").length > 0){
+                $("#filterHeight input:not(:checked)").each(function(){
+                    height.splice(height.indexOf($(this).attr('value')),1);
+                })
+            }
+            console.log("Height after SPLICE: "+height);
+
+
             if($("#searchPaint input:not(:checked)").length > 0){
                 $("#searchPaint input:not(:checked)").each(function(){
                     paint.splice(paint.indexOf($(this).attr('value')),1);
                 })
             }
             console.log("paint: "+paint);
-
             if($("#filterPrice input:checked").length > 0){
                 var arr = [];
                 $("#filterPrice input:checked").each(function(){
@@ -83,27 +92,37 @@ $(document).ready(function() {
                     });
                 console.log("Before Arr.forEach: "+arr);
                 arr.forEach(function(ele){
+                    //"Привет, мир".indexOf("Привет")    // вернет 0
+                    //"Привет, мир".indexOf("Корова")    // вернет -1
+                    //"Привет, мир".indexOf("мир")    // вернет 8
                     if(price.indexOf(ele) == -1)
                         price.push(ele);
                 });
             }
             console.log("number: "+price);
 
-            if(color.length == 0 && paint.length == 0 && price.length > 0){
+            if(color.length == 0 && paint.length == 0 && price.length > 0 && height.length == 0){
                 $('.color').hide();
                 price.forEach(function(e){
 
-                    //console.log(e.toString().split(".").join("-"),$("."+e.toString().split(".").join("-")))
+//https://learn.jquery.com/using-jquery-core/faq/how-do-i-select-an-element-by-an-id-that-has-characters-used-in-css-notation/
                     $("."+e.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" )).show();
                 });
-                //showSelectedElement(price)
-            }else if(color.length == 0 && paint.length > 0 && price.length == 0){
+            }else if(color.length == 0 && paint.length > 0 && price.length == 0 && height.length == 0){
 
                 showSelectedElement(paint)
-            }else if(color.length > 0 && paint.length == 0 && price.length == 0){
+            }else if(color.length == 0 && paint.length == 0 && price.length == 0 && height.length > 0){
+                $('.color').hide();
+                height.forEach(function(e){
+
+                    $("."+e.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" )).show();
+                });
+            }else if(color.length > 0 && paint.length == 0 && price.length == 0 && height.length == 0){
 
                 showSelectedElement(color)
-            }else if(color.length > 0 && paint.length > 0 && price.length == 0){
+
+
+            }else if(color.length > 0 && paint.length > 0 && price.length == 0 && height.length == 0){
                 var temp = [];
                 color.forEach(function(oe){
                     paint.forEach(function(ie){
@@ -111,7 +130,7 @@ $(document).ready(function() {
                     });
                 });
                 showSelectedElement(temp);
-            }else if(color.length == 0 && paint.length > 0 && price.length > 0){
+            }else if(color.length == 0 && paint.length > 0 && price.length > 0 && height.length == 0){
                 var temp = [];
                 paint.forEach(function(oe){
                     price.forEach(function(ie){
@@ -119,11 +138,77 @@ $(document).ready(function() {
                     });
                 });
                 showSelectedElement(temp);
-            }else if(color.length > 0 && paint.length == 0 && price.length > 0){
+            }else if(color.length == 0 && paint.length > 0 && price.length == 0 && height.length > 0){
+                var temp = [];
+                paint.forEach(function(oe){
+                    height.forEach(function(ie){
+                        temp.push(oe +"."+ie.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" ));
+                    });
+                });
+                showSelectedElement(temp);
+            }else if(color.length > 0 && paint.length == 0 && price.length == 0 && height.length >0){
+                var temp = [];
+                color.forEach(function(oe){
+                    height.forEach(function(ie){
+                        temp.push(oe +"."+ie.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" ));
+                    });
+                });
+                showSelectedElement(temp);
+            }else if(color.length == 0 && paint.length == 0 && price.length > 0 && height.length >0){
+                var temp = [];
+                price.forEach(function(oe){
+                    height.forEach(function(ie){
+                        temp.push(oe.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" ) +"."+ie.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" ));
+                    });
+                });
+                showSelectedElement(temp);
+            }else if(color.length > 0 && paint.length == 0 && price.length > 0 && height.length == 0){
                 var temp = [];
                 color.forEach(function(oe){
                     price.forEach(function(ie){
                         temp.push(oe +"."+ie.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" ));
+                    });
+                });
+                showSelectedElement(temp);
+            }else if(color.length > 0 && paint.length > 0 && price.length > 0 && height.length == 0){
+                var temp = [];
+                color.forEach(function(oe){
+                    paint.forEach(function(ie){
+                        price.forEach(function (iie) {
+                            temp.push(oe + "." + ie+"." + iie.replace(/(:|\.|\[|\]|,|=|@)/g, "\\$1"));
+                        });
+                    });
+                });
+                showSelectedElement(temp);
+            }else if(color.length > 0 && paint.length > 0 && price.length == 0 && height.length > 0){
+                var temp = [];
+                color.forEach(function(oe){
+                    paint.forEach(function(ie){
+                        height.forEach(function (iie) {
+                            temp.push(oe + "." + ie+"." + iie.replace(/(:|\.|\[|\]|,|=|@)/g, "\\$1"));
+                        });
+                    });
+                });
+                showSelectedElement(temp);
+            }else if(color.length == 0 && paint.length > 0 && price.length > 0 && height.length > 0){
+                var temp = [];
+                paint.forEach(function(oe){
+                    price.forEach(function(ie){
+                        height.forEach(function (iie) {
+                            temp.push(oe + "." + ie.replace(/(:|\.|\[|\]|,|=|@)/g, "\\$1")+
+                                "." + iie.replace(/(:|\.|\[|\]|,|=|@)/g, "\\$1"));
+                        });
+                    });
+                });
+                showSelectedElement(temp);
+            }else if(color.length > 0 && paint.length == 0 && price.length > 0 && height.length > 0){
+                var temp = [];
+                color.forEach(function(oe){
+                    price.forEach(function(ie){
+                        height.forEach(function (iie) {
+                            temp.push(oe + "." + ie.replace(/(:|\.|\[|\]|,|=|@)/g, "\\$1")+
+                                "." + iie.replace(/(:|\.|\[|\]|,|=|@)/g, "\\$1"));
+                        });
                     });
                 });
                 showSelectedElement(temp);
@@ -132,93 +217,16 @@ $(document).ready(function() {
                 color.forEach(function(oe){
                     price.forEach(function(ie){
                         paint.forEach(function(iie){
-                            temp.push(oe +"."+ie.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" ) + "." + iie);
-                        });
+                           height.forEach(function(oie){
+                               temp.push(oe +"."+ie.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" ) + "."+iie+"."+
+                                   + oie.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" ));
+                           });
+                           });
+                        })
                     });
-                });
+
                 showSelectedElement(temp);
             }
         }
     });
 });
-
-
-//$(document).ready(function() {
-//    var arrayNumber = [];
-//    var arrayMax = [];
-//
-//    $("div[class='searchSelectedNumber'] input").change(function () {
-//        arrayMax = $("[class^=number]");
-//        for (i=0; i<arrayMax.length; i++){
-//            arrayNumber[i] = arrayMax[i].innerHTML;
-//        }
-//        var firstIntervalStart = 0;
-//        var firstIntervalEnd = 0;
-//        var secondIntervalStart = 0;
-//        var secondIntervalEnd = 0;
-//        if (  $("#searchNumber input:checked").length == 0){
-//            $('.color').show();
-//        } else {
-//            var oneChecked = $("#number01").is(':checked');
-//            var twoChecked = $("#number02").is(':checked');
-//
-//            if (oneChecked) {
-//                firstIntervalStart = 0;
-//                firstIntervalEnd = 30;
-//                if (twoChecked) {
-//                    firstIntervalEnd = 40;
-//                }
-//            }
-//            else if (twoChecked) {
-//                firstIntervalStart = 20;
-//                firstIntervalEnd = 40;
-//            }
-//            for (i = 0; i < arrayMax.length; i++) {
-//                if (arrayNumber[i] > firstIntervalStart && arrayNumber[i] <= firstIntervalEnd) {
-//                    $($(".color")[i]).show();
-//                } else {
-//                    $($(".color")[i]).hide();
-//                }
-//            }
-//            if (secondIntervalStart != 0) {
-//                for (i = 0; i < arrayMax.length; i++) {
-//                    if (arrayNumber[i] > secondIntervalStart && arrayNumber[i] <= secondIntervalEnd) {
-//                        console.log("secondIntervalStart < arrayPrice[i] <= secondIntervalEnd " + $($(".color")[i]));
-//                        $($(".color")[i]).show();
-//                    } else {
-//                        $($(".color")[i]).hide();
-//                    }
-//                }
-//            }
-//        }
-//    });
-//    $("div[class='searchColor'] input").change(function () {
-//
-//        if($("#filterColor input:checked").length == 0 && $("#searchShape input:checked").length == 0
-//          ){
-//            $('.color').show();
-//        }else if($("#filterColor input:checked").length == 0 && $("#searchShape input:checked").length > 0){
-//            $('.color').show();
-//            $("#searchShape input:not(:checked)").each(function() {
-//                var k = $(this).val();
-//                $('.' + k).hide();
-//            });
-//        }else if($("#filterColor input:checked").length > 0 && $("#searchShape input:checked").length == 0){
-//            $('.color').show();
-//            $("#filterColor input:not(:checked)").each(function() {
-//
-//                $('.' + $(this).attr('value')).hide();
-//            });
-//        }else{
-//            $('.color').show();
-//
-//            $("#searchShape input:not(:checked)").each(function() {
-//                $('.' + $(this).attr('value')).hide();
-//            });
-//
-//            $("#filterColor input:not(:checked)").each(function() {
-//                $('.' + $(this).attr('value')).hide();
-//            });
-//        }
-//    });
-//});
