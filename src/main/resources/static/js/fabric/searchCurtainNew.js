@@ -2,10 +2,8 @@
 $(document).ready(function() {
 
     function showSelectedElement(arr){
-        console.log("start function showSelectedElement"+arr);
         $('.color').hide();
         arr.forEach(function(e){
-            console.log(" arr.forEach(function(e) ."+e.toString());
             $("."+e.toString()).show();
         });
     }
@@ -13,9 +11,7 @@ $(document).ready(function() {
     var arrayMax = [];
     var maxPrice;
     var minPrice;
-    var paint = [];
 
-    var price = [];
 
     $("div[class='searchColor'] input").change(function () {
 
@@ -23,7 +19,6 @@ $(document).ready(function() {
         for (i=0; i<arrayMax.length; i++){
             arrayPrice[i] =arrayMax[i].innerHTML;
         }
-        //console.log("Price: "+arrayPrice);
         maxPrice = Math.max.apply(null, arrayPrice);
         minPrice =  Math.min.apply(null, arrayPrice);
 
@@ -34,46 +29,35 @@ $(document).ready(function() {
         ){
             $('.color').show();
         }else{
-            //var color = ["Белый","Бежевый","Кремовый","Золотой", "Желтый","Оранжевый","Персиковый","Терракотовый",
-            //    "Кофейный", "Коричневый","Розовый","Красный", "Бордовый","Салатовый","Зеленый",
-            //    "Голубой", "Синий", "Фиолетовый", "Серый", "Черный"];
-            //var paint = ["Абстрактный","Геометрический","Классический", "Однотонный","Полоска","Растительный"];
-            //var structure = ["Лен","Нити","Двухслойная", "Жатая","Жаккард","Сатин", "Тафта", "Двухсторонняя","Бархат",
-            //    "Покрывальная"];
             var price = [];
-            //var height = ["2.7-2.9м", "2.9-3.0м", "3.0-3.15м", "3.15м"];
             var height = [];
             var structure = [];
             var color = [];
             var paint = [];
-
 
             if($("#filterStructure input:checked").length > 0){
                 $("#filterStructure input:checked").each(function(){
                     //удаляем 1 элемент, splice служит для добавления/удаления элем из массива
                     //in this code we remove 1 elements. Splice(obj,1)
                     var k = $(this).val();
-                    console.log("value checked: "+k);
                     structure.push(k);
                 })
             }
-            console.log("structure: "+structure);
+            //console.log("structure: "+structure);
 
             if($("#filterColor input:checked").length > 0){
                 $("#filterColor input:checked").each(function(){
-                    //удаляем 1 элемент, splice служит для добавления/удаления элем из массива
-                    //in this code we remove 1 elements. Splice(obj,1)
                     color.push($(this).attr('value'));
                 })
             }
-            console.log("color: "+color);
+            //console.log("color: "+color);
 
             if($("#filterHeight input:checked").length > 0){
                 $("#filterHeight input:checked").each(function(){
                     height.push($(this).attr('value'));
                 })
             }
-            console.log("Height after SPLICE: "+height);
+            //console.log("Height after SPLICE: "+height);
 
 
             if($("#searchPaint input:checked").length > 0){
@@ -81,7 +65,7 @@ $(document).ready(function() {
                     paint.push($(this).attr('value'));
                 })
             }
-            console.log("paint: "+paint);
+            //console.log("paint: "+paint);
             if($("#filterPrice input:checked").length > 0){
                 var arr = [];
                 $("#filterPrice input:checked").each(function(){
@@ -104,7 +88,6 @@ $(document).ready(function() {
                         }
                     }
                     });
-                console.log("Before Arr.forEach: "+arr);
                 arr.forEach(function(ele){
                     //"Привет, мир".indexOf("Привет")    // вернет 0
                     //"Привет, мир".indexOf("Корова")    // вернет -1
@@ -113,7 +96,7 @@ $(document).ready(function() {
                         price.push(ele);
                 });
             }
-            console.log("number: "+price);
+            //console.log("number: "+price);
 
             if(color.length == 0 && paint.length == 0 && price.length > 0 && height.length == 0
                 && structure.length ==0){
@@ -127,10 +110,6 @@ $(document).ready(function() {
             && structure.length ==0){
 
                 showSelectedElement(paint)
-            //}else if(color.length == 0 && paint.length > 0 && price.length == 0 && height.length == 0
-            //    && structure.length ==0){
-            //
-            //    showSelectedElement(paint)
             }else if(color.length == 0 && paint.length == 0 && price.length == 0 && height.length == 0
                 && structure.length >0){
 
@@ -139,7 +118,7 @@ $(document).ready(function() {
                 && structure.length ==0){
                 $('.color').hide();
                 height.forEach(function(e){
-                    console.log("if height.length>0" +e);
+                    //console.log("if height.length>0" +e);
                     $("."+e.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" )).show();
                 });
             }else if(color.length > 0 && paint.length == 0 && price.length == 0 && height.length == 0
@@ -436,10 +415,6 @@ $(document).ready(function() {
                 });
                 showSelectedElement(temp);
             }
-
-
-
-
             else{
                 var temp = [];
                 color.forEach(function(oe){
