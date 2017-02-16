@@ -13,9 +13,8 @@ $(document).ready(function() {
     var arrayMax = [];
     var maxPrice;
     var minPrice;
-    var color = [];
     var paint = [];
-    var structure = [];
+
     var price = [];
 
     $("div[class='searchColor'] input").change(function () {
@@ -35,47 +34,51 @@ $(document).ready(function() {
         ){
             $('.color').show();
         }else{
-            var color = ["Белый","Бежевый","Кремовый","Золотой", "Желтый","Оранжевый","Персиковый","Терракотовый",
-                "Кофейный", "Коричневый","Розовый","Красный", "Бордовый","Салатовый","Зеленый",
-                "Голубой", "Синий", "Фиолетовый", "Серый", "Черный"];
-            var paint = ["Абстрактный","Геометрический","Классический", "Однотонный","Полоска","Растительный"];
-            var structure = ["Лен","Нити","Двухслойная", "Жатая","Жаккард","Сатин", "Тафта", "Двухсторонняя","Бархат",
-                "Покрывальная"];
+            //var color = ["Белый","Бежевый","Кремовый","Золотой", "Желтый","Оранжевый","Персиковый","Терракотовый",
+            //    "Кофейный", "Коричневый","Розовый","Красный", "Бордовый","Салатовый","Зеленый",
+            //    "Голубой", "Синий", "Фиолетовый", "Серый", "Черный"];
+            //var paint = ["Абстрактный","Геометрический","Классический", "Однотонный","Полоска","Растительный"];
+            //var structure = ["Лен","Нити","Двухслойная", "Жатая","Жаккард","Сатин", "Тафта", "Двухсторонняя","Бархат",
+            //    "Покрывальная"];
             var price = [];
-            var height = ["2.7-2.9м", "2.9-3.0м", "3.0-3.15м", "3.15м"];
+            //var height = ["2.7-2.9м", "2.9-3.0м", "3.0-3.15м", "3.15м"];
+            var height = [];
+            var structure = [];
+            var color = [];
+            var paint = [];
 
 
-            if($("#filterStructure input:not(:checked)").length > 0){
-                $("#filterStructure input:not(:checked)").each(function(){
+            if($("#filterStructure input:checked").length > 0){
+                $("#filterStructure input:checked").each(function(){
                     //удаляем 1 элемент, splice служит для добавления/удаления элем из массива
                     //in this code we remove 1 elements. Splice(obj,1)
                     var k = $(this).val();
-                    console.log("value unchecked: "+k);
-                    structure.splice(k,1);
+                    console.log("value checked: "+k);
+                    structure.push(k);
                 })
             }
             console.log("structure: "+structure);
 
-            if($("#filterColor input:not(:checked)").length > 0){
-                $("#filterColor input:not(:checked)").each(function(){
+            if($("#filterColor input:checked").length > 0){
+                $("#filterColor input:checked").each(function(){
                     //удаляем 1 элемент, splice служит для добавления/удаления элем из массива
                     //in this code we remove 1 elements. Splice(obj,1)
-                    color.splice(color.indexOf($(this).attr('value')),1);
+                    color.push($(this).attr('value'));
                 })
             }
             console.log("color: "+color);
 
-            if($("#filterHeight input:not(:checked)").length > 0){
-                $("#filterHeight input:not(:checked)").each(function(){
-                    height.splice(height.indexOf($(this).attr('value')),1);
+            if($("#filterHeight input:checked").length > 0){
+                $("#filterHeight input:checked").each(function(){
+                    height.push($(this).attr('value'));
                 })
             }
             console.log("Height after SPLICE: "+height);
 
 
-            if($("#searchPaint input:not(:checked)").length > 0){
-                $("#searchPaint input:not(:checked)").each(function(){
-                    paint.splice(paint.indexOf($(this).attr('value')),1);
+            if($("#searchPaint input:checked").length > 0){
+                $("#searchPaint input:checked").each(function(){
+                    paint.push($(this).attr('value'));
                 })
             }
             console.log("paint: "+paint);
