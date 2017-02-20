@@ -2,12 +2,16 @@ package margo.service.fabric;
 
 import margo.dao.fabric.ClothFabricRepository;
 import margo.model.allCurtains.ClothFabricModel;
+import margo.model.allCurtains.CurtainModel;
 import margo.model.modelDTO.allCurtainsDTO.ClothFabricDTO;
 import margo.model.modelDTO.allCurtainsDTO.CurtainDTO;
 import margo.service.adminService.AdminRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,4 +80,86 @@ public class ClothFabricService {
             //moderator
             return null;
         }
-    }}
+    }
+    public void addNewInformation(final String photo, final String photo01, final String photo02,
+                              final String photo03, final String photo04, final String photo05,
+                              final String name, final String describe, final String structure, final String paint,
+                              final String height,final String color, final Double quantity, final BigDecimal price) {
+        ClothFabricModel model = new ClothFabricModel();
+        System.out.println(photo + ", " + photo01 + ", " + photo02 + ", " + photo03 + ", " + photo04 + ", " + photo05 + ", " + name + " structure "
+                + structure + " paint " + paint + " height " + height + "color: " + color + "/");
+        model.setPhoto(photo);
+        model.setPhoto01(photo01);
+        model.setPhoto02(photo02);
+        model.setPhoto03(photo03);
+        model.setPhoto04(photo04);
+        model.setPhoto05(photo05);
+
+        model.setName(name);
+        model.setDescription(describe);
+        model.setStructure(structure);
+        model.setPaint(paint);
+        model.setHeight(height);
+        model.setColor(color);
+        model.setQuantity(quantity);
+        model.setPrice(price);
+        repository.save(model);
+    }
+    public void deleteCloth(List<Long> models){
+        for(Long delete:models){
+            repository.delete(delete);
+        }
+    }
+    @Transactional
+    public void editCurtain(ClothFabricDTO dto) {
+        ClothFabricModel model = repository.findOne(dto.getId());
+
+        if (!StringUtils.isEmpty(dto.getPhoto())) {
+            model.setPhoto(dto.getPhoto());
+        }
+        if (!StringUtils.isEmpty(dto.getPhoto01())){
+            model.setPhoto01(dto.getPhoto01());
+        }
+        if (!StringUtils.isEmpty(dto.getPhoto02())){
+            model.setPhoto02(dto.getPhoto02());
+        }
+        if (!StringUtils.isEmpty(dto.getPhoto03())){
+            model.setPhoto03(dto.getPhoto03());
+        }
+        if (!StringUtils.isEmpty(dto.getPhoto04())){
+            model.setPhoto04(dto.getPhoto04());
+        }
+        if (!StringUtils.isEmpty(dto.getPhoto05())){
+            model.setPhoto05(dto.getPhoto05());
+        }
+
+        model.setName(dto.getName());
+        model.setDescription(dto.getDescription());
+        model.setStructure(dto.getStructure());
+        model.setPaint(dto.getPaint());
+        model.setHeight(dto.getHeight());
+        model.setColor(dto.getColor());
+        model.setQuantity(dto.getQuantity());
+        model.setPrice(dto.getPrice());
+
+        repository.save(model);
+    }
+
+    public List<ClothFabricDTO> viewPhoto(String photo) {
+        List<ClothFabricModel> yachtsModels = repository.findByPhoto(photo);
+        List<ClothFabricDTO> yachtDTOs = convertListModelToDTO(yachtsModels);
+        return yachtDTOs;
+    }
+    public List<ClothFabricDTO> viewName(String name) {
+        List<ClothFabricModel> yachtsModels = repository.findByName(name);
+        List<ClothFabricDTO> yachtDTOs = convertListModelToDTO(yachtsModels);
+        return yachtDTOs;
+    }
+
+    public ClothFabricDTO viewSelectedCloth(Long id){
+        ClothFabricModel model = repository.findOne(id);
+        ClothFabricDTO dto = convertModelToDto(model);
+        return dto;
+
+    }
+}

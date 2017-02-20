@@ -7,12 +7,12 @@ function buyYachtFromImg() {
 
 }
 
-function addNewCurtain(){
+function addNewCloth(){
 
-    window.location.href ="addInfoAboutNewCurtain";
+    window.location.href ="addInfoAboutNewCloth";
 }
 
-function editInfoCurtain() {
+function editInfoCloth() {
 
     var selectedForEdit = $('#mainDiv input:checked')
 
@@ -27,7 +27,7 @@ function editInfoCurtain() {
     }
 }
 
-function deleteSelectedElementsCurtain() {
+function deleteSelectedElementsCloth() {
 
     var selectedYachtForDelete = [];
     var i = 0;
@@ -47,9 +47,9 @@ function deleteSelectedElementsCurtain() {
         },
         type:"POST", //это типа method
         data: JSON.stringify(selectedYachtForDelete), //грубо говоря это Серриализация
-        url: '/delete/DELETE',
+        url: '/deleteCloth/DELETE',
         success: function(msg){  //msg - показывает ответ с сервера
-            window.location.href = "/curtainModels"
+            window.location.href = "/clothModel"
         }
     })
 }

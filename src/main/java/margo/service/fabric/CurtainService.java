@@ -165,6 +165,10 @@ public class CurtainService {
         return curtainDTO.getName();
     }
 
-
+    public void deleteCurtain(List<Long> models){
+        for(Long deleteCurtain:models){
+            repository.delete(deleteCurtain);
+        }
+    }
 
 }
