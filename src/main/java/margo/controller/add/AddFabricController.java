@@ -56,88 +56,29 @@ public class AddFabricController {
     }
 
     @RequestMapping(value = "/addSuccessfulCurtain", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView addInfoCars(@ModelAttribute("comparePhotoNameWithDB") CurtainDTO curtainDTO,
+    public ModelAndView addInfoCars(@ModelAttribute("comparePhotoNameWithDB") CurtainDTO dto,
                                     BindingResult result,
                                     @RequestParam(required = false) String id) throws IOException {
 
-        String nameFile = null;
-        String nameFile01 = null;
-        String nameFile02 = null;
-        String nameFile03 = null;
-        String nameFile04 = null;
-        String nameFile05 = null;
-        FileOutputStream fileOutputStream = null;
 
-        if (!curtainDTO.getObjectPhotoCurtain().isEmpty()) {
-            File convertFileObjectCurtain = new File(realObjectsPath +
-                    curtainDTO.getObjectPhotoCurtain().getOriginalFilename());
+        AddPattern addPattern = new AddPattern();
+        addPattern.checkInformations(dto, realObjectsPath, relativeObjectsPath);
 
-            if (!convertFileObjectCurtain.exists()) {
-                convertFileObjectCurtain.createNewFile();
-            }
+        if (dto.getIdForEditCurtain() != null ) {
+            dto.setPhoto(addPattern.getNameFile());
+            dto.setPhoto01(addPattern.getNameFile01());
+            dto.setPhoto02(addPattern.getNameFile02());
+            dto.setPhoto03(addPattern.getNameFile03());
+            dto.setPhoto04(addPattern.getNameFile04());
+            dto.setPhoto05(addPattern.getNameFile05());
+// dto.setPhoto(nameFile);
+//            dto.setPhoto01(nameFile01);
+//            dto.setPhoto02(nameFile02);
+//            dto.setPhoto03(nameFile03);
+//            dto.setPhoto04(nameFile04);
+//            dto.setPhoto05(nameFile05);
 
-            fileOutputStream = new FileOutputStream(convertFileObjectCurtain);
-            fileOutputStream.write(curtainDTO.getObjectPhotoCurtain().getBytes());
-
-            nameFile = relativeObjectsPath + curtainDTO.getObjectPhotoCurtain().getOriginalFilename();
-        }
-        if (!curtainDTO.getObjectPhotoCurtain01().isEmpty()) {
-            File convertFileObjectYachts = new File(realObjectsPath +
-                    curtainDTO.getObjectPhotoCurtain01().getOriginalFilename());
-
-            if (!convertFileObjectYachts.exists()) {
-                convertFileObjectYachts.createNewFile();
-            }
-
-            nameFile01 = relativeObjectsPath + curtainDTO.getObjectPhotoCurtain01().getOriginalFilename();
-        }
-        if (!curtainDTO.getObjectPhotoCurtain02().isEmpty()) {
-            File convertFileObjectYachts = new File(realObjectsPath +
-                    curtainDTO.getObjectPhotoCurtain02().getOriginalFilename());
-
-            if (!convertFileObjectYachts.exists()) {
-                convertFileObjectYachts.createNewFile();
-            }
-
-            nameFile02 = relativeObjectsPath + curtainDTO.getObjectPhotoCurtain02().getOriginalFilename();
-        }
-        if (!curtainDTO.getObjectPhotoCurtain03().isEmpty()) {
-            File convertFileObjectYachts = new File(realObjectsPath +
-                    curtainDTO.getObjectPhotoCurtain03().getOriginalFilename());
-
-            if (!convertFileObjectYachts.exists()) {
-                convertFileObjectYachts.createNewFile();
-            }
-            nameFile03 = relativeObjectsPath + curtainDTO.getObjectPhotoCurtain03().getOriginalFilename();
-        }
-        if (!curtainDTO.getObjectPhotoCurtain04().isEmpty()) {
-            File convertFileObjectYachts = new File(realObjectsPath +
-                    curtainDTO.getObjectPhotoCurtain04().getOriginalFilename());
-
-            if (!convertFileObjectYachts.exists()) {
-                convertFileObjectYachts.createNewFile();
-            }
-            nameFile04 = relativeObjectsPath + curtainDTO.getObjectPhotoCurtain04().getOriginalFilename();
-        }
-        if (!curtainDTO.getObjectPhotoCurtain05().isEmpty()) {
-            File convertFileObjectYachts = new File(realObjectsPath +
-                    curtainDTO.getObjectPhotoCurtain05().getOriginalFilename());
-
-            if (!convertFileObjectYachts.exists()) {
-                convertFileObjectYachts.createNewFile();
-            }
-            nameFile05 = relativeObjectsPath + curtainDTO.getObjectPhotoCurtain05().getOriginalFilename();
-        }
-
-        if (curtainDTO.getIdForEditCurtain() != null ) {
-            curtainDTO.setPhoto(nameFile);
-            curtainDTO.setPhoto01(nameFile01);
-            curtainDTO.setPhoto02(nameFile02);
-            curtainDTO.setPhoto03(nameFile03);
-            curtainDTO.setPhoto04(nameFile04);
-            curtainDTO.setPhoto05(nameFile05);
-
-            curtainService.editCurtain(curtainDTO);
+            curtainService.editCurtain(dto);
             List<CurtainDTO> yachtDTOs = curtainService.seeAllModels();
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.addObject("allCurtain", yachtDTOs);
@@ -145,19 +86,29 @@ public class AddFabricController {
             return modelAndView;
 
         } else {
-            System.out.println(curtainDTO.getName() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain().getOriginalFilename());
-            System.out.println(curtainDTO.getStructure() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain01().getOriginalFilename());
-            System.out.println(curtainDTO.getHeight() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain02().getOriginalFilename());
-            System.out.println(curtainDTO.getPaint() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain03().getOriginalFilename());
-            System.out.println(curtainDTO.getColor() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain04().getOriginalFilename());
+//            System.out.println(curtainDTO.getName() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain().getOriginalFilename());
+//            System.out.println(curtainDTO.getStructure() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain01().getOriginalFilename());
+//            System.out.println(curtainDTO.getHeight() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain02().getOriginalFilename());
+//            System.out.println(curtainDTO.getPaint() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain03().getOriginalFilename());
+//            System.out.println(curtainDTO.getColor() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain04().getOriginalFilename());
 //            System.out.println(curtainDTO.getName() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain05().getOriginalFilename());
 
             try {
+                System.out.println();
+                System.out.println("addPattern.getNameFile():");
+                System.out.println(addPattern.getNameFile()+", ");
+                System.out.println(addPattern.getNameFile01()+", ");
+                System.out.println(addPattern.getNameFile02()+", ");
+                System.out.println(addPattern.getNameFile03()+", ");
+                System.out.println(addPattern.getNameFile04()+", ");
+                System.out.println(addPattern.getNameFile05()+", ");
 
-                exceptionAddCurtainService.compareEnterInfoAndInDB(nameFile, nameFile01, nameFile02, nameFile03,
-                        nameFile04, nameFile05, curtainDTO.getName(), curtainDTO.getDescription(),
-                        curtainDTO.getStructure(), curtainDTO.getPaint(), curtainDTO.getHeight(),
-                        curtainDTO.getColor(), curtainDTO.getQuantity(), curtainDTO.getPrice());
+//                exceptionAddCurtainService.compareEnterInfoAndInDB(nameFile, nameFile01, nameFile02, nameFile03,
+//                        nameFile04, nameFile05,
+                exceptionAddCurtainService.compareEnterInfoAndInDB(addPattern.getNameFile(), addPattern.getNameFile01(),
+                        addPattern.getNameFile02(), addPattern.getNameFile02(), addPattern.getNameFile03(),
+                        addPattern.getNameFile05(), dto.getName(), dto.getDescription(), dto.getStructure(),
+                        dto.getPaint(), dto.getHeight(), dto.getColor(), dto.getQuantity(), dto.getPrice());
 
                 List<CurtainDTO> list = curtainService.seeAllModels();
 
@@ -169,18 +120,18 @@ public class AddFabricController {
 
                 result.rejectValue("name", "error.name", "Error: Name or Photo exist");
 //            return seePageAddYachts(yachtDTO.getName());
-                return viewExeption();
+                return viewException();
             }
             //если я получу ошибку между открытием и закрытием потока, то поток без finally не закроется
             finally {
-                if (fileOutputStream != null) {
-                    fileOutputStream.close();
+                if (addPattern.getFileOutputStream() != null) {
+                    addPattern.getFileOutputStream().close();
                 }
             }
         }
     }
 
-    public ModelAndView viewExeption() {
+    public ModelAndView viewException() {
 
         ModelAndView andView = new ModelAndView();
         andView.setViewName("allFabric/addFabric/addFabricNew");

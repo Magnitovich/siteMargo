@@ -7,8 +7,8 @@
     <link href="css/selectColor.css" rel="stylesheet" type="text/css"/>
     <!--<link href="../../static/css/selectColor.css" rel="stylesheet" type="text/css"/>-->
 </head>
-<body class="background" style="color: white">
-<table border="1" align="center"><p/>
+<body >
+<table style="border-collapse: collapse; border-radius: 5px" border="1" align="center"><p/>
     <form action="addSuccessful"  th:object = "${comparePhotoNameWithDB}" method="post" enctype="multipart/form-data">
         <input class="buttons" type="hidden" th:field="*{idForEditCurtain}"/>
         <p/>
@@ -95,12 +95,12 @@
 
 
         <tr>
-            <td>Имя Ткань </td>
+            <td>Название </td>
             <td><input class="buttons" type="text"
 
                        th:field="*{name}" style="width: 255px" name="name" id="name"/>
 
-                <span style="font-style: italic; font-size: 10px" th:if="${#fields.hasErrors('name')}"
+                <span style="color: red; font-style: italic; font-size: 10px" th:if="${#fields.hasErrors('name')}"
                       th:errors="*{name}">Error</span>
             </td>
         </tr>
@@ -114,56 +114,56 @@
             <textarea class="buttons" rows="8" cols="35" th:field="*{description}"  name="describeYacht"
                       id="describeYacht" maxlength="255" placeholder="max length 255"></textarea></td>
         </tr>
-        <tr>
-            <td>
-                Структура
-            </td>
-            <td>
-                <input type="radio" name="structureRbn" id="len" th:field="*{structure}" value="Лен" checked="checked"/>Лен
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="thread" th:field="*{structure}" value="Нити"/>Нити&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="twoLayers" th:field="*{structure}" value="Двухслойная"/>Двухслойная
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="squeeze" th:field="*{structure}" value="Жатая"/>Жатая&nbsp;
-                &nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="jacard" th:field="*{structure}" value="Жаккард "/>Жаккард
-                <br/>
-                <input type="radio" name="structureRbn" id="sateen" th:field="*{structure}" value="Сатин" />Сатин
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="taffeta" th:field="*{structure}" value="Тафта"/>Тафта&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="twoSides" th:field="*{structure}" value="Двухсторонняя"/>Двухсторонняя
-                &nbsp;
-                <input type="radio" name="structureRbn" id="velvet" th:field="*{structure}" value="Бархат"/>Бархат&nbsp;
-                &nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="cover" th:field="*{structure}" value="Покрывальная"/>Для покрывал
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Рисунок
-            </td>
-            <td>
-                <input type="radio" name="paintRbn" id="abstract" th:field="*{paint}" value="Абстрактный" checked="checked"/>Абстрактный
-                <input type="radio" name="paintRbn" id="geometrical" th:field="*{paint}" value="Геометрический"/>Геометрический
-                <input type="radio" name="paintRbn" id="classical" th:field="*{paint}" value="Классический"/>Классический
-                <input type="radio" name="paintRbn" id="monophonic" th:field="*{paint}" value="Однотонный"/>Однотонный&nbsp;
-                <input type="radio" name="paintRbn" id="strip" th:field="*{paint}" value="Полоска "/>Полоска
-                <br/>
-                <input type="radio" name="paintRbn" id="vegetative" th:field="*{paint}" value="Растительный" />Растительный
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Высота
-            </td>
-            <td>
-                <input type="radio" name="heightRbn" th:field="*{height}" id="27" value="2.7-2.9м" checked="checked"/>2,7-2,9м
-                <input type="radio" name="heightRbn"  th:field="*{height}" id="29" value="2.9-3.0м"/>2,9-3,0м
-                <input type="radio" name="heightRbn"  th:field="*{height}" id="30" value="3.0-3.15м"/>3,0-3,15м
-                <input type="radio" name="heightRbn"  th:field="*{height}" id="315" value="3.15м"/>>3,15м
+        <!--<tr>-->
+            <!--<td>-->
+                <!--Структура-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<input type="radio" name="structureRbn" id="len" th:field="*{structure}" value="Лен" checked="checked"/>Лен-->
+                <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+                <!--<input type="radio" name="structureRbn" id="thread" th:field="*{structure}" value="Нити"/>Нити&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+                <!--<input type="radio" name="structureRbn" id="twoLayers" th:field="*{structure}" value="Двухслойная"/>Двухслойная-->
+                <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+                <!--<input type="radio" name="structureRbn" id="squeeze" th:field="*{structure}" value="Жатая"/>Жатая&nbsp;-->
+                <!--&nbsp;&nbsp;&nbsp;-->
+                <!--<input type="radio" name="structureRbn" id="jacard" th:field="*{structure}" value="Жаккард "/>Жаккард-->
+                <!--<br/>-->
+                <!--<input type="radio" name="structureRbn" id="sateen" th:field="*{structure}" value="Сатин" />Сатин-->
+                <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+                <!--<input type="radio" name="structureRbn" id="taffeta" th:field="*{structure}" value="Тафта"/>Тафта&nbsp;&nbsp;&nbsp;&nbsp;-->
+                <!--<input type="radio" name="structureRbn" id="twoSides" th:field="*{structure}" value="Двухсторонняя"/>Двухсторонняя-->
+                <!--&nbsp;-->
+                <!--<input type="radio" name="structureRbn" id="velvet" th:field="*{structure}" value="Бархат"/>Бархат&nbsp;-->
+                <!--&nbsp;&nbsp;&nbsp;-->
+                <!--<input type="radio" name="structureRbn" id="cover" th:field="*{structure}" value="Покрывальная"/>Для покрывал-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>-->
+                <!--Рисунок-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<input type="radio" name="paintRbn" id="abstract" th:field="*{paint}" value="Абстрактный" checked="checked"/>Абстрактный-->
+                <!--<input type="radio" name="paintRbn" id="geometrical" th:field="*{paint}" value="Геометрический"/>Геометрический-->
+                <!--<input type="radio" name="paintRbn" id="classical" th:field="*{paint}" value="Классический"/>Классический-->
+                <!--<input type="radio" name="paintRbn" id="monophonic" th:field="*{paint}" value="Однотонный"/>Однотонный&nbsp;-->
+                <!--<input type="radio" name="paintRbn" id="strip" th:field="*{paint}" value="Полоска "/>Полоска-->
+                <!--<br/>-->
+                <!--<input type="radio" name="paintRbn" id="vegetative" th:field="*{paint}" value="Растительный" />Растительный-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>-->
+                <!--Высота-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<input type="radio" name="heightRbn" th:field="*{height}" id="27" value="2.7-2.9м" checked="checked"/>2,7-2,9м-->
+                <!--<input type="radio" name="heightRbn"  th:field="*{height}" id="29" value="2.9-3.0м"/>2,9-3,0м-->
+                <!--<input type="radio" name="heightRbn"  th:field="*{height}" id="30" value="3.0-3.15м"/>3,0-3,15м-->
+                <!--<input type="radio" name="heightRbn"  th:field="*{height}" id="315" value="3.15м"/>>3,15м-->
 
-            </td>
-        </tr>
+            <!--</td>-->
+        <!--</tr>-->
         <tr>
             <td>
                 Цвет:
@@ -211,12 +211,12 @@
         </tr>
 
         <tr>
-            <td>Quantity yachts in warehouse </td>
+            <td>Количество на складе </td>
             <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}"
                        th:field="*{quantity}" name="quantityYacht" id="quantityYacht"/> </td>
         </tr>
         <tr>
-            <td>Price </td>
+            <td>Цена </td>
             <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}" th:field="*{price}" value="1" name="priceYacht" id="priceYacht"/> </td>
         </tr>
         <tr>

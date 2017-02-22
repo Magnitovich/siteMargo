@@ -59,7 +59,7 @@ public class CurtainService {
         List<CurtainDTO> curtainDTOsWithZERO = new ArrayList<>(); //if commodity =0
 
         String role = adminRoleService.userRole();
-        System.out.println("ROLE="+role);
+//        System.out.println("ROLE="+role);
         if (role.equals("user")) {
 
 //       Hiding of items which are equal to 0
@@ -140,7 +140,13 @@ public class CurtainService {
                               final String name, final String describe, final String structure, final String paint,
                               final String height,final String color, final Double quantity, final BigDecimal price) {
         CurtainModel curtainModel = new CurtainModel();
-        System.out.println(photo+", "+photo01+", "+photo02+", "+photo03+", "+photo04+", "+photo05+", "+name+" structure "
+        System.out.println("AddNewCURTAIN:");
+        System.out.println(photo+", ");
+        System.out.println(photo01+", ");
+        System.out.println(photo02+", ");
+        System.out.println(photo03+", ");
+        System.out.println(photo04+", ");
+        System.out.println(photo05+", "+name+" structure "
         +structure+" paint " + paint + " height "+height+ "color: " +color+"/");
         curtainModel.setPhoto(photo);
         curtainModel.setPhoto01(photo01);

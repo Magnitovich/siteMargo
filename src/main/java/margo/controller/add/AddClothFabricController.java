@@ -60,82 +60,86 @@ public class AddClothFabricController {
                                     BindingResult result,
                                     @RequestParam(required = false) String id) throws IOException {
 
-        String nameFile = null;
-        String nameFile01 = null;
-        String nameFile02 = null;
-        String nameFile03 = null;
-        String nameFile04 = null;
-        String nameFile05 = null;
-        FileOutputStream fileOutputStream = null;
+//        String nameFile = null;
+//        String nameFile01 = null;
+//        String nameFile02 = null;
+//        String nameFile03 = null;
+//        String nameFile04 = null;
+//        String nameFile05 = null;
+//        FileOutputStream fileOutputStream = null;
+//
+//        if (!dto.getObjectPhotoCurtain().isEmpty()) {
+//            File convertFileObjectCurtain = new File(realObjectsPath +
+//                    dto.getObjectPhotoCurtain().getOriginalFilename());
+//
+//            if (!convertFileObjectCurtain.exists()) {
+//                convertFileObjectCurtain.createNewFile();
+//            }
+//
+//            fileOutputStream = new FileOutputStream(convertFileObjectCurtain);
+//            fileOutputStream.write(dto.getObjectPhotoCurtain().getBytes());
+//
+//            nameFile = relativeObjectsPath + dto.getObjectPhotoCurtain().getOriginalFilename();
+//        }
+//        if (!dto.getObjectPhotoCurtain01().isEmpty()) {
+//            File convertFileObjectYachts = new File(realObjectsPath +
+//                    dto.getObjectPhotoCurtain01().getOriginalFilename());
+//
+//            if (!convertFileObjectYachts.exists()) {
+//                convertFileObjectYachts.createNewFile();
+//            }
+//
+//            nameFile01 = relativeObjectsPath + dto.getObjectPhotoCurtain01().getOriginalFilename();
+//        }
+//        if (!dto.getObjectPhotoCurtain02().isEmpty()) {
+//            File convertFileObjectYachts = new File(realObjectsPath +
+//                    dto.getObjectPhotoCurtain02().getOriginalFilename());
+//
+//            if (!convertFileObjectYachts.exists()) {
+//                convertFileObjectYachts.createNewFile();
+//            }
+//
+//            nameFile02 = relativeObjectsPath + dto.getObjectPhotoCurtain02().getOriginalFilename();
+//        }
+//        if (!dto.getObjectPhotoCurtain03().isEmpty()) {
+//            File convertFileObjectYachts = new File(realObjectsPath +
+//                    dto.getObjectPhotoCurtain03().getOriginalFilename());
+//
+//            if (!convertFileObjectYachts.exists()) {
+//                convertFileObjectYachts.createNewFile();
+//            }
+//            nameFile03 = relativeObjectsPath + dto.getObjectPhotoCurtain03().getOriginalFilename();
+//        }
+//        if (!dto.getObjectPhotoCurtain04().isEmpty()) {
+//            File convertFileObjectYachts = new File(realObjectsPath +
+//                    dto.getObjectPhotoCurtain04().getOriginalFilename());
+//
+//            if (!convertFileObjectYachts.exists()) {
+//                convertFileObjectYachts.createNewFile();
+//            }
+//            nameFile04 = relativeObjectsPath + dto.getObjectPhotoCurtain04().getOriginalFilename();
+//        }
+//        if (!dto.getObjectPhotoCurtain05().isEmpty()) {
+//            File convertFileObjectYachts = new File(realObjectsPath +
+//                    dto.getObjectPhotoCurtain05().getOriginalFilename());
+//
+//            if (!convertFileObjectYachts.exists()) {
+//                convertFileObjectYachts.createNewFile();
+//            }
+//            nameFile05 = relativeObjectsPath + dto.getObjectPhotoCurtain05().getOriginalFilename();
+//        }
 
-        if (!dto.getObjectPhotoCurtain().isEmpty()) {
-            File convertFileObjectCurtain = new File(realObjectsPath +
-                    dto.getObjectPhotoCurtain().getOriginalFilename());
-
-            if (!convertFileObjectCurtain.exists()) {
-                convertFileObjectCurtain.createNewFile();
-            }
-
-            fileOutputStream = new FileOutputStream(convertFileObjectCurtain);
-            fileOutputStream.write(dto.getObjectPhotoCurtain().getBytes());
-
-            nameFile = relativeObjectsPath + dto.getObjectPhotoCurtain().getOriginalFilename();
-        }
-        if (!dto.getObjectPhotoCurtain01().isEmpty()) {
-            File convertFileObjectYachts = new File(realObjectsPath +
-                    dto.getObjectPhotoCurtain01().getOriginalFilename());
-
-            if (!convertFileObjectYachts.exists()) {
-                convertFileObjectYachts.createNewFile();
-            }
-
-            nameFile01 = relativeObjectsPath + dto.getObjectPhotoCurtain01().getOriginalFilename();
-        }
-        if (!dto.getObjectPhotoCurtain02().isEmpty()) {
-            File convertFileObjectYachts = new File(realObjectsPath +
-                    dto.getObjectPhotoCurtain02().getOriginalFilename());
-
-            if (!convertFileObjectYachts.exists()) {
-                convertFileObjectYachts.createNewFile();
-            }
-
-            nameFile02 = relativeObjectsPath + dto.getObjectPhotoCurtain02().getOriginalFilename();
-        }
-        if (!dto.getObjectPhotoCurtain03().isEmpty()) {
-            File convertFileObjectYachts = new File(realObjectsPath +
-                    dto.getObjectPhotoCurtain03().getOriginalFilename());
-
-            if (!convertFileObjectYachts.exists()) {
-                convertFileObjectYachts.createNewFile();
-            }
-            nameFile03 = relativeObjectsPath + dto.getObjectPhotoCurtain03().getOriginalFilename();
-        }
-        if (!dto.getObjectPhotoCurtain04().isEmpty()) {
-            File convertFileObjectYachts = new File(realObjectsPath +
-                    dto.getObjectPhotoCurtain04().getOriginalFilename());
-
-            if (!convertFileObjectYachts.exists()) {
-                convertFileObjectYachts.createNewFile();
-            }
-            nameFile04 = relativeObjectsPath + dto.getObjectPhotoCurtain04().getOriginalFilename();
-        }
-        if (!dto.getObjectPhotoCurtain05().isEmpty()) {
-            File convertFileObjectYachts = new File(realObjectsPath +
-                    dto.getObjectPhotoCurtain05().getOriginalFilename());
-
-            if (!convertFileObjectYachts.exists()) {
-                convertFileObjectYachts.createNewFile();
-            }
-            nameFile05 = relativeObjectsPath + dto.getObjectPhotoCurtain05().getOriginalFilename();
-        }
+        AddPattern addPattern = new AddPattern();
+        addPattern.checkInformations(dto, realObjectsPath, relativeObjectsPath);
 
         if (dto.getIdForEditCurtain() != null ) {
-            dto.setPhoto(nameFile);
-            dto.setPhoto01(nameFile01);
-            dto.setPhoto02(nameFile02);
-            dto.setPhoto03(nameFile03);
-            dto.setPhoto04(nameFile04);
-            dto.setPhoto05(nameFile05);
+
+            dto.setPhoto(addPattern.getNameFile());
+            dto.setPhoto01(addPattern.getNameFile01());
+            dto.setPhoto02(addPattern.getNameFile02());
+            dto.setPhoto03(addPattern.getNameFile03());
+            dto.setPhoto04(addPattern.getNameFile04());
+            dto.setPhoto05(addPattern.getNameFile05());
 
             service.editCurtain(dto);
             List<ClothFabricDTO> yachtDTOs = service.seeAllCloth();
@@ -154,10 +158,10 @@ public class AddClothFabricController {
 
             try {
 
-                exceptionAddService.compareEnterInfoAndInDB(nameFile, nameFile01, nameFile02, nameFile03,
-                        nameFile04, nameFile05, dto.getName(), dto.getDescription(),
-                        dto.getStructure(), dto.getPaint(), dto.getHeight(),
-                        dto.getColor(), dto.getQuantity(), dto.getPrice());
+                        exceptionAddService.compareEnterInfoAndInDB(addPattern.getNameFile(), addPattern.getNameFile01(),
+                                addPattern.getNameFile02(), addPattern.getNameFile02(), addPattern.getNameFile03(),
+                                addPattern.getNameFile05(), dto.getName(), dto.getDescription(), dto.getStructure(),
+                                dto.getPaint(), dto.getHeight(), dto.getColor(), dto.getQuantity(), dto.getPrice());
 
                 List<ClothFabricDTO> list = service.seeAllCloth();
 
@@ -173,8 +177,8 @@ public class AddClothFabricController {
             }
             //если я получу ошибку между открытием и закрытием потока, то поток без finally не закроется
             finally {
-                if (fileOutputStream != null) {
-                    fileOutputStream.close();
+                if (addPattern.getFileOutputStream() != null) {
+                    addPattern.getFileOutputStream().close();
                 }
             }
         }

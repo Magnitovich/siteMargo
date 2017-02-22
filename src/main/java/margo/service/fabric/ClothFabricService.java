@@ -160,6 +160,16 @@ public class ClothFabricService {
         ClothFabricModel model = repository.findOne(id);
         ClothFabricDTO dto = convertModelToDto(model);
         return dto;
+    }
+    public String convertIdToName(Long id){
+        ClothFabricModel one = repository.findOne(id);
+        ClothFabricDTO dto = convertModelToDto(one);
+        return dto.getName();
+    }
 
+    public void delete(List<Long> models){
+        for(Long delete:models){
+            repository.delete(delete);
+        }
     }
 }

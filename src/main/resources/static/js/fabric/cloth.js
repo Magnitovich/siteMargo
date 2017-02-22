@@ -17,13 +17,13 @@ function editInfoCloth() {
     var selectedForEdit = $('#mainDiv input:checked')
 
     if (selectedForEdit.length>1) {
-        alert("You selected more one yacht")
+        alert("You selected more one model")
 
     }else if (selectedForEdit.length==0) {
-        alert("You don't selected anyone yacht")
+        alert("You don't selected anyone model")
     } else {
 
-        window.location.href ="addInfoAboutNewCurtain?id="+selectedForEdit[0].id;
+        window.location.href ="addInfoAboutNewCloth?id="+selectedForEdit[0].id;
     }
 }
 

@@ -52,7 +52,7 @@
                     <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
                            sec:authorize="hasAuthority('admin')"/>
 
-                    <a th:href="@{~/buyCurtains(hiddenYachtName=${curtain.id})}"
+                    <a th:href="@{~/buyClothFabric(hiddenModelId=${curtain.id})}"
                        style="text-decoration: none" >
 
                         <img th:attr="src=${curtain.photo}"  width="220" height="280"/>

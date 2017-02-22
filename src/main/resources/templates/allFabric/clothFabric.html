@@ -35,7 +35,7 @@
 
                     <div class="pic" id="mainDiv">
 
-                        <a th:href="@{~/buyCurtain(hiddenCurtainId=${curtain.id})}" style="text-decoration: none" >
+                        <a th:href="@{~/buyClothFabric(hiddenModelId=${curtain.id})}" style="text-decoration: none" >
 
                             <img th:attr="src=${curtain.photo}"  width="200" height="280"/>
                             <div align="center">
@@ -68,103 +68,103 @@
                 </div>
             </div>
         </td>
-        <td class="searchPlane">
-            Фильтр:<p/>
-            <div class="searchColor" id="filterPrice">
-                <div class="searchTextColor"> Цена до:</div>
-                <!--id="priceSelected"-->
-                <input class="priceSelected"  type="checkbox" id="price01" value="1"/> 0 - 800грн <br/>
-                <input class="priceSelected" type="checkbox" id="price02" value="2"/>800 - 1600грн<br/>
-                <input class="priceSelected" type="checkbox" id="price03" value="3"/>>1600грн
-            </div>
-            <p/>
-            <div class="searchColor" id="filterColor">
-                <div class="searchTextColor"> Цвет: </div>
+        <!--<td class="searchPlane">-->
+            <!--Фильтр:<p/>-->
+            <!--<div class="searchColor" id="filterPrice">-->
+                <!--<div class="searchTextColor"> Цена до:</div>-->
+                <!--&lt;!&ndash;id="priceSelected"&ndash;&gt;-->
+                <!--<input class="priceSelected"  type="checkbox" id="price01" value="1"/> 0 - 800грн <br/>-->
+                <!--<input class="priceSelected" type="checkbox" id="price02" value="2"/>800 - 1600грн<br/>-->
+                <!--<input class="priceSelected" type="checkbox" id="price03" value="3"/>>1600грн-->
+            <!--</div>-->
+            <!--<p/>-->
+            <!--<div class="searchColor" id="filterColor">-->
+                <!--<div class="searchTextColor"> Цвет: </div>-->
 
-                <input type="checkbox" name="rbn" id="white"  value="Белый" />Белый
-                <br/>
-                <input type="checkbox" name="rbn" id="beige"   value="Бежевый"/>Бежевый
-                <br/>
-                <input type="checkbox" name="rbn" id="cream"   value="Кремовый"/>Кремовый
-                <br/>
-                <input type="checkbox" name="rbn" id="gold"  value="Золотой"/>Золотой
-                <br/>
-                <input type="checkbox" name="rbn" id="yellow" value="Желтый"/>Желтый
-                <br/>
-                <!--<input type="checkbox" name="rbn" id="orange" class="filter"  data-filter=".Оранжевый" value="Оранжевый"/>Оранжевый-->
-                <input type="checkbox" name="rbn" id="orange" class="orange"  value="Оранжевый"/>Оранжевый
-                <br/>
-                <input type="checkbox" name="rbn" id="peach"   value="Персиковый"/>Персиковый
-                <br/>
-                <input type="checkbox" name="rbn" id="terracotta"   value="Терракотовый"/>Терракотовый
-                <br/>
-                <input type="checkbox" name="rbn" id="coffe"   value="Кофейный"/>Кофейный&nbsp;
-                <br/>
-                <input type="checkbox" name="rbn" id="browne"  value="Коричневый"/>Коричневый
-                <br/>
-                <input type="checkbox" name="rbn" id="rose"  value="Розовый"/>Розовый
-                <br/>
-                <input type="checkbox" name="rbn" id="red"   value="Красный"/>Красный
-                <br/>
-                <input type="checkbox" name="rbn" id="claret"   value="Бордовый"/>Бордовый
-                <br/>
-                <input type="checkbox" name="rbn" id="lime"  value="Салатовый"/>Салатовый
-                <br/>
-                <input type="checkbox" name="rbn" id="green"  value="Зеленый"/>Зеленый
-                <br/>
-                <input type="checkbox" name="rbn" id="sky"  value="Голубой"/>Голубой
-                <br/>
-                <input type="checkbox" name="rbn" id="blue"  value="Синий"/>Синий
-                <br/>
-                <input type="checkbox" name="rbn" id="violet"  value="Фиолетовый"/>Фиолетовый
-                <br/>
-                <!--<input type="checkbox" name="rbn" id="grey" value="Серый"/>Серый-->
-                <input type="checkbox" name="rbn" id="grey" class="grey" value="Серый"/>Серый
-                <br/>
-                <input type="checkbox" name="rbn" id="black"  class="black" value="Черный"/>Черный
-                <br/>
-            </div>
-            <div class="searchColor" id="searchPaint">
-                <div class="searchTextColor"> Рисунок:</div>
-                <!--<div class="paintSelect">-->
-                <input type="checkbox" name="paintRbn" id="abstract"  value="Абстрактный" />Абстрактный
-                <br/>
-                <input type="checkbox" name="paintRbn" id="geometrical"  value="Геометрический"/>Геометрический
-                <br/>
-                <input type="checkbox" name="paintRbn" id="classical" value="Классический"/>Классический
-                <br/>
-                <input type="checkbox" name="paintRbn" id="monophonic" value="Однотонный"/>Однотонный&nbsp;
-                <br/>
-                <input type="checkbox" name="paintRbn" id="strip" value="Полоска "/>Полоска
-                <br/>
-                <input type="checkbox" name="paintRbn" id="vegetative" value="Растительный" />Растительный
-                <!--</div>-->
-            </div>
-            <div class="searchColor" id="filterStructure">
-                <div class="searchTextColor"> Фактура:</div>
-                <input type="checkbox" name="structureRbn" id="len" value="Лен" />Лен<br/>
-                <input type="checkbox" name="structureRbn" id="thread" value="Нити"/>Нити<br/>
-                <input type="checkbox" name="structureRbn" id="twoLayers" value="Двухслойная"/>Двухслойная<br/>
-                <input type="checkbox" name="structureRbn" id="squeeze"  value="Жатая"/>Жатая<br/>
-                <input type="checkbox" name="structureRbn" value="Жаккард "/>Жаккард <br/>
-                <input type="checkbox" name="structureRbn" id="sateen"  value="Сатин" />Сатин <br/>
-                <input type="checkbox" name="structureRbn" id="taffeta" value="Тафта"/>Тафта<br/>
-                <input type="checkbox" name="structureRbn" id="twoSides"  value="Двухсторонняя"/>Двухсторонняя<br/>
-                <input type="checkbox" name="structureRbn" id="velvet" value="Бархат"/>Бархат&nbsp;<br/>
-                <input type="checkbox" name="structureRbn" id="cover" value="Покрывальная"/>Для покрывал<br/>
-            </div>
-            <div class="searchColor" id="filterHeight">
-                <div class="searchTextColor" > Высота:</div>
-                <input type="checkbox" id="27" value="2.7-2.9м" />2,7-2,9м<br/>
-                <input type="checkbox" id="29" value="2.9-3.0м"/>2,9-3,0м<br/>
-                <input type="checkbox"  id="30" value="3.0-3.15м"/>3,0-3,15м<br/>
-                <input type="checkbox"  id="315" value="3.15м"/>больше 3.15м
-            </div>
+                <!--<input type="checkbox" name="rbn" id="white"  value="Белый" />Белый-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="beige"   value="Бежевый"/>Бежевый-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="cream"   value="Кремовый"/>Кремовый-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="gold"  value="Золотой"/>Золотой-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="yellow" value="Желтый"/>Желтый-->
+                <!--<br/>-->
+                <!--&lt;!&ndash;<input type="checkbox" name="rbn" id="orange" class="filter"  data-filter=".Оранжевый" value="Оранжевый"/>Оранжевый&ndash;&gt;-->
+                <!--<input type="checkbox" name="rbn" id="orange" class="orange"  value="Оранжевый"/>Оранжевый-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="peach"   value="Персиковый"/>Персиковый-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="terracotta"   value="Терракотовый"/>Терракотовый-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="coffe"   value="Кофейный"/>Кофейный&nbsp;-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="browne"  value="Коричневый"/>Коричневый-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="rose"  value="Розовый"/>Розовый-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="red"   value="Красный"/>Красный-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="claret"   value="Бордовый"/>Бордовый-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="lime"  value="Салатовый"/>Салатовый-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="green"  value="Зеленый"/>Зеленый-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="sky"  value="Голубой"/>Голубой-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="blue"  value="Синий"/>Синий-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="violet"  value="Фиолетовый"/>Фиолетовый-->
+                <!--<br/>-->
+                <!--&lt;!&ndash;<input type="checkbox" name="rbn" id="grey" value="Серый"/>Серый&ndash;&gt;-->
+                <!--<input type="checkbox" name="rbn" id="grey" class="grey" value="Серый"/>Серый-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="rbn" id="black"  class="black" value="Черный"/>Черный-->
+                <!--<br/>-->
+            <!--</div>-->
+            <!--<div class="searchColor" id="searchPaint">-->
+                <!--<div class="searchTextColor"> Рисунок:</div>-->
+                <!--&lt;!&ndash;<div class="paintSelect">&ndash;&gt;-->
+                <!--<input type="checkbox" name="paintRbn" id="abstract"  value="Абстрактный" />Абстрактный-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="paintRbn" id="geometrical"  value="Геометрический"/>Геометрический-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="paintRbn" id="classical" value="Классический"/>Классический-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="paintRbn" id="monophonic" value="Однотонный"/>Однотонный&nbsp;-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="paintRbn" id="strip" value="Полоска "/>Полоска-->
+                <!--<br/>-->
+                <!--<input type="checkbox" name="paintRbn" id="vegetative" value="Растительный" />Растительный-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</div>-->
+            <!--<div class="searchColor" id="filterStructure">-->
+                <!--<div class="searchTextColor"> Фактура:</div>-->
+                <!--<input type="checkbox" name="structureRbn" id="len" value="Лен" />Лен<br/>-->
+                <!--<input type="checkbox" name="structureRbn" id="thread" value="Нити"/>Нити<br/>-->
+                <!--<input type="checkbox" name="structureRbn" id="twoLayers" value="Двухслойная"/>Двухслойная<br/>-->
+                <!--<input type="checkbox" name="structureRbn" id="squeeze"  value="Жатая"/>Жатая<br/>-->
+                <!--<input type="checkbox" name="structureRbn" value="Жаккард "/>Жаккард <br/>-->
+                <!--<input type="checkbox" name="structureRbn" id="sateen"  value="Сатин" />Сатин <br/>-->
+                <!--<input type="checkbox" name="structureRbn" id="taffeta" value="Тафта"/>Тафта<br/>-->
+                <!--<input type="checkbox" name="structureRbn" id="twoSides"  value="Двухсторонняя"/>Двухсторонняя<br/>-->
+                <!--<input type="checkbox" name="structureRbn" id="velvet" value="Бархат"/>Бархат&nbsp;<br/>-->
+                <!--<input type="checkbox" name="structureRbn" id="cover" value="Покрывальная"/>Для покрывал<br/>-->
+            <!--</div>-->
+            <!--<div class="searchColor" id="filterHeight">-->
+                <!--<div class="searchTextColor" > Высота:</div>-->
+                <!--<input type="checkbox" id="27" value="2.7-2.9м" />2,7-2,9м<br/>-->
+                <!--<input type="checkbox" id="29" value="2.9-3.0м"/>2,9-3,0м<br/>-->
+                <!--<input type="checkbox"  id="30" value="3.0-3.15м"/>3,0-3,15м<br/>-->
+                <!--<input type="checkbox"  id="315" value="3.15м"/>больше 3.15м-->
+            <!--</div>-->
 
-            <!--<input type="submit" onclick="showSelectedSearch()" value="Search"/><br/>-->
+            <!--&lt;!&ndash;<input type="submit" onclick="showSelectedSearch()" value="Search"/><br/>&ndash;&gt;-->
 
-            <!--</form>-->
-        </td>
+            <!--&lt;!&ndash;</form>&ndash;&gt;-->
+        <!--</td>-->
     </tr>
 </table>
 </body>

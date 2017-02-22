@@ -47,7 +47,7 @@ public class AdminRoleService {
                 UserRole userRole = userRoles.get(0);
                 String role = userRole.getRole();
 
-                System.out.println("Name=" + name+ " ROLE: "+role);
+//                System.out.println("Name=" + name+ " ROLE: "+role);
 
                 return role;
         }
@@ -249,7 +249,9 @@ public class AdminRoleService {
 //            Add role_mapping User for new users
             String role = "user";
             UserRole userRole = userRoleRepositiry.findFirstByRole(role);
-            System.out.println(userRole);
+
+            System.out.println("userRole: "+userRole);
+
             List<UserRole> userRoles = new ArrayList<>();
             userRoles.add(userRole);
             model.setUserRoles(userRoles);

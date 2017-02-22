@@ -37,8 +37,7 @@
         <tr>
             <td>Path to new photo</td>
             <td>
-                <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain01}" name="objectPhotoYacht"
-                       id="objectPhotoYacht01" />
+                <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain01}" />
             </td>
         </tr>
         <tr>
@@ -50,8 +49,7 @@
         <tr>
             <td>Path to new photo</td>
             <td>
-                <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain02}" name="objectPhotoYacht"
-                       id="objectPhotoYacht02" />
+                <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain02}"/>
             </td>
         </tr>
         <tr>
@@ -63,8 +61,7 @@
         <tr>
             <td>Path to new photo</td>
             <td>
-                <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain03}" name="objectPhotoYacht"
-                       id="objectPhotoYacht03" />
+                <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain03}"  />
             </td>
         </tr>
         <tr>
@@ -76,8 +73,7 @@
         <tr>
             <td>Path to new photo</td>
             <td>
-                <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain04}" name="objectPhotoYacht"
-                       id="objectPhotoYacht04" />
+                <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain04}"/>
             </td>
         </tr>
         <tr>
@@ -96,11 +92,9 @@
 
         <tr>
             <td>Имя Ткань </td>
-            <td><input class="buttons" type="text"
+            <td><input class="buttons" type="text" th:field="*{name}" style="width: 255px" name="name" id="name"/>
 
-                       th:field="*{name}" style="width: 255px" name="name" id="name"/>
-
-                <span style="font-style: italic; font-size: 10px" th:if="${#fields.hasErrors('name')}"
+                <span style="color: red; font-style: italic; font-size: 10px" th:if="${#fields.hasErrors('name')}"
                       th:errors="*{name}">Error</span>
             </td>
         </tr>
@@ -211,12 +205,12 @@
         </tr>
 
         <tr>
-            <td>Quantity yachts in warehouse </td>
+            <td>Количество на складе</td>
             <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}"
                        th:field="*{quantity}" name="quantityYacht" id="quantityYacht"/> </td>
         </tr>
         <tr>
-            <td>Price </td>
+            <td>Цена </td>
             <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}" th:field="*{price}" value="1" name="priceYacht" id="priceYacht"/> </td>
         </tr>
         <tr>
