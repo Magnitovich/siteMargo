@@ -52,9 +52,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .permitAll()
                 .antMatchers("/history")
                 .permitAll()
-                .antMatchers("/buyCurtain")
+                .antMatchers("/buyCurtain**")
                 .permitAll()
-                .antMatchers("/buyClothFabric")
+                .antMatchers("/buyClothFabric**")
+                .permitAll()
+                .antMatchers("/buyTulleFabric**")
                 .permitAll()
 
                 .antMatchers("/searchCurtain")

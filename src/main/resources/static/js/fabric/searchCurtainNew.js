@@ -22,6 +22,7 @@ $(document).ready(function() {
         maxPrice = Math.max.apply(null, arrayPrice);
         minPrice =  Math.min.apply(null, arrayPrice);
 
+        console.log("Max price: "+maxPrice+" Min price: "+minPrice);
 
         if($("#filterColor input:checked").length == 0 && $("#filterPrice input:checked").length == 0 &&
             $("#searchPaint input:checked").length == 0 && $("#filterHeight input:checked").length == 0

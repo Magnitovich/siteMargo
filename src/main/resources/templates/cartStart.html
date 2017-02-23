@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link href="css/back.css" rel="stylesheet"/>
+    <script src="js/jquery-1.12.3.min.js" ></script>
+    <script src="js/shoppingCart.js"></script>
+    <script src="js/jquery.validate.js"></script>
+</head>
+<body>
+<h1 align="center">Shopping cart</h1>
+<p>
+<h2 align="center">You order:</h2>
+
+</p>
+<!--//receive Email user from DB and sent to js-->
+<input type="hidden" id="someThingNew" th:value="${email}"/>
+
+<table align="center" border="1">
+    <tr>
+        <td align="center" >Photo</td>
+        <td align="center" width="100">Name</td>
+        <td align="center" width="100">Describe</td>
+        <td align="center" width="100">Available</td>
+        <td align="center">Price</td>
+        <td align="center" >Amount</td>
+        <td align="center" >Delete</td>
+    </tr>
+    <tbody id="trash"></tbody>
+    <tfoot><tr><td colspan="5">
+        Total in carts:
+    </td>
+    <td colspan="2" align="right"><span id="totalCart"></span> </td>
+    </tr>
+    <tr><td colspan="7" align="right">
+        <input type="button" data-toggle="modal" data-target="#goImage" id="sendToJavaBtn" onclick="sendToJavaBuy()" style="width: 120px" value="Buy" />
+
+
+        <!--****************************MODAL WINDOW FOR IMAGE**********************************-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="goImage" >
+            <div class="modal-dialog" align="left" >
+                <div class="modal-content" style="background-color: black; ">
+                    <div class="modal-header" style="background-color: black; ">
+                        <button type="button" class="close" data-dismiss="modal" style=" color: white; opacity: 100"  aria-label="Close">
+                                <span aria-hidden="true" style="opacity: 30"> &times;
+                                </span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div align="center">
+                            <table border="0" width="70%">
+                                <tr>
+                                    <td width="30%">
+                                        Phone:
+                                    </td>
+                                    <td>
+                                        <input type="number"/>
+                                    </td>
+
+
+                                </tr>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!--</form>-->
+    </td> </tr>
+    </tfoot>
+</table>
+
+</body>
+</html>

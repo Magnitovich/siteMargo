@@ -44,6 +44,11 @@ span{
     background-color: black;
     color: white;
     border-radius: 7px;
+}.buyMenu{
+    border-color: white;
+    background-color: #04004b;
+    color: white;
+    border-radius: 7px;
 }
 td.searchPlane{
     background: #04004b;
