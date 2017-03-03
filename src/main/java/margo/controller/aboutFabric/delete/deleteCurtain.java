@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,8 +27,16 @@ public class deleteCurtain {
         curtainService.deleteCurtain(namesDeleted);
 
         List<CurtainDTO> curtainDTOs = curtainService.seeAllModels();
+        ArrayList colorModel =curtainService.seeColor();
+        ArrayList paint =curtainService.seePaint();
+        ArrayList structure =curtainService.seeStructure();
+        ArrayList filterPrice = curtainService.seePrice();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("allCurtain",curtainDTOs);
+        modelAndView.addObject("price",filterPrice);
+        modelAndView.addObject("forColor",colorModel);
+        modelAndView.addObject("forPaint",paint);
+        modelAndView.addObject("forStructure",structure);
         modelAndView.setViewName("allFabric/curtainModel");
     return modelAndView;
 

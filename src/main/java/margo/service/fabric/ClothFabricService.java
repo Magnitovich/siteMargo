@@ -12,8 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ClothFabricService {
@@ -22,6 +21,8 @@ public class ClothFabricService {
     private ClothFabricRepository repository;
     @Autowired
     private AdminRoleService adminRoleService;
+
+    private List<ClothFabricDTO> forFilter;
 
     public ClothFabricDTO convertModelToDto(ClothFabricModel model){
 
@@ -57,6 +58,7 @@ public class ClothFabricService {
         Iterable<ClothFabricModel> models = repository.findAll();
         List<ClothFabricDTO>  clothFabricDTOs = convertListModelToDTO((List<ClothFabricModel>) models);
         List<ClothFabricDTO> curtainDTOsWithZERO = new ArrayList<>(); //if commodity =0
+        forFilter = clothFabricDTOs;
 
         String role = adminRoleService.userRole();
         System.out.println("ROLE="+role);
@@ -107,6 +109,7 @@ public class ClothFabricService {
     }
     public void deleteCloth(List<Long> models){
         for(Long delete:models){
+            System.out.println(delete+"delete");
             repository.delete(delete);
         }
     }
@@ -170,6 +173,74 @@ public class ClothFabricService {
     public void delete(List<Long> models){
         for(Long delete:models){
             repository.delete(delete);
+        }
+    }
+    public ArrayList seeColor(){
+        String[] res = null;
+        List colorModel = new ArrayList();
+        for (ClothFabricDTO col: forFilter){
+            colorModel.add(col.getColor());
+        }
+        String[] temp = (String[]) colorModel.toArray(new String[colorModel.size()]);
+        Set<String> set = new HashSet<String>(Arrays.asList(temp));
+        res = set.toArray(new String[set.size()]);
+
+        ArrayList colors = new ArrayList(Arrays.asList(res));
+        return colors;
+    }
+    public ArrayList seePaint(){
+        String[] res = null;
+        List colorModel = new ArrayList();
+        for (ClothFabricDTO col: forFilter){
+            colorModel.add(col.getPaint());
+        }
+        String[] temp = (String[]) colorModel.toArray(new String[colorModel.size()]);
+        Set<String> set = new HashSet<String>(Arrays.asList(temp));
+        res = set.toArray(new String[set.size()]);
+
+        ArrayList colors = new ArrayList(Arrays.asList(res));
+        return colors;
+    }
+    public ArrayList seeStructure(){
+        String[] res = null;
+        List colorModel = new ArrayList();
+        for (ClothFabricDTO col: forFilter){
+            colorModel.add(col.getStructure());
+        }
+        String[] temp = (String[]) colorModel.toArray(new String[colorModel.size()]);
+        Set<String> set = new HashSet<String>(Arrays.asList(temp));
+        res = set.toArray(new String[set.size()]);
+
+        ArrayList colors = new ArrayList(Arrays.asList(res));
+        return colors;
+    }
+    public ArrayList seePrice() {
+        String[] res = null;
+        ArrayList list = new ArrayList();
+        List<BigDecimal> colorModel = new ArrayList();
+        BigDecimal maxValue;
+        BigDecimal minValue = null;
+        if (forFilter.size() == 0) {
+            maxValue = new BigDecimal("0");
+            minValue = new BigDecimal("0");
+            list.add(maxValue);
+            list.add(minValue);
+            return list;
+        } else {
+            for (ClothFabricDTO col : forFilter) {
+                colorModel.add(col.getPrice());
+            }
+            maxValue = Collections.max(colorModel);
+            minValue = Collections.min(colorModel);
+            BigDecimal div = new BigDecimal("3");
+            BigDecimal mult = new BigDecimal("2");
+            BigDecimal first = maxValue.divide(div, -2, BigDecimal.ROUND_DOWN);
+            String firstValue = first.toPlainString();
+            String secondValue = (first.multiply(mult)).setScale(-2, BigDecimal.ROUND_HALF_UP).toPlainString();
+
+            list.add(firstValue);
+            list.add(secondValue);
+            return list;
         }
     }
 }

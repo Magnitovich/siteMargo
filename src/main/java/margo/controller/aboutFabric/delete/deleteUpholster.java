@@ -1,10 +1,9 @@
 package margo.controller.aboutFabric.delete;
 
-import margo.controller.aboutFabric.TulleController;
-import margo.model.modelDTO.allCurtainsDTO.ClothFabricDTO;
-import margo.model.modelDTO.allCurtainsDTO.TulleDTO;
-import margo.service.fabric.ClothFabricService;
-import margo.service.fabric.TulleService;
+import margo.model.modelDTO.allCurtainsDTO.OrderCurtainDTO;
+import margo.model.modelDTO.allCurtainsDTO.UpholsteryFabricDTO;
+import margo.service.fabric.OrderCurtainService;
+import margo.service.fabric.UpholsteryFabricService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,19 +17,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class deleteTulle {
+public class deleteUpholster {
     @Autowired
-    private TulleService service;
+    private UpholsteryFabricService service;
 
 
 
-    @RequestMapping(value = "/deleteTulle/DELETE", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/deleteUpholster/DELETE", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView deleteCurtain(@RequestBody List<Long> namesDeleted, Model model,
                                       HttpServletRequest req){
     System.out.println(namesDeleted);
 
         service.delete(namesDeleted);
-        List<TulleDTO> curtainDTOs = service.seeAllModels();
+        List<UpholsteryFabricDTO> curtainDTOs = service.seeAllModels();
         ArrayList colorModel =service.seeColor();
         ArrayList paint =service.seePaint();
         ArrayList structure =service.seeStructure();
@@ -41,8 +40,8 @@ public class deleteTulle {
         modelAndView.addObject("forColor",colorModel);
         modelAndView.addObject("forPaint",paint);
         modelAndView.addObject("forStructure",structure);
-        modelAndView.addObject("allTulle",curtainDTOs);
-        modelAndView.setViewName("allFabric/tulleFabric");
+        modelAndView.addObject("allUpholster",curtainDTOs);
+        modelAndView.setViewName("allFabric/upholsteryFabric");
 
         return modelAndView;
 

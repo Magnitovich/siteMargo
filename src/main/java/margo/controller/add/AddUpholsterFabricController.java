@@ -1,9 +1,9 @@
 package margo.controller.add;
 
 
-import margo.model.modelDTO.allCurtainsDTO.TulleDTO;
-import margo.service.exception.ExceptionAddTulleService;
-import margo.service.fabric.TulleService;
+import margo.model.modelDTO.allCurtainsDTO.UpholsteryFabricDTO;
+import margo.service.exception.ExceptionAddUpholsteryService;
+import margo.service.fabric.UpholsteryFabricService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -19,42 +19,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class AddTulleFabricController {
+public class AddUpholsterFabricController {
 
 
     @Autowired
-    private TulleService service;
+    private UpholsteryFabricService service;
 
     @Autowired
-    private ExceptionAddTulleService exceptionAddService;
+    private ExceptionAddUpholsteryService exceptionAddService;
 
-    @Value("${img.tulle.path}")
+    @Value("${img.upholsteryFabric.path}")
     private String realObjectsPath;
 
-    @Value("${img.tulle.relative.path}")
+    @Value("${img.upholsteryFabric.relative.path}")
     private String relativeObjectsPath;
 
 
-    @RequestMapping(value = "/addInfoAboutNewTulle", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/addInfoAboutNewUpholster", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView seePageAddCurtain(@RequestParam(required = false) Long id) {
 
         if (id != null ) {
-            TulleDTO model = service.viewSelectedCloth(id);
+            UpholsteryFabricDTO model = service.viewSelected(id);
             model.setIdForEditCurtain(id);
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.addObject("comparePhotoNameWithDB", model);
-            modelAndView.setViewName("allFabric/addFabric/addTulleNew");
+            modelAndView.setViewName("allFabric/addFabric/addUpholsterFabric");
             return modelAndView;
 
         } else {
             ModelAndView modelAndView = new ModelAndView();
-            modelAndView.setViewName("allFabric/addFabric/addTulleNew");
+            modelAndView.setViewName("allFabric/addFabric/addUpholsterFabric");
             return modelAndView;
         }
     }
 
-    @RequestMapping(value = "/addSuccessfulTulle", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView addInfoCars(@ModelAttribute("comparePhotoNameWithDB") TulleDTO dto,
+    @RequestMapping(value = "/addSuccessfulUpholsterFabric", method = {RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView addInfoCars(@ModelAttribute("comparePhotoNameWithDB") UpholsteryFabricDTO dto,
                                     BindingResult result,
                                     @RequestParam(required = false) String id) throws IOException {
 
@@ -71,7 +71,7 @@ public class AddTulleFabricController {
             dto.setPhoto05(addPattern.getNameFile05());
 
             service.editCurtain(dto);
-            List<TulleDTO> curtainDTOs = service.seeAllModels();
+            List<UpholsteryFabricDTO> curtainDTOs = service.seeAllModels();
             ArrayList colorModel =service.seeColor();
             ArrayList paint =service.seePaint();
             ArrayList structure =service.seeStructure();
@@ -82,8 +82,8 @@ public class AddTulleFabricController {
             modelAndView.addObject("forColor",colorModel);
             modelAndView.addObject("forPaint",paint);
             modelAndView.addObject("forStructure",structure);
-            modelAndView.addObject("allTulle",curtainDTOs);
-            modelAndView.setViewName("allFabric/tulleFabric");
+            modelAndView.addObject("allUpholster",curtainDTOs);
+            modelAndView.setViewName("allFabric/upholsteryFabric");
             return modelAndView;
 
         } else {
@@ -95,9 +95,7 @@ public class AddTulleFabricController {
                                 addPattern.getNameFile05(), dto.getName(), dto.getDescription(), dto.getStructure(),
                                 dto.getPaint(), dto.getHeight(), dto.getColor(), dto.getQuantity(), dto.getPrice());
 
-                List<TulleDTO> list = service.seeAllModels();
-
-                List<TulleDTO> curtainDTOs = service.seeAllModels();
+                List<UpholsteryFabricDTO> curtainDTOs = service.seeAllModels();
                 ArrayList colorModel =service.seeColor();
                 ArrayList paint =service.seePaint();
                 ArrayList structure =service.seeStructure();
@@ -108,8 +106,8 @@ public class AddTulleFabricController {
                 modelAndView.addObject("forColor",colorModel);
                 modelAndView.addObject("forPaint",paint);
                 modelAndView.addObject("forStructure",structure);
-                modelAndView.addObject("allTulle",curtainDTOs);
-                modelAndView.setViewName("allFabric/tulleFabric");
+                modelAndView.addObject("allUpholster",curtainDTOs);
+                modelAndView.setViewName("allFabric/upholsteryFabric");
                 return modelAndView;
             } catch (RuntimeException r) {
 
@@ -128,14 +126,14 @@ public class AddTulleFabricController {
     public ModelAndView viewException() {
 
         ModelAndView andView = new ModelAndView();
-        andView.setViewName("allFabric/addFabric/addTulleNew");
+        andView.setViewName("allFabric/addFabric/addUpholsterFabric");
         return andView;
 
     }
 
     @ModelAttribute("comparePhotoNameWithDB")
-    public TulleDTO createModel() {
-        return new TulleDTO();
+    public UpholsteryFabricDTO createModel() {
+        return new UpholsteryFabricDTO();
     }
 }
 

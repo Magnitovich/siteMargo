@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 
     function showSelectedElement(arr){
@@ -7,6 +6,8 @@ $(document).ready(function() {
             $("."+e.toString()).show();
         });
     }
+    var firstValue = 0;
+    var secondValue = 0;
     var arrayPrice = [];
     var arrayMax = [];
     var maxPrice;
@@ -14,7 +15,10 @@ $(document).ready(function() {
 
 
     $("div[class='searchColor'] input").change(function () {
-
+        firstValue =  parseInt($('#filterPriceFirst').text());
+        secondValue = parseInt($("#filterPriceSecond").text());
+        //secondValue = $("[class=filterPriceSecond]").val();
+        console.log("firstValue "+firstValue+"secondValue "+secondValue);
         arrayMax = $("[class^=priceSSS]");
         for (i=0; i<arrayMax.length; i++){
             arrayPrice[i] =arrayMax[i].innerHTML;
@@ -72,23 +76,23 @@ $(document).ready(function() {
                 $("#filterPrice input:checked").each(function(){
                     var s = $(this).attr('value'); //the same $(this).val();
                     for (i=0; i<arrayMax.length; i++) {
-                    if(s == "1"){
-                        if (arrayPrice[i] > 0 && arrayPrice[i] <= 800) {
-                            //concat - copy value from selected array, now we copy in arr all info from arrayPrice[i]
-                            //which to be in the selected range
-                         arr = arr.concat((arrayPrice[i]));
-                        }
-                    }else if(s == "2") {
-                        if (arrayPrice[i] > 800 && arrayPrice[i] <= 1600) {
-                            arr = arr.concat(arrayPrice[i]);
-                        }
+                        if(s == "1"){
+                            if (arrayPrice[i] > 0 && arrayPrice[i] <= firstValue) {
+                                //concat - copy value from selected array, now we copy in arr all info from arrayPrice[i]
+                                //which to be in the selected range
+                                arr = arr.concat((arrayPrice[i]));
+                            }
+                        }else if(s == "2") {
+                            if (arrayPrice[i] > firstValue && arrayPrice[i] <= secondValue) {
+                                arr = arr.concat(arrayPrice[i]);
+                            }
                         } else {
-                            if (arrayPrice[i] > 1600) {
+                            if (arrayPrice[i] > secondValue) {
                                 arr = arr.concat(arrayPrice[i]);
                             }
                         }
                     }
-                    });
+                });
                 arr.forEach(function(ele){
                     //"Привет, мир".indexOf("Привет")    // вернет 0
                     //"Привет, мир".indexOf("Корова")    // вернет -1
@@ -108,7 +112,7 @@ $(document).ready(function() {
                     $("."+e.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" )).show();
                 });
             }else if(color.length == 0 && paint.length > 0 && price.length == 0 && height.length == 0
-            && structure.length ==0){
+                && structure.length ==0){
 
                 showSelectedElement(paint)
             }else if(color.length == 0 && paint.length == 0 && price.length == 0 && height.length == 0
@@ -421,15 +425,15 @@ $(document).ready(function() {
                 color.forEach(function(oe){
                     price.forEach(function(ie){
                         paint.forEach(function(iie){
-                           height.forEach(function(oie){
-                               structure.forEach(function(oiie){
-                                   temp.push(oe +"."+ie.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" ) + "."+iie+"."+
+                            height.forEach(function(oie){
+                                structure.forEach(function(oiie){
+                                    temp.push(oe +"."+ie.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" ) + "."+iie+"."+
                                         oie.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" )+ "."+oiie);
-                               })
-                           });
-                           });
-                        })
-                    });
+                                })
+                            });
+                        });
+                    })
+                });
 
                 showSelectedElement(temp);
             }

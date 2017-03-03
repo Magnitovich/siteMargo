@@ -14,8 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class TulleService {
@@ -23,6 +22,8 @@ public class TulleService {
     private TulleRepository repository;
     @Autowired
     private AdminRoleService adminRoleService;
+
+    private List<TulleDTO> forFilter;
 
     public TulleDTO convertModelToDto(TulleModel model){
 
@@ -58,6 +59,7 @@ public class TulleService {
         Iterable<TulleModel> models = repository.findAll();
         List<TulleDTO>  fabricDTOs = convertListModelToDTO((List<TulleModel>) models);
         List<TulleDTO> curtainDTOsWithZERO = new ArrayList<>(); //if commodity =0
+        forFilter = fabricDTOs;
 
         String role = adminRoleService.userRole();
         System.out.println("ROLE="+role);
@@ -106,11 +108,7 @@ public class TulleService {
         model.setPrice(price);
         repository.save(model);
     }
-    public void deleteCloth(List<Long> models){
-        for(Long delete:models){
-            repository.delete(delete);
-        }
-    }
+
     @Transactional
     public void editCurtain(TulleDTO dto) {
         TulleModel model = repository.findOne(dto.getId());
@@ -170,7 +168,76 @@ public class TulleService {
 
     public void delete(List<Long> models){
         for(Long delete:models){
+            System.out.println(delete);
             repository.delete(delete);
+        }
+    }
+    public ArrayList seeColor(){
+        String[] res = null;
+        List colorModel = new ArrayList();
+        for (TulleDTO col: forFilter){
+            colorModel.add(col.getColor());
+        }
+        String[] temp = (String[]) colorModel.toArray(new String[colorModel.size()]);
+        Set<String> set = new HashSet<String>(Arrays.asList(temp));
+        res = set.toArray(new String[set.size()]);
+
+        ArrayList colors = new ArrayList(Arrays.asList(res));
+        return colors;
+    }
+    public ArrayList seePaint(){
+        String[] res = null;
+        List colorModel = new ArrayList();
+        for (TulleDTO col: forFilter){
+            colorModel.add(col.getPaint());
+        }
+        String[] temp = (String[]) colorModel.toArray(new String[colorModel.size()]);
+        Set<String> set = new HashSet<String>(Arrays.asList(temp));
+        res = set.toArray(new String[set.size()]);
+
+        ArrayList colors = new ArrayList(Arrays.asList(res));
+        return colors;
+    }
+    public ArrayList seeStructure(){
+        String[] res = null;
+        List colorModel = new ArrayList();
+        for (TulleDTO col: forFilter){
+            colorModel.add(col.getStructure());
+        }
+        String[] temp = (String[]) colorModel.toArray(new String[colorModel.size()]);
+        Set<String> set = new HashSet<String>(Arrays.asList(temp));
+        res = set.toArray(new String[set.size()]);
+
+        ArrayList colors = new ArrayList(Arrays.asList(res));
+        return colors;
+    }
+    public ArrayList seePrice() {
+        ArrayList list = new ArrayList();
+        String[] res = null;
+        List<BigDecimal> colorModel = new ArrayList();
+        BigDecimal maxValue;
+        BigDecimal minValue = null;
+        if (forFilter.size() == 0) {
+            maxValue = new BigDecimal("0");
+            minValue = new BigDecimal("0");
+            list.add(maxValue);
+            list.add(minValue);
+            return list;
+        } else {
+            for (TulleDTO col : forFilter) {
+                colorModel.add(col.getPrice());
+            }
+            maxValue = Collections.max(colorModel);
+            minValue = Collections.min(colorModel);
+            BigDecimal div = new BigDecimal("3");
+            BigDecimal mult = new BigDecimal("2");
+            BigDecimal first = maxValue.divide(div, -2, BigDecimal.ROUND_DOWN);
+            String firstValue = first.toPlainString();
+            String secondValue = (first.multiply(mult)).setScale(-2, BigDecimal.ROUND_HALF_UP).toPlainString();
+
+            list.add(firstValue);
+            list.add(secondValue);
+            return list;
         }
     }
 }

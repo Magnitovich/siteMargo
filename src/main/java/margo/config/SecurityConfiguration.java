@@ -58,8 +58,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/buyTulleFabric**")
                 .permitAll()
+                .antMatchers("/buyUpholsterFabric**")
+                .permitAll()
+                .antMatchers("/buyOrderFabric**")
+                .permitAll()
 
-                .antMatchers("/searchCurtain")
+                .antMatchers("/searchOnTheSite**")
                 .permitAll()
                 .antMatchers("/headerMain.html")
                 .permitAll()

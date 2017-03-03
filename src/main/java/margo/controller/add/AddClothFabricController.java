@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -142,9 +141,19 @@ public class AddClothFabricController {
             dto.setPhoto05(addPattern.getNameFile05());
 
             service.editCurtain(dto);
-            List<ClothFabricDTO> yachtDTOs = service.seeAllCloth();
+            List<ClothFabricDTO> clothFabricDTOs = service.seeAllCloth();
+            ArrayList colorModel =service.seeColor();
+            ArrayList paint =service.seePaint();
+            ArrayList structure =service.seeStructure();
+            ArrayList filterPrice = service.seePrice();
+
             ModelAndView modelAndView = new ModelAndView();
-            modelAndView.addObject("allCloth", yachtDTOs);
+            modelAndView.addObject("price",filterPrice);
+            modelAndView.addObject("forColor",colorModel);
+            modelAndView.addObject("forPaint",paint);
+            modelAndView.addObject("forStructure",structure);
+            modelAndView.setViewName("allFabric/tulleFabric");
+            modelAndView.addObject("allCloth", clothFabricDTOs);
             modelAndView.setViewName("allFabric/clothFabric");
             return modelAndView;
 
@@ -165,8 +174,19 @@ public class AddClothFabricController {
 
                 List<ClothFabricDTO> list = service.seeAllCloth();
 
+                List<ClothFabricDTO> clothFabricDTOs = service.seeAllCloth();
+                ArrayList colorModel =service.seeColor();
+                ArrayList paint =service.seePaint();
+                ArrayList structure =service.seeStructure();
+                ArrayList filterPrice = service.seePrice();
+
                 ModelAndView modelAndView = new ModelAndView();
-                modelAndView.addObject("allCloth", list);
+                modelAndView.addObject("price",filterPrice);
+                modelAndView.addObject("forColor",colorModel);
+                modelAndView.addObject("forPaint",paint);
+                modelAndView.addObject("forStructure",structure);
+                modelAndView.setViewName("allFabric/tulleFabric");
+                modelAndView.addObject("allCloth", clothFabricDTOs);
                 modelAndView.setViewName("allFabric/clothFabric");
                 return modelAndView;
             } catch (RuntimeException r) {

@@ -1,9 +1,8 @@
 package margo.controller.aboutFabric.delete;
 
-import margo.controller.aboutFabric.TulleController;
-import margo.model.modelDTO.allCurtainsDTO.ClothFabricDTO;
+import margo.model.modelDTO.allCurtainsDTO.OrderCurtainDTO;
 import margo.model.modelDTO.allCurtainsDTO.TulleDTO;
-import margo.service.fabric.ClothFabricService;
+import margo.service.fabric.OrderCurtainService;
 import margo.service.fabric.TulleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,19 +17,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class deleteTulle {
+public class deleteOrder {
     @Autowired
-    private TulleService service;
+    private OrderCurtainService service;
 
 
 
-    @RequestMapping(value = "/deleteTulle/DELETE", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/deleteOrder/DELETE", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView deleteCurtain(@RequestBody List<Long> namesDeleted, Model model,
                                       HttpServletRequest req){
     System.out.println(namesDeleted);
 
         service.delete(namesDeleted);
-        List<TulleDTO> curtainDTOs = service.seeAllModels();
+        List<OrderCurtainDTO> curtainDTOs = service.seeAllModels();
         ArrayList colorModel =service.seeColor();
         ArrayList paint =service.seePaint();
         ArrayList structure =service.seeStructure();
@@ -41,8 +40,8 @@ public class deleteTulle {
         modelAndView.addObject("forColor",colorModel);
         modelAndView.addObject("forPaint",paint);
         modelAndView.addObject("forStructure",structure);
-        modelAndView.addObject("allTulle",curtainDTOs);
-        modelAndView.setViewName("allFabric/tulleFabric");
+        modelAndView.addObject("allOrder",curtainDTOs);
+        modelAndView.setViewName("allFabric/orderFabric");
 
         return modelAndView;
 
