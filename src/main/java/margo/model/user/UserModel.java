@@ -24,6 +24,8 @@ public class UserModel implements UserDetails {
     private String email;
     @Column(name = "PHONE")
     private String phone;
+    @Column(name = "description")
+    private String description;
     @Column(name = "VERIFICATION")
     private String verification;
     @Column(name = "ACTIVE")
@@ -39,6 +41,13 @@ public class UserModel implements UserDetails {
             inverseJoinColumns = {@JoinColumn(name = "ROLE_UID", nullable = false, updatable = false)})
     private List<UserRole> userRoles;
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getName() {
         return name;

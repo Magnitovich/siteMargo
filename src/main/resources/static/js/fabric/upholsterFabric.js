@@ -1,6 +1,6 @@
 function buyYachtFromImg() {
 
-    var selectedForEdit = $('input:hidden')
+    var selectedForEdit = $('input:hidden');
 
 
     window.location.href ="buyYachts?id="+selectedForEdit[0].id;
@@ -14,7 +14,7 @@ function addNewOrder(){
 
 function editInfoOrder() {
 
-    var selectedForEdit = $('#mainDiv input:checked')
+    var selectedForEdit = $('#mainDiv input:checked');
 
     if (selectedForEdit.length>1) {
         alert("You selected more one model")
@@ -32,7 +32,7 @@ function deleteSelectedElementsOrder() {
     var selectedYachtForDelete = [];
     var i = 0;
 
-    var arrayCheckboxClicked = $('input:checked')
+    var arrayCheckboxClicked = $('input:checked');
 
     arrayCheckboxClicked.each(function(){
         var hasNextt = $(this);

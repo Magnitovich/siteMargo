@@ -4,6 +4,7 @@
 
 <head>
     <title>Title</title>
+
 </head>
 <body class="background">
 <div th:replace="headerMain :: header"></div>
@@ -15,7 +16,7 @@
             <div th:each="curtain : ${allCurtain}">
                 <div class="pic" >
 
-                    <a th:href="@{~/buyCurtains(hiddenYachtName=${curtain.id})}" style="text-decoration: none" >
+                    <a th:href="@{~/buyCurtains(hiddenModelId=${curtain.id})}" style="text-decoration: none" >
 
                         <img th:attr="src=${curtain.photo}"  width="220" height="280"/>
                         <div align="center" >

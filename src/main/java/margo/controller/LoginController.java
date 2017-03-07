@@ -46,14 +46,16 @@ public class LoginController {
             @RequestParam(value = "NickName") String name,
             @RequestParam(value = "signUpPassword") String password,
             @RequestParam(value = "Phone") String phone,
-            @RequestParam(value = "Email") String email
+            @RequestParam(value = "Email") String email,
+            @RequestParam(value = "description") String description
             ) throws MessagingException {
 
         Integer activityFalse = 0;
         String verification = UUID.randomUUID().toString();  //for send email
-        System.out.println("Nick= "+name+" pass= "+password+" phone ="+phone+" email= "+email+" verification"+verification);
+        System.out.println("Nick= "+name+" pass= "+password+" phone ="+phone+
+                "descriptions: "+description+" email= "+email+" verification"+verification);
 
-        adminRoleService.addNewUser(name, password, phone, email, activityFalse, verification);
+        adminRoleService.addNewUser(name, password, phone, email, activityFalse, verification, description);
 //
         sendingMail.sendingMessage(email, verification);
 

@@ -215,7 +215,7 @@ public class AdminRoleService {
     }
 
     public void addNewUser(final String name, final String password, final String phone, final String email,
-                           final Integer activity, final String verification) {
+                           final Integer activity, final String verification, final String description) {
         List<UserModel> byName = userRepository.findByName(name);
         List<UserModel> byEmail = userRepository.findByEmail(email);
 
@@ -233,6 +233,7 @@ public class AdminRoleService {
         usersModel.setPassword(password);
         usersModel.setEmail(email);
         usersModel.setPhone((phone));
+        usersModel.setDescription(description);
         usersModel.setActiveTrue(activity);
         usersModel.setVerification(verification);
         userRepository.save(usersModel);

@@ -1,4 +1,11 @@
-
+function cartOpen() {
+    window.location.href = "allCart";
+    //var nameUser = $("#someThingNew").val();
+    //console.log(nameUser);
+}
+function nextRegistration(){
+    window.location.href = "cartCustomer";
+}
 $(document).ready(function() {
 
     var photo;
@@ -183,17 +190,22 @@ $(document).ready(function() {
         function displayShow() {
             table = '';
             for (var r in cartArray) {
-                table += '<tr><td width="50"><img src="' + cartArray[r].photo + '" width=35 height=80></td>\
-            <td width="100">' + cartArray[r].name + '</td>\
+                table += '<tr><td width="60" align="center"><img src="' + cartArray[r].photo + '" width=55 height=80></td>\
+            <td width="80">' + cartArray[r].name + '</td>\
             <td width="150">' + cartArray[r].describe + '</td>\
-            <td width="100">\
-            <table width="80"><td align="right"><button class="minus" data-name="' + cartArray[r].name + '">-</button></td>\
-            <td align="center"> ' + cartArray[r].quantity + '</td>\
-            <td align="left"><button class="plus" data-name="' + cartArray[r].name + '">+</button></td></tr></table>\
+            <td width="60">\
+            <table width="60">\
+            <td width="18" ><button class="minus" data-name="' + cartArray[r].name + '">\
+             <img src="icons/minus24.png" alt=""/></button></td>\
+            <td width="20" align="center"> ' + cartArray[r].quantity + '</td>\
+            <td width="18" ><button class="plus" data-name="' + cartArray[r].name + '">\
+            <img src="icons/add24.png" alt=""/> </button></td></tr></table>\
             </td>\
-                +<td width="50" align="center">' + cartArray[r].price + '</td>\
-                +<td width="80">$' + cartArray[r].total + '</td>\
-                +<td width="50"><button class="deleteItem" data-name="' + cartArray[r].name + '">X</button></td></tr>';
+                +<td width="30" align="center">' + cartArray[r].price + '</td>\
+                +<td width="60" align="right">&nbsp;&nbsp;' + cartArray[r].total + '&nbsp;грн.</td>\
+                +<td align="center" width="20"><button class="deleteItem" data-name="' + cartArray[r].name + '">' +
+                    '<img src="icons/delete16.gif" alt="удалить"/></button></td></tr>' +
+                    '+<tr><td colspan="7"><div style=" height: 2px; background: #a39fa1;" >&nbsp;</div> </td> </tr>';
             }
             $('#trash').html(table);
             $("#totalCart").html(totalPriceInCart());

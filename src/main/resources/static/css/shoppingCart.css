@@ -1,0 +1,61 @@
+/*.shopping-cart {*/
+    /*width: 50%;*/
+    /*!*height: 423px;*!*/
+    /*margin: 10px auto;*/
+    /*padding-left: 30px;*/
+    /*padding-right: 30px;*/
+    /*background: #f0f0f0;*/
+    /*box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);*/
+    /*border-radius: 6px;*/
+    /*color: black;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+/*}*/
+.btnFurther {
+    background-color:#92C93F;
+    -moz-border-radius:28px;
+    -webkit-border-radius:28px;
+    border-radius:28px;
+    border:3px solid #020029;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    /*font-family:Arial;*/
+    font-size:12px;
+    font-weight:bold;
+    padding:4px 35px;
+    text-decoration:none;
+    text-shadow:0px 3px 4px #283966;
+}
+.btnFurther:hover {
+    background-color: #82c023;
+}
+.btnFurther:active {
+    position:relative;
+    top:2px;
+}
+
+/*.minus {*/
+    /*background-color:#7892c2;*/
+    /*-moz-border-radius:15px;*/
+    /*-webkit-border-radius:15px;*/
+    /*border-radius:15px;*/
+    /*border:1px solid #020029;*/
+    /*display:inline-block;*/
+    /*cursor:pointer;*/
+    /*color:#ffffff;*/
+    /*!*font-family:Arial;*!*/
+    /*font-size:14px;*/
+    /*!*font-weight:bold;*!*/
+    /*padding:0px 5px;*/
+    /*text-decoration:none;*/
+    /*text-shadow:0px 3px 4px #283966;*/
+/*}*/
+/*.minus:hover {*/
+    /*background-color:#476e9e;*/
+/*}*/
+/*.minus:active {*/
+    /*position:relative;*/
+    /*top:2px;*/
+/*}*/
+

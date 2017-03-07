@@ -17,11 +17,11 @@
             <div th:each="curtain : ${allSearch}">
                 <div class="pic" >
 
-                    <a th:href="@{~/buySelectedFromSearch(hiddenModelId=${curtain.id},
-                    photoId=${curtain.photo})}" style="text-decoration: none" >
-                    <!--<a href="#" onclick="toSelectedObject()" style="text-decoration: none" >-->
-                        <!--<input type="hidden" id="photoId" name="photoId" th:value="${curtain.photo}"/>-->
-                        <!--<input type="hidden" name="id" id="id" th:value="${curtain.id}"/>-->
+                    <!--<a th:href="@{~/buySelectedFromSearch(hiddenModelId=${curtain.id},-->
+                    <!--photoId=${curtain.photo})}" style="text-decoration: none" >-->
+                    <a href="#" onclick="toSelectedObject()" style="text-decoration: none" >
+                        <input type="hidden" id="photoId" name="photoId" th:value="${curtain.photo}"/>
+                        <input type="hidden" name="id" id="id" th:value="${curtain.id}"/>
                         <img th:attr="src=${curtain.photo}"  width="220" height="280"/>
                         <div align="center" >
                             <b>   <span th:text="${curtain.name}">Name</span></b>

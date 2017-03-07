@@ -18,10 +18,24 @@ public class SearchController {
     @Autowired
     private SearchService searchService;
 
+
+
     @RequestMapping(value = "/searchOnTheSite", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView viewAllWhiskyInWarehouse(@RequestParam(value = "searchRequest", required = false)
                                                      String findSearchRequest) {
-        System.out.println("We searching: " + findSearchRequest);
+
+//        IfNull ifNothing = new IfNull();
+//        System.out.println("IfNothink: must be null: "+ifNothing.getIfNothing());
+//        System.out.println("We searching: " + findSearchRequest);
+//        if (findSearchRequest == null){
+//            System.out.println("We are finding - ZERRRO !!!");
+//            findSearchRequest = ifNothing.getIfNothing();
+//
+//        }
+//
+//        ifNothing.setIfNothing(findSearchRequest);
+//        System.out.println("IfNothink: must be NOT null: "+ifNothing.getIfNothing());
+
 
 //        Iterable<WhiskyDTO> list = whiskyService.seeAllWhisky();
         List<AllFabricDTO> allFabricDTOs = searchService.searchAnswer(findSearchRequest);
@@ -30,6 +44,16 @@ public class SearchController {
         modelAndView.setViewName("searchAnswer");
         return modelAndView;
     }
-
+//private class IfNull{
+//    public String getIfNothing() {
+//        return ifNothing;
+//    }
+//
+//    public void setIfNothing(String ifNothing) {
+//        this.ifNothing = ifNothing;
+//    }
+//
+//    private String ifNothing=null;
+//    }
 
 }

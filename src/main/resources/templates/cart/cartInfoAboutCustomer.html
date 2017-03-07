@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:replace="headerMain :: header-libs"></head>
+<head>
+    <link href="css/shoppingCart.css" rel="stylesheet" type="text/css"/>
+</head>
+<body class="background">
+<div th:replace="headerMain :: header"></div>
+<p/>
+    <div align="center" style="background-color: white; padding: 10px; width: 50%; margin-left: 25%; margin-top: 3%;
+    border-radius: 6px; color: black">
+        <div align="left">
+            &nbsp;&nbsp;&nbsp;Если Вы зарегистрированны, пожалуйста  <a href="#" data-toggle="modal" data-target="#go">
+        &nbsp; Войдите&nbsp;</a>, если хотите сделать заказ без регистрации заполните форму:</div>
+    <p/>
+        <form action="sendCustomerInfo" method="post">
+        <table border="0">
+            <tr>
+                <td>
+                    <label >Ф.И.О.</label>
+                </td>
+                <td>
+                    <input name="NickName" id="NickName"  type="text" pattern="[A-Za-zА-Яа-я0-9._]{3,}" required=""
+                           th:placeholder="Name" autofocus="" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Номер телефона:</label>
+                </td>
+            <td>
+                <input type="phone"  id="Phone" name="Phone" placeholder="***-***-**-**"
+                       pattern="[0-9-]{10,}" required=""/>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    <label >Адрес доставки:</label>
+                </td>
+                <td>
+                    <textarea class="buttons" rows="5" cols="35" pattern="[A-Za-zА-Яа-я0-9._]{3,}"  name="description"
+                              id="description" maxlength="255" placeholder="max length 255"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label> Email</label>
+                </td>
+                <td>
+                    <input type="email" name="Email" id="Email"  placeholder="Email"
+                           pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+                           required=""/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    <input type="submit" class="btnFurther" value="Далее"/>
+                </td>
+            </tr>
+           </table>
+        </form>
+    </div>
+
+
+
+        <!--<input type="button" class="btnFurther"  id="sendToJavaBtn"-->
+               <!--onclick="sendToJavaBuy()" style="width: 120px" value="Далее" />-->
+
+</body>
+</html>

@@ -17,7 +17,7 @@ public class BuyCurtainController {
     private CurtainService curtainService;
 
     @RequestMapping(value = "/buyCurtain", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView seeSelectedCurtain(@RequestParam(value = "hiddenCurtainId", required = false)Long id){
+    public ModelAndView seeSelectedCurtain(@RequestParam(value = "hiddenModelId", required = false)Long id){
         System.out.println("REQUEST ID: "+id);
 
         ModelAndView modelAndView = new ModelAndView();
