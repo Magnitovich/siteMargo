@@ -19,8 +19,6 @@ public class CheckUserRegistration {
 
     private String userName="";
 
-
-
     public void checkAuthenticationUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         //этот код проверяет пользователь отославший запрос существует ли в нашей БД(залогиненный)

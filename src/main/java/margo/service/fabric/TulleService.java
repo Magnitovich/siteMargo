@@ -62,7 +62,7 @@ public class TulleService {
         forFilter = fabricDTOs;
 
         String role = adminRoleService.userRole();
-        System.out.println("ROLE="+role);
+//        System.out.println("TulleService ROLE="+role);
         if (role.equals("user")) {
 
 //       Hiding of items which are equal to 0

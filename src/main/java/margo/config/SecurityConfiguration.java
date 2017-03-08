@@ -72,8 +72,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/allCart")
                 .permitAll()
 
-                .antMatchers("/searchOnTheSite**")
+                .antMatchers("/searchOnTheSite")
                 .permitAll()
+                .antMatchers("/searchOnTheSite/question")
+                .permitAll()
+
                 .antMatchers("/headerMain.html")
                 .permitAll()
                 .antMatchers("/orderFabric")

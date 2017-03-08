@@ -9,6 +9,9 @@
     <script src="js/jquery-ui.min.js" type="text/javascript"></script>
     <script src="js/jquery.validate.js" type="text/javascript"></script>
     <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <script src="js/search/search.js" ></script>
+
     <!--<script src="js/shoppingCart.js" ></script>-->
 
     <script src="css/bootstrap/js/bootstrap.min.js"/>
@@ -76,10 +79,12 @@
     <table align="center"  border="0" width="90%">
         <tr>
             <td>
-                <form action="searchOnTheSite" method="post">
+                <div class="searchOnAllPages">
+                <!--<form action="searchOnTheSite" method="post">-->
                     <input type="search" autocomplete="off" name="searchRequest" id="searchRequest"
                            placeholder=" Search" class="searchMenu" />
-                </form>
+                <!--</form>-->
+            </div>
             </td>
             <td>
                 <!--*************************************MENU******************************************-->
@@ -211,7 +216,7 @@
                                        id="description" maxlength="255" placeholder="max length 255"></textarea>
                             <p/>
                             <label for="Email" class="Email" data-icon="e" > Your email</label>
-                            <input type="email" name="Email" id="Email"  class="form-control" th:placeholder="#{.key.Email}"
+                            <input type="email" name="Email" id="Email"  class="form-control" th:placeholder="Email"
                                    pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
                                    required=""   />
                             <span id="emailError" style="display: none; color: black"> Email exist </span>
