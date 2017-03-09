@@ -48,8 +48,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/registrationConfirm.html/**")
                 .permitAll()
-                .antMatchers("/cartCustomer")
-                .permitAll()
 
                 .antMatchers("/registrationPage")
                 .permitAll()
@@ -70,6 +68,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/buyOrderFabric**")
                 .permitAll()
                 .antMatchers("/allCart")
+                .permitAll()
+                .antMatchers("/showAll")
+                .permitAll()
+                .antMatchers("/cartCustomer")
                 .permitAll()
 
                 .antMatchers("/searchOnTheSite")
