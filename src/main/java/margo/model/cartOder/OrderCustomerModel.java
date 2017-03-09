@@ -3,6 +3,7 @@ package margo.model.cartOder;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+
 @Entity
 @Table(name = "ORDER_FROM_CUSTOMER", schema = "public")
 public class OrderCustomerModel {

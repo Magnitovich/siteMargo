@@ -1,11 +1,8 @@
 package margo.model.cartOder.cartDTO;
 
-import margo.model.cartOder.OrderCustomerModel;
 
-import javax.persistence.Column;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 public class CustomerDTO {
 
