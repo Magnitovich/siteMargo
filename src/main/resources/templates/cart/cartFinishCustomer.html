@@ -4,17 +4,29 @@
 <head th:replace="headerMain :: header-libs"></head>
 <head>
     <link href="css/shoppingCart.css" rel="stylesheet" type="text/css"/>
-    <!--<script src="js/customerInfo.js" ></script>-->
 </head>
 <body class="background">
 <div th:replace="headerMain :: header"></div>
 <p/>
+
+<table width="50%" align="center" style="background-color: #F0F0F0; color: black; border-radius: 8px; padding-left: 20px;
+              padding-right: 20px; margin: 30px auto"  border="0">
+
+    <tbody id="trash"></tbody>
+    <tfoot>
+    <tr>
+        <td align="right" colspan="5">
+            Итого:
+        </td>
+        <td colspan="2" align="center" style="background-color: #dbdbdb; border-radius: 6px">
+            <b><span style="color: black;" id="totalCart"></span>&nbsp;грн.</b> </td>
+    </tr>
+
+    </tfoot>
+</table>
     <div align="center" style="background-color: white; padding: 10px; width: 50%; margin-left: 25%; margin-top: 3%;
     border-radius: 6px; color: black">
-        <div align="left">
-            &nbsp;&nbsp;&nbsp;Если Вы зарегистрированны, пожалуйста  <a href="#" data-toggle="modal" data-target="#go">
-        &nbsp; Войдите&nbsp;</a>, если хотите сделать заказ без регистрации заполните форму:</div>
-    <p/>
+
         <form action="showAll" method="post">
         <table border="0">
             <tr>
@@ -22,8 +34,7 @@
                     <label >Ф.И.О.</label>
                 </td>
                 <td>
-                    <input type="text"  required="" name="NickNameCustomerForSend" id="NickNameCustomerForSend"
-                           placeholder="Ф.И.О" autofocus="" />
+                   <span style="color: #000;" th:text="${NickNameCustomer}"></span>
                 </td>
             </tr>
             <tr>
@@ -31,8 +42,7 @@
                     <label>Номер телефона:</label>
                 </td>
             <td>
-                <input type="phone"  id="PhoneCustomerForSend" name="PhoneCustomerForSend" placeholder="***-***-**-**"
-                       pattern="[0-9-]{7,}" required=""/>
+                <span style="color: #000;" th:text="${PhoneCustomer}"></span>
             </td>
             </tr>
             <tr>
@@ -40,8 +50,7 @@
                     <label >Адрес доставки:</label>
                 </td>
                 <td>
-                    <textarea class="buttons" rows="5" cols="35" pattern="[A-Za-zА-Яа-я0-9._]{3,}"  name="descriptionCustomerForSend"
-                              id="descriptionCustomerForSend" maxlength="255" placeholder="max length 255"></textarea>
+                    <span style="color: #000;" th:text="${descriptionCustomer}"></span>
                 </td>
             </tr>
             <tr>
@@ -49,23 +58,17 @@
                     <label> Email</label>
                 </td>
                 <td>
-                    <input type="email" name="EmailCustomerForSend" id="EmailCustomerForSend"  placeholder="Email"
-                           pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
-                           required=""/>
+                    <span style="color: #000;" th:text="${EmailCustomer}"></span>
                 </td>
             </tr>
             <tr>
                 <td colspan="2" align="right">
-                    <input type="submit" class="btnFurther" value="Далее"/>
-                    <!--<input type="button" class="btnFurther" value="Test" onclick="sendCustomerInfo()"/>-->
+                    <input type="button" class="btnFurther" onclick="sendToJavaBuy()" value="Оформить заказ"/>
                 </td>
             </tr>
            </table>
         </form>
     </div>
-
-
-
         <!--<input type="button" class="btnFurther"  id="sendToJavaBtn"-->
                <!--onclick="sendToJavaBuy()" style="width: 120px" value="Далее" />-->
 

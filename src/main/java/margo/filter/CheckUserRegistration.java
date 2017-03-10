@@ -54,7 +54,4 @@ public class CheckUserRegistration {
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 }

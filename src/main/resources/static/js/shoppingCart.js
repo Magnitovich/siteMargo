@@ -15,13 +15,15 @@ $(document).ready(function() {
     var quantityInDB;
     var price;
     var quantityInDBFromJava;
-    var accessToReturn;
+    var idGoods;
 
     $("#clickToSummonsBuy").click(function (event) {
         //отмена привычных действий кнопки ссылки input(a)
         event.preventDefault();
         $('#goBuy').modal();
 
+        idGoods = $("#idGood").val();
+        console.log("ID: "+idGoods);
         photo = $("#photoId").val();
         name = $("#name").val();
         describe = $("#describeID").val();
@@ -61,12 +63,14 @@ $(document).ready(function() {
         //console.log(nameUser);
 
         var cartWhisky = new Array;
+
         if (localStorage.getItem("shoppingCart")) {
             cartWhisky = JSON.parse(localStorage.getItem("shoppingCart"));
 
         }
 
-        var itemCart = function (photo, name, describe, quantity, price) {
+        var itemCart = function (idGoods,photo, name, describe, quantity, price) {
+            this.idGoods = idGoods;
             this.photo = photo;
             this.name = name;
             this.describe = describe;
@@ -83,13 +87,13 @@ $(document).ready(function() {
                 if (Number(quantity) <= quantityInDB && Number(quantity) > 0) {
                         if (localStorage.getItem("shoppingCart") === null) {
                             cartWhisky = new Array;
-                            addItemToCart(photo, name, describe, quantity, price);
+                            addItemToCart(idGoods, photo, name, describe, quantity, price);
                             saveCart();
                             comeBack();
                         } else {
                             loadCart();
 
-                            addItemToCart(photo, name, describe, quantity, price);
+                            addItemToCart(idGoods,photo, name, describe, quantity, price);
                             saveCart();
                             comeBack(); //возвращаемся на главную страницу без изменения кол-ва виски, т.к. оно в корзине.
                             //sendBuyWhiskyInJava();
@@ -106,7 +110,7 @@ $(document).ready(function() {
                 }
             }
 //AddItemToCart(photo, name, describe, quantity, price)
-        function addItemToCart(photo, name, describe, quantity, price) {
+        function addItemToCart(idGoods,photo, name, describe, quantity, price) {
             for (var i in cartWhisky) {
                 if (cartWhisky[i].name === name) {
                     cartArray = listCart();
@@ -117,7 +121,7 @@ $(document).ready(function() {
                         quantity = cartWhisky[i].quantity + quantity;
                         console.log("quantity=Number(cartWhisky[i].quantity + quantity): " + quantity);
                         console.log("cartWhisky[i].quantity: " + cartWhisky[i].quantity);
-                        var itemName = new itemCart(photo, name, describe, quantity, price);
+                        var itemName = new itemCart(idGoods, photo, name, describe, quantity, price);
                         removeAllItemsFromCart(name);
                         cartWhisky.push(itemName);
                         saveCart();
@@ -130,7 +134,7 @@ $(document).ready(function() {
                 }
 
             }
-            var item = new itemCart(photo, name, describe, quantity, price);
+            var item = new itemCart(idGoods,photo, name, describe, quantity, price);
             cartWhisky.push(item);
             saveCart();
         }
@@ -312,6 +316,7 @@ $(document).ready(function() {
 
     });
 //clearCart()
+var cartWhisky = new Array;
     function clearCart() {
         cartWhisky = [];
         saveCart();
@@ -331,23 +336,24 @@ $(document).ready(function() {
         var i = 0;
         for (i in cartWhisky) {
             newArray[i] =
-                cartWhisky[i].name + "_" + cartWhisky[i].quantity + "_" + cartWhisky[i].photo + "_"
-                + cartWhisky[i].price;
+                cartWhisky[i].idGoods+"_"+cartWhisky[i].name + "_" + cartWhisky[i].quantity +
+                "_" + cartWhisky[i].photo + "_" + cartWhisky[i].price;
             i++;
         }
+        //console.log(cartWhisky.toString());
         $.ajax({
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
             type: "POST",
-            url: '/buySuccessfulWhisky',
+            url: '/buySuccessful',
             data: JSON.stringify(newArray),
 
             success: function (msg) {
-                clearCart(); //clear Local Storage
-                window.location.href = "warehouseWhisky";
-                //console.log(data)
+                //clearCart(); //clear Local Storage
+                window.location.href = "/";
+                console.log(data)
             }
         });
     }

@@ -11,8 +11,8 @@ import java.util.List;
 @Repository
 public interface CustomerOrderRepository extends CrudRepository<OrderCustomerModel, String>{
 
-    @Query(value = "select  cs from OrderCustomerModel cs WHERE name=?")
-    List<OrderCustomerModel> findByName(String name);
+//    @Query(value = "select  cs from OrderCustomerModel cs WHERE name=?")
+//    List<OrderCustomerModel> findByName(String name);
 //
 //    @Query(value = "select  cs from OrderCustomerModel cs WHERE EMAIL=?")
 //    List<OrderCustomerModel> findByEmail(String email);
