@@ -11,7 +11,7 @@ public interface CurtainRepository extends CrudRepository<CurtainModel, Long>{
 
     List<CurtainModel> findByPhoto(String photo);
 
-
+    List<CurtainModel> findById(Long id);
 
 
     List<CurtainModel> findByName(String name);

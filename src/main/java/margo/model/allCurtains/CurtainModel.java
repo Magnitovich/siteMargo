@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "CURTAIN", schema = "public")
-public class CurtainModel {
+public class CurtainModel extends AllFabricModel{
         @Column(name = "PHOTO")
         private String photo;
         @Column(name = "PHOTO01")

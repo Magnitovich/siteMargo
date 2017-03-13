@@ -28,6 +28,10 @@ public class CurtainController {
 //        System.out.println(colorModel);
 //        System.out.println(paint);
 //        System.out.println(structure);
+        for(CurtainDTO dto:curtainDTOs){
+            String k = dto.getDescription();
+            System.out.println("TextArea:  "+k);
+        }
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("allCurtain",curtainDTOs);
         modelAndView.addObject("price",filterPrice);

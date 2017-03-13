@@ -1,43 +1,25 @@
 package margo.model.allCurtains;
 
-import javax.persistence.*;
+
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "TULLE", schema = "public")
-public class TulleModel extends AllFabricModel{
 
-    @Column(name = "PHOTO")
+public class AllFabricModel {
+
     private String photo;
-    @Column(name = "PHOTO01")
     private String photo01;
-    @Column(name = "PHOTO02")
     private String photo02;
-    @Column(name = "PHOTO03")
     private String photo03;
-    @Column(name = "PHOTO04")
     private String photo04;
-    @Column(name = "PHOTO05")
     private String photo05;
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    @Column
     private String name;
-    @Column(name = "DESCRIPTION")
     private String description;
-    @Column(name = "STRUCTURE") //organza, curtain ....
     private String structure;
-    @Column(name = "PAINT") //abstraction, geometric  ....
     private String paint;
-    @Column(name = "HEIGHT")
     private String height;
-    @Column(name = "COLOR")
     private String color;
-    @Column(name = "QUANTITY")
     private Double quantity;
-    @Column(name = "PRICE")
     private BigDecimal price;
 
     public String getPhoto() {

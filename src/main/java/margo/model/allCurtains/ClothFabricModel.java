@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "CLOTH_FABRIC", schema = "public")
-public class ClothFabricModel {
+public class ClothFabricModel extends AllFabricModel{
 
 
     @Column(name = "PHOTO")
@@ -159,5 +159,17 @@ public class ClothFabricModel {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "ClothFabricModel{" +
+                "photo='" + photo + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                '}';
     }
 }

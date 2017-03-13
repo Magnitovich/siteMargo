@@ -1,6 +1,5 @@
 package margo.dao.fabric;
 
-import margo.model.allCurtains.CurtainModel;
 import margo.model.allCurtains.UpholsteryFabricModel;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -12,6 +11,7 @@ public interface UpholsteryFabricRepository extends CrudRepository<UpholsteryFab
 
     List<UpholsteryFabricModel> findByPhoto(String photo);
 
+    List<UpholsteryFabricModel> findById(Long id);
 
     List<UpholsteryFabricModel> findByName(String name);
 
