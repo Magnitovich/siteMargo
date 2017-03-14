@@ -23,69 +23,70 @@ public class CustomerService {
     @Autowired
     private CustomerOrderRepository orderRepository;
 
-    public CustomerDTO convertModelToDto(OrderCustomerModel model){
+    public CustomerDTO convertModelToDto(CustomerModel model){
 
         CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setCustomer_id(model.getCustomerOrder().getCustomer_id());
-        customerDTO.setNameCustomer(model.getCustomerOrder().getNameCustomer());
-        customerDTO.setPhoneCustomer(model.getCustomerOrder().getPhoneCustomer());
-        customerDTO.setOderDate(model.getCustomerOrder().getOderDate());
-        customerDTO.setAddressCustomer(model.getCustomerOrder().getAddressCustomer());
-        customerDTO.setEmailCustomer(model.getCustomerOrder().getEmailCustomer());
-
-        customerDTO.setName(model.getName());
-        customerDTO.setPhoto(model.getPhoto());
-        customerDTO.setPaint(model.getPaint());
-        customerDTO.setPrice(model.getPrice());
-        customerDTO.setColor(model.getColor());
-        customerDTO.setHeight(model.getHeight());
-        customerDTO.setStructure(model.getStructure());
-        customerDTO.setDescription(model.getDescription());
-        customerDTO.setQuantity(model.getQuantity());
-
+        Date date = new Date();
+        customerDTO.setCustomer_id(model.getCustomer_id());
+        customerDTO.setNameCustomer(model.getNameCustomer());
+        customerDTO.setPhoneCustomer(model.getPhoneCustomer());
+        customerDTO.setOderDate((model.getOderDate()).format(date));
+        customerDTO.setAddressCustomer(model.getAddressCustomer());
+        customerDTO.setEmailCustomer(model.getEmailCustomer());
 
         return customerDTO;
     }
 
-    public List<CustomerDTO> convertModelToDTO(List<OrderCustomerModel> modelList){
+    public List<CustomerDTO> convertListModelToDTO(List<CustomerModel> modelList){
 
         List<CustomerDTO> customerDTOs = new ArrayList<>();
-        for(OrderCustomerModel model: modelList){
+        for(CustomerModel model: modelList){
             CustomerDTO dto = convertModelToDto(model);
             customerDTOs.add(dto);
         }
         return customerDTOs;
     }
-
-    public void addInfoAboutCustomerOrder(final String nameCustomer, final String emailCustomer, final String phoneCustomer,
-                                          final String addressCustomer,
-                                          final String photo, final String nameFabric, final String description,
-                                          final String structure, final String paint, final String height,
-                                          final String color, final Double quantity, final BigDecimal price){
-
-        Date date = new Date();
-        CustomerModel customerModel = new CustomerModel();
-        OrderCustomerModel orderCustomerModel = new OrderCustomerModel();
-        customerModel.setNameCustomer(nameCustomer);
-        customerModel.setEmailCustomer(emailCustomer);
-        customerModel.setPhoneCustomer(phoneCustomer);
-        customerModel.setAddressCustomer(addressCustomer);
-        customerModel.setOderDate(date);
-
-        orderCustomerModel.setPhoto(photo);
-        orderCustomerModel.setName(nameFabric);
-        orderCustomerModel.setDescription(description);
-        orderCustomerModel.setStructure(structure);
-        orderCustomerModel.setPaint(paint);
-        orderCustomerModel.setHeight(height);
-        orderCustomerModel.setColor(color);
-        orderCustomerModel.setQuantity(quantity);
-        orderCustomerModel.setPrice(price);
-        orderCustomerModel.setCustomerOrder(customerModel);
-
-        orderRepository.save(orderCustomerModel);
-        customerRepository.save(customerModel);
+    public List<CustomerDTO> showAllCustomer(){
+        Iterable<CustomerModel> customerModels = customerRepository.findAll();
+        List<CustomerDTO> customerDTOs = convertListModelToDTO((List<CustomerModel>) customerModels);
+        return customerDTOs;
+    }
+    public CustomerDTO seeSelectedCustomer(Long id){
+       CustomerModel customerModel = customerRepository.findOne(id);
+       CustomerDTO customerDTO = convertModelToDto(customerModel);
+        return customerDTO;
 
     }
+
+//    public void addInfoAboutCustomerOrder(final String nameCustomer, final String emailCustomer, final String phoneCustomer,
+//                                          final String addressCustomer,
+//                                          final String photo, final String nameFabric, final String description,
+//                                          final String structure, final String paint, final String height,
+//                                          final String color, final Double quantity, final BigDecimal price){
+//
+//        Date date = new Date();
+//        CustomerModel customerModel = new CustomerModel();
+//        OrderCustomerModel orderCustomerModel = new OrderCustomerModel();
+//        customerModel.setNameCustomer(nameCustomer);
+//        customerModel.setEmailCustomer(emailCustomer);
+//        customerModel.setPhoneCustomer(phoneCustomer);
+//        customerModel.setAddressCustomer(addressCustomer);
+//        customerModel.setOderDate(date);
+//
+//        orderCustomerModel.setPhoto(photo);
+//        orderCustomerModel.setName(nameFabric);
+//        orderCustomerModel.setDescription(description);
+//        orderCustomerModel.setStructure(structure);
+//        orderCustomerModel.setPaint(paint);
+//        orderCustomerModel.setHeight(height);
+//        orderCustomerModel.setColor(color);
+//        orderCustomerModel.setQuantity(quantity);
+//        orderCustomerModel.setPrice(price);
+//        orderCustomerModel.setCustomerOrder(customerModel);
+//
+//        orderRepository.save(orderCustomerModel);
+//        customerRepository.save(customerModel);
+
+//    }
 
 }

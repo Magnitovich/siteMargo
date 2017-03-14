@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:fragment="header-libs">
     <link rel="stylesheet" type="text/css" href="css/registrationLoginForm/style2.css" />
     <link rel="stylesheet" type="text/css" href="css/registrationLoginForm/animate-custom.css" />
@@ -41,6 +41,12 @@
             </td>
             <td align="left">
                 <a href="/" ><img src="backgrounds/name.png"/></a>
+                <div sec:authorize="hasAuthority('admin')">
+                    <a href="administrationNotSleeps" style="text-decoration: none">
+                        <input type="button" style="background-color: #020029; border-radius: 5px;
+                        border-color: #dbdbdb; color: white;" value="Заказы"/>
+                    </a>
+                </div>
             </td>
             <td align="right">
                 <a href="index.html" class="linkTop" > &nbsp; ОПЛАТА&nbsp;&nbsp;   </a> </td>

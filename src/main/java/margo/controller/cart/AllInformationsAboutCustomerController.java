@@ -31,7 +31,7 @@ public class AllInformationsAboutCustomerController {
         phoneCustomer = phone;
         addressCustomer = addressDelivery;
         emailCustomer = email;
-        System.out.println("Name: "+name+" Phone: "+phone+" Address: "+addressDelivery+" Email: "+email);
+//        System.out.println("Name: "+name+" Phone: "+phone+" Address: "+addressDelivery+" Email: "+email);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("NickNameCustomer", nameCustomer);

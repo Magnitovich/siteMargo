@@ -9,13 +9,15 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CustomerRepository extends CrudRepository<CustomerModel, String>{
+public interface CustomerRepository extends CrudRepository<CustomerModel, Long>{
 
-    @Query(value = "select  cs from CustomerModel cs WHERE name=?")
-    List<CustomerModel> findByName(String name);
+//    @Query(value = "select  cs from CustomerModel cs WHERE name=?")
+    List<CustomerModel> findByNameCustomer(String nameCustomer);
 
-    @Query(value = "select  cs from CustomerModel cs WHERE EMAIL=?")
-    List<CustomerModel> findByEmail(String email);
+//    @Query(value = "select  cs from CustomerModel cs WHERE EMAIL=?")
+//    List<CustomerModel> findByEmail(String email);
+
+//    List<CustomerModel> findByCUSTOMER_ID(Long id);
 
 
 }

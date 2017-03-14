@@ -27,6 +27,30 @@ CREATE TABLE public.user_role (
   name CHARACTER VARYING(255)
 );
 
+CREATE TABLE public.customer (
+  customer_id BIGINT PRIMARY KEY NOT NULL DEFAULT nextval('customer_customer_id_seq'::regclass),
+  address_customer CHARACTER VARYING(255),
+  email_customer CHARACTER VARYING(255),
+  name_customer CHARACTER VARYING(255),
+  date_oder BYTEA,
+  phone_customer CHARACTER VARYING(255)
+);
+CREATE TABLE public.order_from_customer (
+  id BIGINT PRIMARY KEY NOT NULL DEFAULT nextval('order_from_customer_id_seq'::regclass),
+  color CHARACTER VARYING(255),
+  description CHARACTER VARYING(255),
+  height CHARACTER VARYING(255),
+  name CHARACTER VARYING(255),
+  paint CHARACTER VARYING(255),
+  photo CHARACTER VARYING(255),
+  price NUMERIC(19,2),
+  quantity DOUBLE PRECISION,
+  structure CHARACTER VARYING(255),
+  customer_id BIGINT NOT NULL,
+  FOREIGN KEY (customer_id) REFERENCES customer (customer_id)
+  MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
 
 
 CREATE TABLE public.cloth_fabric (

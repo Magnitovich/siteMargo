@@ -49,6 +49,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/registrationConfirm.html/**")
                 .permitAll()
 
+                .antMatchers("/administrationNotSleeps")
+                .permitAll()
+                .antMatchers("/customerData")
+                .permitAll()
+
                 .antMatchers("/registrationPage")
                 .permitAll()
                 .antMatchers("/")

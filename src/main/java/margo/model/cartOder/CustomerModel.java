@@ -1,6 +1,7 @@
 package margo.model.cartOder;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class CustomerModel {
     @Column(name = "ADDRESS_CUSTOMER")
     private String addressCustomer;
     @Column(name = "DATE_ODER")
-    private Date oderDate;
+    private SimpleDateFormat oderDate;
 
     @OneToMany(mappedBy = "customerOrder", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<OrderCustomerModel> customerModels;
@@ -67,11 +68,11 @@ public class CustomerModel {
         this.addressCustomer = addressCustomer;
     }
 
-    public Date getOderDate() {
+    public SimpleDateFormat getOderDate() {
         return oderDate;
     }
 
-    public void setOderDate(Date oderDate) {
+    public void setOderDate(SimpleDateFormat oderDate) {
         this.oderDate = oderDate;
     }
 

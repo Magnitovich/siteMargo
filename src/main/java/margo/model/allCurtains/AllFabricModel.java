@@ -22,6 +22,27 @@ public class AllFabricModel {
     private Double quantity;
     private BigDecimal price;
 
+    @Override
+    public String toString() {
+        return "AllFabricModel{" +
+                "photo='" + photo + '\'' +
+                ", photo01='" + photo01 + '\'' +
+                ", photo02='" + photo02 + '\'' +
+                ", photo03='" + photo03 + '\'' +
+                ", photo04='" + photo04 + '\'' +
+                ", photo05='" + photo05 + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", structure='" + structure + '\'' +
+                ", paint='" + paint + '\'' +
+                ", height='" + height + '\'' +
+                ", color='" + color + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                '}';
+    }
+
     public String getPhoto() {
         return photo;
     }

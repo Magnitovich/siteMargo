@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CustomerOrderRepository extends CrudRepository<OrderCustomerModel, String>{
+public interface CustomerOrderRepository extends CrudRepository<OrderCustomerModel, Long>{
 
 //    @Query(value = "select  cs from OrderCustomerModel cs WHERE name=?")
 //    List<OrderCustomerModel> findByName(String name);

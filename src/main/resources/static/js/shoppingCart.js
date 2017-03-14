@@ -213,6 +213,7 @@ $(document).ready(function() {
             }
             $('#trash').html(table);
             $("#totalCart").html(totalPriceInCart());
+            $("#totalCartShow").html(totalPriceInCart());
 
         }
 

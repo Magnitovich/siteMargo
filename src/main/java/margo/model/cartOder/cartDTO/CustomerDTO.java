@@ -2,6 +2,7 @@ package margo.model.cartOder.cartDTO;
 
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CustomerDTO {
@@ -11,17 +12,7 @@ public class CustomerDTO {
     private String emailCustomer;
     private String phoneCustomer;
     private String addressCustomer;
-    private Date oderDate;
-
-    private String photo;
-    private String name;
-    private String description;
-    private String structure;
-    private String paint;
-    private String height;
-    private String color;
-    private Double quantity;
-    private BigDecimal price;
+    private String oderDate;
 
     public Long getCustomer_id() {
         return customer_id;
@@ -63,83 +54,23 @@ public class CustomerDTO {
         this.addressCustomer = addressCustomer;
     }
 
-    public Date getOderDate() {
+    public String getOderDate() {
         return oderDate;
     }
 
-    public void setOderDate(Date oderDate) {
+    public void setOderDate(String oderDate) {
         this.oderDate = oderDate;
     }
 
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getStructure() {
-        return structure;
-    }
-
-    public void setStructure(String structure) {
-        this.structure = structure;
-    }
-
-    public String getPaint() {
-        return paint;
-    }
-
-    public void setPaint(String paint) {
-        this.paint = paint;
-    }
-
-    public String getHeight() {
-        return height;
-    }
-
-    public void setHeight(String height) {
-        this.height = height;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public Double getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Double quantity) {
-        this.quantity = quantity;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    @Override
+    public String toString() {
+        return "CustomerDTO{" +
+                "customer_id=" + customer_id +
+                ", nameCustomer='" + nameCustomer + '\'' +
+                ", emailCustomer='" + emailCustomer + '\'' +
+                ", phoneCustomer='" + phoneCustomer + '\'' +
+                ", addressCustomer='" + addressCustomer + '\'' +
+                ", oderDate='" + oderDate + '\'' +
+                '}';
     }
 }
