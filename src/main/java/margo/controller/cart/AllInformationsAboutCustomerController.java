@@ -58,14 +58,3 @@ public class AllInformationsAboutCustomerController {
         return addressCustomer;
     }
 }
-//    @RequestMapping(value = "/showAll/customerInfo", method = { RequestMethod.POST}
-//            , produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ModelAndView showAllForCustomer(@RequestParam(value = "NickName")String name,
-//                                           @RequestParam(value = "Phone")String phone,
-//                                           @RequestParam(value = "description")String addressDelivery,
-//                                           @RequestParam(value = "Email")String email) {
-//        System.out.println("Name: " + name + " Phone: " + phone + " Address: " + addressDelivery + " Email: " + email);
-//        ModelAndView modelAndView = new ModelAndView();
-//        return modelAndView;
-//
-//    }

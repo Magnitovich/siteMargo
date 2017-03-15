@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml"  xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="headerMain :: header-libs"></head>
+<head>
+    <title>Cloth fabrics, ткани для скатертей, скатерти</title>
+
+
+
+</head>
+<body class="background">
+<div th:replace="headerMain :: header"></div>
+<!--***********************//////////////***********SHOW***********\\\\\\\\\\\\\\\\\\\\\********************-->
+
+<p/>
+<!--<div th:each="customer : ${selected}" align="center">-->
+<div  align="left">
+    <table border="0" width="30%" >
+        <tr>
+            <td style="color: white;">Фото</td>
+            <td style="color: white;">Название</td>
+            <td style="color: white;">Описание</td>
+            <td style="color: white;">Структура</td>
+        </tr>
+        <tr th:each="customer : ${customerInfo}"  >
+            <td align="center">
+
+                <span th:text="${customer.nameCustomer}" >Name</span>
+                </td>
+            <td align="center">
+                <span th:text="${customer.oderDate}">oderDate</span>
+
+               </td>
+        </tr>
+    </table>
+</div>
+<div align="center">
+    <table border="0" width="80%">
+        <tr th:each="customerOrder : ${selected}" >
+            <td>
+                <img th:attr="src=${customerOrder.photo}" width="80" height="56" />
+            </td>
+            <td align="center">
+
+                <span th:text="${customerOrder.name}" >Name</span>
+            </td>
+            <td align="center">
+                <span  th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(customerOrder.description),'\n','&lt;br /&gt;'))}"></span>
+
+                <!--<span th:text="${customerOrder.description}">phone</span>-->
+            </td>
+            <td align="center">
+                Cтруктура: <span th:text="${customerOrder.structure}">oderDate</span><br/>
+                Рисунок: <span th:text="${customerOrder.paint}">oderDate</span><br/>
+                Высота: <span th:text="${customerOrder.height}">oderDate</span><br/>
+                Color:  <span th:text="${customerOrder.color}">oderDate</span><br/>
+
+            </td>
+            <td align="center" >
+                Количество:
+                <span th:text="${customerOrder.quantity}">emailCustomer</span>
+            </td>
+            <td align="center" >
+                Цена:
+                <span th:text="${customerOrder.price}">Address</span>
+
+            </td>
+
+        </tr>
+    </table>
+</div>
+</body>
+</html>

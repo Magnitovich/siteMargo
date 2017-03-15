@@ -12,9 +12,6 @@ public class AllCartController {
     @RequestMapping(value = "allCart", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView view() {
         ModelAndView modelAndView = new ModelAndView();
-//        String  email = receiveEmailFromSecurity.getEmail();
-//        System.out.println(email);
-//        modelAndView.addObject("email", email);
         modelAndView.setViewName("cart/cartStart");
         return modelAndView;
 

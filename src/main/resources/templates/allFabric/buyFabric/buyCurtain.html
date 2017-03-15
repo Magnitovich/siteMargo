@@ -52,7 +52,7 @@
 
             <td class="buy" width="25%"><span th:text="${curtain.name}" >Name</span>
                 <p/>Описание:
-            <span th:text="${curtain.description}">description</span>
+            <span th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(curtain.description),'\n','&lt;br /&gt;'))}">description</span>
             <p/>
                 Структура:
                 <span th:text="${curtain.structure}">structure</span>

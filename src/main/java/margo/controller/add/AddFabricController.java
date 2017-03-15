@@ -70,12 +70,6 @@ public class AddFabricController {
             dto.setPhoto03(addPattern.getNameFile03());
             dto.setPhoto04(addPattern.getNameFile04());
             dto.setPhoto05(addPattern.getNameFile05());
-// dto.setPhoto(nameFile);
-//            dto.setPhoto01(nameFile01);
-//            dto.setPhoto02(nameFile02);
-//            dto.setPhoto03(nameFile03);
-//            dto.setPhoto04(nameFile04);
-//            dto.setPhoto05(nameFile05);
 
             curtainService.editCurtain(dto);
             List<CurtainDTO> curtainDTOs = curtainService.seeAllModels();

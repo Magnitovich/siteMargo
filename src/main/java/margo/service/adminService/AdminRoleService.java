@@ -60,7 +60,6 @@ public class AdminRoleService {
             if (u.getName().equals(name)) {
                 return u;
             }
-
         }
         return null;
     }

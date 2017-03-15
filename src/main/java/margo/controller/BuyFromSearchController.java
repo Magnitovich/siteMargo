@@ -45,28 +45,24 @@ public class BuyFromSearchController {
                 List<CurtainDTO> curtainDTOs = curtainService.viewName(curtain);
                 modelAndView.addObject("selectedCurtain", curtainDTOs);
                 modelAndView.setViewName("allFabric/buyFabric/buyCurtain");
-//                    return modelAndView;
                 break;
             case "orderCurtain":
                 String order = orderCurtainService.convertIdToName(id);
                 List<OrderCurtainDTO> dtosOrder = orderCurtainService.viewName(order);
                 modelAndView.addObject("selected", dtosOrder);
                 modelAndView.setViewName("allFabric/buyFabric/buyTulleFabric");
-//                    return modelAndView;
                 break;
             case "tulle":
                 String tulle = tulleService.convertIdToName(id);
                 List<TulleDTO> tulleDto = tulleService.viewName(tulle);
                 modelAndView.addObject("selected", tulleDto);
                 modelAndView.setViewName("allFabric/buyFabric/buyTulleFabric");
-//                    return modelAndView;
                 break;
               case "upholsteryFabric":
                 String up = upholsteryFabricService.convertIdToName(id);
                 List<UpholsteryFabricDTO> upholstery = upholsteryFabricService.viewName(up);
                   modelAndView.addObject("selected", upholstery);
                   modelAndView.setViewName("allFabric/buyFabric/buyTulleFabric");
-//                    return modelAndView;
                 break;
 
         }

@@ -95,13 +95,13 @@ public class AddPattern {
             nameFile05 = relativeObjectsPath + dto.getObjectPhotoCurtain05().getOriginalFilename();
         }
 
-        System.out.println("NameFILE:");
-        System.out.println(nameFile+", ");
-        System.out.println(nameFile01+", ");
-        System.out.println(nameFile02+", ");
-        System.out.println(nameFile03+", ");
-        System.out.println(nameFile04+", ");
-        System.out.println(nameFile05+", ");
+//        System.out.println("NameFILE:");
+//        System.out.println(nameFile+", ");
+//        System.out.println(nameFile01+", ");
+//        System.out.println(nameFile02+", ");
+//        System.out.println(nameFile03+", ");
+//        System.out.println(nameFile04+", ");
+//        System.out.println(nameFile05+", ");
     }
 
     public String getNameFile() {

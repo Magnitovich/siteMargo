@@ -25,8 +25,7 @@ public class deleteTulle {
 
 
     @RequestMapping(value = "/deleteTulle/DELETE", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView deleteCurtain(@RequestBody List<Long> namesDeleted, Model model,
-                                      HttpServletRequest req){
+    public ModelAndView deleteCurtain(@RequestBody List<Long> namesDeleted){
     System.out.println(namesDeleted);
 
         service.delete(namesDeleted);

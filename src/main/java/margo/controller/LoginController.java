@@ -20,8 +20,6 @@ import java.util.UUID;
 @Controller
 public class LoginController {
 
-//    @Autowired
-//    private UserDetailsService userDetailsService;
     @Autowired
     private AdminRoleService adminRoleService;
 
@@ -34,9 +32,7 @@ public class LoginController {
     @RequestMapping(value = "/login" , method = {RequestMethod.GET})  //I NOT WRITE METHOD POST
     public ModelAndView loginPage(){
         ModelAndView modelAndView = new ModelAndView();
-//        if(checkUserRegistration.getAuthendificationNumber()==0){
-//            throw new UserNotAuthorizedException();
-//        }
+
         modelAndView.setViewName("login");
         return modelAndView;
     }
@@ -52,11 +48,10 @@ public class LoginController {
 
         Integer activityFalse = 0;
         String verification = UUID.randomUUID().toString();  //for send email
-        System.out.println("Nick= "+name+" pass= "+password+" phone ="+phone+
-                "descriptions: "+description+" email= "+email+" verification"+verification);
+//        System.out.println("Nick= "+name+" pass= "+password+" phone ="+phone+
+//                "descriptions: "+description+" email= "+email+" verification"+verification);
 
         adminRoleService.addNewUser(name, password, phone, email, activityFalse, verification, description);
-//
         sendingMail.sendingMessage(email, verification);
 
         System.out.println(name + " pass:= " + password+ " email: "+email);

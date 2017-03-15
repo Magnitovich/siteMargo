@@ -25,9 +25,6 @@ public class CurtainController {
         ArrayList paint =curtainService.seePaint();
         ArrayList structure =curtainService.seeStructure();
         ArrayList filterPrice = curtainService.seePrice();
-//        System.out.println(colorModel);
-//        System.out.println(paint);
-//        System.out.println(structure);
         for(CurtainDTO dto:curtainDTOs){
             String k = dto.getDescription();
             System.out.println("TextArea:  "+k);

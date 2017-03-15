@@ -61,10 +61,6 @@ public class CartService {
 
            checkInfo(clothFabricRepository, modelToSend, quantityInDB, quantityFromUI);
 
-//           model.getPhoto(); model.getName(); model.getDescription(); model.getStructure();
-//           model.getPrice(); model.getPaint(); model.getHeight(); model.getColor();            model.setQuantity(quantityFromUI);
-//           fabricModels.add(model);
-//
            saveInformationInCustomerDB(customerModel, model, quantityFromUI);
 
 //           if (quantityInDB == 0) {

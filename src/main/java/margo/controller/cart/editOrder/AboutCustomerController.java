@@ -18,11 +18,12 @@ public class AboutCustomerController {
     @RequestMapping(value = "/customerData", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView infoAboutCustomer(@RequestParam(value = "customerInfo")Long id){
 
-        System.out.println("ID: "+id);
+//        System.out.println("ID: "+id);
         ModelAndView modelAndView = new ModelAndView();
         CustomerDTO customerDTO = customerService.seeSelectedCustomer(id);
         modelAndView.addObject("selected", customerDTO);
         modelAndView.setViewName("cart/order/customerInfo");
         return modelAndView;
+
     }
 }

@@ -23,8 +23,7 @@ public class deleteCloth {
     private ClothFabricService clothFabricService;
 
     @RequestMapping(value = "/deleteCloth/DELETE", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView deleteCurtain(@RequestBody List<Long> namesDeleted, Model model,
-                                      HttpServletRequest req){
+    public ModelAndView deleteCurtain(@RequestBody List<Long> namesDeleted){
     System.out.println(namesDeleted);
 
         clothFabricService.deleteCloth(namesDeleted);

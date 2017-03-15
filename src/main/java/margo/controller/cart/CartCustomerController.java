@@ -10,9 +10,7 @@ public class CartCustomerController {
     @RequestMapping(value = "cartCustomer", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView view() {
         ModelAndView modelAndView = new ModelAndView();
-//        String  email = receiveEmailFromSecurity.getEmail();
-//        System.out.println(email);
-//        modelAndView.addObject("email", email);
+
         modelAndView.setViewName("cart/cartInfoAboutCustomer");
         return modelAndView;
 

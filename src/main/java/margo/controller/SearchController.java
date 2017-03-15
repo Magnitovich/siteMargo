@@ -48,14 +48,3 @@ public class SearchController {
         return modelAndView;
     }
 }
-//
-//    @RequestMapping(value = "/searchOnTheSite", method = {RequestMethod.GET, RequestMethod.POST})
-//    public ModelAndView receiveQuestion(@RequestParam(value = "searchRequest")
-//                                                     String findSearchRequest) {
-//        System.out.println("We are SEARCHING: "+findSearchRequest);
-//        List<AllFabricDTO> allFindingFabricDTOs = searchService.searchAnswer(findSearchRequest);
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.addObject("allThatWeCanSearch", allFindingFabricDTOs);
-//        modelAndView.setViewName("search/searchAnswer");
-//        return modelAndView;
-//    }

@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 @Table(name = "CLOTH_FABRIC", schema = "public")
 public class ClothFabricModel extends AllFabricModel{
 
-
     @Column(name = "PHOTO")
     private String photo;
     @Column(name = "PHOTO01")

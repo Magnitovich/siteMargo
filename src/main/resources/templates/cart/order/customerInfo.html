@@ -48,7 +48,8 @@
                 </td>
             <td align="center" >
 
-                <span th:text="${customer.addressCustomer}">Address</span>
+                <span  th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(customer.addressCustomer),'\n','&lt;br /&gt;'))}">Address</span>
+                <!--<span th:text="${customer.addressCustomer}">Address</span>-->
 
             </td>
 

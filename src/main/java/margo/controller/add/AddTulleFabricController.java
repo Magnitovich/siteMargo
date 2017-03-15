@@ -95,8 +95,6 @@ public class AddTulleFabricController {
                                 addPattern.getNameFile05(), dto.getName(), dto.getDescription(), dto.getStructure(),
                                 dto.getPaint(), dto.getHeight(), dto.getColor(), dto.getQuantity(), dto.getPrice());
 
-                List<TulleDTO> list = service.seeAllModels();
-
                 List<TulleDTO> curtainDTOs = service.seeAllModels();
                 ArrayList colorModel =service.seeColor();
                 ArrayList paint =service.seePaint();

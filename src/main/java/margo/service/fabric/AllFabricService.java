@@ -28,25 +28,6 @@ public class AllFabricService {
     @Autowired
     private CurtainRepository curtainRepository;
 
-//    public List<AllFabricDTO> seeAllFabric(){
-//
-//        List<AllFabricDTO> allFabricDTOs = new ArrayList<>();
-//
-//        Iterable<ClothFabricModel> clothFabricDTOs = clothFabricRepository.findAll();
-//        List<CurtainDTO> curtainDTOs = curtainService.seeAllModels();
-////        List<OrderCurtainDTO> orderCurtainDTOs = orderCurtainService.seeAllModels();
-////        List<TulleDTO> tulleDTOs = tulleService.seeAllModels();
-////        List<UpholsteryFabricDTO> upholsteryFabricDTOs = upholsteryFabricService.seeAllModels();
-//
-//        allFabricDTOs.add((AllFabricDTO) clothFabricDTOs);
-//        allFabricDTOs.add((AllFabricDTO) curtainDTOs);
-////        allFabricDTOs.add((AllFabricDTO) orderCurtainDTOs);
-////        allFabricDTOs.add((AllFabricDTO) tulleDTOs);
-////        allFabricDTOs.add((AllFabricDTO) upholsteryFabricDTOs);
-//
-//        return allFabricDTOs;
-//    }
-
     public List<ClothFabricDTO> seeClothFabric(){
         List<ClothFabricDTO> clothFabricDTOs = clothFabricService.seeAllCloth();
         return clothFabricDTOs;
@@ -67,7 +48,4 @@ public class AllFabricService {
         List<UpholsteryFabricDTO> upholsteryFabricDTOs = upholsteryFabricService.seeAllModels();
         return upholsteryFabricDTOs;
     }
-
-
-
 }

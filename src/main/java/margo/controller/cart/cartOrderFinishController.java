@@ -40,7 +40,7 @@ public class CartOrderFinishController {
 
         } else {
             CustomerModel customerModel = new CustomerModel();
-            SimpleDateFormat date = new SimpleDateFormat("HH:mm yyyy.MM.dd");
+            SimpleDateFormat date = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
             customerModel.setNameCustomer(allInformation.getNameCustomer());
             customerModel.setEmailCustomer(allInformation.getEmailCustomer());
