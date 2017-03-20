@@ -9,34 +9,37 @@
 <div th:replace="headerMain :: header"></div>
 <p/>
 
-<table width="50%" align="center" style="background-color: #F0F0F0; color: black; border-radius: 8px; padding-left: 20px;
-              padding-right: 20px; margin: 30px auto"  border="0">
-
-    <tbody id="trash"></tbody>
-    <tfoot>
+<table width="60%" align="center" style="background-color: transparent; color: black; border-radius: 8px;
+padding-left: 20px; padding-right: 20px; margin: 30px auto"  border="0">
     <tr>
-        <td align="right" colspan="5">
-            Итого:
+        <td style="background-color: #F0F0F0; color: black; border-radius: 8px; padding-left: 20px; margin: 30px auto">
+            <table  align="center"   border="0">
+
+                <tbody id="trash"></tbody>
+                <tfoot>
+                    <tr>
+                        <td align="right" colspan="5"> Итого:  </td>
+                        <td colspan="2" align="center" style="background-color: #dbdbdb; border-radius: 6px">
+                            <b><span style="color: black;" id="totalCartShow"></span>&nbsp;грн.</b> </td>
+                    </tr>
+                </tfoot>
+            </table>
         </td>
-        <td colspan="2" align="center" style="background-color: #dbdbdb; border-radius: 6px">
-            <b><span style="color: black;" id="totalCartShow"></span>&nbsp;грн.</b> </td>
-    </tr>
-
-    </tfoot>
-</table>
-    <div align="center" style="background-color: white; padding: 10px; width: 50%; margin-left: 25%; margin-top: 3%;
-    border-radius: 6px; color: black">
-
-        <form action="showAll" method="post">
-        <table border="0">
-            <tr>
+    <!--</tr>-->
+    <!--<tr>-->
+        <td>&nbsp;</td>
+        <td valign="top" style="background-color: white; padding: 10px; margin-top: 3%; margin-left: 20px; border-radius: 6px;">
+        <table  border="0" >
+            <form action="showAll" method="post">
+                <tr>
                 <td>
                     <label >Ф.И.О.</label>
                 </td>
                 <td>
                    <span style="color: #000;" th:text="${NickNameCustomer}"></span>
                 </td>
-            </tr>
+          </tr>
+                <tr><td colspan="2"><div style=" height: 2px; background: #a39fa1;" >&nbsp;</div> </td> </tr>
             <tr>
                 <td>
                     <label>Номер телефона:</label>
@@ -45,14 +48,17 @@
                 <span style="color: #000;" th:text="${PhoneCustomer}"></span>
             </td>
             </tr>
+                <tr><td colspan="2"><div style=" height: 2px; background: #a39fa1;" >&nbsp;</div> </td> </tr>
             <tr>
                 <td>
                     <label >Адрес доставки:</label>
                 </td>
                 <td>
-                    <span style="color: #000;" th:text="${descriptionCustomer}"></span>
+                    <span style="color: #000;"
+                          th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(descriptionCustomer),'\n','&lt;br /&gt;'))}"></span>
                 </td>
             </tr>
+                <tr><td colspan="2"><div style=" height: 2px; background: #a39fa1;" >&nbsp;</div> </td> </tr>
             <tr>
                 <td>
                     <label> Email</label>
@@ -61,14 +67,21 @@
                     <span style="color: #000;" th:text="${EmailCustomer}"></span>
                 </td>
             </tr>
+                <tr><td colspan="2"><div style=" height: 2px; background: #a39fa1;" >&nbsp;</div> </td> </tr>
             <tr>
                 <td colspan="2" align="right">
+                    <p/>
                     <input type="button" class="btnFurther" onclick="sendToJavaBuy()" value="Оформить заказ"/>
                 </td>
             </tr>
-           </table>
+
         </form>
-    </div>
+           </table>
+            </td>
+    </tr>
+    </table>
+
+    <!--</div>-->
         <!--<input type="button" class="btnFurther"  id="sendToJavaBtn"-->
                <!--onclick="sendToJavaBuy()" style="width: 120px" value="Далее" />-->
 

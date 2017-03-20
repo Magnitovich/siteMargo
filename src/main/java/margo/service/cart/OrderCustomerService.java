@@ -55,7 +55,6 @@ public class OrderCustomerService {
     public List<OrderCustomerDTO> seeSelectedCustomer(Long id){
         List<OrderCustomerModel> customerModel = orderRepository.findOrderCustomer(id);
         List<OrderCustomerDTO> customerDTO = convertListModelToDTO(customerModel);
-        System.out.println(customerDTO);
         return customerDTO;
 
     }

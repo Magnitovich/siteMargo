@@ -4,7 +4,7 @@
 <head>
     <title>Cloth fabrics, ткани для скатертей, скатерти</title>
 
-
+    <script src="js/cart/adminPanelForOrderCustomer.js" ></script>
 
 </head>
 <body class="background">
@@ -14,21 +14,8 @@
 <p/>
 <!--<div th:each="customer : ${selected}" align="center">-->
 <div  align="center">
-    <table border="0" width="70%" style="margin-top: 20px">
-        <!--<tr>-->
-            <!--<td align="center">Ф.И.О.</td>-->
-            <!--<td align="center">Телефон.</td>-->
-            <!--<td align="center">Дата заказа.</td>-->
-            <!--<td align="center">Данные о заказчике.</td>-->
-            <!--<td align="center">Просмотреть заказ.</td>-->
-        <!--</tr>-->
+    <table border="1" width="70%" style="margin-top: 20px">
         <tr th:each="customer : ${selected}"  >
-            <!--<td align="center" width="45%" height="10%">-->
-
-                <!--<a href="" data-toggle="modal" data-target="#goImage">-->
-                    <!--<img th:attr="src=${curtain.photo}" width="320" height="456"/><br/>-->
-                <!--</a>-->
-            <!--</td>-->
 
             <td align="center">
 
@@ -40,40 +27,35 @@
                 </td>
             <td align="center">
                 <span th:text="${customer.oderDate}">oderDate</span>
-                <!--<span th:text="${customer.emailCustomer}">emailCustomer</span>-->
                </td>
             <td align="center" >
                 <form action="customerData" method="post">
                     <button style="background-color: #009700; color: white; border-radius: 9px;">Заказчик</button>
                     <input type="hidden" name="customerInfo" id="customerInfo" th:value="${customer.customer_id}"/>
                 </form>
-                <br/>
-                <!--<span th:text="${customer.addressCustomer}">Address</span>-->
                 </td>
             <td align="center" >
                 <form action="orderFromCustomer" method="post">
-                    <button style="background-color: #009700; color: white; border-radius: 9px;" >Заказ</button>
+                <!--<div class="classEverything">-->
+                    <button  style="background-color: #009700; color: white; border-radius: 9px;" >Заказ</button>
+                    <!--<button class="classEverything" onclick="orderIdForCheck()" style="background-color: #009700; color: white; border-radius: 9px;" >Заказ</button>-->
                     <input type="hidden" name="orderCustomer" id="orderCustomer" th:value="${customer.customer_id}"/>
                 </form>
-                <br/>
+                <!--<br/>-->
+                <!--</div>-->
+            </td>
+            <td align="center">
+                <!--<br/>-->&nbsp;
+                <div class="deleteDiv">
 
+                    <input type="hidden"  name="deleteBtn" th:value="${customer.customer_id}"/>
+                        <img src="icons/delete16.gif" style="cursor: pointer" title="Удалить заказ"/>
+                </div>
+                <br/>
             </td>
 
         </tr>
-        <!--<tr th:each="curtain : ${selected}">-->
-            <!--<td colspan="5" align="Right" width="80">-->
-                <!--<input type="hidden" name="quantityInDB" id="quantityInDB" th:value="${curtain.quantity}"/>-->
-                <!--<input type="hidden"  id="describeID" th:value="${curtain.description}"/>-->
-                <!--<input type="hidden" name="photoId" id="photoId" th:value="${curtain.photo}"/>-->
-                <!--<input type="hidden" name="priceID" id="priceID" th:value="${curtain.price}"/>-->
 
-                <!--&lt;!&ndash;********************************NameWhisky*********************************&ndash;&gt;-->
-                <!--<input type="hidden" id="name" name="name" th:value="${curtain.name}" />-->
-                <!--<input type="button" class="buyMenu" id="clickToSummonsBuy"  style="width: 60px" value="Купить"/>-->
-                <!--&lt;!&ndash;<input type="button"  data-toggle="modal" data-target="#goBuy" id="clickToSummonsBuy"  style="width: 60px" value="Купить"/>&ndash;&gt;-->
-
-            <!--</td>-->
-        <!--</tr>-->
     </table>
 </div>
 

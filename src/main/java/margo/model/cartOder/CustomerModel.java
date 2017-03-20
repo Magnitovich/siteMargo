@@ -23,7 +23,11 @@ public class CustomerModel {
     @Column(name = "ADDRESS_CUSTOMER")
     private String addressCustomer;
     @Column(name = "DATE_ODER")
-    private SimpleDateFormat oderDate;
+    private Date oderDate;
+    @Column(name = "RECEIVE_ORDER")
+    private Boolean reciveOrder;
+    @Column(name = "SENT_ORDER")
+    private Boolean sentOrder;
 
     @OneToMany(mappedBy = "customerOrder", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<OrderCustomerModel> customerModels;
@@ -68,12 +72,29 @@ public class CustomerModel {
         this.addressCustomer = addressCustomer;
     }
 
-    public SimpleDateFormat getOderDate() {
+
+    public Date getOderDate() {
         return oderDate;
     }
 
-    public void setOderDate(SimpleDateFormat oderDate) {
+    public void setOderDate(Date oderDate) {
         this.oderDate = oderDate;
+    }
+
+    public Boolean getReciveOrder() {
+        return reciveOrder;
+    }
+
+    public void setReciveOrder(Boolean reciveOrder) {
+        this.reciveOrder = reciveOrder;
+    }
+
+    public Boolean getSentOrder() {
+        return sentOrder;
+    }
+
+    public void setSentOrder(Boolean sentOrder) {
+        this.sentOrder = sentOrder;
     }
 
     public List<OrderCustomerModel> getCustomerModels() {

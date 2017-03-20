@@ -55,6 +55,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/orderFromCustomer")
                 .permitAll()
+                .antMatchers("/delete/customerOrder")
+                .permitAll()
+
+                .antMatchers("/delete/oneOrderFromCustomer")
+                .permitAll()
 
                 .antMatchers("/registrationPage")
                 .permitAll()

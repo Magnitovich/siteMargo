@@ -3,7 +3,7 @@
 <head th:replace="headerMain :: header-libs"></head>
 <head>
     <title>Cloth fabrics, ткани для скатертей, скатерти</title>
-
+    <script src="js/cart/adminPanelForOrderCustomer.js" ></script>
 
 
 </head>
@@ -14,13 +14,8 @@
 <p/>
 <!--<div th:each="customer : ${selected}" align="center">-->
 <div  align="left">
-    <table border="0" width="30%" >
-        <tr>
-            <td style="color: white;">Фото</td>
-            <td style="color: white;">Название</td>
-            <td style="color: white;">Описание</td>
-            <td style="color: white;">Структура</td>
-        </tr>
+    <table border="0" style="background-color: darkgray; color: #000;" width="30%" >
+       
         <tr th:each="customer : ${customerInfo}"  >
             <td align="center">
 
@@ -33,8 +28,22 @@
         </tr>
     </table>
 </div>
+<p/>
 <div align="center">
-    <table border="0" width="80%">
+    <table border="1" width="80%" style="margin-top: 20px; border-collapse: collapse; border-radius: 10px">
+        <tr style="background-color: darkgray; border-radius: 7px">
+            <td  align="center" style="color: white;">Фото</td>
+            <td  align="center" style="color: white;">Название</td>
+            <td  align="center" style="color: white;">Описание</td>
+            <td  align="center" style="color: white;">Структура</td>
+            <td  align="center" style="color: white;">Рисунок</td>
+            <td  align="center" style="color: white;">Высота</td>
+            <td  align="center" style="color: white;">Цвет</td>
+            <td  align="center" style="color: white;">Количество</td>
+            <td  align="center" style="color: white;">Цена</td>
+            <td ></td>
+            <td ></td>
+        </tr>
         <tr th:each="customerOrder : ${selected}" >
             <td>
                 <img th:attr="src=${customerOrder.photo}" width="80" height="56" />
@@ -49,22 +58,43 @@
                 <!--<span th:text="${customerOrder.description}">phone</span>-->
             </td>
             <td align="center">
-                Cтруктура: <span th:text="${customerOrder.structure}">oderDate</span><br/>
-                Рисунок: <span th:text="${customerOrder.paint}">oderDate</span><br/>
-                Высота: <span th:text="${customerOrder.height}">oderDate</span><br/>
-                Color:  <span th:text="${customerOrder.color}">oderDate</span><br/>
+               <span th:text="${customerOrder.structure}">oderDate</span>
+                </td>
+            <td>
+               <span th:text="${customerOrder.paint}">oderDate</span>
+                </td>
+            <td>
+                 <span th:text="${customerOrder.height}">oderDate</span><br/>
+                </td>
+            <td>
+                  <span th:text="${customerOrder.color}">oderDate</span><br/>
 
             </td>
             <td align="center" >
-                Количество:
+
                 <span th:text="${customerOrder.quantity}">emailCustomer</span>
             </td>
             <td align="center" >
-                Цена:
+                
                 <span th:text="${customerOrder.price}">Address</span>
 
             </td>
-
+            <td>
+                <form action="editInfoFromCustomerOrder" method="post">
+                    <input type="hidden" name="editOrderCustomer" th:value="${customerOrder.name}"/>
+                    <input type="submit"/>
+                </form>
+            </td>
+            <td align="center" >
+                <!--<form action="/delete/oneOrderFromCustomer" method="post">-->
+                <div class="deleteOrderCustomer">
+                    <input type="hidden"  name="deleteForOrderCustomer" th:value="${customerOrder.id}"/>
+                    <!--<input type="hidden"  name="deleteForOrderCustomer" th:value="${customerOrder.name}"/>-->
+                <input type="submit" class="submitForDeleteInCustomerOrder" title="Удалить заказ" value=""/>
+                    <!--<img src="icons/delete16.gif" style="cursor: pointer" title="Удалить заказ"/>-->
+                </div>
+                <!--</form>-->
+            </td>
         </tr>
     </table>
 </div>

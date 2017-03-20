@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,11 +27,11 @@ public class CustomerService {
     public CustomerDTO convertModelToDto(CustomerModel model){
 
         CustomerDTO customerDTO = new CustomerDTO();
-        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         customerDTO.setCustomer_id(model.getCustomer_id());
         customerDTO.setNameCustomer(model.getNameCustomer());
         customerDTO.setPhoneCustomer(model.getPhoneCustomer());
-        customerDTO.setOderDate((model.getOderDate()).format(date));
+        customerDTO.setOderDate(sdf.format(model.getOderDate()));
         customerDTO.setAddressCustomer(model.getAddressCustomer());
         customerDTO.setEmailCustomer(model.getEmailCustomer());
 
@@ -56,6 +57,13 @@ public class CustomerService {
        CustomerDTO customerDTO = convertModelToDto(customerModel);
         return customerDTO;
 
+    }
+    public void deleteCustomerOrder(Long id){
+        customerRepository.delete(id);
+    }
+
+    public void deleteOneOrderCustomer(Long id){
+        orderRepository.delete(id);
     }
 
 //    public void addInfoAboutCustomerOrder(final String nameCustomer, final String emailCustomer, final String phoneCustomer,

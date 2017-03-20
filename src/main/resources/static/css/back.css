@@ -109,3 +109,11 @@ a {
     font-family: "Times New Roman";
     font-size: medium;
 }
+.submitForDeleteInCustomerOrder{
+    width: 16px;
+    height: 16px;
+    background: transparent url("../icons/delete16.gif");
+    border-color: #020029;
+    cursor: pointer;
+    cursor: hand;
+}

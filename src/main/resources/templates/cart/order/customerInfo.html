@@ -15,20 +15,8 @@
 <!--<div th:each="customer : ${selected}" align="center">-->
 <div  align="center">
     <table border="0" width="70%" style="margin-top: 20px">
-        <!--<tr>-->
-            <!--<td align="center">Ф.И.О.</td>-->
-            <!--<td align="center">Телефон.</td>-->
-            <!--<td align="center">Дата заказа.</td>-->
-            <!--<td align="center">Данные о заказчике.</td>-->
-            <!--<td align="center">Просмотреть заказ.</td>-->
-        <!--</tr>-->
-        <tr th:each="customer : ${selected}"  >
-            <!--<td align="center" width="45%" height="10%">-->
 
-                <!--<a href="" data-toggle="modal" data-target="#goImage">-->
-                    <!--<img th:attr="src=${curtain.photo}" width="320" height="456"/><br/>-->
-                <!--</a>-->
-            <!--</td>-->
+        <tr th:each="customer : ${selected}"  >
 
             <td align="center">
 
@@ -46,10 +34,9 @@
 
                 <span th:text="${customer.emailCustomer}">emailCustomer</span>
                 </td>
-            <td align="center" >
+            <td align="left" >
 
                 <span  th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(customer.addressCustomer),'\n','&lt;br /&gt;'))}">Address</span>
-                <!--<span th:text="${customer.addressCustomer}">Address</span>-->
 
             </td>
 

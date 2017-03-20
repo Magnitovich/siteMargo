@@ -12,8 +12,13 @@ import java.util.List;
 @Repository
 public interface CustomerOrderRepository extends CrudRepository<OrderCustomerModel, Long>{
 
+//    OrderCustomerModel findByName (String name);
+//    List<OrderCustomerModel> findByName (String name);
+
     @Query("SELECT o FROM OrderCustomerModel o WHERE o.customerOrder.customer_id = :id")
 //        @Query(value = "select  cs from OrderCustomerModel cs WHERE customer_id=?")
     List<OrderCustomerModel> findOrderCustomer(@Param("id") Long customer_id);
+
+
 
 }

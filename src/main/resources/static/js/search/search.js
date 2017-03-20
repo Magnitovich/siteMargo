@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("div[class='searchOnAllPages'] input").change(function () {
         var searchWord = $("#searchRequest").val();
-        console.log("WE are Searching: " + searchWord);
+        //console.log("WE are Searching: " + searchWord);
 
         $.ajax({   //тип запроса
             headers: {

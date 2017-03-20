@@ -208,7 +208,7 @@ $(document).ready(function() {
                 +<td width="30" align="center">' + cartArray[r].price + '</td>\
                 +<td width="60" align="right">&nbsp;&nbsp;' + cartArray[r].total + '&nbsp;грн.</td>\
                 +<td align="center" width="20"><button class="deleteItem" data-name="' + cartArray[r].name + '">' +
-                    '<img src="icons/delete16.gif" alt="удалить"/></button></td></tr>' +
+                    '<img src="icons/delete16.gif" title="Удалить заказ"/></button></td></tr>' +
                     '+<tr><td colspan="7"><div style=" height: 2px; background: #a39fa1;" >&nbsp;</div> </td> </tr>';
             }
             $('#trash').html(table);

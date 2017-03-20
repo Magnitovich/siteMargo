@@ -22,7 +22,7 @@ public class deleteCurtain {
     @RequestMapping(value = "/delete/DELETE", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView deleteCurtain(@RequestBody List<Long> namesDeleted, Model model,
                                       HttpServletRequest req){
-    System.out.println(namesDeleted);
+//    System.out.println("Name delete: "+namesDeleted);
 
         curtainService.deleteCurtain(namesDeleted);
 

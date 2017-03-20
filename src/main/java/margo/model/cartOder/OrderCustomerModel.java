@@ -121,4 +121,21 @@ public class OrderCustomerModel {
     public void setCustomerOrder(CustomerModel customerOrder) {
         this.customerOrder = customerOrder;
     }
+
+    @Override
+    public String toString() {
+        return "OrderCustomerModel{" +
+                "id=" + id +
+                ", photo='" + photo + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", structure='" + structure + '\'' +
+                ", paint='" + paint + '\'' +
+                ", height='" + height + '\'' +
+                ", color='" + color + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", customerOrder=" + customerOrder +
+                '}';
+    }
 }
