@@ -34,6 +34,8 @@ public class CustomerService {
         customerDTO.setOderDate(sdf.format(model.getOderDate()));
         customerDTO.setAddressCustomer(model.getAddressCustomer());
         customerDTO.setEmailCustomer(model.getEmailCustomer());
+        customerDTO.setReciveOrder(model.getReciveOrder());
+        customerDTO.setSentOrder(model.getSentOrder());
 
         return customerDTO;
     }
@@ -48,7 +50,7 @@ public class CustomerService {
         return customerDTOs;
     }
     public List<CustomerDTO> showAllCustomer(){
-        Iterable<CustomerModel> customerModels = customerRepository.findAll();
+        Iterable<CustomerModel> customerModels = customerRepository.findAllFromDate();
         List<CustomerDTO> customerDTOs = convertListModelToDTO((List<CustomerModel>) customerModels);
         return customerDTOs;
     }

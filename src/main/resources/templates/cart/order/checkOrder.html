@@ -2,9 +2,10 @@
 <html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml"  xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="headerMain :: header-libs"></head>
 <head>
-    <title>Cloth fabrics, ткани для скатертей, скатерти</title>
+    <title>Панель администрирования</title>
 
     <script src="js/cart/adminPanelForOrderCustomer.js" ></script>
+    <!--<script src="js/jquery.lint.js" ></script>-->
 
 </head>
 <body class="background">
@@ -13,10 +14,10 @@
 
 <p/>
 <!--<div th:each="customer : ${selected}" align="center">-->
-<div  align="center">
-    <table border="1" width="70%" style="margin-top: 20px">
-        <tr th:each="customer : ${selected}"  >
-
+<div  align="center" >
+    <table border="1" class="ifChange" width="70%" style="margin-top: 20px">
+        <tr th:each="customer : ${selected}">
+            <!--id="checkOrderOnReceive" class="changeColor"-->
             <td align="center">
 
                 <span th:text="${customer.nameCustomer}" >Name</span>
@@ -26,8 +27,16 @@
                 <span th:text="${customer.phoneCustomer}">phone</span>
                 </td>
             <td align="center">
-                <span th:text="${customer.oderDate}">oderDate</span>
+                <span id="orderDate" th:text="${customer.oderDate}">oderDate</span>
                </td>
+            <td align="center">
+                    <input type="checkbox"  th:checked="${customer.reciveOrder}" class="receiveOrder" name="receiveOrder"/>
+                <br/><span>  Заказ в обработке</span>
+            </td>
+            <td align="center">
+                <input type="checkbox" th:checked="${customer.sentOrder}" class="sentOrderToCustomer" name="sentOrderToCustomer"/>
+                <br/><span>  Заказ отправлен</span>
+            </td>
             <td align="center" >
                 <form action="customerData" method="post">
                     <button style="background-color: #009700; color: white; border-radius: 9px;">Заказчик</button>
@@ -36,24 +45,28 @@
                 </td>
             <td align="center" >
                 <form action="orderFromCustomer" method="post">
-                <!--<div class="classEverything">-->
                     <button  style="background-color: #009700; color: white; border-radius: 9px;" >Заказ</button>
-                    <!--<button class="classEverything" onclick="orderIdForCheck()" style="background-color: #009700; color: white; border-radius: 9px;" >Заказ</button>-->
                     <input type="hidden" name="orderCustomer" id="orderCustomer" th:value="${customer.customer_id}"/>
                 </form>
-                <!--<br/>-->
-                <!--</div>-->
+            </td>
+            <td align="center">
+                <!--<br/>-->&nbsp;
+                <div class="saveInfo">
+                <input type="hidden"  name="saveBtn" th:value="${customer.customer_id}"/>
+                <input type="button"  value="Save" style="background-color: #0b0a26;
+                border-radius: 9px; color: white"/>
+                    <!--onclick="sendCheckboxChange()"-->
+                </div>
+                <br/>
             </td>
             <td align="center">
                 <!--<br/>-->&nbsp;
                 <div class="deleteDiv">
-
                     <input type="hidden"  name="deleteBtn" th:value="${customer.customer_id}"/>
                         <img src="icons/delete16.gif" style="cursor: pointer" title="Удалить заказ"/>
                 </div>
                 <br/>
             </td>
-
         </tr>
 
     </table>

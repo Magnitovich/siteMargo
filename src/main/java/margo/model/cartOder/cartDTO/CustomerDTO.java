@@ -1,6 +1,7 @@
 package margo.model.cartOder.cartDTO;
 
 
+import javax.persistence.Column;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,6 +14,24 @@ public class CustomerDTO {
     private String phoneCustomer;
     private String addressCustomer;
     private String oderDate;
+    private Boolean reciveOrder;
+    private Boolean sentOrder;
+
+    public Boolean getReciveOrder() {
+        return reciveOrder;
+    }
+
+    public void setReciveOrder(Boolean reciveOrder) {
+        this.reciveOrder = reciveOrder;
+    }
+
+    public Boolean getSentOrder() {
+        return sentOrder;
+    }
+
+    public void setSentOrder(Boolean sentOrder) {
+        this.sentOrder = sentOrder;
+    }
 
     public Long getCustomer_id() {
         return customer_id;

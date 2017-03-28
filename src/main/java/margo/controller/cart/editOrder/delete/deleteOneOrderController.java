@@ -25,13 +25,20 @@ public class DeleteOneOrderController {
     private Long idForOrder;
 
     @RequestMapping(value = "/delete/oneOrderFromCustomer", method = {RequestMethod.GET, RequestMethod.POST})
-    public void receiveIdForDelete(@RequestBody Long name){
+    public  @ResponseBody Long receiveIdForDelete(@RequestBody Long name){
 //    public @ResponseBody ModelAndView receiveIdForDelete(@RequestParam(value = "deleteForOrderCustomer") Long name){
 
-//        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView();
         customerService.deleteOneOrderCustomer(name);
         Long id = fromCustomerController.getIdCustomer();
         idForOrder = id;
+        return idForOrder;
+    }
+
+    public Long getIdForOrder() {
+        return idForOrder;
+    }
+}
 //        ModelAndView modelAndView = new ModelAndView();
 //        List<OrderCustomerDTO> orderCustomerDTOs = orderCustomerService.seeSelectedCustomer(id);
 //        CustomerDTO customerDTO = customerService.seeSelectedCustomer(id);
@@ -39,10 +46,3 @@ public class DeleteOneOrderController {
 //        modelAndView.addObject("selected", orderCustomerDTOs);
 ////        modelAndView.addObject("idDelete", id);
 //        modelAndView.setViewName("cart/order/customerOrder");
-//        return modelAndView;
-    }
-
-    public Long getIdForOrder() {
-        return idForOrder;
-    }
-}

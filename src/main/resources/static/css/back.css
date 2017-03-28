@@ -117,3 +117,15 @@ a {
     cursor: pointer;
     cursor: hand;
 }
+table.ifChange tr.changeColor {
+    background-color: #a39fa1;
+}
+table.ifChange tr.changeColorReceiveOrder {
+    background-color: #5da300;
+}
+tr.changeColorSentOrder {
+    background-color: #a39fa1;
+}
+table.ifChange tr.orderFull {
+    background-color: #2a0301;
+}

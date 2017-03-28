@@ -14,6 +14,8 @@ public interface CustomerRepository extends CrudRepository<CustomerModel, Long>{
 //    @Query(value = "select  cs from CustomerModel cs WHERE name=?")
     List<CustomerModel> findByNameCustomer(String nameCustomer);
 
+    @Query(value = "SELECT cm FROM CustomerModel cm ORDER BY oderDate DESC")
+    List<CustomerModel> findAllFromDate();
 //    @Query(value = "select  cs from CustomerModel cs WHERE EMAIL=?")
 //    List<CustomerModel> findByEmail(String email);
 
