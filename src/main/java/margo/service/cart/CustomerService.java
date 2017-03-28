@@ -68,6 +68,15 @@ public class CustomerService {
         orderRepository.delete(id);
     }
 
+    public void changeCheckbox(Long id, Boolean receive, Boolean sent){
+
+        CustomerModel one = customerRepository.findOne(id);
+        one.setReciveOrder(receive);
+        one.setSentOrder(sent);
+        customerRepository.save(one);
+
+    }
+
 //    public void addInfoAboutCustomerOrder(final String nameCustomer, final String emailCustomer, final String phoneCustomer,
 //                                          final String addressCustomer,
 //                                          final String photo, final String nameFabric, final String description,
