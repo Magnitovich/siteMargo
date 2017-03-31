@@ -25,10 +25,10 @@ public class CurtainController {
         ArrayList paint =curtainService.seePaint();
         ArrayList structure =curtainService.seeStructure();
         ArrayList filterPrice = curtainService.seePrice();
-        for(CurtainDTO dto:curtainDTOs){
-            String k = dto.getDescription();
-            System.out.println("TextArea:  "+k);
-        }
+//        for(CurtainDTO dto:curtainDTOs){
+//            String k = dto.getDescription();
+//            System.out.println("TextArea:  "+k);
+//        }
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("allCurtain",curtainDTOs);
         modelAndView.addObject("price",filterPrice);

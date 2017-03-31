@@ -5,6 +5,7 @@
     <title>Панель администрирования</title>
 
     <script src="js/cart/adminPanelForOrderCustomer.js" ></script>
+    <script src="js/cart/adminPanelCheckbox.js"></script>
     <!--<script src="js/jquery.lint.js" ></script>-->
 
 </head>
@@ -44,10 +45,13 @@
                 </form>
                 </td>
             <td align="center" >
-                <form action="orderFromCustomer" method="post">
-                    <button  style="background-color: #009700; color: white; border-radius: 9px;" >Заказ</button>
-                    <input type="hidden" name="orderCustomer" id="orderCustomer" th:value="${customer.customer_id}"/>
-                </form>
+                <!--<form action="orderFromCustomer" method="post">-->
+                <!--<div class="checkOrder">-->
+                    <!--<button onclick="clickBtn()" style="background-color: #009700; color: white; border-radius: 9px;" >Заказ</button>-->
+                    <button class="checkOrder" th:attr="data-customer-id = ${customer.customer_id}" style="background-color: #009700; color: white; border-radius: 9px;" >Заказ</button>
+                    <!--<input type="hidden" name="orderCustomer" id="orderCustomer" th:value="${customer.customer_id}"/>-->
+                <!--</div>-->
+                    <!--</form>-->
             </td>
             <td align="center">
                 <!--<br/>-->&nbsp;

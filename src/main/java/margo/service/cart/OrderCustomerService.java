@@ -2,10 +2,13 @@ package margo.service.cart;
 
 import margo.dao.cart.CustomerOrderRepository;
 import margo.dao.cart.CustomerRepository;
+import margo.dao.fabric.*;
+import margo.model.allCurtains.*;
 import margo.model.cartOder.CustomerModel;
 import margo.model.cartOder.OrderCustomerModel;
 import margo.model.cartOder.cartDTO.CustomerDTO;
 import margo.model.cartOder.cartDTO.OrderCustomerDTO;
+import margo.model.modelDTO.allCurtainsDTO.ClothFabricDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +20,28 @@ import java.util.List;
 public class OrderCustomerService {
 
     @Autowired
-    private CustomerRepository customerRepository;
-    @Autowired
     private CustomerOrderRepository orderRepository;
+
+    String photo = null;
+    String nameModel = null;
+
+    @Autowired
+    private ClothFabricRepository clothFabricRepository;
+    @Autowired
+    private CurtainRepository curtainRepository;
+    @Autowired
+    private OrderCurtainRepository orderCurtainRepository;
+    @Autowired
+    private TulleRepository tulleRepository;
+    @Autowired
+    private UpholsteryFabricRepository upholsteryFabricRepository;
+
+    final String clothFabric = "clothFabric";
+    final String curtainFabric = "curtain";
+    final String orderFabric = "orderCurtain";
+    final String tulleFabric = "tulle";
+    final String upholsteryFabric = "upholsteryFabric";
+
 
     public OrderCustomerDTO convertModelToDto(OrderCustomerModel model){
 
@@ -59,35 +81,58 @@ public class OrderCustomerService {
 
     }
 
-//    public void addInfoAboutCustomerOrder(final String nameCustomer, final String emailCustomer, final String phoneCustomer,
-//                                          final String addressCustomer,
-//                                          final String photo, final String nameFabric, final String description,
-//                                          final String structure, final String paint, final String height,
-//                                          final String color, final Double quantity, final BigDecimal price){
-//
-//        Date date = new Date();
-//        CustomerModel customerModel = new CustomerModel();
-//        OrderCustomerModel orderCustomerModel = new OrderCustomerModel();
-//        customerModel.setNameCustomer(nameCustomer);
-//        customerModel.setEmailCustomer(emailCustomer);
-//        customerModel.setPhoneCustomer(phoneCustomer);
-//        customerModel.setAddressCustomer(addressCustomer);
-//        customerModel.setOderDate(date);
-//
-//        orderCustomerModel.setPhoto(photo);
-//        orderCustomerModel.setName(nameFabric);
-//        orderCustomerModel.setDescription(description);
-//        orderCustomerModel.setStructure(structure);
-//        orderCustomerModel.setPaint(paint);
-//        orderCustomerModel.setHeight(height);
-//        orderCustomerModel.setColor(color);
-//        orderCustomerModel.setQuantity(quantity);
-//        orderCustomerModel.setPrice(price);
-//        orderCustomerModel.setCustomerOrder(customerModel);
-//
-//        orderRepository.save(orderCustomerModel);
-//        customerRepository.save(customerModel);
+    public  void changeOrder(Long id, Double quantity){
 
-//    }
+        OrderCustomerModel one = orderRepository.findOne(id);
+        Double quantityInDBCustomerModel = one.getQuantity();
+        one.setQuantity(quantity);
+        photo = one.getPhoto();
+        nameModel = one.getName();
+        orderRepository.save(one);
+//        System.out.println("***********OrderCustomerService****************");
+//        System.out.println("Past Quantity in DB: "+quantityInDBCustomerModel);
+//        System.out.println("Photo: "+photo+" Name: "+nameModel);
+
+        String[] split = photo.split("/");
+
+        switch (split[1]){
+            case clothFabric:
+                List<ClothFabricModel> modelList = clothFabricRepository.findByName(nameModel);
+                ClothFabricModel clothFabricModel = modelList.get(0);
+                Double result = clothFabricModel.getQuantity()+quantityInDBCustomerModel-quantity;
+
+                clothFabricModel.setQuantity(result);
+                clothFabricRepository.save(clothFabricModel);
+                break;
+            case curtainFabric:
+                List<CurtainModel> modelListCurtain = curtainRepository.findByName(nameModel);
+                CurtainModel curtainModel = modelListCurtain.get(0);
+                Double resultCurtain = curtainModel.getQuantity()+quantityInDBCustomerModel-quantity;
+                curtainModel.setQuantity(resultCurtain);
+                curtainRepository.save(curtainModel);
+                break;
+            case orderFabric:
+                List<OrderCurtainModel> modelListOrder = orderCurtainRepository.findByName(nameModel);
+                OrderCurtainModel orderCurtainModel = modelListOrder.get(0);
+                Double resultOrder = orderCurtainModel.getQuantity()+quantityInDBCustomerModel-quantity;
+                orderCurtainModel.setQuantity(resultOrder);
+                orderCurtainRepository.save(orderCurtainModel);
+                break;
+            case tulleFabric:
+                List<TulleModel> modelListTulle = tulleRepository.findByName(nameModel);
+                TulleModel tulleModel = modelListTulle.get(0);
+                Double resultTulle = tulleModel.getQuantity()+quantityInDBCustomerModel-quantity;
+                tulleModel.setQuantity(resultTulle);
+                tulleRepository.save(tulleModel);
+                break;
+            case upholsteryFabric:
+                List<UpholsteryFabricModel> upholsteryFabricModels = upholsteryFabricRepository.findByName(nameModel);
+                UpholsteryFabricModel upholsteryFabricModel = upholsteryFabricModels.get(0);
+                Double resultUph = upholsteryFabricModel.getQuantity()+quantityInDBCustomerModel-quantity;
+                upholsteryFabricModel.setQuantity(resultUph);
+                upholsteryFabricRepository.save(upholsteryFabricModel);
+                break;
+        }
+    }
 
 }

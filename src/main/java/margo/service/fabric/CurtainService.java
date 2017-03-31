@@ -145,14 +145,14 @@ public class CurtainService {
                               final String name, final String describe, final String structure, final String paint,
                               final String height, final String color, final Double quantity, final BigDecimal price) {
         CurtainModel curtainModel = new CurtainModel();
-        System.out.println("AddNewCURTAIN:");
-        System.out.println(photo + ", ");
-        System.out.println(photo01 + ", ");
-        System.out.println(photo02 + ", ");
-        System.out.println(photo03 + ", ");
-        System.out.println(photo04 + ", ");
-        System.out.println(photo05 + ", " + name + " structure "
-                + structure + " paint " + paint + " height " + height + "color: " + color + "/");
+//        System.out.println("AddNewCURTAIN:");
+//        System.out.println(photo + ", ");
+//        System.out.println(photo01 + ", ");
+//        System.out.println(photo02 + ", ");
+//        System.out.println(photo03 + ", ");
+//        System.out.println(photo04 + ", ");
+//        System.out.println(photo05 + ", " + name + " structure "
+//                + structure + " paint " + paint + " height " + height + "color: " + color + "/");
         curtainModel.setPhoto(photo);
         curtainModel.setPhoto01(photo01);
         curtainModel.setPhoto02(photo02);

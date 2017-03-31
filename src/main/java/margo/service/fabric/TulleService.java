@@ -89,8 +89,7 @@ public class TulleService {
                                   final String name, final String describe, final String structure, final String paint,
                                   final String height,final String color, final Double quantity, final BigDecimal price) {
         TulleModel model = new TulleModel();
-        System.out.println(photo + ", " + photo01 + ", " + photo02 + ", " + photo03 + ", " + photo04 + ", " + photo05 + ", " + name + " structure "
-                + structure + " paint " + paint + " height " + height + "color: " + color + "/");
+
         model.setPhoto(photo);
         model.setPhoto01(photo01);
         model.setPhoto02(photo02);

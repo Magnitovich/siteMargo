@@ -4,6 +4,7 @@ import margo.dao.cart.CustomerRepository;
 import margo.filter.CheckUserRegistration;
 import margo.model.cartOder.CustomerModel;
 import margo.service.cart.CartService;
+import margo.service.sendEmail.SendEmailToSupplierAndCustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +30,8 @@ public class CartOrderFinishController {
     private CartService cartService;
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private SendEmailToSupplierAndCustomerService sendEmailToSupplierAndCustomerService;
 
 
     @RequestMapping(value = "/buySuccessful", method = {RequestMethod.GET, RequestMethod.POST})
@@ -58,7 +61,8 @@ public class CartOrderFinishController {
 
                 cartService.changeInfoInDB(customerModel, id,photo, name,quantity);
             }
-
+            sendEmailToSupplierAndCustomerService.sendOrderOnEmail(allInformation.getEmailCustomer(),
+                    allInformation.getNameCustomer(), newArrays);
 
 //            System.out.println("allInformation.getNameCustomer() "+allInformation.getNameCustomer()+
 //                    "  allInformation.getAddressCustomer() : "+allInformation.getAddressCustomer()+

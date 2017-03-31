@@ -3,7 +3,7 @@
 <head th:replace="headerMain :: header-libs"></head>
 <head>
     <title>Панель администрирования</title>
-    <script src="js/cart/adminPanelForOrderCustomer.js" ></script>
+    <script src="js/cart/changeQuantityFromOrderCustomer.js" ></script>
 </head>
 <body class="background">
 <div th:replace="headerMain :: header"></div>
@@ -15,8 +15,8 @@
     <table border="0" style="background-color: darkgray; color: #000;" width="30%" >
        
         <tr th:each="customer : ${customerInfo}"  >
-            <td align="center">
-
+            <td>
+                <input type="hidden" id="orderCustomer" th:value="${customer.customer_id}"/>
                 <span th:text="${customer.nameCustomer}" >Name</span>
                 </td>
             <td align="center">
@@ -52,8 +52,8 @@
             </td>
             <td align="center">
                 <span  th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(customerOrder.description),'\n','&lt;br /&gt;'))}"></span>
-
-                <!--<span th:text="${customerOrder.description}">phone</span>-->
+                <!--we can use <pre>, but must write CSS-->
+                <!--<pre th:text="${customerOrder.description}">phone</pre>-->
             </td>
             <td align="center">
                <span th:text="${customerOrder.structure}">oderDate</span>
@@ -69,29 +69,21 @@
 
             </td>
             <td align="center" >
-
-                <span th:text="${customerOrder.quantity}">emailCustomer</span>
+                <input type="text" th:id="${'quantity-' + customerOrder.id}" name="quantityNew" th:value="${customerOrder.quantity}"/>
             </td>
             <td align="center" >
                 
                 <span th:text="${customerOrder.price}">Address</span>
 
             </td>
-            <td>
-                <form action="editInfoFromCustomerOrder" method="post">
-                    <input type="hidden" name="editOrderCustomer" th:value="${customerOrder.name}"/>
-                    <input type="submit"/>
-                </form>
+            <td align="center">
+                    <input type="button"  class="saveEdit" th:attr="data-customer-id = ${customerOrder.id}" value="Save edit"/>
             </td>
             <td align="center" >
-                <!--<form action="/delete/oneOrderFromCustomer" method="post">-->
                 <div class="deleteOrderCustomer">
                     <input type="hidden"  name="deleteForOrderCustomer" th:value="${customerOrder.id}"/>
-                    <!--<input type="hidden"  name="deleteForOrderCustomer" th:value="${customerOrder.name}"/>-->
                 <input type="submit" class="submitForDeleteInCustomerOrder" title="Удалить заказ" value=""/>
-                    <!--<img src="icons/delete16.gif" style="cursor: pointer" title="Удалить заказ"/>-->
                 </div>
-                <!--</form>-->
             </td>
         </tr>
     </table>

@@ -8,9 +8,7 @@ import margo.service.cart.OrderCustomerService;
 import org.codehaus.groovy.runtime.powerassert.SourceText;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -28,7 +26,7 @@ public class OrderFromCustomerController {
     private DeleteOneOrderController deleteOneOrderController;
 
     @RequestMapping(value = "/orderFromCustomer", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView infoAboutCustomer(@RequestParam(value = "orderCustomer")Long id){
+    public ModelAndView infoAboutCustomer(@RequestParam(value = "id")Long id){
 
         if (id ==0){
             ModelAndView modelAndView = imageResult(deleteOneOrderController.getIdForOrder());

@@ -41,7 +41,6 @@ public class AddClothFabricController {
         if (id != null ) {
             ClothFabricDTO model = service.viewSelectedCloth(id);
             model.setIdForEditCurtain(id);
-            System.out.println(id);
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.addObject("comparePhotoNameWithDB", model);
             modelAndView.setViewName("allFabric/addFabric/addClothFabricNew");
@@ -89,12 +88,6 @@ public class AddClothFabricController {
             return modelAndView;
 
         } else {
-//            System.out.println(curtainDTO.getName() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain().getOriginalFilename());
-//            System.out.println(curtainDTO.getStructure() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain01().getOriginalFilename());
-//            System.out.println(curtainDTO.getHeight() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain02().getOriginalFilename());
-//            System.out.println(curtainDTO.getPaint() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain03().getOriginalFilename());
-//            System.out.println(curtainDTO.getColor() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain04().getOriginalFilename());
-//            System.out.println(curtainDTO.getName() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain05().getOriginalFilename());
 
             try {
 

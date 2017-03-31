@@ -52,65 +52,55 @@ public class CartService {
         Long id = Long.valueOf(idFabric);
         String[] split = photo.split("/");
 
-       if(split[1].contains(clothFabric)) {
+        if(split[1].contains(clothFabric)) {
 
-           List<ClothFabricModel> clothFabricModels = clothFabricRepository.findById(id);
+            List<ClothFabricModel> clothFabricModels = clothFabricRepository.findById(id);
             ClothFabricModel model = clothFabricModels.get(0);
-            ClothFabricModel modelToSend = clothFabricModels.get(0);
-           Double quantityInDB = model.getQuantity();
+            Double quantityInDB = model.getQuantity();
 
-           checkInfo(clothFabricRepository, modelToSend, quantityInDB, quantityFromUI);
+            checkInfo(clothFabricRepository, model, quantityInDB, quantityFromUI);
 
-           saveInformationInCustomerDB(customerModel, model, quantityFromUI);
+            saveInformationInCustomerDB(customerModel, model, quantityFromUI);
 
-//           if (quantityInDB == 0) {
-//               System.out.println("In DB ZERO");
-//           } else {
-//
-//               Double result = quantityInDB - quantityFromUI;
-//               model.setQuantity(result);
-//               clothFabricRepository.save(model);
-//           }
-       } else if (split[1].contains(curtainFabric)){
+        } else if (split[1].contains(curtainFabric)){
 
-           List<CurtainModel> listModel = curtainRepository.findById(id);
-           CurtainModel model = listModel.get(0);
-           Double quantityInDB = model.getQuantity();
+            List<CurtainModel> listModel = curtainRepository.findById(id);
+            CurtainModel model = listModel.get(0);
+            Double quantityInDB = model.getQuantity();
 
-           checkInfo(curtainRepository, model, quantityInDB, quantityFromUI);
-           saveInformationInCustomerDB(customerModel, model, quantityFromUI);
+            checkInfo(curtainRepository, model, quantityInDB, quantityFromUI);
+            saveInformationInCustomerDB(customerModel, model, quantityFromUI);
 
-       } else if (split[1].contains(orderFabric)){
-           List<OrderCurtainModel> listModel = orderCurtainRepository.findById(id);
-           OrderCurtainModel model = listModel.get(0);
-           Double quantityInDB = model.getQuantity();
+        } else if (split[1].contains(orderFabric)){
+            List<OrderCurtainModel> listModel = orderCurtainRepository.findById(id);
+            OrderCurtainModel model = listModel.get(0);
+            Double quantityInDB = model.getQuantity();
 
-           checkInfo(orderCurtainRepository, model, quantityInDB, quantityFromUI);
-           saveInformationInCustomerDB(customerModel, model, quantityFromUI);
+            checkInfo(orderCurtainRepository, model, quantityInDB, quantityFromUI);
+            saveInformationInCustomerDB(customerModel, model, quantityFromUI);
 
-       } else if (split[1].contains(tulleFabric)){
-           List<TulleModel> listModel = tulleRepository.findById(id);
-           TulleModel model = listModel.get(0);
-           Double quantityInDB = model.getQuantity();
+        } else if (split[1].contains(tulleFabric)){
+            List<TulleModel> listModel = tulleRepository.findById(id);
+            TulleModel model = listModel.get(0);
+            Double quantityInDB = model.getQuantity();
 
-           checkInfo(tulleRepository, model, quantityInDB, quantityFromUI);
-           saveInformationInCustomerDB(customerModel, model, quantityFromUI);
+            checkInfo(tulleRepository, model, quantityInDB, quantityFromUI);
+            saveInformationInCustomerDB(customerModel, model, quantityFromUI);
 
-       } else if (split[1].contains(upholsteryFabric)){
-           List<UpholsteryFabricModel> listModel = upholsteryFabricRepository.findById(id);
-           UpholsteryFabricModel model = listModel.get(0);
-           Double quantityInDB = model.getQuantity();
+        } else if (split[1].contains(upholsteryFabric)){
+            List<UpholsteryFabricModel> listModel = upholsteryFabricRepository.findById(id);
+            UpholsteryFabricModel model = listModel.get(0);
+            Double quantityInDB = model.getQuantity();
 
-           checkInfo(upholsteryFabricRepository, model, quantityInDB, quantityFromUI);
-           saveInformationInCustomerDB(customerModel, model, quantityFromUI);
-       }
+            checkInfo(upholsteryFabricRepository, model, quantityInDB, quantityFromUI);
+            saveInformationInCustomerDB(customerModel, model, quantityFromUI);
         }
-
+    }
+    @Transactional
     public void checkInfo(CrudRepository repositories, AllFabricModel model, Double quantityInDB, Double quantityFromUI){
         if (quantityInDB == 0) {
             System.out.println("In DB ZERO");
         } else {
-
             Double result = quantityInDB - quantityFromUI;
             model.setQuantity(result);
             repositories.save(model);

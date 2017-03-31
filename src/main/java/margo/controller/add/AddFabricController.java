@@ -41,7 +41,7 @@ public class AddFabricController {
         if (id != null ) {
             CurtainDTO curtain = curtainService.viewSelectedCurtain(id);
             curtain.setIdForEditCurtain(id);
-            System.out.println(id);
+//            System.out.println("AddFabricController "+id);
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.addObject("comparePhotoNameWithDB", curtain);
             modelAndView.setViewName("allFabric/addFabric/addFabricNew");
@@ -96,14 +96,14 @@ public class AddFabricController {
 //            System.out.println(curtainDTO.getName() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain05().getOriginalFilename());
 
             try {
-                System.out.println();
-                System.out.println("addPattern.getNameFile():");
-                System.out.println(addPattern.getNameFile()+", ");
-                System.out.println(addPattern.getNameFile01()+", ");
-                System.out.println(addPattern.getNameFile02()+", ");
-                System.out.println(addPattern.getNameFile03()+", ");
-                System.out.println(addPattern.getNameFile04()+", ");
-                System.out.println(addPattern.getNameFile05()+", ");
+//                System.out.println();
+//                System.out.println("addPattern.getNameFile():");
+//                System.out.println(addPattern.getNameFile()+", ");
+//                System.out.println(addPattern.getNameFile01()+", ");
+//                System.out.println(addPattern.getNameFile02()+", ");
+//                System.out.println(addPattern.getNameFile03()+", ");
+//                System.out.println(addPattern.getNameFile04()+", ");
+//                System.out.println(addPattern.getNameFile05()+", ");
 
 //                exceptionAddCurtainService.compareEnterInfoAndInDB(nameFile, nameFile01, nameFile02, nameFile03,
 //                        nameFile04, nameFile05,

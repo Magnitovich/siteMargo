@@ -338,7 +338,7 @@ var cartWhisky = new Array;
         for (i in cartWhisky) {
             newArray[i] =
                 cartWhisky[i].idGoods+"_"+cartWhisky[i].name + "_" + cartWhisky[i].quantity +
-                "_" + cartWhisky[i].photo + "_" + cartWhisky[i].price;
+                "_" + cartWhisky[i].photo + "_" + cartWhisky[i].price+"_"+cartWhisky[i].describe;
             i++;
         }
         //console.log(cartWhisky.toString());

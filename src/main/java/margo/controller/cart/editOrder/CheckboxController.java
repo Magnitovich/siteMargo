@@ -22,7 +22,7 @@ public class CheckboxController {
                                            @RequestParam(value = "receiveCheckbox")Boolean receiveOrder,
                                            @RequestParam(value = "sentCheckbox")Boolean sentOrder){
         customerService.changeCheckbox(id, receiveOrder, sentOrder);
-        System.out.println("Id: "+id+" CheckboxReceive: "+receiveOrder+" Sent: "+sentOrder);
+//        System.out.println("editOrder, CheckboxController Id: "+id+" CheckboxReceive: "+receiveOrder+" Sent: "+sentOrder);
         return id;
     }
 }
