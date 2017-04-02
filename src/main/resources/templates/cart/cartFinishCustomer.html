@@ -4,6 +4,7 @@
 <head th:replace="headerMain :: header-libs"></head>
 <head>
     <link href="css/shoppingCart.css" rel="stylesheet" type="text/css"/>
+    <link href="js/cart/shoppingCart.css" rel="stylesheet" type="text/css"/>
 </head>
 <body class="background">
 <div th:replace="headerMain :: header"></div>
@@ -29,13 +30,17 @@ padding-left: 20px; padding-right: 20px; margin: 30px auto"  border="0">
     <!--<tr>-->
         <td>&nbsp;</td>
         <td valign="top" style="background-color: white; padding: 10px; margin-top: 3%; margin-left: 20px; border-radius: 6px;">
+            <input type="button" sec:authorize="isAuthenticated()"
+                   onclick="changeDataUser()" style="background-color: #92C93F; border-radius: 28px;
+                   border: 3px solid #020029; color: white; font-size: 12px;
+                   font-weight: bold; text-shadow: 0px 3px 4px #283966; padding: 5px;" value="Изменить даннные" />
         <table  border="0" >
             <form action="showAll" method="post">
                 <tr>
                 <td>
                     <label >Ф.И.О.</label>
                 </td>
-                <td>
+                <td style="padding-left: 10px">
                    <span style="color: #000;" th:text="${NickNameCustomer}"></span>
                 </td>
           </tr>
@@ -44,7 +49,7 @@ padding-left: 20px; padding-right: 20px; margin: 30px auto"  border="0">
                 <td>
                     <label>Номер телефона:</label>
                 </td>
-            <td>
+            <td style="padding-left: 10px">
                 <span style="color: #000;" th:text="${PhoneCustomer}"></span>
             </td>
             </tr>
@@ -53,7 +58,7 @@ padding-left: 20px; padding-right: 20px; margin: 30px auto"  border="0">
                 <td>
                     <label >Адрес доставки:</label>
                 </td>
-                <td>
+                <td style="padding-left: 10px">
                     <span style="color: #000;"
                           th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(descriptionCustomer),'\n','&lt;br /&gt;'))}"></span>
                 </td>
@@ -63,7 +68,7 @@ padding-left: 20px; padding-right: 20px; margin: 30px auto"  border="0">
                 <td>
                     <label> Email</label>
                 </td>
-                <td>
+                <td style="padding-left: 10px">
                     <span style="color: #000;" th:text="${EmailCustomer}"></span>
                 </td>
             </tr>

@@ -11,6 +11,7 @@
     <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 
     <script src="js/search/search.js" ></script>
+    <script src="js/cart/jquery.maskedinput.js" type="text/javascript"></script>
 
     <!--<script src="js/shoppingCart.js" ></script>-->
 
@@ -209,17 +210,20 @@
                             <label for="NickName" class="NickName" data-icon="u">Your username</label>
                             <input name="NickName" id="NickName"  type="text"
                                    pattern="[A-Za-zА-Яа-я0-9._]{3,}" required=""
-                                   th:placeholder="Name" autofocus="" />
+                                   th:placeholder="Ф.И.О." autofocus="" />
                             <!--required="required"-->
                             <span id="nickError" style="display: none; color: black"> NickName exist, try another</span>
                             <p/>
                             <label for="Phone"  data-icon="ph">Phone number</label>
-                            <input type="phone"  id="Phone" name="Phone" placeholder="***-***-**-**"
-                                   pattern="[0-9-]{7,}" required=""/>
+                            <input type="text" id="phone" name="Phone"/>
+
+                            <!--<input type="phone"  id="Phone" name="Phone" placeholder="***-***-**-**"-->
+                                   <!--pattern="[0-9-]{7,}" required=""/>-->
                             <p/>
                             <label for="description" >Адрес доставки:</label>
                              <textarea class="buttons" rows="5" cols="35"   name="description" pattern="[A-Za-zА-Яа-я0-9._]{3,}"
-                                       id="description" maxlength="255" placeholder="max length 255"></textarea>
+                                       id="description" maxlength="255"
+                                       placeholder="Город(область, населенный пункт). Перевозчик. Номер отделения или адрес:"></textarea>
                             <p/>
                             <label for="Email" class="Email" data-icon="e" > Your email</label>
                             <input type="email" name="Email" id="Email"  class="form-control" th:placeholder="Email"

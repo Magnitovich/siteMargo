@@ -17,7 +17,7 @@ public class CheckUserRegistration {
 
     private String email;
 
-    private String userName="";
+    private String userName;
 
     public void checkAuthenticationUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -30,7 +30,7 @@ public class CheckUserRegistration {
 
             UserModel user = (UserModel) authentication.getPrincipal();
 
-            userName=user.getName();
+            userName = user.getName();
 
              if (user.getActiveTrue() == 0) {
                 throw new UserNotAuthorizedException();

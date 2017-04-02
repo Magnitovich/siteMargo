@@ -1,12 +1,14 @@
 package margo.service.cart;
 
 import margo.controller.cart.AllInformationsAboutCustomerController;
+import margo.dao.UserRepository;
 import margo.dao.cart.CustomerOrderRepository;
 import margo.dao.cart.CustomerRepository;
 import margo.dao.fabric.*;
 import margo.model.allCurtains.*;
 import margo.model.cartOder.CustomerModel;
 import margo.model.cartOder.OrderCustomerModel;
+import margo.model.user.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,9 @@ public class CartService {
     private CustomerRepository customerRepository;
     @Autowired
     private CustomerOrderRepository customerOrderRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private ClothFabricRepository clothFabricRepository;
@@ -125,6 +130,11 @@ public class CartService {
 //        " PRICE: "+model.getPrice()+" QUANTITY: "+quantityFromUI);
         customerRepository.save(customerModel);
         customerOrderRepository.save(orderCustomerModel);
+    }
+    public UserModel ifUserAuthenticated(String name){
 
+        UserModel one = userRepository.findOne(name);
+
+        return one;
     }
 }

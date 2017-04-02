@@ -1,6 +1,9 @@
 
 $(function() {
 
+        $.mask.definitions['~']='[+-]';
+        $('#phone').mask('(999) 999-9999');
+
     $("#SignUpBtn").click(function(event) {
         //отмена привычных действий кнопки ссылки input(a)
         event.preventDefault();

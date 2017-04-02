@@ -23,8 +23,6 @@ import java.util.Locale;
 public class CartOrderFinishController {
 
     @Autowired
-    private CheckUserRegistration checkUserRegistration;
-    @Autowired
     private AllInformationsAboutCustomerController allInformation;
     @Autowired
     private CartService cartService;
@@ -38,10 +36,6 @@ public class CartOrderFinishController {
     public ModelAndView view(@RequestBody List<String > newArrays) throws MessagingException {
 //        System.out.println(newArrays);
 
-        if (checkUserRegistration.getUserName().length()>0){
-            System.out.println("checkUserRegistration.getUserName()"+checkUserRegistration.getUserName());
-
-        } else {
             CustomerModel customerModel = new CustomerModel();
 //            SimpleDateFormat date = new SimpleDateFormat("dd.MM.yyyy HH:mm");
                 Date date = new Date();
@@ -68,7 +62,7 @@ public class CartOrderFinishController {
 //                    "  allInformation.getAddressCustomer() : "+allInformation.getAddressCustomer()+
 //            "  allInformation.getPhoneCustomer() "+allInformation.getPhoneCustomer()+
 //                    "  allInformation.getEmailCustomer() "+allInformation.getEmailCustomer());
-        }
+
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");

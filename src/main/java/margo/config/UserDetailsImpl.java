@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserDetailsImpl implements UserDetailsService {
 
@@ -21,14 +23,19 @@ public class UserDetailsImpl implements UserDetailsService {
         UserModel one = userRepository.findOne(useName);
 
         if (one == null) {
-            throw new UsernameNotFoundException(useName);
+            List<UserModel> byEmail = userRepository.findByEmail(useName);
+            UserModel userModel = byEmail.get(0);
+            if (userModel ==null){
+                throw new UsernameNotFoundException(useName);
+            }else {
+                return userModel;
+            }
 
         }
         else if (one.getActiveTrue() == 0) {
             throw new UserNotAuthorizedException();
 
         } else {
-
 
             return one;
         }
