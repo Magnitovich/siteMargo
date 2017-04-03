@@ -4,7 +4,8 @@
 <head th:replace="headerMain :: header-libs"></head>
 <head>
     <link href="css/shoppingCart.css" rel="stylesheet" type="text/css"/>
-    <link href="js/cart/shoppingCart.css" rel="stylesheet" type="text/css"/>
+    <!--<link href="css/cart/shoppingCart.css" rel="stylesheet" type="text/css"/>-->
+    <script src="js/cart/sendToChange.js" type="text/javascript"></script>
 </head>
 <body class="background">
 <div th:replace="headerMain :: header"></div>
@@ -31,9 +32,7 @@ padding-left: 20px; padding-right: 20px; margin: 30px auto"  border="0">
         <td>&nbsp;</td>
         <td valign="top" style="background-color: white; padding: 10px; margin-top: 3%; margin-left: 20px; border-radius: 6px;">
             <input type="button" sec:authorize="isAuthenticated()"
-                   onclick="changeDataUser()" style="background-color: #92C93F; border-radius: 28px;
-                   border: 3px solid #020029; color: white; font-size: 12px;
-                   font-weight: bold; text-shadow: 0px 3px 4px #283966; padding: 5px;" value="Изменить даннные" />
+                   onclick="changeDataUser()" class="tableBtn" value="Изменить даннные" />
         <table  border="0" >
             <form action="showAll" method="post">
                 <tr>
@@ -41,7 +40,9 @@ padding-left: 20px; padding-right: 20px; margin: 30px auto"  border="0">
                     <label >Ф.И.О.</label>
                 </td>
                 <td style="padding-left: 10px">
-                   <span style="color: #000;" th:text="${NickNameCustomer}"></span>
+                   <span style="color: #000;" th:text="${NickNameCustomer}" ></span>
+                    <!--<input type="hidden" id="orderCustomer" th:value="${customer.customer_id}"/>-->
+                    <input type="hidden" id="nameToSend"  th:value="${NickNameCustomer}"/>
                 </td>
           </tr>
                 <tr><td colspan="2"><div style=" height: 2px; background: #a39fa1;" >&nbsp;</div> </td> </tr>

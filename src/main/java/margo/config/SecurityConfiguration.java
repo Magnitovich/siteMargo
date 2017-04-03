@@ -55,16 +55,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/orderFromCustomer**")
                 .permitAll()
-//                .antMatchers("/orderFromCustomer/idCustomer")
+//                .antMatchers("/newInfoAboutCustomer**")
 //                .permitAll()
-
                 .antMatchers("/delete/customerOrder")
                 .permitAll()
                 .antMatchers("/saveChangeCheckbox")
                 .permitAll()
                 .antMatchers("/changeQuantityOrder")
                 .permitAll()
-
                 .antMatchers("/delete/oneOrderFromCustomer")
                 .permitAll()
 

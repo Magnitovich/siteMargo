@@ -30,13 +30,10 @@ public class UserDetailsImpl implements UserDetailsService {
             }else {
                 return userModel;
             }
-
         }
         else if (one.getActiveTrue() == 0) {
             throw new UserNotAuthorizedException();
-
         } else {
-
             return one;
         }
     }

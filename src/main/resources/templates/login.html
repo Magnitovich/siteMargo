@@ -164,7 +164,7 @@
                         <p class="container"/>
                         <h1>Log in</h1>
                         <p>
-                            <label for="username" class="uname" data-icon="u"  > Your email or username </label>
+                            <label for="username" class="uname" data-icon="u"  > Ваш email или Ф.И.О.</label>
                             <input name="username" id="username" required="required" type="text"
                                    th:placeholder="Name" autofocus=""/>
 
@@ -180,12 +180,13 @@
                             <input name="password" id="password" type="password"
                                    th:placeholder="password" required="" />
                         </p>
+                        Если Вы забыли пароль нажмите <a href="/forgetPassword"> здесь</a>
                         <p class="login button">
                             <input type="submit" value="Login" />
                         </p>
                         <p class="change_link">
-                            Not a member yet ?
-                            <a href="#toregister" class="to_register">Join us</a>
+
+                            <a href="#toregister" class="to_register">Зарегистрироваться</a>
                         </p>
 
                     </div>
@@ -210,6 +211,11 @@
                     <!--<input type="phone" name="Phone" id="Phone" placeholder="***-***-**-**"-->
                            <!--pattern="[0-9-]{10,}" required=""/>-->
                     <p/>
+                    <label for="description" >Адрес доставки:</label>
+                             <textarea class="buttons" rows="5" cols="35"   name="description" pattern="[A-Za-zА-Яа-я0-9._]{3,}"
+                                       id="description" maxlength="255"
+                                       placeholder="Город(область, населенный пункт). Перевозчик. Номер отделения или адрес:"></textarea>
+                    <p/>
                     <label for="Email" class="Email" data-icon="e" > Your email</label>
                     <input type="email" name="Email" id="Email"  class="form-control" th:placeholder="#{.key.Email}"
                            pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
@@ -225,8 +231,8 @@
                         <input type="submit" id="SignUpBtn" value="Sign up"/>
                     </p>
                     <p class="change_link">
-                        Already a member ?
-                        <a href="#tologin" class="to_register"> Go and log in </a>
+
+                        <a href="#tologin" class="to_register"> Войти </a>
                     </p>
                 </form>
             </div>
