@@ -17,7 +17,7 @@ public class CheckUserRegistration {
 
     private String email;
 
-    private String userName;
+    private String userName="";
 
     public void checkAuthenticationUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

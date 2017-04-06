@@ -37,10 +37,10 @@ public class AllInformationsAboutCustomerController {
                                            @RequestParam(value = "EmailCustomerForSend", required = false) String email) {
         ModelAndView modelAndView = new ModelAndView();
         checkUserRegistration.checkAuthenticationUser();
-        if (checkUserRegistration.getUserName() != null) {
+        if (checkUserRegistration.getUserName() != "") {
 
             String userName = checkUserRegistration.getUserName();
-//            System.out.println("checkUserRegistration.getUserName()" + checkUserRegistration.getUserName());
+            System.out.println("checkUserRegistration.getUserName()" + checkUserRegistration.getUserName());
             UserModel userModel = cartService.ifUserAuthenticated(userName);
             nameCustomer = userModel.getName();
             phoneCustomer = userModel.getPhone();

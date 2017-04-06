@@ -20,6 +20,9 @@ public class CurtainController {
 
     @RequestMapping(value = "/curtainModels", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView seeAllCurtain(){
+
+        curtainService.findAllRows();
+
         List<CurtainDTO> curtainDTOs = curtainService.seeAllModels();
         ArrayList colorModel =curtainService.seeColor();
         ArrayList paint =curtainService.seePaint();

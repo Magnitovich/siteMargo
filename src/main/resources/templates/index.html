@@ -14,9 +14,16 @@
 
 <!--message after Registration-->
 <div th:if="${param.successful}" class="linkTop">
-    <b><i>  <h3>Вы успешно зарегистрированны, пожалуйста проверьте свой email</h3></i></b>
+    <b><i><h3>Вы успешно зарегистрированны, пожалуйста проверьте свой email</h3></i></b>
     <!--<b><i>  <h3>Your registration was successful, pls check email</h3></i></b>-->
 
+</div>
+<div th:if="${param.successfulSentEmail}" class="linkTop">
+    <b><i><h4 style="color: white">На Ваш email отправленна ссылка для востановления пароля</h4></i></b>
+    <!--<b><i>  <h3>Your registration was successful, pls check email</h3></i></b>-->
+
+</div><div th:if="${param.successfulSentPass}" class="linkTop">
+    <b><i><h4 style="color: white">Ваш пароль успешно изменен</h4></i></b>
 </div>
 
 <!--message after EMAIL Registration-->

@@ -12,6 +12,7 @@ import margo.model.modelDTO.allCurtainsDTO.ClothFabricDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -85,7 +86,13 @@ public class OrderCustomerService {
 
         OrderCustomerModel one = orderRepository.findOne(id);
         Double quantityInDBCustomerModel = one.getQuantity();
+        BigDecimal price = one.getPrice();
+        BigDecimal quntityInBigDecimal = BigDecimal.valueOf(quantityInDBCustomerModel);
+        BigDecimal newQuantity = BigDecimal.valueOf(quantity);
+        BigDecimal firstPrice = price.divide(quntityInBigDecimal);
+        BigDecimal newPrice = firstPrice.multiply(newQuantity);
         one.setQuantity(quantity);
+        one.setPrice(newPrice);
         photo = one.getPhoto();
         nameModel = one.getName();
         orderRepository.save(one);

@@ -52,7 +52,11 @@ public class LoginController {
 //                "descriptions: "+description+" email= "+email+" verification"+verification);
 
         adminRoleService.addNewUser(name, password, phone, email, activityFalse, verification, description);
-        sendingMail.sendingMessage(email, verification);
+        String subject = "Confirmation Registration";
+        String confirmationUrl =  "<a href='" +
+                "http://localhost:8080/registrationConfirm.html?verification="
+                + verification+"'>Click for end Registration</a>";
+        sendingMail.sendingMessage(email, confirmationUrl, subject);
 
         System.out.println(name + " pass:= " + password+ " email: "+email);
 

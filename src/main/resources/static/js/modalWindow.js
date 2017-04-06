@@ -1,16 +1,42 @@
 
 $(function() {
-
-        $.mask.definitions['~']='[+-]';
-        $('#phone').mask('(999) 999-9999');
-
+    //$(function(){
+    //    $.mask.definitions['~']='[+-]';
+    //    $('#phone').mask('(999) 999-9999');
+    //});
     $("#SignUpBtn").click(function(event) {
         //отмена привычных действий кнопки ссылки input(a)
         event.preventDefault();
+
+        var upperCase = new RegExp('[A-Z]');
+        var lowerCase = new RegExp('[a-z]');
+        var numbers = new RegExp('[0-9]');
         //valid вызывает метод валидации, проверяет есть ли ошибка или нет в вызваном id.
         if ($("#signupSubmitFrm").valid()) {
-            submitSignupShowError();
+            $.mask.definitions['~']='[+-]';
+            $('#phone').mask('(999) 999-9999');
+
+        //valid вызывает метод валидации, проверяет есть ли ошибка или нет в вызваном id.
+        var pass = $("#signUpPassword").val();
+        $("#passError").hide();
+        $("#passErrorNumbers").hide();
+        //|| -или, && -и
+        if (pass.length > 10 || pass.length<5) {
+            $("#passErrorNumbers").show();
+
+        } else {
+            $("#passError").hide();
+            $("#passErrorNumbers").hide();
+            if (pass.match(upperCase) && pass.match(lowerCase) && pass.match(numbers)) {
+
+                    submitSignupShowError();
+
+            } else {$("#passError").show();}
         }
+        }
+
+
+
 
     });
 

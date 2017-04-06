@@ -239,6 +239,13 @@
                             <label for="password" class="password" data-icon="p">Your password </label>
                             <input type="password" name="signUpPassword" id="signUpPassword"
                                    placeholder="Password" required=""/>
+                            <br/><span style="font-size: smaller; color:#066A75; font-family: 'Times New Roman'">
+                        Пароль должен быть англ буквами.<br/> Oт 5 до 10 символов.
+                        <br/> Содержать как минимум одну цифру.
+                       <br/> И минимум одну большую букву</span>
+                            <br/>
+                            <span id="passError" style="display: none; font-style: italic; color: red"> Пароль несовпадает с условием, введите еще раз </span>
+                            <span id="passErrorNumbers" style="display: none; font-style: italic; color: red"> Пароль больше 10 или меньше 5 символов</span>
 
                             <p class="signin button">
                                 <input type="submit" id="SignUpBtn" value="Sign up"/>

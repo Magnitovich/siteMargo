@@ -266,4 +266,14 @@ public class CurtainService {
             return list;
         }
     }
+
+    public Double findAllRows() {
+        int allRows = repository.findAllRows();
+        System.out.println("CurtainService");
+        System.out.println("Select count rows: "+allRows);
+        Double pages = 3.0;
+        double quantityPages = Math.ceil(allRows/pages);
+        System.out.println("Matn.ceil: "+quantityPages);
+        return quantityPages;
+    }
 }
