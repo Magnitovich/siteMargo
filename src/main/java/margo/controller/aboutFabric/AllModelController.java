@@ -34,7 +34,6 @@ public class AllModelController {
 
          modelAndView.setViewName("allFabric/allModel");
 
-
     return modelAndView;
     }
 }

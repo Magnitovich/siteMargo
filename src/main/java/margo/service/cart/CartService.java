@@ -42,8 +42,6 @@ public class CartService {
     @Autowired
     private UpholsteryFabricRepository upholsteryFabricRepository;
 
-    List<AllFabricModel> fabricModels = new ArrayList<>();
-
     final String clothFabric = "clothFabric";
     final String curtainFabric = "curtain";
     final String orderFabric = "orderCurtain";

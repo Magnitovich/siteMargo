@@ -59,6 +59,7 @@ public class AddFabricController {
                                     BindingResult result,
                                     @RequestParam(required = false) String id) throws IOException {
 
+   ;
 
         AddPattern addPattern = new AddPattern();
         addPattern.checkInformations(dto, realObjectsPath, relativeObjectsPath);

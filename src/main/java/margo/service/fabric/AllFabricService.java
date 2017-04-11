@@ -23,11 +23,6 @@ public class AllFabricService {
     @Autowired
     private UpholsteryFabricService upholsteryFabricService;
 
-    @Autowired
-    private ClothFabricRepository clothFabricRepository;
-    @Autowired
-    private CurtainRepository curtainRepository;
-
     public List<ClothFabricDTO> seeClothFabric(){
         List<ClothFabricDTO> clothFabricDTOs = clothFabricService.seeAllCloth();
         return clothFabricDTOs;

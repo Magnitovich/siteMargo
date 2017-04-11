@@ -4,12 +4,13 @@ import margo.model.cartOder.CustomerModel;
 import margo.model.user.UserModel;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface CustomerRepository extends CrudRepository<CustomerModel, Long>{
+public interface CustomerRepository extends PagingAndSortingRepository<CustomerModel, Long> {
 
 //    @Query(value = "select  cs from CustomerModel cs WHERE name=?")
     List<CustomerModel> findByNameCustomer(String nameCustomer);

@@ -6,18 +6,50 @@
 
     <script src="js/cart/adminPanelForOrderCustomer.js" ></script>
     <script src="js/cart/adminPanelCheckbox.js"></script>
+    <script src="js/cart/paging.js"></script>
     <!--<script src="js/jquery.lint.js" ></script>-->
 
 </head>
 <body class="background">
 <div th:replace="headerMain :: header"></div>
 <!--***********************//////////////***********SHOW***********\\\\\\\\\\\\\\\\\\\\\********************-->
+<!--****************Quantity objects on one page********************-->
+<div class="form-group col-md-1">
+
+    <select class="form-control pagination" id="pageSizeSelect">
+        <option th:each="pageSize : ${pageSizes}" th:text="${pageSize}" th:value="${pageSize}" th:selected="${pageSize} == ${selectedPageSize}"></option>
+    </select>
+</div>
+<!--*******************If page will be only one, we can't see links 1,2,3...****************** -->
+<div th:if="${persons.totalPages != 1}" >
+    <ul class="pagination">
+        <!--<li th:class="${persons.number == 0} ? disabled">-->
+        <!--<a class="pageLink" th:href="@{/(pageSize=${selectedPageSize}, page=1)}">&laquo;</a>-->
+        <!--</li>-->
+        <li th:class="${persons.number == 0} ? disabled">
+            <a class="pageLink" th:href="@{administrationNotSleeps(pageSize=${selectedPageSize}, page=${persons.number})}">&larr;</a>
+        </li>
+        <!--object of this class is usually available in variable evaluation expressions with the name #numbers-->
+        <!--sequence(Integer from, Integer to)-->
+        <!--Produces an array with a sequence of integer numbers.-->
+        <!--active pointer-disabled = active and class= pointer-disabled-->
+        <li th:class="${persons.number == (page - 1)} ? 'active pointer-disabled'" th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
+            <a class="pageLink" th:href="@{administrationNotSleeps(pageSize=${selectedPageSize}, page=${page})}" th:text="${page}"></a>
+        </li>
+        <li th:class="${persons.number + 1 == persons.totalPages} ? disabled">
+            <a class="pageLink" th:href="@{administrationNotSleeps(pageSize=${selectedPageSize}, page=${persons.number + 2})}">&rarr;</a>
+        </li>
+        <!--<li th:class="${persons.number + 1 == persons.totalPages} ? disabled">-->
+        <!--<a class="pageLink" th:href="@{/(pageSize=${selectedPageSize}, page=${persons.totalPages})}">&raquo;</a>-->
+        <!--</li>-->
+    </ul>
+</div>
 
 <p/>
 <!--<div th:each="customer : ${selected}" align="center">-->
 <div  align="center" >
     <table border="1" class="ifChange" width="70%" style="margin-top: 20px">
-        <tr th:each="customer : ${selected}">
+        <tr th:each="customer : ${persons}">
             <!--id="checkOrderOnReceive" class="changeColor"-->
             <td align="center">
 

@@ -134,6 +134,9 @@ public class CurtainService {
     }
 
     public List<CurtainDTO> viewName(String name) {
+//        boolean equals = repository.equals(name);
+//        System.out.println("CurtainService viewName");
+//        System.out.println(equals);
         List<CurtainModel> yachtsModels = repository.findByName(name);
         List<CurtainDTO> yachtDTOs = convertListModelToDTO(yachtsModels);
         return yachtDTOs;
@@ -144,6 +147,7 @@ public class CurtainService {
                               final String photo03, final String photo04, final String photo05,
                               final String name, final String describe, final String structure, final String paint,
                               final String height, final String color, final Double quantity, final BigDecimal price) {
+
         CurtainModel curtainModel = new CurtainModel();
 //        System.out.println("AddNewCURTAIN:");
 //        System.out.println(photo + ", ");
@@ -267,13 +271,13 @@ public class CurtainService {
         }
     }
 
-    public Double findAllRows() {
-        int allRows = repository.findAllRows();
-        System.out.println("CurtainService");
-        System.out.println("Select count rows: "+allRows);
-        Double pages = 3.0;
-        double quantityPages = Math.ceil(allRows/pages);
-        System.out.println("Matn.ceil: "+quantityPages);
-        return quantityPages;
-    }
+//    public Double findAllRows() {
+//        int allRows = repository.findAllRows();
+//        System.out.println("CurtainService");
+//        System.out.println("Select count rows: "+allRows);
+//        Double pages = 3.0;
+//        double quantityPages = Math.ceil(allRows/pages);
+//        System.out.println("Matn.ceil: "+quantityPages);
+//        return quantityPages;
+//    }
 }

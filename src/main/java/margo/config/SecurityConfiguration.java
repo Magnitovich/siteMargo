@@ -77,6 +77,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/newPassword**")
                 .permitAll()
 
+                .antMatchers("/guestroom**")
+                .permitAll()
+                .antMatchers("/childrenroom**")
+                .permitAll()
+                .antMatchers("/bedroom**")
+                .permitAll()
+                .antMatchers("/finishProduct**")
+                .permitAll()
+                .antMatchers("/guestroom**")
+                .permitAll()
+                .antMatchers("/lambrequin**")
+                .permitAll()
+                .antMatchers("/tulleFinish**")
+                .permitAll()
+                .antMatchers("/curtainFinish**")
+                .permitAll()
+
+
 
                 .antMatchers("/testOrderValue")
                 .permitAll()

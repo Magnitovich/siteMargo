@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -18,10 +17,11 @@ public class CurtainController {
     @Autowired
     private CurtainService curtainService;
 
+
     @RequestMapping(value = "/curtainModels", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView seeAllCurtain(){
 
-        curtainService.findAllRows();
+//        paginationService.findAllRows();
 
         List<CurtainDTO> curtainDTOs = curtainService.seeAllModels();
         ArrayList colorModel =curtainService.seeColor();

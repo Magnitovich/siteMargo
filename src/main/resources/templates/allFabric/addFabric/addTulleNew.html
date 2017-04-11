@@ -91,8 +91,8 @@
 
 
         <tr>
-            <td>Имя Ткань </td>
-            <td><input class="buttons" type="text" th:field="*{name}" style="width: 255px" name="name" id="name"/>
+            <td> Название </td>
+            <td><input class="buttons" type="text" th:field="*{name}" style="width: 255px" name="name" id="name" required=""/>
 
                 <span style="color: red; font-style: italic; font-size: 10px" th:if="${#fields.hasErrors('name')}"
                       th:errors="*{name}">Error</span>
@@ -215,11 +215,12 @@
         <tr>
             <td>Количество на складе</td>
             <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}"
-                       th:field="*{quantity}" name="quantityYacht" id="quantityYacht"/> </td>
+                       th:field="*{quantity}" name="quantityYacht" id="quantityYacht" required=""/> </td>
         </tr>
         <tr>
             <td>Цена </td>
-            <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}" th:field="*{price}" value="1" name="priceYacht" id="priceYacht"/> </td>
+            <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}" th:field="*{price}" required=""
+                       value="1" name="priceYacht" id="priceYacht"/> </td>
         </tr>
         <tr>
             <!--<form action="../yacht.html">-->
