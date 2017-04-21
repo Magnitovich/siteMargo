@@ -114,7 +114,6 @@ public class CurtainService {
         if (!StringUtils.isEmpty(curtainDTO.getPhoto05())) {
             model.setPhoto05(curtainDTO.getPhoto05());
         }
-
         model.setName(curtainDTO.getName());
         model.setDescription(curtainDTO.getDescription());
         model.setStructure(curtainDTO.getStructure());

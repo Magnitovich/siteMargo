@@ -9,7 +9,7 @@
     <script src="js/jquery-ui.min.js" type="text/javascript"></script>
     <link href="js/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
     <script src="js/finishProduct/finishProduct.js" ></script>
-    <script src="js/fabric/searchCurtainNew.js"></script>
+    <script src="js/finishProduct/filter/finishFilter.js"></script>
 
 </head>
 <body class="background">
@@ -27,12 +27,14 @@
            name="DeleteYacht" id="DeleteYacht" class="searchMenu" value="Delete"/>
 </p>
 <!--********************************SHOW*******************************-->
-
+<input type="hidden" th:value="${namePage}" id="selectPage"/>
     <table border="0" width="95%">
         <tr>
             <td class="main" valign="top">
                 <div th:each="curtain : ${allCurtain}">
-                    <div class="color" th:classappend="${curtain.color} +' '+ ${curtain.paint}+ ' '
+                <!--<div th:each="sewed : ${forSewed}">-->
+
+                    <div class="color" th:classappend="${curtain.itIsSewed}+' '+ ${curtain.color}+' '+ ${curtain.paint}+ ' '
                     +${curtain.price}+' '+${curtain.structure}+' '+${curtain.height}">
 
                     <div class="pic" id="mainDiv">
@@ -47,60 +49,38 @@
                                 </div>
                                 <div align="center"  sec:authorize="hasAuthority('admin')">
                                     Quantity: &nbsp; <span  th:text="${curtain.quantity}">quantity</span>m.
-                                </div>
+                                    <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
+                                           style="background-color: #0f0f0f"/>
+                                    <br/><span class="priceSSS" th:text="${curtain.price}"/>грн.                                </div>
                                 <div align="center" style="font-family: 'Times New Roman'; color: black">
                                     <div align="center"  sec:authorize="isAnonymous()">
-                                    <b> $&nbsp;
-                                        <span class="priceSSS" th:text="${curtain.price}"/>
+                                    <b>
+                                        <span class="priceSSS" th:text="${curtain.price}"/>грн.
                                         <span th:text="${curtain.paint}"/>
                                         </b>
                                 </div>
                                 <div align="center" sec:authorize="hasAuthority('user')">
-                                    <b> $&nbsp;
-                                        <span class="priceSSS" th:text="${curtain.price}"/>
+                                    <b>
+                                        <span class="priceSSS" th:text="${curtain.price}"/>грн.
                                         <span th:text="${curtain.paint}"/>
                                     </b>
                                     <!--<b> $&nbsp; <input type="text"  th:value="${curtain.price}">Price</input></b>-->
                                 </div>
-                                <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
-                                   sec:authorize="hasAuthority('admin')" style="background-color: #0f0f0f"/>
+
                                 </div>
                             </a>
                         </div>
                     </div>
                 </div>
-            </td>
-
-            <!--<td class="searchTextColor">-->
-                <!--<div th:each="curtain : ${allCurtain}">-->
-                    <!--<br/>-->
-                    <!--<input type="checkbox" name="rbn" th:id="${curtain.color}" th:value="${curtain.color}" th:text="${curtain.color}"/>-->
                 <!--</div>-->
 
-                <!--<th:block th:each="curtain : ${allCurtain}" th:with="color= ${curtain.color}">-->
-                    <!--<input type="checkbox" th:id="${color}" th:class="${color}" th:value="${color}"/> <span th:text="${color}" />-->
-                    <!--<br />-->
-                <!--</th:block>-->
-
-            <!--</td>-->
-
+            </td>
 
             <td class="searchPlane">
                 Фильтр:<p/>
                 <div class="searchColor" id="filterPrice">
                     <div class="searchTextColor"> Цена до:</div>
-                    <!--<p>-->
-                        <!--<label for="amount">Price range:</label>-->
-                        <!--<input type="text" class="priceSlider" id="amount" readonly="readonly" style="width: 90%; border:0; color:#f6931f;-->
-                        <!--background-color:#04004b; font-size:small; font-weight:bold;"/>-->
-                    <!--</p>-->
 
-                    <!--<div id="slider-range"></div>-->
-
-                    <!--id="priceSelected"-->
-                        <!--<input class="priceSelected"  type="checkbox" id="price01" value="1"/> 0 - 800грн <br/>-->
-                        <!--<input class="priceSelected" type="checkbox" id="price02" value="2"/>800 - 1600грн<br/>-->
-                        <!--<input class="priceSelected" type="checkbox" id="price03" value="3"/>>1600грн-->
                     <input class="priceSelected"  type="checkbox" id="price01" value="1"/> 0 -
                     <span  th:text="${price[0]}"></span>
                     <br/>
@@ -133,12 +113,21 @@
                         <input type="checkbox" name="rbn" th:id="${alls}" th:value="${alls}" th:text="${alls}"/>
                     </div>
                 </div>
+                <div class="searchColor" id="filterSewed">
+                    <div class="searchTextColor"> Пошито на:</div>
+                    <div th:each="allSewed : ${forSewed}">
+                        <input type="checkbox" name="rbn" th:id="${allSewed}" th:value="${allSewed}"
+                               th:text="${allSewed}"/>
+                    </div>
+                </div>
                 <div class="searchColor" id="filterHeight">
                     <div class="searchTextColor" > Высота:</div>
-                    <input type="checkbox" id="27" value="2.7-2.9м" />2,7-2,9м<br/>
-                    <input type="checkbox" id="29" value="2.9-3.0м"/>2,9-3,0м<br/>
-                    <input type="checkbox"  id="30" value="3.0-3.15м"/>3,0-3,15м<br/>
-                    <input type="checkbox"  id="315" value="3.15м"/>больше 3.15м
+                    <input type="checkbox" name="heightRbn" value="2м"/>до 2м<br/>
+                    <input type="checkbox" name="heightRbn" value="2.0-2.5м" />2.0-2.5м<br/>
+                    <input type="checkbox" name="heightRbn" value="2.5-2.7м"/>2.5-2.7м<br/>
+                    <input type="checkbox" name="heightRbn" value="2.7-2.9м"/>2.7-2.9м<br/>
+                    <input type="checkbox" name="heightRbn" value="3.15м"/>>3,15м<br/>
+                    <!--<input type="checkbox" id="27" value="2.7-2.9м" />2,7-2,9м<br/>-->
                 </div>
             </td>
     </tr>

@@ -45,23 +45,24 @@
                             </div>
                             <div align="center"  sec:authorize="hasAuthority('admin')">
                                 Quantity: &nbsp; <span  th:text="${model.quantity}">quantity</span>m.
+                                <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
+                                       style="background-color: #0f0f0f"/>
+                                <br/><span class="priceSSS" th:text="${curtain.price}"/>грн.
                             </div>
                             <div align="center" style="font-family: 'Times New Roman'; color: black">
                                 <div align="center"  sec:authorize="isAnonymous()">
-                                    <b> $&nbsp;
-                                        <span class="priceSSS" th:text="${model.price}"/>
+                                    <b>
+                                        <span class="priceSSS" th:text="${model.price}"/>грн.
                                         <span th:text="${model.paint}"/>
                                     </b>
                                 </div>
                                 <div align="center" sec:authorize="hasAuthority('user')">
-                                    <b> $&nbsp;
-                                        <span class="priceSSS" th:text="${model.price}"/>
+                                    <b>
+                                        <span class="priceSSS" th:text="${model.price}"/>грн.
                                         <span th:text="${model.paint}"/>
                                     </b>
                                     <!--<b> $&nbsp; <input type="text"  th:value="${curtain.price}">Price</input></b>-->
                                 </div>
-                                <input type="checkbox" name="selectCurtainForChange" th:attr="id=${model.id}"
-                                       sec:authorize="hasAuthority('admin')" style="background-color: #0f0f0f"/>
                             </div>
                         </a>
                     </div>

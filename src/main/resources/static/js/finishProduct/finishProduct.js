@@ -1,12 +1,14 @@
 
-function addNewBedroom(){ window.location.href ="finishProduct/addInfoAboutNewFinishProduct?part=bedroom";}
-function addNewCabinet(){ window.location.href ="finishProduct/addInfoAboutNewFinishProduct?part=cabinet";}
-function addNewChildrenroom(){ window.location.href ="finishProduct/addInfoAboutNewFinishProduct?part=children";}
-function addNewGuestroom(){ window.location.href ="finishProduct/addInfoAboutNewFinishProduct?part=guestroom";}
-function addNewKitchen(){ window.location.href ="finishProduct/addInfoAboutNewFinishProduct?part=kitchen";}
-function addNewLambrequin(){ window.location.href ="finishProduct/addInfoAboutNewFinishProduct?part=lambr";}
-function addNewCurtainFinish(){ window.location.href ="finishProduct/addInfoAboutNewFinishProduct?part=curtFinish";}
-function addNewTulleFinish(){ window.location.href ="finishProduct/addInfoAboutNewFinishProduct?part=tulleFinish";}
+function addNewBedroom(){
+    var addPage = $("#selectPage").val();
+    window.location.href ="addInfoAboutNewFinishProduct?part="+addPage;}
+function addNewCabinet(){ window.location.href ="addInfoAboutNewFinishProduct?part=cabinet";}
+function addNewChildrenroom(){ window.location.href ="addInfoAboutNewFinishProduct?part=children";}
+function addNewGuestroom(){ window.location.href ="addInfoAboutNewFinishProduct?part=guestroom";}
+function addNewKitchen(){ window.location.href ="addInfoAboutNewFinishProduct?part=kitchen";}
+function addNewLambrequin(){ window.location.href ="addInfoAboutNewFinishProduct?part=lambr";}
+function addNewCurtainFinish(){ window.location.href ="addInfoAboutNewFinishProduct?part=curtFinish";}
+function addNewTulleFinish(){ window.location.href ="addInfoAboutNewFinishProduct?part=tulleFinish";}
 //function addNewCabinet(){ window.location.href ="addInfoAboutNewCabinet";}
 //function addNewChildrenroom(){ window.location.href ="addInfoAboutNewChildrenroom";}
 //function addNewGuestroom(){ window.location.href ="addInfoAboutNewGuestroom";}
@@ -23,7 +25,7 @@ function editInfoBedroom() {
     }else if (selectedForEdit.length==0) {
         alert("You don't selected anyone model")
     } else {
-        window.location.href ="finishProduct/addInfoAboutNewFinishProduct?id="+selectedForEdit[0].id;
+        window.location.href ="addInfoAboutNewFinishProduct?id="+selectedForEdit[0].id+"&part=bedroom";
     }
 }
 

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "BEDROOM", schema = "public")
+@Table(name = "LAMBREQUIN", schema = "public")
 public class LambrequinModel extends AllFinishProductModel {
 
     @Column(name = "PHOTO")

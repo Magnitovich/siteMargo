@@ -2,13 +2,14 @@ package margo.dao.finishProduct;
 
 import margo.model.finishedProduct.KitchenModel;
 import margo.model.finishedProduct.LambrequinModel;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface LambrequinRepository extends PagingAndSortingRepository<LambrequinModel, Long>{
+public interface LambrequinRepository extends CrudRepository<LambrequinModel, Long> {
 
     List<LambrequinModel> findByPhoto(String photo);
 
