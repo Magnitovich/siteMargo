@@ -1,10 +1,6 @@
 package margo.controller.finishProduct;
 
-import margo.model.finishedProduct.BedroomModel;
 import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
-import margo.model.modelDTO.allCurtainsDTO.CurtainDTO;
-import margo.model.modelDTO.finishProductDTO.SewedDTO;
-import margo.service.finishedProduct.BedroomService;
 import margo.service.finishedProduct.CheckRepositoryService;
 import margo.service.finishedProduct.MainFinishedService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +24,7 @@ public class BedroomController {
     @RequestMapping(value = "/finishProducts", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView showBedroom(@RequestParam(value = "part", required = false)String part){
 
-        System.out.println("Bedroom(/finishProducts) controller part: "+part);
+//        System.out.println("Bedroom(/finishProducts) controller part: "+part);
         ModelAndView modelAndView = new ModelAndView();
         List<AllFabricDTO> curtainDTOs = service.seeAllModels(repositoryService.selectRepository(part));
         ArrayList colorModel =service.seeColor();

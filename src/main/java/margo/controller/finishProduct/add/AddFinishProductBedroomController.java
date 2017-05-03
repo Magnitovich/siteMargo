@@ -4,29 +4,20 @@ package margo.controller.finishProduct.add;
 import margo.controller.add.AddPattern;
 import margo.controller.finishProduct.BedroomController;
 import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
-import margo.model.modelDTO.allCurtainsDTO.CurtainDTO;
-import margo.service.exception.ExceptionAddCurtainService;
-import margo.service.exception.finishProduct.ExceptionAddFinishProduct;
-import margo.service.fabric.CurtainService;
-//import margo.service.finishedProduct.AddEditService;
-import margo.service.finishedProduct.BedroomService;
+import margo.service.finishedProduct.AddEditService;
 import margo.service.finishedProduct.CheckRepositoryService;
 import margo.service.finishedProduct.MainFinishedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class AddFinishProductBedroomController {
@@ -35,63 +26,57 @@ public class AddFinishProductBedroomController {
     @Autowired
     private BedroomController bedroomController;
     @Autowired
-    private BedroomService bedroomService;
-    @Autowired
     private MainFinishedService mainFinishedService;
-
     @Autowired
-    private ExceptionAddFinishProduct exceptionAddFinishProduct;
+    private AddEditService exceptionAddFinishProduct;
     @Autowired
     private CheckRepositoryService repositoryService;
+
+    private final String bedroom = "bedroom";
+    private final String cabinet = "cabinet";
+    private final String guestroom = "guestroom";
+    private final String children = "children";
+    private final String kitchen = "kitchen";
+    private final String lambr = "lambr";
+    private final String curtFinish = "curtFinish";
+    private final String tulleFinish = "tulleFinish";
+
 
     @Value("${img.bedroom.path}")
     private String realObjectsPathBedroom;
     @Value("${img.bedroom.relative.path}")
     private String relativeObjectsPathBedroom;
-
-//    @Value("${img.bedroom.path}")
-//    private String realObjectsPathBedroom;
-//    @Value("${img.bedroom.relative.path}")
-//    private String relativeObjectsPathBedroom;
-//    @Value("${img.cabinet.path}")
-//    private String realObjectsPathCabinet;
-//    @Value("${img.cabinet.relative.path}")
-//    private String relativeObjectsPathCabinet;
-//    @Value("${img.childroom.path}")
-//    private String realObjectsPathChildroom;
-//    @Value("${img.childroom.relative.path}")
-//    private String relativeObjectsPathChildroom;
-//    @Value("${img.curtainFinishProduct.path}")
-//    private String realObjectsPathCurtainFinishProduct;
-//    @Value("${img.curtainFinishProduct.relative.path}")
-//    private String relativeObjectsPathCurtainFinishProduct;
-//    @Value("${img.tulleFinishProduct.path}")
-//    private String realObjectsPathTulleFinishProduct;
-//    @Value("${img.tulleFinishProduct.relative.path}")
-//    private String relativeObjectsPathTulleFinishProduct;
-//    @Value("${img.guestroom.path}")
-//    private String realObjectsPathGuestroom;
-//    @Value("${img.guestroom.relative.path}")
-//    private String relativeObjectsPathGuestroom;
-//    @Value("${img.kitchen.path}")
-//    private String realObjectsPathKitchen;
-//    @Value("${img.kitchen.relative.path}")
-//    private String relativeObjectsPathKitchen;
-//    @Value("${img.lambr.path}")
-//    private String realObjectsPathLamr;
-//    @Value("${img.lambr.relative.path}")
-//    private String relativeObjectsPathLambr;
+    @Value("${img.cabinet.path}")
+    private String realObjectsPathCabinet;
+    @Value("${img.cabinet.relative.path}")
+    private String relativeObjectsPathCabinet;
+    @Value("${img.childroom.path}")
+    private String realObjectsPathChildroom;
+    @Value("${img.childroom.relative.path}")
+    private String relativeObjectsPathChildroom;
+    @Value("${img.curtainFinishProduct.path}")
+    private String realObjectsPathCurtainFinishProduct;
+    @Value("${img.curtainFinishProduct.relative.path}")
+    private String relativeObjectsPathCurtainFinishProduct;
+    @Value("${img.tulleFinishProduct.path}")
+    private String realObjectsPathTulleFinishProduct;
+    @Value("${img.tulleFinishProduct.relative.path}")
+    private String relativeObjectsPathTulleFinishProduct;
+    @Value("${img.guestroom.path}")
+    private String realObjectsPathGuestroom;
+    @Value("${img.guestroom.relative.path}")
+    private String relativeObjectsPathGuestroom;
+    @Value("${img.kitchen.path}")
+    private String realObjectsPathKitchen;
+    @Value("${img.kitchen.relative.path}")
+    private String relativeObjectsPathKitchen;
+    @Value("${img.lambr.path}")
+    private String realObjectsPathLamr;
+    @Value("${img.lambr.relative.path}")
+    private String relativeObjectsPathLambr;
 
     private String checkTo;
 
-//    private final String bedroom = "bedroom";
-//    private final String cabinet = "cabinet";
-//    private final String children = "children";
-//    private final String guestroom = "guestroom";
-//    private final String kitchen = "kitchen";
-//    private final String lambr = "lambr";
-//    private final String curtFinish = "curtFinish";
-//    private final String tulleFinish = "tulleFinish";
 
     @RequestMapping(value = "/addInfoAboutNewFinishProduct", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView seePageAddCurtain(@RequestParam(required = false) Long id,
@@ -110,13 +95,29 @@ public class AddFinishProductBedroomController {
         }
     }
 
-    @RequestMapping(value = "/addSuccessfulBedroom", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/addSuccessfulFinishProduct", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView addInfoCars(@ModelAttribute("comparePhotoNameWithDB") AllFabricDTO dto,
                                     BindingResult result) throws IOException {
-        CrudRepository crudRepository = repositoryService.selectRepository(checkTo);
 
         AddPattern addPattern = new AddPattern();
-        addPattern.checkInformations(dto, realObjectsPathBedroom, relativeObjectsPathBedroom);
+        if (checkTo.equals(bedroom)) {
+            addPattern.checkInformations(dto, realObjectsPathBedroom, relativeObjectsPathBedroom);
+        } else if (checkTo.equals(cabinet)){
+            addPattern.checkInformations(dto, realObjectsPathCabinet, relativeObjectsPathCabinet);
+        } else if (checkTo.equals(guestroom)) {
+            addPattern.checkInformations(dto, realObjectsPathGuestroom, relativeObjectsPathGuestroom);
+        } else if (checkTo.equals(children)) {
+            addPattern.checkInformations(dto, realObjectsPathChildroom, relativeObjectsPathChildroom);
+        }else if (checkTo.equals(kitchen)) {
+            addPattern.checkInformations(dto, realObjectsPathKitchen, relativeObjectsPathKitchen);
+        }else if (checkTo.equals(lambr)) {
+            addPattern.checkInformations(dto, realObjectsPathLamr, relativeObjectsPathLambr);
+        }else if (checkTo.equals(curtFinish)) {
+            addPattern.checkInformations(dto, realObjectsPathCurtainFinishProduct, relativeObjectsPathCurtainFinishProduct);
+        }else if (checkTo.equals(tulleFinish)) {
+            addPattern.checkInformations(dto, realObjectsPathTulleFinishProduct, relativeObjectsPathTulleFinishProduct );
+        }
+
         if (dto.getIdForEditCurtain() != null ) {
             dto.setPhoto(addPattern.getNameFile());
             dto.setPhoto01(addPattern.getNameFile01());
@@ -125,7 +126,7 @@ public class AddFinishProductBedroomController {
             dto.setPhoto04(addPattern.getNameFile04());
             dto.setPhoto05(addPattern.getNameFile05());
 
-            bedroomService.editCurtain(dto);
+            exceptionAddFinishProduct.editCurtain(dto, repositoryService.selectRepository(checkTo));
             return bedroomController.showBedroom(checkTo);
         } else {
             try{
@@ -133,7 +134,7 @@ public class AddFinishProductBedroomController {
                         addPattern.getNameFile02(), addPattern.getNameFile02(), addPattern.getNameFile03(),
                         addPattern.getNameFile05(), dto.getName(), dto.getDescription(), dto.getStructure(),
                         dto.getPaint(), dto.getHeight(), dto.getColor(), dto.getQuantity(), dto.getPrice(), dto.getItIsSewed(),
-                        checkTo);
+                        checkTo, dto.getIdForEditCurtain());
                 return bedroomController.showBedroom(checkTo);
             } catch (RuntimeException r){
 

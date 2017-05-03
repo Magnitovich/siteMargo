@@ -18,7 +18,6 @@ public class BuyCurtainController {
 
     @RequestMapping(value = "/buyCurtain", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView seeSelectedCurtain(@RequestParam(value = "hiddenModelId", required = false)Long id){
-        System.out.println("REQUEST ID: "+id);
 
         ModelAndView modelAndView = new ModelAndView();
         String s = curtainService.convertIdToName(id);

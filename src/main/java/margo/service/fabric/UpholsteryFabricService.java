@@ -230,10 +230,9 @@ public class UpholsteryFabricService {
             minValue = Collections.min(colorModel);
             BigDecimal div = new BigDecimal("3");
             BigDecimal mult = new BigDecimal("2");
-            BigDecimal first = maxValue.divide(div, -2, BigDecimal.ROUND_DOWN);
+            BigDecimal first = maxValue.divide(div, 0, BigDecimal.ROUND_DOWN);
             String firstValue = first.toPlainString();
-            String secondValue = (first.multiply(mult)).setScale(-2, BigDecimal.ROUND_HALF_UP).toPlainString();
-
+            String secondValue = (first.multiply(mult)).setScale(0, BigDecimal.ROUND_HALF_UP).toPlainString();
 
             list.add(firstValue);
             list.add(secondValue);

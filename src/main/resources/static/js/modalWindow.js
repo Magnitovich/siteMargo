@@ -35,9 +35,6 @@ $(function() {
         }
         }
 
-
-
-
     });
 
     $("#NickName").change(function() {

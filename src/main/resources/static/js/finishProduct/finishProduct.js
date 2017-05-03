@@ -1,23 +1,27 @@
-
-function addNewBedroom(){
+$(document).ready(function() {
+    $('.pic a').on('click', function (e) {
+        var addPage = $("#selectPage").val();
+        var id = $(this).find('input[name=id]').val();
+        //alert("ID: "+id + "  photo: "+photo);
+        window.location.href ="buyFinishProduct?modelId="+id+"&part="+addPage;
+    })
+});
+    function addNewBedroom(){
     var addPage = $("#selectPage").val();
     window.location.href ="addInfoAboutNewFinishProduct?part="+addPage;}
-function addNewCabinet(){ window.location.href ="addInfoAboutNewFinishProduct?part=cabinet";}
-function addNewChildrenroom(){ window.location.href ="addInfoAboutNewFinishProduct?part=children";}
-function addNewGuestroom(){ window.location.href ="addInfoAboutNewFinishProduct?part=guestroom";}
-function addNewKitchen(){ window.location.href ="addInfoAboutNewFinishProduct?part=kitchen";}
-function addNewLambrequin(){ window.location.href ="addInfoAboutNewFinishProduct?part=lambr";}
-function addNewCurtainFinish(){ window.location.href ="addInfoAboutNewFinishProduct?part=curtFinish";}
-function addNewTulleFinish(){ window.location.href ="addInfoAboutNewFinishProduct?part=tulleFinish";}
-//function addNewCabinet(){ window.location.href ="addInfoAboutNewCabinet";}
-//function addNewChildrenroom(){ window.location.href ="addInfoAboutNewChildrenroom";}
-//function addNewGuestroom(){ window.location.href ="addInfoAboutNewGuestroom";}
-//function addNewKitchen(){ window.location.href ="addInfoAboutNewKitchen";}
-//function addNewLambrequin(){ window.location.href ="addInfoAboutNewLambrequin";}
-//function addNewCurtainFinish(){ window.location.href ="addInfoAboutNewCurtainFinish";}
-//function addNewTulleFinish(){ window.location.href ="addInfoAboutNewTulleFinish";}
 
+    //function buyFinish() {
+            //var photo = $(this).find('input[name=photoId]').val();
+            //var id = $(this).find('input[type=hidden][name=pageId]').val();
+            //var idProp = $(this).closest("tr").find('input[type=hidden][name=pageId]').prop();
+        //console.log(idProp);
+            //alert("ID: " + id + "IdProp"+ idProp);
+        //var addPage = $("#selectPage").val();
+        //var pageId = $("#pageId").val();
+        //window.location.href ="buyFinishProduct?modelId="+pageId+"&part="+addPage;
+    //}
 function editInfoBedroom() {
+    var addPage = $("#selectPage").val();
 
     var selectedForEdit = $('#mainDiv input:checked')
     if (selectedForEdit.length>1) {
@@ -25,7 +29,7 @@ function editInfoBedroom() {
     }else if (selectedForEdit.length==0) {
         alert("You don't selected anyone model")
     } else {
-        window.location.href ="addInfoAboutNewFinishProduct?id="+selectedForEdit[0].id+"&part=bedroom";
+        window.location.href ="addInfoAboutNewFinishProduct?id="+selectedForEdit[0].id+"&part="+addPage;
     }
 }
 
@@ -49,7 +53,7 @@ function deleteSelectedElementsBedroom() {
         },
         type:"POST",
         data: JSON.stringify(selectedForDelete),
-        url: '/delete/DELETE',
+        url: '/delete/finishProduct',
         success: function(msg){
             window.location.href = "/curtainModels"
         }
