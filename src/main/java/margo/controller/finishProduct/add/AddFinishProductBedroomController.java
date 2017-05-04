@@ -134,7 +134,7 @@ public class AddFinishProductBedroomController {
                         addPattern.getNameFile02(), addPattern.getNameFile02(), addPattern.getNameFile03(),
                         addPattern.getNameFile05(), dto.getName(), dto.getDescription(), dto.getStructure(),
                         dto.getPaint(), dto.getHeight(), dto.getColor(), dto.getQuantity(), dto.getPrice(), dto.getItIsSewed(),
-                        checkTo, dto.getIdForEditCurtain());
+                        checkTo);
                 return bedroomController.showBedroom(checkTo);
             } catch (RuntimeException r){
 

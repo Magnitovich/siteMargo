@@ -102,12 +102,6 @@ public class MainFinishedService {
         AllFabricDTO curtainDTO = convertModelToDto(one);
         return curtainDTO.getName();
     }
-    public void deleteCurtain(List<Long> models, CrudRepository repository) {
-        for (Long deleteCurtain : models) {
-            repository.delete(deleteCurtain);
-        }
-    }
-
 
     public ArrayList seeColor() {
         String[] res = null;
@@ -196,5 +190,10 @@ public class MainFinishedService {
         AllFinishProductModel product = (AllFinishProductModel) repository.findOne(id);
         AllFabricDTO allFabricDTO = convertModelToDto(product);
         return allFabricDTO;
+    }
+    public void delete(List<Long> models, CrudRepository repository) {
+        for (Long deleteCurtain : models) {
+            repository.delete(deleteCurtain);
+        }
     }
 }

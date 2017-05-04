@@ -37,42 +37,48 @@
                     <div class="color" th:classappend="${curtain.itIsSewed}+' '+ ${curtain.color}+' '+ ${curtain.paint}+ ' '
                     +${curtain.price}+' '+${curtain.structure}+' '+${curtain.height}">
 
-                    <div class="pic" id="mainDiv">
+                        <!--<div class="pageSelected" sec:authorize="isAnonymous()">-->
+                        <div class="pic" id="mainDiv">
+                            <div align="center"  sec:authorize="hasAuthority('admin')">
+                                Quantity: &nbsp;
+                                <span  th:text="${curtain.quantity}">quantity</span>m.
+                                <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
+                                      style="background-color: #0f0f0f"/>
+                                <br/>
+                                <span class="priceSSS" th:text="${curtain.price}"/>грн.
+                            </div>
+                            <div class="pageSelected">
 
-                            <a href="#" style="text-decoration: none" >
+                                <a href="#" style="text-decoration: none" >
                             <!--<a th:href="@{~/buyCurtain?hiddenModelId=${curtain.id}}" style="text-decoration: none" >-->
-                                <input type="hidden" name="photoId" id="photoId" th:value="${curtain.photo}" />
-                                <input type="hidden" name="id" id="id" th:value="${curtain.id}" />
+                                    <input type="hidden" name="photoId" id="photoId" th:value="${curtain.photo}" />
+                                    <input type="hidden" name="id" id="id" th:value="${curtain.id}" />
                                 <!--<input type="hidden" th:value="${curtain.id}" name="pageId"/>-->
 
-                                <img th:attr="src=${curtain.photo}" name="photoId"  width="200" height="280"/>
-                                <div align="center">
-                                    <b>   <span th:text="${curtain.name}">Name</span></b>
-                                <span th:text="${curtain.color}"/>
-                                    <input type="hidden" th:value="${curtain.paint}"/>
-                                </div>
-                                <div align="center"  sec:authorize="hasAuthority('admin')">
-                                    Quantity: &nbsp; <span  th:text="${curtain.quantity}">quantity</span>m.
-                                    <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
-                                           style="background-color: #0f0f0f"/>
-                                    <br/><span class="priceSSS" th:text="${curtain.price}"/>грн.                                </div>
-                                <div align="center" style="font-family: 'Times New Roman'; color: black">
+                                    <img th:attr="src=${curtain.photo}" name="photoId"  width="200" height="280"/>
+                                    <div align="center">
+                                        <b>   <span th:text="${curtain.name}">Name</span></b>
+                                        <span th:text="${curtain.color}"/>
+                                        <input type="hidden" th:value="${curtain.paint}"/>
+                                    </div>
+
+                                    <div align="center" style="font-family: 'Times New Roman'; color: black">
                                     <div align="center"  sec:authorize="isAnonymous()">
-                                    <b>
+                                        <b>
                                         <span class="priceSSS" th:text="${curtain.price}"/>грн.
                                         <span th:text="${curtain.paint}"/>
                                         </b>
-                                </div>
-                                <div align="center" sec:authorize="hasAuthority('user')">
-                                    <b>
+                                    </div>
+                                    <div align="center" sec:authorize="hasAuthority('user')">
+                                        <b>
                                         <span class="priceSSS" th:text="${curtain.price}"/>грн.
                                         <span th:text="${curtain.paint}"/>
-                                    </b>
-                                    <!--<b> $&nbsp; <input type="text"  th:value="${curtain.price}">Price</input></b>-->
-                                </div>
-
-                                </div>
-                            </a>
+                                        </b>
+                                        <!--<b> $&nbsp; <input type="text"  th:value="${curtain.price}">Price</input></b>-->
+                                    </div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.pic a').on('click', function (e) {
+    $('.pageSelected a').on('click', function (e) {
         var addPage = $("#selectPage").val();
         var id = $(this).find('input[name=id]').val();
         //alert("ID: "+id + "  photo: "+photo);
@@ -54,8 +54,6 @@ function deleteSelectedElementsBedroom() {
         type:"POST",
         data: JSON.stringify(selectedForDelete),
         url: '/delete/finishProduct',
-        success: function(msg){
-            window.location.href = "/curtainModels"
-        }
+        success: function() {window.location.reload(true);}
     })
 }

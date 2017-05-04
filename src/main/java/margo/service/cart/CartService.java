@@ -8,7 +8,9 @@ import margo.dao.fabric.*;
 import margo.model.allCurtains.*;
 import margo.model.cartOder.CustomerModel;
 import margo.model.cartOder.OrderCustomerModel;
+import margo.model.finishedProduct.AllFinishProductModel;
 import margo.model.user.UserModel;
+import margo.service.finishedProduct.CheckRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,7 @@ import java.util.List;
 public class CartService {
 
     @Autowired
-    private AllInformationsAboutCustomerController customerController;
+    private CheckRepositoryService checkRepositoryService;
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired
@@ -48,6 +50,7 @@ public class CartService {
     final String tulleFabric = "tulle";
     final String upholsteryFabric = "upholsteryFabric";
 
+
     @Transactional
     public void changeInfoInDB(CustomerModel customerModel, final String idFabric, final String photo,
                                final String name, final Double quantityFromUI) {
@@ -55,7 +58,7 @@ public class CartService {
         Long id = Long.valueOf(idFabric);
         String[] split = photo.split("/");
 
-        if(split[1].contains(clothFabric)) {
+        if(split[2].contains(clothFabric)) {
 
             List<ClothFabricModel> clothFabricModels = clothFabricRepository.findById(id);
             ClothFabricModel model = clothFabricModels.get(0);
@@ -65,7 +68,7 @@ public class CartService {
 
             saveInformationInCustomerDB(customerModel, model, quantityFromUI);
 
-        } else if (split[1].contains(curtainFabric)){
+        } else if (split[2].contains(curtainFabric)){
 
             List<CurtainModel> listModel = curtainRepository.findById(id);
             CurtainModel model = listModel.get(0);
@@ -74,7 +77,7 @@ public class CartService {
             checkInfo(curtainRepository, model, quantityInDB, quantityFromUI);
             saveInformationInCustomerDB(customerModel, model, quantityFromUI);
 
-        } else if (split[1].contains(orderFabric)){
+        } else if (split[2].contains(orderFabric)){
             List<OrderCurtainModel> listModel = orderCurtainRepository.findById(id);
             OrderCurtainModel model = listModel.get(0);
             Double quantityInDB = model.getQuantity();
@@ -82,7 +85,7 @@ public class CartService {
             checkInfo(orderCurtainRepository, model, quantityInDB, quantityFromUI);
             saveInformationInCustomerDB(customerModel, model, quantityFromUI);
 
-        } else if (split[1].contains(tulleFabric)){
+        } else if (split[2].contains(tulleFabric)){
             List<TulleModel> listModel = tulleRepository.findById(id);
             TulleModel model = listModel.get(0);
             Double quantityInDB = model.getQuantity();
@@ -90,17 +93,23 @@ public class CartService {
             checkInfo(tulleRepository, model, quantityInDB, quantityFromUI);
             saveInformationInCustomerDB(customerModel, model, quantityFromUI);
 
-        } else if (split[1].contains(upholsteryFabric)){
+        } else if (split[2].contains(upholsteryFabric)){
             List<UpholsteryFabricModel> listModel = upholsteryFabricRepository.findById(id);
             UpholsteryFabricModel model = listModel.get(0);
             Double quantityInDB = model.getQuantity();
 
             checkInfo(upholsteryFabricRepository, model, quantityInDB, quantityFromUI);
             saveInformationInCustomerDB(customerModel, model, quantityFromUI);
+        } else {
+            CrudRepository crudRepository = checkRepositoryService.selectRepository(split[2]);
+            AllFinishProductModel allFinishProductModel = (AllFinishProductModel) crudRepository.findOne(id);
+            Double quantityInDB = allFinishProductModel.getQuantity();
+            checkInfo(crudRepository, allFinishProductModel, quantityInDB, quantityFromUI);
+            saveInformationInCustomerDB(customerModel, allFinishProductModel, quantityFromUI);
         }
     }
     @Transactional
-    public void checkInfo(CrudRepository repositories, AllFabricModel model, Double quantityInDB, Double quantityFromUI){
+    public void checkInfo(CrudRepository repositories, AllFinishProductModel model, Double quantityInDB, Double quantityFromUI){
         if (quantityInDB == 0) {
             System.out.println("In DB ZERO");
         } else {
@@ -109,7 +118,17 @@ public class CartService {
             repositories.save(model);
         }
     }
-    public void saveInformationInCustomerDB(CustomerModel customerModel, AllFabricModel model, Double quantityFromUI) {
+//    @Transactional
+//    public void checkInfoFinishProduct(CrudRepository repositories, AllFinishProductModel model, Double quantityInDB, Double quantityFromUI){
+//        if (quantityInDB == 0) {
+//            System.out.println("In DB ZERO");
+//        } else {
+//            Double result = quantityInDB - quantityFromUI;
+//            model.setQuantity(result);
+//            repositories.save(model);
+//        }
+//    }
+    public void saveInformationInCustomerDB(CustomerModel customerModel, AllFinishProductModel model, Double quantityFromUI) {
 
         OrderCustomerModel orderCustomerModel = new OrderCustomerModel();
 

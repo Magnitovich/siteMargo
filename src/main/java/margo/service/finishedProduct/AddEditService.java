@@ -52,11 +52,10 @@ public class AddEditService {
                                                       final String name, final String describe, final String structure,
                                                       final String paint, final String height, final String color,
                                                       final Double quantity, final BigDecimal price, final String sewed,
-                                                      String checkTo, Long id) {
+                                                      String checkTo) {
         switch (checkTo) {
             case bedroom:
                 BedroomModel bedroomModel = new BedroomModel();
-                if(id != null)
                 if((bedroomRepository.findByPhoto(photo)).size() == 0 && (bedroomRepository.findByName(name)).size() == 0){
                     addNewInfoInDB(photo, photo01, photo02, photo03, photo04, photo05,name, describe,
                             structure,paint,height,color,quantity,price, sewed, bedroomRepository, bedroomModel);
