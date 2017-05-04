@@ -1,11 +1,13 @@
 package margo.model.allCurtains;
 
+import margo.model.finishedProduct.AllFinishProductModel;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "UPHOLSTERY_FABRIC", schema = "public")
-public class UpholsteryFabricModel extends AllFabricModel{
+public class UpholsteryFabricModel extends AllFinishProductModel{
 
     @Column(name = "PHOTO")
     private String photo;

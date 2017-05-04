@@ -53,7 +53,7 @@ public class CartOrderFinishController {
                 Double quantity = Double.valueOf(split[2]);
                 String photo = split[3];
 
-                cartService.changeInfoInDB(customerModel, id,photo, name,quantity);
+                cartService.changeInfoInDB(customerModel, id, photo, name,quantity);
             }
             sendEmailToSupplierAndCustomerService.sendOrderOnEmail(allInformation.getEmailCustomer(),
                     allInformation.getNameCustomer(), newArrays);
