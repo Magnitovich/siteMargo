@@ -5,10 +5,12 @@ import margo.dao.UserRepository;
 import margo.dao.cart.CustomerOrderRepository;
 import margo.dao.cart.CustomerRepository;
 import margo.dao.fabric.*;
+import margo.dao.interior.InteriorRepository;
 import margo.model.allCurtains.*;
 import margo.model.cartOder.CustomerModel;
 import margo.model.cartOder.OrderCustomerModel;
 import margo.model.finishedProduct.AllFinishProductModel;
+import margo.model.interior.InteriorModel;
 import margo.model.user.UserModel;
 import margo.service.finishedProduct.CheckRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,12 +45,15 @@ public class CartService {
     private TulleRepository tulleRepository;
     @Autowired
     private UpholsteryFabricRepository upholsteryFabricRepository;
+    @Autowired
+    private InteriorRepository interiorRepository;
 
     final String clothFabric = "clothFabric";
     final String curtainFabric = "curtain";
     final String orderFabric = "orderCurtain";
     final String tulleFabric = "tulle";
     final String upholsteryFabric = "upholsteryFabric";
+    final String interior = "pillow";
 
 
     @Transactional
@@ -60,34 +65,31 @@ public class CartService {
 
         if(split[2].contains(clothFabric)) {
 
-            List<ClothFabricModel> clothFabricModels = clothFabricRepository.findById(id);
-            ClothFabricModel model = clothFabricModels.get(0);
+            ClothFabricModel model = clothFabricRepository.findOne(id);
             Double quantityInDB = model.getQuantity();
 
             checkInfo(clothFabricRepository, model, quantityInDB, quantityFromUI);
-
             saveInformationInCustomerDB(customerModel, model, quantityFromUI);
 
         } else if (split[2].contains(curtainFabric)){
 
-            List<CurtainModel> listModel = curtainRepository.findById(id);
-            CurtainModel model = listModel.get(0);
+            CurtainModel model = curtainRepository.findOne(id);
             Double quantityInDB = model.getQuantity();
 
             checkInfo(curtainRepository, model, quantityInDB, quantityFromUI);
             saveInformationInCustomerDB(customerModel, model, quantityFromUI);
 
         } else if (split[2].contains(orderFabric)){
-            List<OrderCurtainModel> listModel = orderCurtainRepository.findById(id);
-            OrderCurtainModel model = listModel.get(0);
+
+            OrderCurtainModel model = orderCurtainRepository.findOne(id);
             Double quantityInDB = model.getQuantity();
 
             checkInfo(orderCurtainRepository, model, quantityInDB, quantityFromUI);
             saveInformationInCustomerDB(customerModel, model, quantityFromUI);
 
         } else if (split[2].contains(tulleFabric)){
-            List<TulleModel> listModel = tulleRepository.findById(id);
-            TulleModel model = listModel.get(0);
+
+            TulleModel model = tulleRepository.findOne(id);
             Double quantityInDB = model.getQuantity();
 
             checkInfo(tulleRepository, model, quantityInDB, quantityFromUI);
@@ -100,7 +102,15 @@ public class CartService {
 
             checkInfo(upholsteryFabricRepository, model, quantityInDB, quantityFromUI);
             saveInformationInCustomerDB(customerModel, model, quantityFromUI);
-        } else {
+
+        } else if (split[2].contains(interior)){
+            InteriorModel one = interiorRepository.findOne(id);
+            Double quantityInDB = one.getQuantity();
+            checkInfo(upholsteryFabricRepository, one, quantityInDB, quantityFromUI);
+            saveInformationInCustomerDB(customerModel, one, quantityFromUI);
+
+        }
+        else {
             CrudRepository crudRepository = checkRepositoryService.selectRepository(split[2]);
             AllFinishProductModel allFinishProductModel = (AllFinishProductModel) crudRepository.findOne(id);
             Double quantityInDB = allFinishProductModel.getQuantity();

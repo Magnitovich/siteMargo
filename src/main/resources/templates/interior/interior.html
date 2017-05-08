@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"  xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:replace="headerMain :: header-libs"></head>
+<head>
+    <title>Curtain, ткани, портьеры</title>
+
+    <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="js/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <script src="js/interior/interiorLink.js" ></script>
+    <script src="js/interior/filter/interiorFilter.js"></script>
+
+</head>
+<body class="background">
+<div th:replace="headerMain :: header"></div>
+
+<!--ADD, EDIT, DELETE-->
+<p align="right">
+    <input type="submit"  style="width: 60px" name="addWhisky" id="addWhisky"
+           onclick="addNewBedroom()" sec:authorize="hasAuthority('admin')" class="searchMenu" value="Add"/>
+    <!--</form>-->
+    <input type="submit" style="width: 60px" sec:authorize="hasAuthority('admin')" onclick="editInfoBedroom()"
+           name="EditWhisky" id="EditYacht" class="searchMenu" value="Edit"/>
+
+    <input type="submit" style="width: 60px" sec:authorize="hasAuthority('admin')" onclick="deleteSelectedElementsBedroom()"
+           name="DeleteYacht" id="DeleteYacht" class="searchMenu" value="Delete"/>
+</p>
+<!--********************************SHOW*******************************-->
+<input type="hidden" th:value="${namePage}" id="selectPage"/>
+    <table border="0" width="95%">
+        <tr>
+            <td class="main" valign="top">
+                <div th:each="curtain : ${allCurtain}">
+                <!--<div th:each="sewed : ${forSewed}">-->
+
+                    <div class="color" th:classappend="${curtain.color}+ ' '
+                    +${curtain.price}">
+
+                        <!--<div class="pageSelected" sec:authorize="isAnonymous()">-->
+                        <div class="pic" id="mainDiv">
+                            <div align="center"  sec:authorize="hasAuthority('admin')">
+                                Quantity: &nbsp;
+                                <span  th:text="${curtain.quantity}">quantity</span>m.
+                                <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
+                                      style="background-color: #0f0f0f"/>
+                                <br/>
+                                <span class="priceSSS" th:text="${curtain.price}"/>грн.
+                            </div>
+                            <div class="pageSelected">
+
+                                <a href="#" style="text-decoration: none" >
+                            <!--<a th:href="@{~/buyCurtain?hiddenModelId=${curtain.id}}" style="text-decoration: none" >-->
+                                    <input type="hidden" name="photoId" id="photoId" th:value="${curtain.photo}" />
+                                    <input type="hidden" name="id" id="id" th:value="${curtain.id}" />
+                                <!--<input type="hidden" th:value="${curtain.id}" name="pageId"/>-->
+
+                                    <img th:attr="src=${curtain.photo}" name="photoId"  width="200" height="280"/>
+                                    <div align="center">
+                                        <b>   <span th:text="${curtain.name}">Name</span></b>
+                                        <span th:text="${curtain.color}"/>
+                                    </div>
+
+                                    <div align="center" style="font-family: 'Times New Roman'; color: black">
+                                    <div align="center"  sec:authorize="isAnonymous()">
+                                        <b>
+                                        <span class="priceSSS" th:text="${curtain.price}"/>грн.
+                                        </b>
+                                    </div>
+                                    <div align="center" sec:authorize="hasAuthority('user')">
+                                        <b>
+                                        <span class="priceSSS" th:text="${curtain.price}"/>грн.
+                                        </b>
+                                        <!--<b> $&nbsp; <input type="text"  th:value="${curtain.price}">Price</input></b>-->
+                                    </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--</div>-->
+
+            </td>
+
+            <td class="searchPlane">
+                Фильтр:<p/>
+                <div class="searchColor" id="filterPrice">
+                    <div class="searchTextColor"> Цена до:</div>
+
+                    <input class="priceSelected"  type="checkbox" id="price01" value="1"/> 0 -
+                    <span  th:text="${price[0]}"></span>
+                    <br/>
+                    <input class="priceSelected"  type="checkbox" id="price02" value="2"/>
+                     <span id="filterPriceFirst" th:text="${price[0]}"></span>-
+                         <span id="filterPriceSecond" th:text="${price[1]}"></span>
+                         <br/>
+                         <input class="priceSelected"  type="checkbox" id="price03" value="3"/>  >
+                         <span th:text="${price[1]}"></span>
+                    <p/>
+                    </div>
+
+                <div class="searchColor" id="filterColor">
+                    <div class="searchTextColor"> Цвет: </div>
+
+                    <div th:each="allColors : ${forColor}">
+                    <input type="checkbox" name="rbn" th:id="${allColors}" th:value="${allColors}"
+                           th:text="${allColors}"/>
+                    </div>
+                </div>
+                <!--<div class="searchColor" id="filterStructure">-->
+                    <!--<div class="searchTextColor"> Фактура:</div>-->
+                    <!--<div th:each="alls : ${forStructure}">-->
+                        <!--<input type="checkbox" name="rbn" th:id="${alls}" th:value="${alls}" th:text="${alls}"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="searchColor" id="filterHeight">-->
+                    <!--<div class="searchTextColor" > Ширина:</div>-->
+                    <!--<input type="checkbox" name="heightRbn" value="2м"/>до 2м<br/>-->
+                    <!--<input type="checkbox" name="heightRbn" value="2.0-2.5м" />2.0-2.5м<br/>-->
+                    <!--<input type="checkbox" name="heightRbn" value="2.5-2.7м"/>2.5-2.7м<br/>-->
+                    <!--<input type="checkbox" name="heightRbn" value="2.7-2.9м"/>2.7-2.9м<br/>-->
+                    <!--<input type="checkbox" name="heightRbn" value="3.15м"/>>3,15м<br/>-->
+                    <!--&lt;!&ndash;<input type="checkbox" id="27" value="2.7-2.9м" />2,7-2,9м<br/>&ndash;&gt;-->
+                <!--</div>-->
+            </td>
+    </tr>
+</table>
+
+</body>
+</html>

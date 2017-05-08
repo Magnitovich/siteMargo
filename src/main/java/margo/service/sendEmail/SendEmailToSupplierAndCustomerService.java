@@ -56,11 +56,6 @@ public class SendEmailToSupplierAndCustomerService {
             Double quantity = Double.valueOf(split[2]);
             String photo = split[3];
             String describe = split[5];
-            System.out.println("Split1: "+split[1]);
-            System.out.println("Split2: "+split[2]);
-            System.out.println("Split3: "+split[3]);
-            System.out.println("Split4: "+split[4]);
-            System.out.println("Split5: "+split[5]);
             double price = Double.parseDouble((split[4]));
             double valueInTable = quantity*price;
             double valueBeforeRound = quantity*price;

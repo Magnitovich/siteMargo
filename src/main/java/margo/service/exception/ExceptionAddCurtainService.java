@@ -28,9 +28,9 @@ public class ExceptionAddCurtainService {
 
         if (listPhoto.size()==0 && listName.size()==0) {
 //        if (listPhoto.size()==0 ) {
-            System.out.println("ExceptionAddCurtainSERVICE"+"photo01:= "+photo+", photo02:= "+photo01);
-            System.out.println("photo03: "+photo02+", photo04: "+photo03);
-            System.out.println("photo05: "+photo04+", photo06: "+photo05);
+//            System.out.println("ExceptionAddCurtainSERVICE"+"photo01:= "+photo+", photo02:= "+photo01);
+//            System.out.println("photo03: "+photo02+", photo04: "+photo03);
+//            System.out.println("photo05: "+photo04+", photo06: "+photo05);
             curtainService.addNewCurtain(photo, photo01, photo02, photo03, photo04, photo05, name, describe,
                     structure, paint, height, color, quantity, price);
 //            ModelAndView modelAndView = yachtsController.viewListYachts();

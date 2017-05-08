@@ -68,6 +68,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/registrationPage")
                 .permitAll()
+                .antMatchers("/buyInteriorProduct")
+                .permitAll()
+                .antMatchers("/interior")
+                .permitAll()
                 .antMatchers("/forgetPassword")
                 .permitAll()
                 .antMatchers("/emailToChange")

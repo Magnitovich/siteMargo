@@ -91,7 +91,7 @@ public class AddOrderFabricController {
             try {
 
                         exceptionAddService.compareEnterInfoAndInDB(addPattern.getNameFile(), addPattern.getNameFile01(),
-                                addPattern.getNameFile02(), addPattern.getNameFile02(), addPattern.getNameFile03(),
+                                addPattern.getNameFile02(), addPattern.getNameFile03(), addPattern.getNameFile04(),
                                 addPattern.getNameFile05(), dto.getName(), dto.getDescription(), dto.getStructure(),
                                 dto.getPaint(), dto.getHeight(), dto.getColor(), dto.getQuantity(), dto.getPrice());
 

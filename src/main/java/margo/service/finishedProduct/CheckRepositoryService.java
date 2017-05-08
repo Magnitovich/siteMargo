@@ -1,6 +1,7 @@
 package margo.service.finishedProduct;
 
 import margo.dao.finishProduct.*;
+import margo.dao.interior.InteriorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,8 @@ public class CheckRepositoryService {
     private LambrequinRepository lambrequinRepository;
     @Autowired
     private TulleFinishRepository tulleFinishRepository;
+    @Autowired
+    private InteriorRepository interiorRepository;
 
     private final String bedroom = "bedroom";
     private final String cabinet = "cabinet";
@@ -32,6 +35,9 @@ public class CheckRepositoryService {
     private final String lambr = "lambr";
     private final String curtFinish = "curtFinish";
     private final String tulleFinish = "tulleFinish";
+
+    private final String interior = "interior";
+
 
     private CrudRepository repository = null;
 
@@ -60,6 +66,8 @@ public class CheckRepositoryService {
             break;
             case tulleFinish:
                 repository =  tulleFinishRepository;
+            case interior:
+                repository =  interiorRepository;
             break;
         }
 //        System.out.println("CHECK REPOSITORY: "+repository);
