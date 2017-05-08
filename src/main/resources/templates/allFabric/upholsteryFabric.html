@@ -34,6 +34,12 @@
                     +${model.price}+' '+${model.structure}+' '+${model.height}">
 
                     <div class="pic" id="mainDiv">
+                        <div align="center"  sec:authorize="hasAuthority('admin')">
+                            Quantity: &nbsp; <span  th:text="${model.quantity}">quantity</span>m.
+                            <input type="checkbox" name="selectCurtainForChange" th:attr="id=${model.id}"
+                                   style="background-color: #0f0f0f"/>
+                            <br/><span class="priceSSS" th:text="${model.price}"/>грн.
+                        </div>
 
                         <a th:href="@{~/buyUpholsterFabric(hiddenModelId=${model.id})}" style="text-decoration: none" >
 
@@ -42,12 +48,6 @@
                                 <b>   <span th:text="${model.name}">Name</span></b>
                                 <span th:text="${model.color}"/>
                                 <input type="hidden" th:value="${model.paint}"/>
-                            </div>
-                            <div align="center"  sec:authorize="hasAuthority('admin')">
-                                Quantity: &nbsp; <span  th:text="${model.quantity}">quantity</span>m.
-                                <input type="checkbox" name="selectCurtainForChange" th:attr="id=${model.id}"
-                                       style="background-color: #0f0f0f"/>
-                                <br/><span class="priceSSS" th:text="${model.price}"/>грн.
                             </div>
                             <div align="center" style="font-family: 'Times New Roman'; color: black">
                                 <div align="center"  sec:authorize="isAnonymous()">

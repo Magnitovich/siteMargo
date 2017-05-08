@@ -34,6 +34,12 @@
                     +${curtain.price}+' '+${curtain.structure}+' '+${curtain.height}">
 
                     <div class="pic" id="mainDiv">
+                        <div align="center"  sec:authorize="hasAuthority('admin')">
+                            Quantity: &nbsp; <span  th:text="${curtain.quantity}">quantity</span>m.
+                            <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
+                                   style="background-color: #0f0f0f"/>
+                            <br/><span class="priceSSS" th:text="${curtain.price}"/>
+                        </div>
 
                         <a th:href="@{~/buyClothFabric(hiddenModelId=${curtain.id})}" style="text-decoration: none" >
 
@@ -42,12 +48,6 @@
                                 <b>   <span th:text="${curtain.name}">Name</span></b>
                                 <span th:text="${curtain.color}"/>
                                 <input type="hidden" th:value="${curtain.paint}"/>
-                            </div>
-                            <div align="center"  sec:authorize="hasAuthority('admin')">
-                                Quantity: &nbsp; <span  th:text="${curtain.quantity}">quantity</span>m.
-                                <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
-                                      style="background-color: #0f0f0f"/>
-                                <br/><span class="priceSSS" th:text="${curtain.price}"/>
                             </div>
 
                             <div align="center" style="font-family: 'Times New Roman'; color: black">
