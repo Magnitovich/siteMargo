@@ -34,8 +34,8 @@
                 <div th:each="curtain : ${allCurtain}">
                 <!--<div th:each="sewed : ${forSewed}">-->
 
-                    <div class="color" th:classappend="${curtain.itIsSewed}+' '+ ${curtain.color}+' '+ ${curtain.paint}+ ' '
-                    +${curtain.price}+' '+${curtain.structure}+' '+${curtain.height}">
+                    <div class="color" th:classappend="${curtain.color}+ ' '
+                    +${curtain.price}">
 
                         <!--<div class="pageSelected" sec:authorize="isAnonymous()">-->
                         <div class="pic" id="mainDiv">
@@ -59,15 +59,19 @@
                                     <div align="center">
                                         <b>   <span th:text="${curtain.name}">Name</span></b>
                                         <span th:text="${curtain.color}"/>
-                                        <input type="hidden" th:value="${curtain.paint}"/>
                                     </div>
 
                                     <div align="center" style="font-family: 'Times New Roman'; color: black">
-                                    <div align="center"  sec:authorize="isAnonymous() or hasAuthority('user')">
+                                    <div align="center"  sec:authorize="isAnonymous()">
                                         <b>
                                         <span class="priceSSS" th:text="${curtain.price}"/>грн.
-                                        <span th:text="${curtain.paint}"/>
                                         </b>
+                                    </div>
+                                    <div align="center" sec:authorize="hasAuthority('user')">
+                                        <b>
+                                        <span class="priceSSS" th:text="${curtain.price}"/>грн.
+                                        </b>
+                                        <!--<b> $&nbsp; <input type="text"  th:value="${curtain.price}">Price</input></b>-->
                                     </div>
                                     </div>
                                 </a>
@@ -104,34 +108,22 @@
                            th:text="${allColors}"/>
                     </div>
                 </div>
-                <div class="searchColor" id="searchPaint">
-                    <div class="searchTextColor"> Рисунок:</div>
-                    <div th:each="allPaint : ${forPaint}">
-                        <input type="checkbox" name="rbn" th:id="${allPaint}" th:value="${allPaint}" th:text="${allPaint}"/>
-                    </div>
-                </div>
-                <div class="searchColor" id="filterStructure">
-                    <div class="searchTextColor"> Фактура:</div>
-                    <div th:each="alls : ${forStructure}">
-                        <input type="checkbox" name="rbn" th:id="${alls}" th:value="${alls}" th:text="${alls}"/>
-                    </div>
-                </div>
-                <div class="searchColor" id="filterSewed">
-                    <div class="searchTextColor"> Пошито на:</div>
-                    <div th:each="allSewed : ${forSewed}">
-                        <input type="checkbox" name="rbn" th:id="${allSewed}" th:value="${allSewed}"
-                               th:text="${allSewed}"/>
-                    </div>
-                </div>
-                <div class="searchColor" id="filterHeight">
-                    <div class="searchTextColor" > Высота:</div>
-                    <input type="checkbox" name="heightRbn" value="2м"/>до 2м<br/>
-                    <input type="checkbox" name="heightRbn" value="2.0-2.5м" />2.0-2.5м<br/>
-                    <input type="checkbox" name="heightRbn" value="2.5-2.7м"/>2.5-2.7м<br/>
-                    <input type="checkbox" name="heightRbn" value="2.7-2.9м"/>2.7-2.9м<br/>
-                    <input type="checkbox" name="heightRbn" value="3.15м"/>>3,15м<br/>
-                    <!--<input type="checkbox" id="27" value="2.7-2.9м" />2,7-2,9м<br/>-->
-                </div>
+                <!--<div class="searchColor" id="filterStructure">-->
+                    <!--<div class="searchTextColor"> Фактура:</div>-->
+                    <!--<div th:each="alls : ${forStructure}">-->
+                        <!--<input type="checkbox" name="rbn" th:id="${alls}" th:value="${alls}" th:text="${alls}"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="searchColor" id="filterHeight">-->
+                    <!--<div class="searchTextColor" > Ширина:</div>-->
+                    <!--<input type="checkbox" name="heightRbn" value="2м"/>до 2м<br/>-->
+                    <!--<input type="checkbox" name="heightRbn" value="2.0-2.5м" />2.0-2.5м<br/>-->
+                    <!--<input type="checkbox" name="heightRbn" value="2.5-2.7м"/>2.5-2.7м<br/>-->
+                    <!--<input type="checkbox" name="heightRbn" value="2.7-2.9м"/>2.7-2.9м<br/>-->
+                    <!--<input type="checkbox" name="heightRbn" value="3.15м"/>>3,15м<br/>-->
+                    <!--&lt;!&ndash;<input type="checkbox" id="27" value="2.7-2.9м" />2,7-2,9м<br/>&ndash;&gt;-->
+                <!--</div>-->
             </td>
     </tr>
 </table>

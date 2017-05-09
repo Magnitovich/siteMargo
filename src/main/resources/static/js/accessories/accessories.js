@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
     $('.pageSelected a').on('click', function (e) {
         var addPage = $("#selectPage").val();

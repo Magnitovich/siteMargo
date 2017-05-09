@@ -4,7 +4,8 @@ $(document).ready(function() {
         var id = $(this).find('input[name=id]').val();
         //alert("ID: "+id + "  photo: "+photo);
         window.location.href ="buyFinishProduct?modelId="+id+"&part="+addPage;
-    })
+    });
+
 });
     function addNewBedroom(){
     var addPage = $("#selectPage").val();

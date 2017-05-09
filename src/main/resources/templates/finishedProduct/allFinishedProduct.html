@@ -3,8 +3,8 @@
 <head th:replace="headerMain :: header-libs"></head>
 
 <head>
-    <title>Title</title>
-
+    <title>Готовые изделия, Finish fabric products</title>
+    <script src="js/finishProduct/allFinishProducts.js" ></script>
 </head>
 <body class="background">
 <div th:replace="headerMain :: header"></div>
@@ -13,11 +13,12 @@
 <table  width="99%" border="0">
     <tr>
         <td >
-            <div th:each="curtain : ${allCurtain}">
+            <div th:each="curtain : ${allBedroom}">
                 <div class="pic" >
+                    <div class="bedroomSelected">
 
-                    <a th:href="@{~/buyCurtains(hiddenModelId=${curtain.id})}" style="text-decoration: none" >
-
+                    <a href="#" style="text-decoration: none" >
+                        <input type="hidden" name="idBedroom" id="idBedroom" th:value="${curtain.id}" />
                         <img th:attr="src=${curtain.photo}"  width="220" height="280"/>
                         <div align="center" >
                             <b>   <span th:text="${curtain.name}">Name</span></b>
@@ -28,91 +29,129 @@
                         </div>
                     </a>
                 </div>
+                    </div>
             </div>
-            <div th:each="curtain : ${allCloth}">
+
+            <div th:each="curtain : ${allCabinet}">
                 <div class="pic">
+                    <div class="cabinetSelected">
 
-                    <a th:href="@{~/buyClothFabric(hiddenModelId=${curtain.id})}" style="text-decoration: none" >
-
-                        <img th:attr="src=${curtain.photo}"  width="220" height="280"/>
-                        <div align="center" style="font-family: 'Times New Roman'; color: black">
-                            <b>   <span th:text="${curtain.name}">Name</span></b>
-                        </div>
-                        <div align="center" style="font-family: 'Times New Roman'; color: black; font-size: small">
+                        <a href="#" style="text-decoration: none" >
+                            <input type="hidden" name="idCabinet" id="idCabinet" th:value="${curtain.id}" />
+                            <img th:attr="src=${curtain.photo}"  width="220" height="280"/>
+                            <div align="center" style="font-family: 'Times New Roman'; color: black">
+                                <b>   <span th:text="${curtain.name}">Name</span></b>
+                            </div>
+                            <div align="center" style="font-family: 'Times New Roman'; color: black; font-size: small">
                                 <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
-                        </div>
-                    </a>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div th:each="curtain : ${allOrderCurtain}">
+            <div th:each="curtain : ${allChildren}">
                 <div class="pic">
-
-                    <a th:href="@{~/buyCurtains(hiddenYachtName=${curtain.id})}"
-                       style="text-decoration: none" >
-
+                    <div class="childrenSelected">
+                    <a href="#" style="text-decoration: none" >
+                        <input type="hidden" name="idChildren" id="idChildren" th:value="${curtain.id}" />
                         <img th:attr="src=${curtain.photo}"  width="220" height="280"/>
                         <div align="center" style="font-family: 'Times New Roman'; color: black">
                             <b>   <span th:text="${curtain.name}">Name</span></b>
-
                         </div>
                         <div align="center" style="font-family: 'Times New Roman'; color: black font-size: small">
                                 <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
                         </div>
                     </a>
                 </div>
+                    </div>
             </div>
-            <div th:each="curtain : ${allUp}">
+            <div th:each="curtain : ${allGuest}">
                 <div class="pic">
-
-                    <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
-                           sec:authorize="hasAuthority('admin')"/>
-
-                    <a th:href="@{~/buyCurtains(hiddenYachtName=${curtain.id})}"
-                       style="text-decoration: none" >
-
+                    <div class="guestSelected">
+                    <a href="#" style="text-decoration: none" >
+                        <input type="hidden" name="idGuest" id="idGuest" th:value="${curtain.id}" />
                         <img th:attr="src=${curtain.photo}"  width="220" height="280"/>
                         <div align="center" style="font-family: 'Times New Roman'; color: black">
                             <b>   <span th:text="${curtain.name}">Name</span></b>
-
                         </div>
-                        <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
-                             sec:authorize="hasAuthority('admin')">
-                            Quantity: &nbsp; <span  th:text="${curtain.quantity}"
-                        >quantityWhisky</span>piece
-                            <!--<input type="hidden" id="quantity"  th:value="${curtain.quantityCurtain}"/>-->
-                        </div>
-
                         <div align="center" style="font-family: 'Times New Roman'; color: black">
                             <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
-                                 sec:authorize="isAnonymous()">
-                                <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
-                            </div>
-                            <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
-                                 sec:authorize="hasAuthority('user')">
+                                 sec:authorize="isAnonymous() or hasAuthority('user')">
                                 <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
                             </div>
                         </div>
                     </a>
                 </div>
+                    </div>
+            </div>
+            <div th:each="curtain : ${allLambr}">
+                <div class="pic">
+                    <div class="lambrSelected">
+                    <a href="#" style="text-decoration: none" >
+                        <input type="hidden" name="idLambr" id="idLambr" th:value="${curtain.id}" />
+                        <img th:attr="src=${curtain.photo}"  width="220" height="280"/>
+                        <div align="center" style="font-family: 'Times New Roman'; color: black">
+                            <b>   <span th:text="${curtain.name}">Name</span></b>
+                        </div>
+                        <div align="center" style="font-family: 'Times New Roman'; color: black">
+                            <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
+                                 sec:authorize="isAnonymous() or hasAuthority('user')">
+                                <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                    </div>
+            </div>
+            <div th:each="curtain : ${allCurtain}">
+                <div class="pic">
+                    <div class="curtainSelected">
+                    <a href="#" style="text-decoration: none" >
+                        <input type="hidden" name="idCurtain" id="idCurtain" th:value="${curtain.id}" />
+                        <img th:attr="src=${curtain.photo}"  width="220" height="280"/>
+                        <div align="center" style="font-family: 'Times New Roman'; color: black">
+                            <b>   <span th:text="${curtain.name}">Name</span></b>
+                        </div>
+                        <div align="center" style="font-family: 'Times New Roman'; color: black">
+                            <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
+                                 sec:authorize="isAnonymous() or hasAuthority('user')">
+                                <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                    </div>
             </div>
             <div th:each="curtain : ${allTulle}">
                 <div class="pic">
+                    <div class="tulleSelected">
+                    <a href="#" style="text-decoration: none" >
+                        <input type="hidden" name="idTulle" id="idTulle" th:value="${curtain.id}" />
+                        <img th:attr="src=${curtain.photo}"  width="220" height="280"/>
+                        <div align="center" style="font-family: 'Times New Roman'; color: black">
+                            <b>   <span th:text="${curtain.name}">Name</span></b>
+                        </div>
+                        <div align="center" style="font-family: 'Times New Roman'; color: black">
+                            <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
+                                 sec:authorize="isAnonymous() or hasAuthority('user')">
+                                <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                    </div>
+            </div>
 
-                    <a th:href="@{~/buyTulleFabric(hiddenModelId=${curtain.id})}"
-                       style="text-decoration: none" >
-
+            <div th:each="curtain : ${allKitchen}">
+                <div class="pic">
+                    <div class="kitchenSelected">
+                        <a href="#" style="text-decoration: none" >
+                            <input type="hidden" name="idKitchen" id="idKitchen" th:value="${curtain.id}" />
                         <img th:attr="src=${curtain.photo}"  width="220" height="280"/>
                         <div align="center" style="font-family: 'Times New Roman'; color: black">
                             <b>   <span th:text="${curtain.name}">Name</span></b>
 
                         </div>
-                        <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
-                             sec:authorize="hasAuthority('admin')">
-                            Quantity: &nbsp; <span  th:text="${curtain.quantity}"
-                        >quantityWhisky</span>piece
-                            <!--<input type="hidden" id="quantity"  th:value="${curtain.quantityCurtain}"/>-->
-                        </div>
-
                         <div align="center" style="font-family: 'Times New Roman'; color: black">
                             <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
                                  sec:authorize="isAnonymous()">
@@ -125,6 +164,7 @@
                         </div>
                     </a>
                 </div>
+                    </div>
             </div>
         </td>
     </tr>
