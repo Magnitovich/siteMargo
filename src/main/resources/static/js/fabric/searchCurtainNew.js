@@ -26,8 +26,6 @@ $(document).ready(function() {
         maxPrice = Math.max.apply(null, arrayPrice);
         minPrice =  Math.min.apply(null, arrayPrice);
 
-        console.log("Max price: "+maxPrice+" Min price: "+minPrice);
-
         if($("#filterColor input:checked").length == 0 && $("#filterPrice input:checked").length == 0 &&
             $("#searchPaint input:checked").length == 0 && $("#filterHeight input:checked").length == 0
             && $("#filterStructure input:checked").length == 0
@@ -71,18 +69,18 @@ $(document).ready(function() {
                 })
             }
             //console.log("paint: "+paint);
-            if($("#filterPrice input:checked").length > 0){
+            if($("#filterPrice input:checked").length > 0) {
                 var arr = [];
-                $("#filterPrice input:checked").each(function(){
+                $("#filterPrice input:checked").each(function () {
                     var s = $(this).attr('value'); //the same $(this).val();
-                    for (i=0; i<arrayMax.length; i++) {
-                        if(s == "1"){
+                    for (i = 0; i < arrayMax.length; i++) {
+                        if (s == "1") {
                             if (arrayPrice[i] > 0 && arrayPrice[i] <= firstValue) {
                                 //concat - copy value from selected array, now we copy in arr all info from arrayPrice[i]
                                 //which to be in the selected range
                                 arr = arr.concat((arrayPrice[i]));
                             }
-                        }else if(s == "2") {
+                        } else if (s == "2") {
                             if (arrayPrice[i] > firstValue && arrayPrice[i] <= secondValue) {
                                 arr = arr.concat(arrayPrice[i]);
                             }
@@ -93,13 +91,17 @@ $(document).ready(function() {
                         }
                     }
                 });
-                arr.forEach(function(ele){
-                    //"Привет, мир".indexOf("Привет")    // вернет 0
-                    //"Привет, мир".indexOf("Корова")    // вернет -1
-                    //"Привет, мир".indexOf("мир")    // вернет 8
-                    if(price.indexOf(ele) == -1)
-                        price.push(ele);
-                });
+                if (arr.length == 0) {
+                    $('.color').hide();
+                } else {
+                    arr.forEach(function (ele) {
+                        //"Привет, мир".indexOf("Привет")    // вернет 0
+                        //"Привет, мир".indexOf("Корова")    // вернет -1
+                        //"Привет, мир".indexOf("мир")    // вернет 8
+                        if (price.indexOf(ele) == -1)
+                            price.push(ele);
+                    });
+                }
             }
             //console.log("number: "+price);
 

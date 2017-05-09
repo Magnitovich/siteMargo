@@ -4,24 +4,14 @@ $(document).ready(function() {
         var addPage = $("#selectPage").val();
         var id = $(this).find('input[name=id]').val();
         //alert("ID: "+id + "  photo: "+photo);
-        window.location.href ="buyFinishProduct?modelId="+id+"&part="+addPage;
+        window.location.href ="buyAccessoriesProduct?modelId="+id+"&part="+addPage;
     })
 });
-    function addNewBedroom(){
+    function addNewAccessories(){
     var addPage = $("#selectPage").val();
-    window.location.href ="addInfoAboutNewFinishProduct?part="+addPage;}
+    window.location.href ="addInfoAboutNewAccessories?part="+addPage;}
 
-    //function buyFinish() {
-            //var photo = $(this).find('input[name=photoId]').val();
-            //var id = $(this).find('input[type=hidden][name=pageId]').val();
-            //var idProp = $(this).closest("tr").find('input[type=hidden][name=pageId]').prop();
-        //console.log(idProp);
-            //alert("ID: " + id + "IdProp"+ idProp);
-        //var addPage = $("#selectPage").val();
-        //var pageId = $("#pageId").val();
-        //window.location.href ="buyFinishProduct?modelId="+pageId+"&part="+addPage;
-    //}
-function editInfoBedroom() {
+function editInfoAccessories() {
     var addPage = $("#selectPage").val();
 
     var selectedForEdit = $('#mainDiv input:checked')
@@ -30,11 +20,11 @@ function editInfoBedroom() {
     }else if (selectedForEdit.length==0) {
         alert("You don't selected anyone model")
     } else {
-        window.location.href ="addInfoAboutNewFinishProduct?id="+selectedForEdit[0].id+"&part="+addPage;
+        window.location.href ="addInfoAboutNewAccessories?id="+selectedForEdit[0].id+"&part="+addPage;
     }
 }
 
-function deleteSelectedElementsBedroom() {
+function deleteSelectedElementsAccessories() {
 
     var selectedForDelete = [];
     var i = 0;
@@ -54,7 +44,7 @@ function deleteSelectedElementsBedroom() {
         },
         type:"POST",
         data: JSON.stringify(selectedForDelete),
-        url: '/delete/finishProduct',
+        url: '/delete/accessories',
         success: function() {window.location.reload(true);}
     })
 }

@@ -5,9 +5,9 @@
 <head>
     <title>Interior, интерьерные мелочи</title>
 
-    <!--<script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>-->
-    <!--<script src="js/jquery-ui.min.js" type="text/javascript"></script>-->
-    <!--<link href="js/jquery-ui.min.css" rel="stylesheet" type="text/css"/>-->
+    <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="js/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
     <script src="js/interior/interiorLink.js" ></script>
     <script src="js/interior/filter/interiorFilter.js"></script>
 
@@ -41,7 +41,7 @@
                         <div class="pic" id="mainDiv">
                             <div align="center"  sec:authorize="hasAuthority('admin')">
                                 Quantity: &nbsp;
-                                <span  th:text="${curtain.quantity}">quantity</span>m.
+                                <span  th:text="${curtain.quantity}">quantity</span>шт .
                                 <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
                                       style="background-color: #0f0f0f"/>
                                 <br/>

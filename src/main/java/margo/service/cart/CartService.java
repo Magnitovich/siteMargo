@@ -12,6 +12,7 @@ import margo.model.cartOder.OrderCustomerModel;
 import margo.model.finishedProduct.AllFinishProductModel;
 import margo.model.interior.InteriorModel;
 import margo.model.user.UserModel;
+import margo.service.accessories.CheckAccessoriesRepositoryService;
 import margo.service.finishedProduct.CheckRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -31,6 +32,8 @@ public class CartService {
     private CustomerRepository customerRepository;
     @Autowired
     private CustomerOrderRepository customerOrderRepository;
+    @Autowired
+    private CheckAccessoriesRepositoryService checkAccessoriesRepositoryService;
 
     @Autowired
     private UserRepository userRepository;
@@ -54,6 +57,8 @@ public class CartService {
     final String tulleFabric = "tulle";
     final String upholsteryFabric = "upholsteryFabric";
     final String interior = "pillow";
+    final String accessories = "accessories";
+    final String finishProduct = "finishProduct";
 
 
     @Transactional
@@ -109,13 +114,19 @@ public class CartService {
             checkInfo(upholsteryFabricRepository, one, quantityInDB, quantityFromUI);
             saveInformationInCustomerDB(customerModel, one, quantityFromUI);
 
-        }
-        else {
+        } else if(split[1].contains(finishProduct)){
             CrudRepository crudRepository = checkRepositoryService.selectRepository(split[2]);
             AllFinishProductModel allFinishProductModel = (AllFinishProductModel) crudRepository.findOne(id);
             Double quantityInDB = allFinishProductModel.getQuantity();
             checkInfo(crudRepository, allFinishProductModel, quantityInDB, quantityFromUI);
             saveInformationInCustomerDB(customerModel, allFinishProductModel, quantityFromUI);
+
+        } else if (split[1].contains(accessories)){
+            CrudRepository accessoriesRepository = checkAccessoriesRepositoryService.selectRepository(split[2]);
+            AllFinishProductModel allAccesoriestModel = (AllFinishProductModel) accessoriesRepository.findOne(id);
+            Double quantityInDB = allAccesoriestModel.getQuantity();
+            checkInfo(accessoriesRepository, allAccesoriestModel, quantityInDB, quantityFromUI);
+            saveInformationInCustomerDB(customerModel, allAccesoriestModel, quantityFromUI);
         }
     }
     @Transactional

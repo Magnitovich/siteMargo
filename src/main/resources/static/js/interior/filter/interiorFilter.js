@@ -26,8 +26,6 @@ $(document).ready(function() {
         maxPrice = Math.max.apply(null, arrayPrice);
         minPrice = Math.min.apply(null, arrayPrice);
 
-        console.log("Max price: "+maxPrice+" Min price: "+minPrice);
-
         if ($("#filterColor input:checked").length == 0 && $("#filterPrice input:checked").length == 0) {
             $('.color').show();
         } else {
@@ -61,13 +59,17 @@ $(document).ready(function() {
                         }
                     }
                 });
-                arr.forEach(function (ele) {
-                    //"Привет, мир".indexOf("Привет")    // вернет 0
-                    //"Привет, мир".indexOf("Корова")    // вернет -1
-                    //"Привет, мир".indexOf("мир")    // вернет 8
-                    if (price.indexOf(ele) == -1)
-                        price.push(ele);
-                });
+                if (arr.length == 0){
+                    $('.color').hide();
+                } else {
+                    arr.forEach(function (ele) {
+                        //"Привет, мир".indexOf("Привет")    // вернет 0
+                        //"Привет, мир".indexOf("Корова")    // вернет -1
+                        //"Привет, мир".indexOf("мир")    // вернет 8
+                        if (price.indexOf(ele) == -1)
+                            price.push(ele);
+                    });
+                }
             }
             //console.log("number: "+price);
 

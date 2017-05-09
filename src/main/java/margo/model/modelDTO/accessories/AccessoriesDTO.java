@@ -1,34 +1,50 @@
-package margo.model.accessories;
+package margo.model.modelDTO.accessories;
 
-import margo.model.finishedProduct.AllFinishProductModel;
 
-import javax.persistence.*;
+import margo.model.modelDTO.interior.InteriorDTO;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "FRINGE", schema = "public")
-public class FringeModel extends AllFinishProductModel {
+public class AccessoriesDTO extends InteriorDTO {
+    private MultipartFile objectPhotoCurtain;
+    private MultipartFile objectPhotoCurtain01;
+    private MultipartFile objectPhotoCurtain02;
 
-    @Column(name = "PHOTO")
     private String photo;
-    @Column(name = "PHOTO01")
     private String photo01;
-    @Column(name = "PHOTO02")
     private String photo02;
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    @Column
     private String name;
-    @Column(name = "DESCRIPTION")
     private String description;
-    @Column(name = "COLOR")
     private String color;
-    @Column(name = "QUANTITY")
     private Double quantity;
-    @Column(name = "PRICE")
     private BigDecimal price;
+    private Long idForEditCurtain;
+
+    public MultipartFile getObjectPhotoCurtain() {
+        return objectPhotoCurtain;
+    }
+
+    public void setObjectPhotoCurtain(MultipartFile objectPhotoCurtain) {
+        this.objectPhotoCurtain = objectPhotoCurtain;
+    }
+
+    public MultipartFile getObjectPhotoCurtain01() {
+        return objectPhotoCurtain01;
+    }
+
+    public void setObjectPhotoCurtain01(MultipartFile objectPhotoCurtain01) {
+        this.objectPhotoCurtain01 = objectPhotoCurtain01;
+    }
+
+    public MultipartFile getObjectPhotoCurtain02() {
+        return objectPhotoCurtain02;
+    }
+
+    public void setObjectPhotoCurtain02(MultipartFile objectPhotoCurtain02) {
+        this.objectPhotoCurtain02 = objectPhotoCurtain02;
+    }
 
     public String getPhoto() {
         return photo;
@@ -101,4 +117,13 @@ public class FringeModel extends AllFinishProductModel {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
+    public Long getIdForEditCurtain() {
+        return idForEditCurtain;
+    }
+
+    public void setIdForEditCurtain(Long idForEditCurtain) {
+        this.idForEditCurtain = idForEditCurtain;
+    }
 }
+
