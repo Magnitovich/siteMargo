@@ -2,7 +2,6 @@ package margo.config;
 
 import margo.dao.UserRepository;
 import margo.exception.UserNotAuthorizedException;
-import margo.exception.UserNotFoundException;
 import margo.model.user.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

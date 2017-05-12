@@ -1,10 +1,8 @@
 package margo.controller.accessories.buy;
 
-import margo.model.interior.InteriorModel;
 import margo.model.modelDTO.accessories.AccessoriesDTO;
 import margo.service.accessories.AccessoriesService;
 import margo.service.accessories.CheckAccessoriesRepositoryService;
-import margo.service.interior.InteriorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

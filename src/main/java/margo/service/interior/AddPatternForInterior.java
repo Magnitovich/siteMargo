@@ -1,6 +1,5 @@
 package margo.service.interior;
 
-import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
 import margo.model.modelDTO.interior.InteriorDTO;
 
 import java.io.File;
@@ -9,10 +8,10 @@ import java.io.IOException;
 
 public class AddPatternForInterior {
 
-    String nameFile = null;
-    String nameFile01 = null;
-    String nameFile02 = null;
-    FileOutputStream fileOutputStream = null;
+    private String nameFile = null;
+    private String nameFile01 = null;
+    private String nameFile02 = null;
+    private FileOutputStream fileOutputStream = null;
 
     public void checkInformations(InteriorDTO dto, String realObjectsPath, String relativeObjectsPath) throws IOException {
 

@@ -215,7 +215,7 @@ public class UpholsteryFabricService {
         List<BigDecimal> colorModel = new ArrayList();
         BigDecimal maxValue = null;
         BigDecimal minValue = null;
-        System.out.println("FORfilterSIZE: " + forFilter.size());
+//        System.out.println("FORfilterSIZE: " + forFilter.size());
         if (forFilter.size() == 0) {
             maxValue = new BigDecimal("0");
             minValue = new BigDecimal("0");

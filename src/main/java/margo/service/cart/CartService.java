@@ -1,11 +1,11 @@
 package margo.service.cart;
 
-import margo.controller.cart.AllInformationsAboutCustomerController;
 import margo.dao.UserRepository;
 import margo.dao.cart.CustomerOrderRepository;
 import margo.dao.cart.CustomerRepository;
 import margo.dao.fabric.*;
 import margo.dao.interior.InteriorRepository;
+import margo.dao.serviceMargo.ServiceMargoRepository;
 import margo.model.allCurtains.*;
 import margo.model.cartOder.CustomerModel;
 import margo.model.cartOder.OrderCustomerModel;
@@ -19,6 +19,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -50,6 +51,8 @@ public class CartService {
     private UpholsteryFabricRepository upholsteryFabricRepository;
     @Autowired
     private InteriorRepository interiorRepository;
+    @Autowired
+    private ServiceMargoRepository serviceMargoRepository;
 
     final String clothFabric = "clothFabric";
     final String curtainFabric = "curtain";
@@ -59,6 +62,7 @@ public class CartService {
     final String interior = "pillow";
     final String accessories = "accessories";
     final String finishProduct = "finishProduct";
+    final String serviceMargo = "serviceMargo";
 
 
     @Transactional
@@ -116,18 +120,29 @@ public class CartService {
 
         } else if(split[1].contains(finishProduct)){
             CrudRepository crudRepository = checkRepositoryService.selectRepository(split[2]);
-            AllFinishProductModel allFinishProductModel = (AllFinishProductModel) crudRepository.findOne(id);
-            Double quantityInDB = allFinishProductModel.getQuantity();
-            checkInfo(crudRepository, allFinishProductModel, quantityInDB, quantityFromUI);
-            saveInformationInCustomerDB(customerModel, allFinishProductModel, quantityFromUI);
+            changeInDB(crudRepository, customerModel,id, quantityFromUI);
+
+//            AllFinishProductModel allFinishProductModel = (AllFinishProductModel) crudRepository.findOne(id);
+//            Double quantityInDB = allFinishProductModel.getQuantity();
+//            checkInfo(crudRepository, allFinishProductModel, quantityInDB, quantityFromUI);
+//            saveInformationInCustomerDB(customerModel, allFinishProductModel, quantityFromUI);
 
         } else if (split[1].contains(accessories)){
             CrudRepository accessoriesRepository = checkAccessoriesRepositoryService.selectRepository(split[2]);
-            AllFinishProductModel allAccesoriestModel = (AllFinishProductModel) accessoriesRepository.findOne(id);
-            Double quantityInDB = allAccesoriestModel.getQuantity();
-            checkInfo(accessoriesRepository, allAccesoriestModel, quantityInDB, quantityFromUI);
-            saveInformationInCustomerDB(customerModel, allAccesoriestModel, quantityFromUI);
+            changeInDB(accessoriesRepository, customerModel,id, quantityFromUI);
+
+        } else if(split[1].contains(serviceMargo)){
+            changeInDB(serviceMargoRepository, customerModel, id, quantityFromUI);
         }
+    }
+    public void changeInDB(CrudRepository repository, CustomerModel customerModel,
+                           Long id, Double quantityFromUI){
+
+        AllFinishProductModel model = (AllFinishProductModel) repository.findOne(id);
+        Double quantityInDB = model.getQuantity();
+
+        checkInfo(repository, model, quantityInDB, quantityFromUI);
+        saveInformationInCustomerDB(customerModel, model, quantityFromUI);
     }
     @Transactional
     public void checkInfo(CrudRepository repositories, AllFinishProductModel model, Double quantityInDB, Double quantityFromUI){
@@ -161,7 +176,10 @@ public class CartService {
         orderCustomerModel.setHeight(model.getHeight());
         orderCustomerModel.setColor(model.getColor());
         orderCustomerModel.setQuantity(quantityFromUI);
-        orderCustomerModel.setPrice(model.getPrice());
+
+        BigDecimal quantity = BigDecimal.valueOf(quantityFromUI);
+        BigDecimal priceInDB = (model.getPrice()).multiply(quantity);
+        orderCustomerModel.setPrice(priceInDB);
 
         orderCustomerModel.setCustomerOrder(customerModel);
 //        System.out.println("MODEL: PHOTO: "+model.getPhoto()+ "NAME: "+model.getName()+" DESCR: "+model.getDescription()+

@@ -1,9 +1,7 @@
 package margo.controller.accessories.delete;
 
 import margo.controller.accessories.AccessoriesController;
-import margo.controller.finishProduct.BedroomController;
 import margo.service.accessories.AccessoriesService;
-import margo.service.finishedProduct.MainFinishedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Controller;

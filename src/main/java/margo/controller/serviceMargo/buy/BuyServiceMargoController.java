@@ -1,7 +1,8 @@
-package margo.controller.interior.buy;
+package margo.controller.serviceMargo.buy;
 
 import margo.model.interior.InteriorModel;
-import margo.service.interior.InteriorService;
+import margo.model.modelDTO.serviceMargo.ServiceMargoDTO;
+import margo.service.serviceMargo.ServiceMargo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,18 +11,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class BuyInteriorController {
+public class BuyServiceMargoController {
     @Autowired
-    private InteriorService interiorService;
+    private ServiceMargo interiorService;
 
-    @RequestMapping(value = "/buyInteriorProduct", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/buyServiceMargoProduct", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView seeSelectedCurtain(@RequestParam(value = "modelId", required = false)Long id){
 
         ModelAndView modelAndView = new ModelAndView();
 
-        InteriorModel selectedModel = interiorService.findSelectedModel(id);
+        ServiceMargoDTO selectedModel = interiorService.findSelectedModel(id);
         modelAndView.addObject("selectedCurtain", selectedModel);
-        modelAndView.setViewName("interior/buy/buyInteriorProduct");
+        modelAndView.setViewName("serviceMargo/buy/buyServiceMargoProduct");
         return modelAndView;
     }
 }

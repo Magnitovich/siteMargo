@@ -61,7 +61,7 @@ public class SendEmailToSupplierAndCustomerService {
             double valueBeforeRound = quantity*price;
             //two signs after a comma
             value= new BigDecimal(valueBeforeRound).setScale(2, RoundingMode.UP).doubleValue();
-            nameArrays.add("<tr><td><img src=\"http://localhost:8080/"+photo+"\" width=\"70%\" height=\"50%\">" +
+            nameArrays.add("<tr><td><img src=\"http://localhost:8080/"+photo+"\" width=\"70%\" height=\"40%\">" +
                     "</td><td>"+name+" </td><td>"+describe+"</td><td> "+quantity+"m.</td>"+
 //            nameArrays.add("<tr><td><img src=\"http://dreams.cfapps.io/"+photo+"\" width=\"30%\" height=\"30%\"></td><td>"+name+" </td><td> "+quantity+"pieces.</td>"+
                     "<td>  $"+price+"</td><td> $" +value+"</td></tr>");

@@ -1,13 +1,8 @@
 package margo.service.fabric;
 
-import margo.dao.fabric.ClothFabricRepository;
-import margo.dao.fabric.CurtainRepository;
-import margo.model.allCurtains.ClothFabricModel;
 import margo.model.modelDTO.allCurtainsDTO.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

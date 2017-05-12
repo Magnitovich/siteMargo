@@ -1,11 +1,8 @@
 package margo.controller.accessories;
 
 import margo.model.modelDTO.accessories.AccessoriesDTO;
-import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
 import margo.service.accessories.AccessoriesService;
 import margo.service.accessories.CheckAccessoriesRepositoryService;
-import margo.service.finishedProduct.CheckRepositoryService;
-import margo.service.finishedProduct.MainFinishedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Controller;

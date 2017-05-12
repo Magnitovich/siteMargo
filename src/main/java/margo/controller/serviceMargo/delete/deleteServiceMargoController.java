@@ -1,6 +1,7 @@
-package margo.controller.interior.delete;
+package margo.controller.serviceMargo.delete;
 
 import margo.service.interior.InteriorService;
+import margo.service.serviceMargo.ServiceMargo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,12 +12,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-public class deleteInteriorController {
+public class deleteServiceMargoController {
 
     @Autowired
-    private InteriorService service;
+    private ServiceMargo service;
 
-    @RequestMapping(value = "/delete/interior", method = {RequestMethod.POST})
+    @RequestMapping(value = "/delete/serviceMargo", method = {RequestMethod.POST})
     public @ResponseBody List deleteCurtain(@RequestBody List<Long> namesDeleted){
 
         service.delete(namesDeleted);

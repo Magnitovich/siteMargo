@@ -2,18 +2,12 @@ package margo.service.cart;
 
 import margo.dao.cart.CustomerOrderRepository;
 import margo.dao.cart.CustomerRepository;
-import margo.model.allCurtains.ClothFabricModel;
 import margo.model.cartOder.CustomerModel;
-import margo.model.cartOder.OrderCustomerModel;
 import margo.model.cartOder.cartDTO.CustomerDTO;
-import margo.model.modelDTO.allCurtainsDTO.ClothFabricDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service

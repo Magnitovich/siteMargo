@@ -14,7 +14,6 @@ public interface ClothFabricRepository extends CrudRepository<ClothFabricModel, 
     List<ClothFabricModel> findByPhoto(String photo);
     List<ClothFabricModel> findById(Long id);
 
-
     List<ClothFabricModel> findByName(String name);
 
 }

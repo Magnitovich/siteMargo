@@ -1,6 +1,5 @@
 package margo.controller.cart;
 
-import margo.model.modelDTO.allCurtainsDTO.ClothFabricDTO;
 import margo.model.user.UserModel;
 import margo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

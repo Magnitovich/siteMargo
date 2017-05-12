@@ -1,8 +1,6 @@
 package margo.controller.finishProduct.buy;
 
 import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
-import margo.model.modelDTO.allCurtainsDTO.CurtainDTO;
-import margo.service.fabric.CurtainService;
 import margo.service.finishedProduct.CheckRepositoryService;
 import margo.service.finishedProduct.MainFinishedService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 public class BuyController {

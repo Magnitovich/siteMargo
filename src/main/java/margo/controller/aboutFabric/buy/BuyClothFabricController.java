@@ -1,9 +1,7 @@
 package margo.controller.aboutFabric.buy;
 
 import margo.model.modelDTO.allCurtainsDTO.ClothFabricDTO;
-import margo.model.modelDTO.allCurtainsDTO.CurtainDTO;
 import margo.service.fabric.ClothFabricService;
-import margo.service.fabric.CurtainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,5 @@
 package margo.service.interior;
 
-import margo.model.modelDTO.allCurtainsDTO.TulleDTO;
 import margo.model.modelDTO.interior.InteriorDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

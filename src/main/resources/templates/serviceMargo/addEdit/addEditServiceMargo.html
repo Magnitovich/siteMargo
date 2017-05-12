@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link href="css/back.css" rel="stylesheet" type="text/css"/>
+    <link href="css/selectColor.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<table border="1" align="center"><p/>
+    <form action="addSuccessfulServiceMargo"  th:object = "${comparePhotoNameWithDB}" method="post" enctype="multipart/form-data">
+        <input class="buttons" type="hidden" th:field="*{idForEditCurtain}"/>
+        <p/>&nbsp;<p/>
+        <tr>
+        <tr th:if="${param.id}">
+            <td>Current photo</td>
+            <td>
+                <img th:attr="src=*{photo}" style="max-width: 200px; max-height: 180px;"/>
+            </td>
+        </tr>
+        <td>Path to new photo</td>
+        <td>
+            <input type="hidden" th:field="*{id}" />
+            <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain}"/>
+        </td>
+        </tr>
+        <tr>
+            <td>Название </td>
+            <td><input class="buttons" type="text" th:field="*{name}" style="width: 255px" name="name" id="name"/>
+
+                <span style="color: red; font-style: italic; font-size: 10px" th:if="${#fields.hasErrors('name')}"
+                      th:errors="*{name}">Error</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Описание:</td>
+            <td>
+            <textarea class="buttons" rows="8" cols="35" th:field="*{description}"  name="describeYacht"
+                      id="describeYacht" maxlength="255" placeholder="max length 255"></textarea></td>
+        </tr>
+        <tr>
+            <td>Количество на складе</td>
+            <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}"
+                       th:field="*{quantity}" name="quantityYacht" id="quantityYacht" required=""/> </td>
+        </tr>
+        <tr>
+            <td>Цена </td>
+            <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}" th:field="*{price}"
+                       required="" value="1" name="priceYacht" id="priceYacht"/> </td>
+        </tr>
+        <tr>
+            <!--<form action="../yacht.html">-->
+
+            <td colspan="2" align="right">
+                <input type="submit" class="buttons" formaction="/addSuccessfulServiceMargo" style="width: 65px" name="enter"
+                       id="enter" value="Save"/> </td>
+        </tr>
+    </form>
+</table>
+
+</body>
+</html>

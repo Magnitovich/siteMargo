@@ -1,7 +1,6 @@
 package margo.controller.cart;
 
 import margo.dao.cart.CustomerRepository;
-import margo.filter.CheckUserRegistration;
 import margo.model.cartOder.CustomerModel;
 import margo.service.cart.CartService;
 import margo.service.sendEmail.SendEmailToSupplierAndCustomerService;
@@ -13,11 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.mail.MessagingException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 @Controller
 public class CartOrderFinishController {

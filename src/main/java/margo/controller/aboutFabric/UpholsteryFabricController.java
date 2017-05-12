@@ -1,6 +1,5 @@
 package margo.controller.aboutFabric;
 
-import margo.model.modelDTO.allCurtainsDTO.TulleDTO;
 import margo.model.modelDTO.allCurtainsDTO.UpholsteryFabricDTO;
 import margo.service.fabric.UpholsteryFabricService;
 import org.springframework.beans.factory.annotation.Autowired;

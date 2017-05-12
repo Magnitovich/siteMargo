@@ -2,7 +2,6 @@ package margo.controller.cart.editOrder;
 
 import margo.controller.cart.editOrder.paging.Pager;
 import margo.model.cartOder.CustomerModel;
-import margo.model.cartOder.cartDTO.CustomerDTO;
 import margo.service.cart.CustomerService;
 import margo.service.pagination.PaginationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -61,7 +58,7 @@ public class ShowInfoAboutPurchasesController {
         modelAndView.addObject("pageSizes", PAGE_SIZES);
         modelAndView.addObject("pager", pager);
 
-        List<CustomerDTO> customerDTOs = customerService.showAllCustomer();
+//        List<CustomerDTO> customerDTOs = customerService.showAllCustomer();
 //        modelAndView.addObject("selected", customerDTOs);
         modelAndView.setViewName("cart/order/checkOrder");
         return modelAndView;

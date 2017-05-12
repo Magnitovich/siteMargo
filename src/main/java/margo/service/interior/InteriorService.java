@@ -1,15 +1,10 @@
 package margo.service.interior;
 
 import margo.dao.interior.InteriorRepository;
-import margo.model.allCurtains.TulleModel;
-import margo.model.finishedProduct.AllFinishProductModel;
 import margo.model.interior.InteriorModel;
-import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
-import margo.model.modelDTO.allCurtainsDTO.TulleDTO;
 import margo.model.modelDTO.interior.InteriorDTO;
 import margo.service.adminService.AdminRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;

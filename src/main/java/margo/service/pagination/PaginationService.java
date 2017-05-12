@@ -1,7 +1,5 @@
 package margo.service.pagination;
 import margo.dao.cart.CustomerRepository;
-import margo.dao.fabric.CurtainRepository;
-import margo.model.allCurtains.CurtainModel;
 import margo.model.cartOder.CustomerModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,7 +16,7 @@ public class PaginationService {
 
     @Transactional
     public Page<CustomerModel> findAllCurtainPageable(Pageable pageable) {
-        Page<CustomerModel> all = repository.findAll(pageable);
+        Page<CustomerModel> all = repository.findAllCustomer(pageable);
 
         return all;
     }
