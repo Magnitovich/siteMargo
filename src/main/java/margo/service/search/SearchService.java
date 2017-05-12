@@ -1,5 +1,10 @@
 package margo.service.search;
 
+import margo.dao.accessories.*;
+import margo.dao.fabric.TulleRepository;
+import margo.dao.finishProduct.*;
+import margo.dao.interior.InteriorRepository;
+import margo.dao.serviceMargo.ServiceMargoRepository;
 import margo.model.modelDTO.allCurtainsDTO.*;
 import margo.service.fabric.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +25,40 @@ public class SearchService {
     private UpholsteryFabricService upholsteryFabricService;
     @Autowired
     private OrderCurtainService orderCurtainService;
+    //FINISH PRODUCT
+    @Autowired
+    private BedroomRepository bedroomRepository;
+    @Autowired
+    private CabinetRepository cabinetRepository;
+    @Autowired
+    private ChildrenRepository childrenRepository;
+    @Autowired
+    private CurtainFinishRepository curtainFinishRepository;
+    @Autowired
+    private GuestroomRepository guestroomRepository;
+    @Autowired
+    private KitchenRepository kitchenRepository;
+    @Autowired
+    private LambrequinRepository lambrequinRepository;
+    @Autowired
+    private TulleFinishRepository tulleFinishRepository;
+    //ACCESSORIES
+    @Autowired
+    private BandRepository bandRepository;
+    @Autowired
+    private FringeRepository fringeRepository;
+    @Autowired
+    private PickupRepository pickupRepository;
+    @Autowired
+    private LuversRepository luversRepository;
+    @Autowired
+    private VariousRepository variousRepository;
+    //INTERIOR
+    @Autowired
+    private InteriorRepository interiorRepository;
+    //SERVICE_MARGO
+    @Autowired
+    private ServiceMargoRepository serviceMargoRepository;
 
     private List<AllFabricDTO> allFabricDTOs = new ArrayList<>();
 
