@@ -2,6 +2,7 @@ package margo.service.interior;
 
 import margo.dao.interior.InteriorRepository;
 import margo.model.interior.InteriorModel;
+import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
 import margo.model.modelDTO.interior.InteriorDTO;
 import margo.service.adminService.AdminRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,31 @@ public class InteriorService {
 
         return fabricDTO;
     }
+//    public AllFabricDTO convertModelToAllFabricDto(InteriorModel model) {
+//
+//        AllFabricDTO fabricDTO = new AllFabricDTO();
+//        fabricDTO.setPhoto(model.getPhoto());
+//        fabricDTO.setPhoto01(model.getPhoto01());
+//        fabricDTO.setPhoto02(model.getPhoto02());
+//        fabricDTO.setId(model.getId());
+//        fabricDTO.setName(model.getName());
+//        fabricDTO.setDescription(model.getDescription());
+//        fabricDTO.setColor(model.getColor());
+//        fabricDTO.setQuantity(model.getQuantity());
+//        fabricDTO.setPrice(model.getPrice());
+//
+//        return fabricDTO;
+//    }
 
+    public List<AllFabricDTO> convertListModelToAllDTO(List<InteriorModel> models) {
+
+        List<AllFabricDTO> interiorDTOs = new ArrayList<>();
+        for (InteriorModel interiorModel : models) {
+            InteriorDTO dto = convertModelToDto(interiorModel);
+            interiorDTOs.add(dto);
+        }
+        return interiorDTOs;
+    }
     public List<InteriorDTO> convertListModelToDTO(List<InteriorModel> models) {
 
         List<InteriorDTO> interiorDTOs = new ArrayList<>();
@@ -53,6 +78,11 @@ public class InteriorService {
         List<InteriorModel> interiorModels = checkOnAuthentication(repository.findAll());
         forFilter = interiorModels;
         return interiorModels;
+    }
+    public List<AllFabricDTO> seeAllInteriorForSearch(){
+        List<InteriorModel> interiorModels = checkOnAuthentication(repository.findAll());
+        List<AllFabricDTO> list = convertListModelToAllDTO(interiorModels);
+        return list;
     }
 
     public List<InteriorModel> checkOnAuthentication(Iterable<InteriorModel> fabricDTOs){

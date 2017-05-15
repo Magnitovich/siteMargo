@@ -17,8 +17,8 @@
             <div th:each="curtain : ${allThatWeCanSearch}">
                 <div class="pic" >
 
-                    <a th:href="@{~/buySelectedFromSearch(hiddenModelId=${curtain.id},
-                    photoId=${curtain.photo})}" style="text-decoration: none" >
+                    <a th:href="@{~/buySelectedFromSearch(id=${curtain.id},
+                    part=${curtain.photo})}" style="text-decoration: none" >
                     <!--<a href="#" onclick="toSelectedObject()" style="text-decoration: none" >-->
                         <!--<input type="hidden" id="photoId" name="photoId" th:value="${curtain.photo}"/>-->
                         <!--<input type="hidden" name="id" id="id" th:value="${curtain.id}"/>-->

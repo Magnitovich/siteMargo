@@ -5,8 +5,17 @@ import margo.dao.fabric.TulleRepository;
 import margo.dao.finishProduct.*;
 import margo.dao.interior.InteriorRepository;
 import margo.dao.serviceMargo.ServiceMargoRepository;
+import margo.model.finishedProduct.AllFinishProductModel;
+import margo.model.finishedProduct.BedroomModel;
+import margo.model.interior.InteriorModel;
 import margo.model.modelDTO.allCurtainsDTO.*;
+import margo.service.accessories.AccessoriesService;
+import margo.service.accessories.CheckAccessoriesRepositoryService;
 import margo.service.fabric.*;
+import margo.service.finishedProduct.CheckRepositoryService;
+import margo.service.finishedProduct.MainFinishedService;
+import margo.service.interior.InteriorService;
+import org.codehaus.groovy.runtime.powerassert.SourceText;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,35 +36,14 @@ public class SearchService {
     private OrderCurtainService orderCurtainService;
     //FINISH PRODUCT
     @Autowired
-    private BedroomRepository bedroomRepository;
-    @Autowired
-    private CabinetRepository cabinetRepository;
-    @Autowired
-    private ChildrenRepository childrenRepository;
-    @Autowired
-    private CurtainFinishRepository curtainFinishRepository;
-    @Autowired
-    private GuestroomRepository guestroomRepository;
-    @Autowired
-    private KitchenRepository kitchenRepository;
-    @Autowired
-    private LambrequinRepository lambrequinRepository;
-    @Autowired
-    private TulleFinishRepository tulleFinishRepository;
+    private CheckRepositoryService finishedService;
     //ACCESSORIES
     @Autowired
-    private BandRepository bandRepository;
-    @Autowired
-    private FringeRepository fringeRepository;
-    @Autowired
-    private PickupRepository pickupRepository;
-    @Autowired
-    private LuversRepository luversRepository;
-    @Autowired
-    private VariousRepository variousRepository;
+    private CheckAccessoriesRepositoryService accessoriesRepositoryService;
+
     //INTERIOR
     @Autowired
-    private InteriorRepository interiorRepository;
+    private InteriorService interiorService;
     //SERVICE_MARGO
     @Autowired
     private ServiceMargoRepository serviceMargoRepository;
@@ -65,6 +53,29 @@ public class SearchService {
     public List<AllFabricDTO> searchAnswer(String search){
 
         allFabricDTOs.clear();
+        List<AllFabricDTO> listAccessories = accessoriesRepositoryService.seeAllAccessories();
+        for (AllFabricDTO allFabricDTO: listAccessories){
+            if (allFabricDTO.getName().toLowerCase().contains(search)
+                    ||allFabricDTO.getName().toUpperCase().contains(search)) {
+                this.allFabricDTOs.add(allFabricDTO);
+            }
+        }
+        for (AllFabricDTO dtoFinish:interiorService.seeAllInteriorForSearch()){
+            if (dtoFinish.getName().toLowerCase().contains(search)
+                    ||dtoFinish.getName().toUpperCase().contains(search)) {
+                this.allFabricDTOs.add(dtoFinish);
+            }
+        }
+
+        List<AllFabricDTO> allFabricDTOs = finishedService.allInfoInFinishProductsDB();
+//        System.out.println("Search service");
+//        System.out.println(allFabricDTOs.toString());
+        for (AllFabricDTO dtoFinish:allFabricDTOs){
+            if (dtoFinish.getName().toLowerCase().contains(search)
+                    ||dtoFinish.getName().toUpperCase().contains(search)) {
+                this.allFabricDTOs.add(dtoFinish);
+            }
+        }
 
         List<ClothFabricDTO> clothFabricModels = clothFabricService.seeAllCloth();
         List<ClothFabricDTO> searchCloth = new ArrayList<>();
@@ -72,7 +83,7 @@ public class SearchService {
         for(ClothFabricDTO clothFabricDTO : searchCloth){
             if (clothFabricDTO.getName().toLowerCase().contains(search)
                     ||clothFabricDTO.getName().toUpperCase().contains(search)) {
-                allFabricDTOs.add(clothFabricDTO);
+                this.allFabricDTOs.add(clothFabricDTO);
             }
         }
         List<CurtainDTO> curtainDTOs = curtainService.seeAllModels();
@@ -81,7 +92,7 @@ public class SearchService {
         for(CurtainDTO curtainDTO : searchCurtains){
             if (curtainDTO.getName().toLowerCase().contains(search)
                     ||curtainDTO.getName().toUpperCase().contains(search)) {
-                allFabricDTOs.add(curtainDTO);
+                this.allFabricDTOs.add(curtainDTO);
             }
         }
         List<OrderCurtainDTO> orderCurtainDTOs = orderCurtainService.seeAllModels();
@@ -90,7 +101,7 @@ public class SearchService {
         for(OrderCurtainDTO orderCurtainDTO : searchOrder){
             if (orderCurtainDTO.getName().toLowerCase().contains(search)
                     ||orderCurtainDTO.getName().toUpperCase().contains(search)) {
-                allFabricDTOs.add(orderCurtainDTO);
+                this.allFabricDTOs.add(orderCurtainDTO);
             }
         }
         List<TulleDTO> tulleDTOs = tulleService.seeAllModels();
@@ -99,7 +110,7 @@ public class SearchService {
         for(TulleDTO tulleDTO : searchTulle){
             if (tulleDTO.getName().toLowerCase().contains(search)
                     ||tulleDTO.getName().toUpperCase().contains(search)) {
-                allFabricDTOs.add(tulleDTO);
+                this.allFabricDTOs.add(tulleDTO);
             }
         }
         List<UpholsteryFabricDTO> upholsteryFabricDTOs = upholsteryFabricService.seeAllModels();
@@ -108,11 +119,56 @@ public class SearchService {
         for(UpholsteryFabricDTO upholsteryFabricDTO : searchUpholster){
             if (upholsteryFabricDTO.getName().toLowerCase().contains(search)
                     ||upholsteryFabricDTO.getName().toUpperCase().contains(search)) {
-                allFabricDTOs.add(upholsteryFabricDTO);
+                this.allFabricDTOs.add(upholsteryFabricDTO);
             }
         }
+//        List<AllFabricDTO> allFabricDTOs = finishedService.seeAllModels(bedroomRepository);
+//        List<AllFabricDTO> searchBedroom = new ArrayList<>();
+//        searchBedroom.addAll(allBedroom);
+//        for(ClothFabricDTO clothFabricDTO : searchCloth){
+//            if (clothFabricDTO.getName().toLowerCase().contains(search)
+//                    ||clothFabricDTO.getName().toUpperCase().contains(search)) {
+//                this.allFabricDTOs.add(clothFabricDTO);
+//            }
+//        }
+//        List<CurtainDTO> curtainDTOs = curtainService.seeAllModels();
+//        List<CurtainDTO> searchCurtains = new ArrayList<>();
+//        searchCurtains.addAll(curtainDTOs);
+//        for(CurtainDTO curtainDTO : searchCurtains){
+//            if (curtainDTO.getName().toLowerCase().contains(search)
+//                    ||curtainDTO.getName().toUpperCase().contains(search)) {
+//                this.allFabricDTOs.add(curtainDTO);
+//            }
+//        }
+//        List<OrderCurtainDTO> orderCurtainDTOs = orderCurtainService.seeAllModels();
+//        List<OrderCurtainDTO> searchOrder = new ArrayList<>();
+//        searchOrder.addAll(orderCurtainDTOs);
+//        for(OrderCurtainDTO orderCurtainDTO : searchOrder){
+//            if (orderCurtainDTO.getName().toLowerCase().contains(search)
+//                    ||orderCurtainDTO.getName().toUpperCase().contains(search)) {
+//                this.allFabricDTOs.add(orderCurtainDTO);
+//            }
+//        }
+//        List<TulleDTO> tulleDTOs = tulleService.seeAllModels();
+//        List<TulleDTO> searchTulle = new ArrayList<>();
+//        searchTulle.addAll(tulleDTOs);
+//        for(TulleDTO tulleDTO : searchTulle){
+//            if (tulleDTO.getName().toLowerCase().contains(search)
+//                    ||tulleDTO.getName().toUpperCase().contains(search)) {
+//                this.allFabricDTOs.add(tulleDTO);
+//            }
+//        }
+//        List<UpholsteryFabricDTO> upholsteryFabricDTOs = upholsteryFabricService.seeAllModels();
+//        List<UpholsteryFabricDTO> searchUpholster = new ArrayList<>();
+//        searchUpholster.addAll(upholsteryFabricDTOs);
+//        for(UpholsteryFabricDTO upholsteryFabricDTO : searchUpholster){
+//            if (upholsteryFabricDTO.getName().toLowerCase().contains(search)
+//                    ||upholsteryFabricDTO.getName().toUpperCase().contains(search)) {
+//                this.allFabricDTOs.add(upholsteryFabricDTO);
+//            }
+//        }
 
-        return allFabricDTOs;
+        return this.allFabricDTOs;
         }
     }
 

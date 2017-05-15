@@ -196,4 +196,5 @@ public class MainFinishedService {
             repository.delete(deleteCurtain);
         }
     }
+
 }

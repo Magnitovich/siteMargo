@@ -1,10 +1,11 @@
 package margo.model.modelDTO.interior;
 
+import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
 
-public class InteriorDTO {
+public class InteriorDTO extends AllFabricDTO{
     private MultipartFile objectPhotoCurtain;
     private MultipartFile objectPhotoCurtain01;
     private MultipartFile objectPhotoCurtain02;

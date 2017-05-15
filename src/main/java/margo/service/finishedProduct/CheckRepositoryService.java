@@ -2,9 +2,16 @@ package margo.service.finishedProduct;
 
 import margo.dao.finishProduct.*;
 import margo.dao.interior.InteriorRepository;
+import margo.model.finishedProduct.AllFinishProductModel;
+import margo.model.finishedProduct.BedroomModel;
+import margo.model.finishedProduct.GuestroomModel;
+import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CheckRepositoryService {
@@ -26,6 +33,8 @@ public class CheckRepositoryService {
     private TulleFinishRepository tulleFinishRepository;
     @Autowired
     private InteriorRepository interiorRepository;
+    @Autowired
+    private MainFinishedService main;
 
     private final String bedroom = "bedroom";
     private final String cabinet = "cabinet";
@@ -72,5 +81,25 @@ public class CheckRepositoryService {
         }
 //        System.out.println("CHECK REPOSITORY: "+repository);
         return repository;
+    }
+    public List<AllFabricDTO> allInfoInFinishProductsDB(){
+        List<AllFabricDTO> list = new ArrayList<>();
+        List<AllFabricDTO> allFabricDTOs = main.seeAllModels(bedroomRepository);
+        List<AllFabricDTO> allFabricDTOs1 = main.seeAllModels(guestroomRepository);
+        List<AllFabricDTO> allFabricDTOs2 = main.seeAllModels(cabinetRepository);
+        List<AllFabricDTO> allFabricDTOs3 = main.seeAllModels(childrenRepository);
+        List<AllFabricDTO> allFabricDTOs4 = main.seeAllModels(curtainFinishRepository);
+        List<AllFabricDTO> allFabricDTOs5 = main.seeAllModels(kitchenRepository);
+        List<AllFabricDTO> allFabricDTOs6 = main.seeAllModels(tulleFinishRepository);
+        List<AllFabricDTO> allFabricDTOs7 = main.seeAllModels(lambrequinRepository);
+        list.addAll(allFabricDTOs);
+        list.addAll(allFabricDTOs1);
+        list.addAll(allFabricDTOs2);
+        list.addAll(allFabricDTOs3);
+        list.addAll(allFabricDTOs4);
+        list.addAll(allFabricDTOs5);
+        list.addAll(allFabricDTOs6);
+        list.addAll(allFabricDTOs7);
+        return list;
     }
 }

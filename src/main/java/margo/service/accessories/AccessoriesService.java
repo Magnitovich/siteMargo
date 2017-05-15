@@ -34,6 +34,30 @@ public class AccessoriesService {
 
         return fabricDTO;
     }
+    public AllFabricDTO convertModelToAllFabricDTO(AllFinishProductModel model){
+
+        AllFabricDTO fabricDTO = new AllFabricDTO();
+        fabricDTO.setPhoto(model.getPhoto());
+        fabricDTO.setPhoto01(model.getPhoto01());
+        fabricDTO.setPhoto02(model.getPhoto02());
+        fabricDTO.setId(model.getId());
+        fabricDTO.setName(model.getName());
+        fabricDTO.setDescription(model.getDescription());
+        fabricDTO.setColor(model.getColor());
+        fabricDTO.setQuantity(model.getQuantity());
+        fabricDTO.setPrice(model.getPrice());
+
+        return fabricDTO;
+    }
+    public List<AllFabricDTO> convertToListAllFabricDTO(List<AllFinishProductModel> models){
+
+        List<AllFabricDTO> finishDTO = new ArrayList<>();
+        for (AllFinishProductModel finishProduct : models) {
+            AllFabricDTO dto = convertModelToAllFabricDTO(finishProduct);
+            finishDTO.add(dto);
+        }
+        return finishDTO;
+    }
     public List<AccessoriesDTO> convertToListDTO(List<AllFinishProductModel> models){
 
         List<AccessoriesDTO> finishDTO = new ArrayList<>();
@@ -73,6 +97,12 @@ public class AccessoriesService {
         List<AccessoriesDTO> allFabricDTOs = checkOnAuthentication(fabricDTOs);
         forFilter = allFabricDTOs;
         return allFabricDTOs;
+    }
+    public List<AllFabricDTO> seeAllModelsToSearch(CrudRepository repository) {
+        Iterable<AllFinishProductModel> models = repository.findAll();
+        List<AllFabricDTO> fabricDTOs = convertToListAllFabricDTO((List<AllFinishProductModel>) models);
+
+        return fabricDTOs;
     }
     ///---------------//-------------------//---------------------//-----------------------
     public AccessoriesDTO viewSelectedFinishProduct(Long id, CrudRepository repository) {

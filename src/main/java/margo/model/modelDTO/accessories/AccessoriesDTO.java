@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
 
-public class AccessoriesDTO extends InteriorDTO {
+public class AccessoriesDTO extends InteriorDTO  {
     private MultipartFile objectPhotoCurtain;
     private MultipartFile objectPhotoCurtain01;
     private MultipartFile objectPhotoCurtain02;
