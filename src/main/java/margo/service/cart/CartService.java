@@ -182,15 +182,12 @@ public class CartService {
         orderCustomerModel.setPrice(priceInDB);
 
         orderCustomerModel.setCustomerOrder(customerModel);
-//        System.out.println("MODEL: PHOTO: "+model.getPhoto()+ "NAME: "+model.getName()+" DESCR: "+model.getDescription()+
-//        " PRICE: "+model.getPrice()+" QUANTITY: "+quantityFromUI);
         customerRepository.save(customerModel);
         customerOrderRepository.save(orderCustomerModel);
     }
     public UserModel ifUserAuthenticated(String name){
 
         UserModel one = userRepository.findOne(name);
-
         return one;
     }
 }

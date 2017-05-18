@@ -58,7 +58,7 @@ public class AddEditServiceMargoController {
     @RequestMapping(value = "/addSuccessfulServiceMargo", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView addInfo(@ModelAttribute("comparePhotoNameWithDB") ServiceMargoDTO dto,
                                     BindingResult result) throws IOException {
-
+        System.out.println("Add Service MArgo:");
         if (!dto.getObjectPhotoCurtain().isEmpty()) {
             File convertFileObjectYachts = new File(realObjectsPathServiceMargo +
                     dto.getObjectPhotoCurtain().getOriginalFilename());
@@ -70,7 +70,7 @@ public class AddEditServiceMargoController {
 
             nameFile = relativeObjectsPathServiceMargo + dto.getObjectPhotoCurtain().getOriginalFilename();
         }
-
+        System.out.println("NameFile: = "+nameFile);
         if (dto.getIdForEditCurtain() != null) {
             dto.setPhoto(nameFile);
 

@@ -42,7 +42,6 @@ public class SendEmailToSupplierAndCustomerService {
 //        System.out.println(subject);
 
         ArrayList nameArrays = new ArrayList();
-        ArrayList photoArrays = new ArrayList();
 
         StringBuffer sb = new StringBuffer("<html><body><table width=\"70%\"><tr>" +"<td>Image</td>"+
                 "<td>Название</td><td width=\"30%\">Описание</td><td width=\"10%\">Кол-во</td>" +
@@ -61,7 +60,8 @@ public class SendEmailToSupplierAndCustomerService {
             double valueBeforeRound = quantity*price;
             //two signs after a comma
             value= new BigDecimal(valueBeforeRound).setScale(2, RoundingMode.UP).doubleValue();
-            nameArrays.add("<tr><td><img src=\"http://localhost:8080/"+photo+"\" width=\"70%\" height=\"40%\">" +
+            nameArrays.add("<tr><td><img src=\"https://newspace.cfapps.io/"+photo+"\" width=\"70%\" height=\"40%\">" +
+//            nameArrays.add("<tr><td><img src=\"http://localhost:8080/"+photo+"\" width=\"70%\" height=\"40%\">" +
                     "</td><td>"+name+" </td><td>"+describe+"</td><td> "+quantity+"m.</td>"+
 //            nameArrays.add("<tr><td><img src=\"http://dreams.cfapps.io/"+photo+"\" width=\"30%\" height=\"30%\"></td><td>"+name+" </td><td> "+quantity+"pieces.</td>"+
                     "<td>  $"+price+"</td><td> $" +value+"</td></tr>");

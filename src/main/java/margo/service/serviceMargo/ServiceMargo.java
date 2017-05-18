@@ -104,6 +104,7 @@ public class ServiceMargo {
         model.setDescription(describe);
         model.setQuantity(quantity);
         model.setPrice(price);
+        System.out.println("Service Margo,Model to String "+model);
         serviceMargoRepository.save(model);
     }
     @Transactional

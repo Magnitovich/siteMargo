@@ -54,7 +54,7 @@ public class LoginController {
         adminRoleService.addNewUser(name, password, phone, email, activityFalse, verification, description);
         String subject = "Confirmation Registration";
         String confirmationUrl =  "<a href='" +
-                "http://localhost:8080/registrationConfirm.html?verification="
+                "http://newSpace.cfapps.io/registrationConfirm.html?verification="
                 + verification+"'>Click for end Registration</a>";
         sendingMail.sendingMessage(email, confirmationUrl, subject);
 

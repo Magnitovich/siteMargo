@@ -4,6 +4,9 @@ import margo.filter.CheckUserRegistration;
 import margo.model.user.UserModel;
 import margo.service.cart.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,11 +34,10 @@ public class AllInformationsAboutCustomerController {
                                            @RequestParam(value = "descriptionCustomerForSend", required = false) String addressDelivery,
                                            @RequestParam(value = "EmailCustomerForSend", required = false) String email) {
         ModelAndView modelAndView = new ModelAndView();
-        checkUserRegistration.checkAuthenticationUser();
-        if (checkUserRegistration.getUserName() != "") {
 
-            String userName = checkUserRegistration.getUserName();
-            System.out.println("checkUserRegistration.getUserName()" + checkUserRegistration.getUserName());
+        if (userAuthentication() != "anonymousUser") {
+
+            String userName = userAuthentication();
             UserModel userModel = cartService.ifUserAuthenticated(userName);
             nameCustomer = userModel.getName();
             phoneCustomer = userModel.getPhone();
@@ -65,7 +67,23 @@ public class AllInformationsAboutCustomerController {
 
         }
     }
-
+private String userAuthentication(){
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    String name = authentication.getName();
+//    System.out.println("AllInformationsAboutCustomerController: "+name);
+    return name;
+//    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//    if (principal instanceof UserDetails) {
+//      String username = ((UserDetails)principal).getUsername();
+//        System.out.println("principal instanceof UserDetails "+username);
+//        return username;
+//    } else {
+//        String username = principal.toString();
+//        System.out.println("else: "+username);
+//        return username;
+//    }
+}
 
     public String getNameCustomer() {
         return nameCustomer;
