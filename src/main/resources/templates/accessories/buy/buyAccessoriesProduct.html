@@ -90,20 +90,20 @@
                                             </td>
                                             <td class="verticalLine">
                                                 <input  type="number" style="width: 100px" min="1" autofocus="true"
-                                                        th:attr="max=${curtain.quantity}" placeholder="Enter quantity"
+                                                        th:attr="max=${curtain.quantity}" placeholder="Введите кол-во"
                                                         name="numberOrderWhisky" id="numberOrder" class="changePrice" required="" />
-                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <br/>
                                                 <span id="errorQuantity" style="color: red; display: none; font-size: smaller">
-                                                  <i><b> You can max. order: <span style="color: red;" th:text="${curtain.quantity}"/> </b></i>
+                                                  <i><b> Вы можете заказать максимум: <span style="color: red;" th:text="${curtain.quantity}"/> </b></i>
                                                 </span>
                                                 <span id="errorQuantityZERO" style="color: red;display: none; font-size: smaller">
-                                                     <i><b> You can't order: 0</b></i>
+                                                     <i><b> Вы не можете заказать: 0</b></i>
                                                 </span>
                                                 <span id="errorSummQuantity" style="color: red; display: none;  font-size: smaller">
-                                                    <i><b> you ordered these goods earlier
-                                                    <br/> and your summary order more
-                                                    <br/>than we have on warehouse:
+                                                    <i><b> Этот товар есть у Вас в корзине
+                                                        <br/> и заказ превышает количество на складе
+
                                                         <span th:text="${curtain.quantity}"/> </b></i>
                                                 </span>
                                             </td>

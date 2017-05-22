@@ -1,6 +1,6 @@
 $(function(){
     $.mask.definitions['~']='[+-]';
-    $('#phone').mask('(999) 999-9999');
+    $('#phone').mask('+380(99) 999-9999');
 
 });
 

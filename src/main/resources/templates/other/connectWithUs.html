@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="headerMain :: header-libs"></head>
+<body class="background">
+<div th:replace="headerMain :: header"></div>
+
+<!--***********************************SLIDER****************************************-->
+<div style="color: white; padding-left: 20%; padding-right: 15%" >
+  <h2>  Связаться с нами</h2><p/>
+    <form action="connectWith" method="post">
+        <table border="1" style="border: groove; border-radius: 35px" width="90%" align="lift">
+
+            <tr>
+                <td>
+                    <table border="0" style="margin: 15px">
+                        <tr>
+                            <td>
+                                Ваше имя:<br/>
+                                <input id="name" style="color: #0b0a26" name="name" type="text" required=""/><p/>
+                            </td>
+                        </tr>
+                        <tr><td>
+                            Email:<br/>
+                            <input type="email" style="color: #0b0a26" name="email" id="email" required="" /><p/>
+                        </td></tr>
+                        <tr>
+                            <td>
+                                Ваш вопрос:<br/>
+                                <textarea class="buttons" rows="8" style="color: #0b0a26" cols="100%" name="question"
+                                id="question" maxlength="255" placeholder="max length 255"></textarea>
+                                <p/>
+                            </td>
+                        </tr>
+                        <tr align="right">
+                            <td>
+                                <input class="tableBtn" type="submit" value="Отправить" align="right"/>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div class="down">
+<table border="0" align="center">
+    <tr>
+        <td>
+            <a href="about" > &nbsp; О нас&nbsp;&nbsp;   </a> </td>
+        <td>
+            <a href="payment" > &nbsp; Оплата&nbsp;&nbsp;   </a> </td>
+        <td>
+            <a href="delivery" >&nbsp; Доставка&nbsp;&nbsp;&nbsp;</a>
+        </td>
+        <td>
+            <a href="contact" >&nbsp; Контакты&nbsp;&nbsp;&nbsp;</a>
+        </td>
+        <td>
+            <a href="partner" >&nbsp; Партнерам&nbsp;&nbsp;&nbsp;</a>
+        </td>
+        <td>
+            <a href="#" >&nbsp; Связаться с нами&nbsp;&nbsp;&nbsp;</a>
+        </td>
+
+    </tr>
+</table>
+</div>
+</body>
+</html>

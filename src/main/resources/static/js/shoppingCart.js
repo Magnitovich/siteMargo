@@ -355,6 +355,9 @@ var cartWhisky = new Array;
                 //clearCart(); //clear Local Storage
                 window.location.href = "/";
                 console.log(data)
+            },
+            error: function(e) {
+                console.log(e);
             }
         });
     }

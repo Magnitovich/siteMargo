@@ -29,7 +29,7 @@ public class CartOrderFinishController {
 
 
     @RequestMapping(value = "/buySuccessful", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView view(@RequestBody List<String > newArrays) throws MessagingException {
+    public ModelAndView view(@RequestBody List<String> newArrays) throws MessagingException {
 //        System.out.println(newArrays);
 
             CustomerModel customerModel = new CustomerModel();

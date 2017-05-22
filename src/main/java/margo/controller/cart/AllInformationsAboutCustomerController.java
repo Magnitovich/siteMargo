@@ -18,8 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class AllInformationsAboutCustomerController {
 
     @Autowired
-    private CheckUserRegistration checkUserRegistration;
-    @Autowired
     private CartService cartService;
 
     private String nameCustomer = "";

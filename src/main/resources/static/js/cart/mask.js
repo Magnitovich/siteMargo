@@ -1,5 +1,5 @@
 $(function(){
     $.mask.definitions['~']='[+-]';
-    $('#phoneCustomer').mask('(999) 999-9999');
+    $('#phoneCustomer').mask('+380(99) 999-9999');
 });
 

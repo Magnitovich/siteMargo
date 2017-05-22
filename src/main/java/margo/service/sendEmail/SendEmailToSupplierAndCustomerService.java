@@ -69,7 +69,6 @@ public class SendEmailToSupplierAndCustomerService {
             i++;
             numberPage++;
         }
-//        System.out.println(total);
         for (int a= 0; a<=i; a++){
 //            System.out.println("nameArrays.get(a) -"+nameArrays.get(a));
             sb.append(nameArrays.get(a));

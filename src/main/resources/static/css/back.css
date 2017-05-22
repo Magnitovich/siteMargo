@@ -9,11 +9,13 @@ html, body {
     min-width: 1300px;
 }
 .down{
+    position: absolute;
+    bottom: 10px;
     padding-top: 10px;
     margin-top: 35px;
     background-color: black;
     border-top:  #FEFF82 2px solid;
-    min-width: 1300px;
+    min-width: 100%;
     color: white;
     font-family: Arial;
     text-decoration: none;

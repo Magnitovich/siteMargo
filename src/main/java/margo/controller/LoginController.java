@@ -48,8 +48,6 @@ public class LoginController {
 
         Integer activityFalse = 0;
         String verification = UUID.randomUUID().toString();  //for send email
-//        System.out.println("Nick= "+name+" pass= "+password+" phone ="+phone+
-//                "descriptions: "+description+" email= "+email+" verification"+verification);
 
         adminRoleService.addNewUser(name, password, phone, email, activityFalse, verification, description);
         String subject = "Confirmation Registration";
@@ -58,7 +56,7 @@ public class LoginController {
                 + verification+"'>Click for end Registration</a>";
         sendingMail.sendingMessage(email, confirmationUrl, subject);
 
-        System.out.println(name + " pass:= " + password+ " email: "+email);
+//        System.out.println("LoginController"+name + " pass:= " + password+ " email: "+email);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/index");

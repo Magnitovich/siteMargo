@@ -68,6 +68,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/delivery")
                 .permitAll()
+                .antMatchers("/contact")
+                .permitAll()
+                .antMatchers("/partner")
+                .permitAll()
+                .antMatchers("/connectWithSupplier")
+                .permitAll()
+                .antMatchers("/connectWith")
+                .permitAll()
 
                 .antMatchers("/registrationPage")
                 .permitAll()
@@ -131,12 +139,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/buySuccessful")
                 .permitAll()
-
                 .antMatchers("/searchOnTheSite")
                 .permitAll()
                 .antMatchers("/searchOnTheSite/question")
                 .permitAll()
-
                 .antMatchers("/headerMain.html")
                 .permitAll()
                 .antMatchers("/orderFabric")
@@ -145,7 +151,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/upholsteryFabric")
                 .permitAll()
-
                 .antMatchers("/clothModel")
                 .permitAll()
                  .antMatchers("/allModel")
