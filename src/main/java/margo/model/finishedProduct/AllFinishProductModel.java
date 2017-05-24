@@ -21,6 +21,15 @@ public class AllFinishProductModel {
     private Double quantity;
     private BigDecimal price;
     private String itIsSewed;
+    private Boolean offer;
+
+    public Boolean getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Boolean offer) {
+        this.offer = offer;
+    }
 
     public String getItIsSewed() {
         return itIsSewed;

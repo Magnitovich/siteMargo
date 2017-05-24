@@ -26,9 +26,11 @@ public class AccessoriesService {
         fabricDTO.setPhoto01(model.getPhoto01());
         fabricDTO.setPhoto02(model.getPhoto02());
         fabricDTO.setId(model.getId());
+        fabricDTO.setOffer(model.getOffer());
         fabricDTO.setName(model.getName());
         fabricDTO.setDescription(model.getDescription());
         fabricDTO.setColor(model.getColor());
+
         fabricDTO.setQuantity(model.getQuantity());
         fabricDTO.setPrice(model.getPrice());
 
@@ -42,6 +44,7 @@ public class AccessoriesService {
         fabricDTO.setPhoto02(model.getPhoto02());
         fabricDTO.setId(model.getId());
         fabricDTO.setName(model.getName());
+        fabricDTO.setOffer(model.getOffer());
         fabricDTO.setDescription(model.getDescription());
         fabricDTO.setColor(model.getColor());
         fabricDTO.setQuantity(model.getQuantity());

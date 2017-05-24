@@ -52,23 +52,16 @@
                             <div class="pageSelected">
 
                                 <a href="#" style="text-decoration: none" >
-                            <!--<a th:href="@{~/buyCurtain?hiddenModelId=${curtain.id}}" style="text-decoration: none" >-->
                                     <input type="hidden" name="photoId" id="photoId" th:value="${curtain.photo}" />
                                     <input type="hidden" name="id" id="id" th:value="${curtain.id}" />
-                                <!--<input type="hidden" th:value="${curtain.id}" name="pageId"/>-->
 
                                     <img th:attr="src=${curtain.photo}" name="photoId"  width="200" height="280"/>
                                     <div align="center">
                                         <b>   <span th:text="${curtain.name}">Name</span></b>
-                                        <span th:text="${curtain.color}"/>
-                                    </div>
-
-                                    <div align="center" style="font-family: 'Times New Roman'; color: black">
-                                    <div align="center"  sec:authorize="isAnonymous() or hasAuthority('user')">
+                                        <br/>
                                         <b>
-                                        <span class="priceSSS" th:text="${curtain.price}"/>грн.
+                                            <span class="priceSSS" th:text="${curtain.price}"/><span> грн.</span>
                                         </b>
-                                    </div>
                                     </div>
                                 </a>
                             </div>

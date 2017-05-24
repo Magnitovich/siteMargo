@@ -45,25 +45,10 @@
                             <img th:attr="src=${curtain.photo}"  width="200" height="280"/>
                             <div align="center">
                                 <b>   <span th:text="${curtain.name}">Name</span></b>
-                                <span th:text="${curtain.color}"/>
-                                <input type="hidden" th:value="${curtain.paint}"/>
-                            </div>
-
-                            <div align="center" style="font-family: 'Times New Roman'; color: black">
-                                <div align="center"  sec:authorize="isAnonymous()">
-                                    <b>
-                                        <span class="priceSSS" th:text="${curtain.price}"/>грн.
-                                        <span th:text="${curtain.paint}"/>
-                                    </b>
-                                </div>
-                                <div align="center" sec:authorize="hasAuthority('user')">
-                                    <b>
-                                        <!--$&nbsp;-->
-                                        <span class="priceSSS" th:text="${curtain.price}"/>грн.
-                                        <span th:text="${curtain.paint}"/>
-                                    </b>
-                                </div>
-
+                                <br/> <b>
+                                <span class="priceSSS" th:text="${curtain.price}"/>
+                                <span> грн.</span>
+                            </b>
                             </div>
                         </a>
                     </div>

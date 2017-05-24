@@ -76,6 +76,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/connectWith")
                 .permitAll()
+                .antMatchers("/offer")
+                .permitAll()
 
                 .antMatchers("/registrationPage")
                 .permitAll()

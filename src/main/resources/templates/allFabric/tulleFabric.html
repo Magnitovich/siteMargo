@@ -40,7 +40,6 @@
                             Quantity: &nbsp; <span  th:text="${model.quantity}">quantity</span>m.
                             <input type="checkbox" name="selectCurtainForChange" th:attr="id=${model.id}"
                                    style="background-color: #0f0f0f"/>
-                            <br/><span class="priceSSS" th:text="${model.price}"/>грн.
                         </div>
 
                         <a th:href="@{~/buyTulleFabric(hiddenModelId=${model.id})}" style="text-decoration: none" >
@@ -48,24 +47,13 @@
                             <img th:attr="src=${model.photo}"  width="200" height="280"/>
                             <div align="center">
                                 <b>   <span th:text="${model.name}">Name</span></b>
-                                <span th:text="${model.color}"/>
-                                <input type="hidden" th:value="${model.paint}"/>
+
+                                <br/>
+                                <b>
+                                    <span class="priceSSS" th:text="${model.price}"/><span> грн.</span>
+                                </b>
                             </div>
-                            <div align="center" style="font-family: 'Times New Roman'; color: black">
-                                <div align="center"  sec:authorize="isAnonymous()">
-                                    <b> $&nbsp;
-                                        <span class="priceSSS" th:text="${model.price}"/>грн.
-                                        <span th:text="${model.paint}"/>
-                                    </b>
-                                </div>
-                                <div align="center" sec:authorize="hasAuthority('user')">
-                                    <b> $&nbsp;
-                                        <span class="priceSSS" th:text="${model.price}"/>грн.
-                                        <span th:text="${model.paint}"/>
-                                    </b>
-                                    <!--<b> $&nbsp; <input type="text"  th:value="${curtain.price}">Price</input></b>-->
-                                </div>
-                            </div>
+
                         </a>
                     </div>
                 </div>

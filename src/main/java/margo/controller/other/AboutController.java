@@ -12,5 +12,6 @@ public class AboutController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("other/about");
         return modelAndView;
+
     }
 }

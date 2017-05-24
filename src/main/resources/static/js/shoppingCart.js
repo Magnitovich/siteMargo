@@ -32,7 +32,7 @@ $(document).ready(function() {
         price = $("#priceID").val();
         quantityInDBFromJava = quantityInDB;
         var valueAfterOrder = (price * quantity).toFixed(2); //valueWhisky
-        console.log("PHOTO: " + photo);
+        //console.log("PHOTO: " + photo);
         $("#changePrice").html(price);
 
         $("input[type='number']").change(function () {

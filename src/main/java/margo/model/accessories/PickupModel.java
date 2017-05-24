@@ -25,10 +25,20 @@ public class PickupModel extends AllFinishProductModel {
     private String description;
     @Column(name = "COLOR")
     private String color;
+    @Column(name = "OFFER")
+    private Boolean offer;
     @Column(name = "QUANTITY")
     private Double quantity;
     @Column(name = "PRICE")
     private BigDecimal price;
+
+    public Boolean getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Boolean offer) {
+        this.offer = offer;
+    }
 
     public String getPhoto() {
         return photo;

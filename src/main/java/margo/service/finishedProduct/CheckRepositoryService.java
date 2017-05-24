@@ -75,9 +75,10 @@ public class CheckRepositoryService {
             break;
             case tulleFinish:
                 repository =  tulleFinishRepository;
-            case interior:
-                repository =  interiorRepository;
-            break;
+                break;
+//            case interior:
+//                repository =  interiorRepository;
+//            break;
         }
 //        System.out.println("CHECK REPOSITORY: "+repository);
         return repository;

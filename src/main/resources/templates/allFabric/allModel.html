@@ -73,24 +73,15 @@
                         <img th:attr="src=${curtain.photo}"  width="220" height="280"/>
                         <div align="center" style="font-family: 'Times New Roman'; color: black">
                             <b>   <span th:text="${curtain.name}">Name</span></b>
-
+                            <br/> <b>
+                            <span class="priceSSS" th:text="${curtain.price}"/>
+                            <span> грн.</span>
+                        </b>
                         </div>
                         <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
                              sec:authorize="hasAuthority('admin')">
-                            Quantity: &nbsp; <span  th:text="${curtain.quantity}"
-                        >quantityWhisky</span>piece
-                            <!--<input type="hidden" id="quantity"  th:value="${curtain.quantityCurtain}"/>-->
-                        </div>
+                            Quantity: &nbsp; <span  th:text="${curtain.quantity}">quantityWhisky</span>шт.
 
-                        <div align="center" style="font-family: 'Times New Roman'; color: black">
-                            <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
-                                 sec:authorize="isAnonymous()">
-                                <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
-                            </div>
-                            <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
-                                 sec:authorize="hasAuthority('user')">
-                                <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
-                            </div>
                         </div>
                     </a>
                 </div>
@@ -104,24 +95,14 @@
                         <img th:attr="src=${curtain.photo}"  width="220" height="280"/>
                         <div align="center" style="font-family: 'Times New Roman'; color: black">
                             <b>   <span th:text="${curtain.name}">Name</span></b>
-
+                            <br/> <b>
+                            <span class="priceSSS" th:text="${curtain.price}"/>
+                            <span> грн.</span>
+                        </b>
                         </div>
                         <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
                              sec:authorize="hasAuthority('admin')">
-                            Quantity: &nbsp; <span  th:text="${curtain.quantity}"
-                        >quantityWhisky</span>piece
-                            <!--<input type="hidden" id="quantity"  th:value="${curtain.quantityCurtain}"/>-->
-                        </div>
-
-                        <div align="center" style="font-family: 'Times New Roman'; color: black">
-                            <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
-                                 sec:authorize="isAnonymous()">
-                                <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
-                            </div>
-                            <div align="center" style="font-family: 'Times New Roman'; color: #000000; font-size: small"
-                                 sec:authorize="hasAuthority('user')">
-                                <b> $&nbsp; <span  th:text="${curtain.price}">Price</span></b>
-                            </div>
+                            Quantity: &nbsp; <span  th:text="${curtain.quantity}">quantityWhisky</span> шт.
                         </div>
                     </a>
                 </div>

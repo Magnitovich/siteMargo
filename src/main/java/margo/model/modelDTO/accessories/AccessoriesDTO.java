@@ -21,6 +21,17 @@ public class AccessoriesDTO extends InteriorDTO  {
     private Double quantity;
     private BigDecimal price;
     private Long idForEditCurtain;
+    private Boolean offer;
+
+    @Override
+    public Boolean getOffer() {
+        return offer;
+    }
+
+    @Override
+    public void setOffer(Boolean offer) {
+        this.offer = offer;
+    }
 
     public MultipartFile getObjectPhotoCurtain() {
         return objectPhotoCurtain;
