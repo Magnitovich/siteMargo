@@ -25,6 +25,40 @@ public class MainFinishedService {
 
     private List<AllFabricDTO> forFilter = new ArrayList<>();
 
+
+    public AllFabricDTO convertModelToFubricDto(AllFinishProductModel model) {
+
+        AllFabricDTO fabricDTO = new AllFabricDTO();
+        fabricDTO.setPhoto(model.getPhoto());
+        fabricDTO.setPhoto01(model.getPhoto01());
+        fabricDTO.setPhoto02(model.getPhoto02());
+        fabricDTO.setPhoto03(model.getPhoto03());
+        fabricDTO.setPhoto04(model.getPhoto04());
+        fabricDTO.setPhoto05(model.getPhoto05());
+        fabricDTO.setId(model.getId());
+        fabricDTO.setName(model.getName());
+        fabricDTO.setDescription(model.getDescription());
+        fabricDTO.setStructure(model.getStructure());
+        fabricDTO.setPaint(model.getPaint());
+        fabricDTO.setHeight(model.getHeight());
+        fabricDTO.setColor(model.getColor());
+        fabricDTO.setQuantity(model.getQuantity());
+        fabricDTO.setPrice(model.getPrice());
+        fabricDTO.setOffer(model.getOffer());
+
+        return fabricDTO;
+    }
+
+    public List<AllFabricDTO> convertListModelToFubricDTO(List<AllFinishProductModel> models) {
+
+        List<AllFabricDTO> finishDTO = new ArrayList<>();
+        for (AllFinishProductModel finishProduct : models) {
+            AllFabricDTO dto = convertModelToFubricDto(finishProduct);
+            finishDTO.add(dto);
+        }
+        return finishDTO;
+    }
+
     public AllFabricDTO convertModelToDto(AllFinishProductModel model) {
 
         AllFabricDTO fabricDTO = new AllFabricDTO();
@@ -44,6 +78,7 @@ public class MainFinishedService {
         fabricDTO.setItIsSewed(model.getItIsSewed());
         fabricDTO.setQuantity(model.getQuantity());
         fabricDTO.setPrice(model.getPrice());
+        fabricDTO.setOffer(model.getOffer());
 
         return fabricDTO;
     }

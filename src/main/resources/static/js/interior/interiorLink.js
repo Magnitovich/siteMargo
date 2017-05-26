@@ -5,6 +5,19 @@ $(document).ready(function() {
         window.location.href ="buyInteriorProduct?modelId="+id;
     })
 });
+function addOffer() {
+    var addPage = $("#selectPage").val();
+
+    var selectedForEdit = $('#mainDiv input:checked')
+    if (selectedForEdit.length>1) {
+        alert("You selected more one model")
+    }else if (selectedForEdit.length==0) {
+        alert("You don't selected anyone model")
+    } else {
+        window.location.href ="addNewOffer?id="+selectedForEdit[0].id+"&part="+addPage;
+    }
+}
+
     function addNewBedroom(){
     window.location.href = "addInfoAboutNewInteriorProduct"}
 

@@ -1,5 +1,6 @@
 package margo.controller;
 
+import margo.controller.aboutFabric.buy.BuyCurtainController;
 import margo.controller.accessories.buy.BuyAccessoriesController;
 import margo.controller.finishProduct.buy.BuyController;
 import margo.controller.interior.buy.BuyInteriorController;
@@ -17,15 +18,8 @@ import java.util.List;
 @Controller
 public class BuyFromSearchController {
     @Autowired
-    private CurtainService curtainService;
-    @Autowired
-    private TulleService tulleService;
-    @Autowired
-    private UpholsteryFabricService upholsteryFabricService;
-    @Autowired
-    private OrderCurtainService orderCurtainService;
-    @Autowired
-    private ClothFabricService clothFabricService;
+    private BuyCurtainController buyCurtainController;
+
     @Autowired
     private BuyAccessoriesController buyAccessoriesController;
     @Autowired
@@ -51,41 +45,12 @@ public class BuyFromSearchController {
                 break;
             case "interior":
                 modelAndView = buyInteriorController.seeSelectedCurtain(id);
+                break;
             case "allFabric":
-                switch (split[2]) {
-                    case "clothFabric":
-                        String cloth = clothFabricService.convertIdToName(id);
-                        List<ClothFabricDTO> dtos = clothFabricService.viewName(cloth);
-                        modelAndView.addObject("selected", dtos);
-                        modelAndView.setViewName("allFabric/buyFabric/buyClothFabric");
-//                return modelAndView;
-                        break;
-                    case "curtain":
-                        String curtain = curtainService.convertIdToName(id);
-                        List<CurtainDTO> curtainDTOs = curtainService.viewName(curtain);
-                        modelAndView.addObject("selectedCurtain", curtainDTOs);
-                        modelAndView.setViewName("allFabric/buyFabric/buyCurtain");
-                        break;
-                    case "orderCurtain":
-                        String order = orderCurtainService.convertIdToName(id);
-                        List<OrderCurtainDTO> dtosOrder = orderCurtainService.viewName(order);
-                        modelAndView.addObject("selected", dtosOrder);
-                        modelAndView.setViewName("allFabric/buyFabric/buyTulleFabric");
-                        break;
-                    case "tulle":
-                        String tulle = tulleService.convertIdToName(id);
-                        List<TulleDTO> tulleDto = tulleService.viewName(tulle);
-                        modelAndView.addObject("selected", tulleDto);
-                        modelAndView.setViewName("allFabric/buyFabric/buyTulleFabric");
-                        break;
-                    case "upholsteryFabric":
-                        String up = upholsteryFabricService.convertIdToName(id);
-                        List<UpholsteryFabricDTO> upholstery = upholsteryFabricService.viewName(up);
-                        modelAndView.addObject("selected", upholstery);
-                        modelAndView.setViewName("allFabric/buyFabric/buyTulleFabric");
-                        break;
+                modelAndView = buyCurtainController.seeSelectedCurtain(id, split[2]);
+                break;
                 }
-        }
+
         return modelAndView;
     }
 }

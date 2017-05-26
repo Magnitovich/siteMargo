@@ -16,8 +16,8 @@ public class OfferController {
     @RequestMapping(value = "offer", method = RequestMethod.GET)
     public ModelAndView seeOffer(){
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println((service.allList()).size());
-        modelAndView.addObject("quantity", (service.allList()).size());
+//        System.out.println((service.allList()).size());
+//        modelAndView.addObject("quantity", (service.allList()).size());
         modelAndView.setViewName("offers/offerSite");
         return modelAndView;
     }

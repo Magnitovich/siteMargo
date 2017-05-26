@@ -5,8 +5,8 @@ import margo.controller.add.AddPattern;
 import margo.controller.finishProduct.BedroomController;
 import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
 import margo.service.finishedProduct.AddEditService;
-import margo.service.finishedProduct.CheckRepositoryService;
 import margo.service.finishedProduct.MainFinishedService;
+import margo.service.offer.SelectRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -30,7 +30,7 @@ public class AddFinishProductBedroomController {
     @Autowired
     private AddEditService exceptionAddFinishProduct;
     @Autowired
-    private CheckRepositoryService repositoryService;
+    private SelectRepositoryService repositoryService;
 
     private final String bedroom = "bedroom";
     private final String cabinet = "cabinet";

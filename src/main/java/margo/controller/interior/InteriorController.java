@@ -23,7 +23,8 @@ public class InteriorController {
         Iterable<InteriorModel> interiorModels = service.seeAllInterior();
         ArrayList price = service.seePrice();
         ArrayList color = service.seeColor();
-
+        String part = "pillow";
+        modelAndView.addObject("namePage", part);
         modelAndView.addObject("allCurtain",interiorModels);
         modelAndView.addObject("price",price);
         modelAndView.addObject("forColor",color);

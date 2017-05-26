@@ -1,8 +1,8 @@
 package margo.controller.finishProduct.buy;
 
 import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
-import margo.service.finishedProduct.CheckRepositoryService;
 import margo.service.finishedProduct.MainFinishedService;
+import margo.service.offer.SelectRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class BuyController {
     @Autowired
-    private CheckRepositoryService repositoryService;
+    private SelectRepositoryService repositoryService;
     @Autowired
     private MainFinishedService mainFinishedService;
 

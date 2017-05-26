@@ -2,6 +2,8 @@ package margo.controller.aboutFabric;
 
 import margo.model.modelDTO.allCurtainsDTO.*;
 import margo.service.fabric.AllFabricService;
+import margo.service.finishedProduct.MainFinishedService;
+import margo.service.offer.SelectRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,23 +16,26 @@ import java.util.List;
 public class AllModelController {
 
     @Autowired
-    private AllFabricService allFabricService;
+    private MainFinishedService service;
+    @Autowired
+    private SelectRepositoryService repositoryService;
+
 
     @RequestMapping(value = "/allModel", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView allModel(){
 
-        List<CurtainDTO> curtainDTOs = allFabricService.seeCurtain();
-        List<ClothFabricDTO> clothFabricDTOs = allFabricService.seeClothFabric();
-        List<OrderCurtainDTO> orderCurtainDTOs = allFabricService.seeOrderCurtain();
-        List<UpholsteryFabricDTO> upholsteryFabricDTOs = allFabricService.seeUpholsteryFabric();
-        List<TulleDTO> tulleDTOs = allFabricService.seeTulle();
+        List<AllFabricDTO> clothFabric = service.seeAllModels(repositoryService.selectRepository("clothFabric"));
+        List<AllFabricDTO> curtain = service.seeAllModels(repositoryService.selectRepository("curtain"));
+        List<AllFabricDTO> orderCurtain = service.seeAllModels(repositoryService.selectRepository("orderCurtain"));
+        List<AllFabricDTO> tulle = service.seeAllModels(repositoryService.selectRepository("tulle"));
+        List<AllFabricDTO> upholsteryFabric = service.seeAllModels(repositoryService.selectRepository("upholsteryFabric"));
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("allCurtain", curtainDTOs);
-        modelAndView.addObject("allCloth", clothFabricDTOs);
-        modelAndView.addObject("allOrderCurtain", orderCurtainDTOs);
-        modelAndView.addObject("allUp", upholsteryFabricDTOs);
-        modelAndView.addObject("allTulle", tulleDTOs);
+        modelAndView.addObject("allCurtain", curtain);
+        modelAndView.addObject("allCloth", clothFabric);
+        modelAndView.addObject("allOrderCurtain", orderCurtain);
+        modelAndView.addObject("allUp", upholsteryFabric);
+        modelAndView.addObject("allTulle", tulle);
 
          modelAndView.setViewName("allFabric/allModel");
 

@@ -1,8 +1,8 @@
 package margo.controller.finishProduct;
 
 import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
-import margo.service.finishedProduct.CheckRepositoryService;
 import margo.service.finishedProduct.MainFinishedService;
+import margo.service.offer.SelectRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ public class BedroomController {
     @Autowired
     private MainFinishedService service;
     @Autowired
-    private CheckRepositoryService repositoryService;
+    private SelectRepositoryService repositoryService;
 
     private CrudRepository repository;
 

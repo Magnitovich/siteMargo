@@ -1,8 +1,8 @@
 package margo.controller.finishProduct;
 
 import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
-import margo.service.finishedProduct.CheckRepositoryService;
 import margo.service.finishedProduct.MainFinishedService;
+import margo.service.offer.SelectRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,7 @@ public class AllFinishProduct {
     @Autowired
     private MainFinishedService service;
     @Autowired
-    private CheckRepositoryService repositoryService;
+    private SelectRepositoryService repositoryService;
 
 
     @RequestMapping(value = "finishProduct", method = RequestMethod.GET)

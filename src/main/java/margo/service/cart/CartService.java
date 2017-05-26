@@ -13,22 +13,20 @@ import margo.model.finishedProduct.AllFinishProductModel;
 import margo.model.interior.InteriorModel;
 import margo.model.user.UserModel;
 import margo.service.accessories.CheckAccessoriesRepositoryService;
-import margo.service.finishedProduct.CheckRepositoryService;
+import margo.service.offer.SelectRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
 public class CartService {
 
     @Autowired
-    private CheckRepositoryService checkRepositoryService;
+    private SelectRepositoryService checkRepositoryService;
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired

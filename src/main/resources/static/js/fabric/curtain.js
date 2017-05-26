@@ -1,19 +1,32 @@
-function buyYachtFromImg() {
+$(document).ready(function() {
+    $('.pageSelected a').on('click', function (e) {
+        var addPage = $("#selectPage").val();
+        var id = $(this).find('input[name=id]').val();
+        //alert("ID: "+id + "  photo: "+photo);
+        window.location.href ="buyCurtain?modelId="+id+"&part="+addPage;
+    });
 
-    var selectedForEdit = $('input:hidden')
+});
+function addOffer() {
+    var addPage = $("#selectPage").val();
 
-
-    window.location.href ="buyYachts?id="+selectedForEdit[0].id;
-
+    var selectedForEdit = $('#mainDiv input:checked')
+    if (selectedForEdit.length>1) {
+        alert("You selected more one model")
+    }else if (selectedForEdit.length==0) {
+        alert("You don't selected anyone model")
+    } else {
+        window.location.href ="addNewOffer?id="+selectedForEdit[0].id+"&part="+addPage;
+    }
 }
 
 function addNewCurtain(){
+    var addPage = $("#selectPage").val();
+    window.location.href ="addInfoAboutNewCurtain?part="+addPage;}
 
-    window.location.href ="addInfoAboutNewCurtain";
-}
 
 function editInfoCurtain() {
-
+    var addPage = $("#selectPage").val();
     var selectedForEdit = $('#mainDiv input:checked')
 
     if (selectedForEdit.length>1) {
@@ -23,7 +36,7 @@ function editInfoCurtain() {
         alert("You don't selected anyone model")
     } else {
 
-        window.location.href ="addInfoAboutNewCurtain?id="+selectedForEdit[0].id;
+        window.location.href ="addInfoAboutNewCurtain?id="+selectedForEdit[0].id+"&part="+addPage;
     }
 }
 
@@ -48,8 +61,6 @@ function deleteSelectedElementsCurtain() {
         type:"POST", //это типа method
         data: JSON.stringify(selectedYachtForDelete), //грубо говоря это Серриализация
         url: '/delete/DELETE',
-        success: function(msg){  //msg - показывает ответ с сервера
-            window.location.href = "/curtainModels"
-        }
+        success: function() {window.location.reload(true);}
     })
 }

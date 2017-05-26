@@ -86,7 +86,7 @@
 
         <tr>
             <td>Название </td>
-            <td><input class="buttons" type="text" th:field="*{name}" style="width: 255px" name="name" id="name"/>
+            <td><input class="buttons" type="text" th:field="*{name}" required="required" style="width: 255px" name="name" id="name"/>
 
                 <span style="color: red; font-style: italic; font-size: 10px" th:if="${#fields.hasErrors('name')}"
                       th:errors="*{name}">Error</span>

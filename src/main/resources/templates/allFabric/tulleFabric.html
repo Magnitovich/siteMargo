@@ -17,17 +17,20 @@
 <div th:replace="headerMain :: header"></div>
 
 <!--ADD, EDIT, DELETE-->
-<p align="right">
+<p align="right" sec:authorize="hasAuthority('admin')">
+    <input type="submit"  style="width: 60px" name="addOffer" id="addOffer"
+           onclick="addOffer()"  class="searchMenu" value="Акция"/>
     <input type="submit"  style="width: 60px" name="addWhisky" id="addWhisky"
-           onclick="addNewTulle()" sec:authorize="hasAuthority('admin')" class="searchMenu" value="Add"/>
+           onclick="addNewTulle()"  class="searchMenu" value="Add"/>
     <!--</form>-->
-    <input type="submit" style="width: 60px" sec:authorize="hasAuthority('admin')" onclick="editInfoTulle()"
+    <input type="submit" style="width: 60px"  onclick="editInfoTulle()"
            name="EditWhisky" id="EditYacht" class="searchMenu" value="Edit"/>
 
-    <input type="submit" style="width: 60px" sec:authorize="hasAuthority('admin')" onclick="deleteSelectedElementsTulle()"
+    <input type="submit" style="width: 60px" onclick="deleteSelectedElementsTulle()"
            name="DeleteYacht" id="DeleteYacht" class="searchMenu" value="Delete"/>
 </p>
 <!--********************************SHOW*******************************-->
+<input type="hidden" th:value="${namePage}" id="selectPage"/>
 <table border="0" width="95%">
     <tr>
         <td class="main" valign="top">

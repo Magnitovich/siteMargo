@@ -16,17 +16,19 @@
 <div th:replace="headerMain :: header"></div>
 
 <!--ADD, EDIT, DELETE-->
-<p align="right">
+<p align="right" sec:authorize="hasAuthority('admin')">
+    <input type="submit"  style="width: 60px" name="addOffer" id="addOffer"
+           onclick="addOffer()"  class="searchMenu" value="Акция"/>
     <input type="submit"  style="width: 60px" name="addWhisky" id="addWhisky"
-           onclick="addNewCurtain()" sec:authorize="hasAuthority('admin')" class="searchMenu" value="Add"/>
-    <!--</form>-->
-    <input type="submit" style="width: 60px" sec:authorize="hasAuthority('admin')" onclick="editInfoCurtain()"
+           onclick="addNewCurtain()" class="searchMenu" value="Add"/>
+    <input type="submit" style="width: 60px" onclick="editInfoCurtain()"
            name="EditWhisky" id="EditYacht" class="searchMenu" value="Edit"/>
 
-    <input type="submit" style="width: 60px" sec:authorize="hasAuthority('admin')" onclick="deleteSelectedElementsCurtain()"
+    <input type="submit" style="width: 60px"  onclick="deleteSelectedElementsCurtain()"
            name="DeleteYacht" id="DeleteYacht" class="searchMenu" value="Delete"/>
 </p>
 <!--********************************SHOW*******************************-->
+<input type="hidden" th:value="${namePage}" id="selectPage"/>
 
     <table border="0" width="95%">
         <tr>
@@ -42,9 +44,10 @@
                                    style="background-color: #0f0f0f"/>
                             <br/><span class="priceSSS" th:text="${curtain.price}"/>грн.
                         </div>
-
-                            <a th:href="@{~/buyCurtain(hiddenModelId=${curtain.id})}" style="text-decoration: none" >
-
+                        <div class="pageSelected">
+                            <a href="#" style="text-decoration: none" >
+                            <!--<a th:href="@{~/buyCurtain(hiddenModelId=${curtain.id})}" style="text-decoration: none" >-->
+                                <input type="hidden" name="id" id="id" th:value="${curtain.id}" />
                                 <img th:attr="src=${curtain.photo}"  width="200" height="280"/>
                                 <div align="center">
                                     <b>   <span th:text="${curtain.name}">Name</span></b>
@@ -55,6 +58,7 @@
                                 </div>
 
                             </a>
+                        </div>
                         </div>
                     </div>
                 </div>

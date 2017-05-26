@@ -1,44 +1,28 @@
 package margo.controller.aboutFabric.delete;
 
-import margo.model.modelDTO.allCurtainsDTO.CurtainDTO;
-import margo.service.fabric.CurtainService;
+import margo.controller.aboutFabric.CurtainController;
+import margo.service.finishedProduct.MainFinishedService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
+import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
 public class deleteCurtain {
     @Autowired
-    private CurtainService curtainService;
+    private CurtainController curtainController;
+    @Autowired
+    private MainFinishedService service;
 
     @RequestMapping(value = "/delete/DELETE", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView deleteCurtain(@RequestBody List<Long> namesDeleted, Model model,
-                                      HttpServletRequest req){
-//    System.out.println("Name delete: "+namesDeleted);
+    public @ResponseBody List deleteCurtain(@RequestBody List<Long> namesDeleted){
 
-        curtainService.deleteCurtain(namesDeleted);
-
-        List<CurtainDTO> curtainDTOs = curtainService.seeAllModels();
-        ArrayList colorModel =curtainService.seeColor();
-        ArrayList paint =curtainService.seePaint();
-        ArrayList structure =curtainService.seeStructure();
-        ArrayList filterPrice = curtainService.seePrice();
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("allCurtain",curtainDTOs);
-        modelAndView.addObject("price",filterPrice);
-        modelAndView.addObject("forColor",colorModel);
-        modelAndView.addObject("forPaint",paint);
-        modelAndView.addObject("forStructure",structure);
-        modelAndView.setViewName("allFabric/curtainModel");
-    return modelAndView;
-
+        CrudRepository repository = curtainController.getRepository();
+        service.delete(namesDeleted, repository);
+        return namesDeleted;
 }
 }

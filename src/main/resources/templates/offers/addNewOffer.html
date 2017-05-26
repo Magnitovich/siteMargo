@@ -3,29 +3,45 @@
 <head>
     <meta charset="UTF-8"/>
     <link href="css/back.css" rel="stylesheet" type="text/css"/>
-    <link href="css/selectColor.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
-<table border="1" align="center"><p/>
-    <form action="addSuccessfulServiceMargo"  th:object = "${comparePhotoNameWithDB}" method="post" enctype="multipart/form-data">
-        <input class="buttons" type="hidden" th:field="*{idForEditCurtain}"/>
-        <p/>&nbsp;<p/>
+<body class="background">
+<table border="1" align="center" style="color: white;"><p/>
+    <form action="addNewOffer"  th:object = "${comparePhotoNameWithDB}" method="post" enctype="multipart/form-data">
+        <tr>
+            <td> Введите процент скидки </td>
+            <td align="left">
+                <input type="text" pattern="[0-9]{2}" required="required" autofocus="true"
+                       style="color:black; width: 40px" name="percent" id="percent"/> %
+            </td></tr>
+        <tr style=" margin-top: 15px"><td><br/> Введите кол-во товара участвующего в акции: </td>
+            <td align="left"><br/>
+                <input type="text" pattern="[0-9]{1,}" required="required" style="color:black; width: 40px"
+
+                       name="quantityInOffer" id="quantityInOffer"/>
+            </td>
+        </tr>
+        <tr style=" margin-top: 15px"><td><br/> Введите кол-во дней данной акции: </td>
+            <td align="left"><br/>
+                <input type="date"  required="required" name="dateOffer" id="dateOffer"/>
+            </td>
+        </tr>
+
         <tr>
         <tr th:if="${param.id}">
-            <td>Current photo</td>
+            <td>Фото</td>
             <td>
                 <img th:attr="src=*{photo}" style="max-width: 200px; max-height: 180px;"/>
             </td>
         </tr>
         <td>Path to new photo</td>
         <td>
-            <input type="hidden" th:field="*{id}" />
+            <input type="hidden" th:field="*{id}" id="offerID"/>
             <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain}"/>
         </td>
         </tr>
         <tr>
             <td>Название </td>
-            <td><input class="buttons" type="text" th:field="*{name}" style="width: 255px" required="" name="name" id="name"/>
+            <td><input class="buttons" type="text" th:field="*{name}" style="width: 255px" name="name" id="name"/>
 
                 <span style="color: red; font-style: italic; font-size: 10px" th:if="${#fields.hasErrors('name')}"
                       th:errors="*{name}">Error</span>
@@ -51,7 +67,7 @@
             <!--<form action="../yacht.html">-->
 
             <td colspan="2" align="right">
-                <input type="submit" class="buttons" formaction="/addSuccessfulServiceMargo" style="width: 65px" name="enter"
+                <input type="submit" class="buttons" formaction="/addNewOffer" style="width: 65px" name="enter"
                        id="enter" value="Save"/> </td>
         </tr>
     </form>

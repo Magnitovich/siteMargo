@@ -22,10 +22,10 @@ public class AllFabricService {
         List<ClothFabricDTO> clothFabricDTOs = clothFabricService.seeAllCloth();
         return clothFabricDTOs;
     }
-    public List<CurtainDTO> seeCurtain(){
-        List<CurtainDTO> curtainDTOs = curtainService.seeAllModels();
-        return curtainDTOs;
-    }
+//    public List<CurtainDTO> seeCurtain(){
+//        List<CurtainDTO> curtainDTOs = curtainService.seeAllModels();
+//        return curtainDTOs;
+//    }
     public List<OrderCurtainDTO> seeOrderCurtain(){
         List<OrderCurtainDTO> orderCurtainDTOs = orderCurtainService.seeAllModels();
         return orderCurtainDTOs;

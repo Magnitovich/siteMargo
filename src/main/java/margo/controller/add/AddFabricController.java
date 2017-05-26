@@ -1,9 +1,13 @@
 package margo.controller.add;
 
 
+import margo.controller.aboutFabric.CurtainController;
+import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
 import margo.model.modelDTO.allCurtainsDTO.CurtainDTO;
 import margo.service.exception.ExceptionAddCurtainService;
 import margo.service.fabric.CurtainService;
+import margo.service.finishedProduct.MainFinishedService;
+import margo.service.offer.SelectRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -21,34 +25,60 @@ import java.util.List;
 @Controller
 public class AddFabricController {
 
-
+    @Autowired
+    private MainFinishedService mainFinishedService;
     @Autowired
     private CurtainService curtainService;
-
+    @Autowired
+    private SelectRepositoryService repositoryService;
+    @Autowired
+    private CurtainController curtainController;
     @Autowired
     private ExceptionAddCurtainService exceptionAddCurtainService;
 
+    @Value("${img.cloth.path}")
+    private String realClothObjectsPath;
+    @Value("${img.cloth.relative.path}")
+    private String relativeClothObjectsPath;
     @Value("${img.curtain.path}")
-    private String realObjectsPath;
-
+    private String realCurtainObjectsPath;
     @Value("${img.curtain.relative.path}")
-    private String relativeObjectsPath;
+    private String relativeCurtainObjectsPath;
+    @Value("${img.orderCurtain.path}")
+    private String realOrderCurtainObjectsPath;
+    @Value("${img.orderCurtain.relative.path}")
+    private String relativeOrderCurtainObjectsPath;
+    @Value("${img.tulle.path}")
+    private String realTulleObjectsPath;
+    @Value("${img.tulle.relative.path}")
+    private String relativeTulleObjectsPath;
+    @Value("${img.upholsteryFabric.path}")
+    private String realUpholsteryObjectsPath;
+    @Value("${img.upholsteryFabric.relative.path}")
+    private String relativeUpholsteryObjectsPath;
 
+    final String clothFabric = "clothFabric";
+    final String curtainFabric = "curtain";
+    final String orderFabric = "orderCurtain";
+    final String tulleFabric = "tulle";
+    final String upholsteryFabric = "upholsteryFabric";
+
+    private String checkTo;
 
     @RequestMapping(value = "/addInfoAboutNewCurtain", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView seePageAddCurtain(@RequestParam(required = false) Long id) {
-
+    public ModelAndView seePageAddCurtain(@RequestParam(required = false) Long id,
+                                          @RequestParam(value = "part")String part) {
+        ModelAndView modelAndView = new ModelAndView();
+        checkTo = part;
         if (id != null ) {
-            CurtainDTO curtain = curtainService.viewSelectedCurtain(id);
+
+            AllFabricDTO curtain = mainFinishedService.viewSelectedFinishProduct(id, repositoryService.selectRepository(part));
             curtain.setIdForEditCurtain(id);
-//            System.out.println("AddFabricController "+id);
-            ModelAndView modelAndView = new ModelAndView();
             modelAndView.addObject("comparePhotoNameWithDB", curtain);
             modelAndView.setViewName("allFabric/addFabric/addFabricNew");
             return modelAndView;
 
         } else {
-            ModelAndView modelAndView = new ModelAndView();
             modelAndView.setViewName("allFabric/addFabric/addFabricNew");
             return modelAndView;
         }
@@ -56,13 +86,21 @@ public class AddFabricController {
 
     @RequestMapping(value = "/addSuccessfulCurtain", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView addInfoCars(@ModelAttribute("comparePhotoNameWithDB") CurtainDTO dto,
-                                    BindingResult result,
-                                    @RequestParam(required = false) String id) throws IOException {
-
-   ;
+                                    BindingResult result) throws IOException {
 
         AddPattern addPattern = new AddPattern();
-        addPattern.checkInformations(dto, realObjectsPath, relativeObjectsPath);
+        if (checkTo.equals(clothFabric)) {
+            addPattern.checkInformations(dto, realClothObjectsPath, relativeClothObjectsPath);
+        } else if (checkTo.equals(curtainFabric)){
+            addPattern.checkInformations(dto, realCurtainObjectsPath, relativeCurtainObjectsPath);
+        } else if (checkTo.equals(orderFabric)) {
+            addPattern.checkInformations(dto, realOrderCurtainObjectsPath, relativeOrderCurtainObjectsPath);
+        } else if (checkTo.equals(tulleFabric)) {
+            addPattern.checkInformations(dto, realTulleObjectsPath, relativeTulleObjectsPath);
+        }else if (checkTo.equals(upholsteryFabric)) {
+            addPattern.checkInformations(dto, realUpholsteryObjectsPath, relativeUpholsteryObjectsPath);
+        }
+//        addPattern.checkInformations(dto, realObjectsPath, relativeObjectsPath);
 
         if (dto.getIdForEditCurtain() != null ) {
             dto.setPhoto(addPattern.getNameFile());
@@ -72,21 +110,9 @@ public class AddFabricController {
             dto.setPhoto04(addPattern.getNameFile04());
             dto.setPhoto05(addPattern.getNameFile05());
 
-            curtainService.editCurtain(dto);
-            List<CurtainDTO> curtainDTOs = curtainService.seeAllModels();
-            ArrayList colorModel =curtainService.seeColor();
-            ArrayList paint =curtainService.seePaint();
-            ArrayList structure =curtainService.seeStructure();
-            ArrayList filterPrice = curtainService.seePrice();
+            curtainService.editCurtain(dto, repositoryService.selectRepository(checkTo));
 
-            ModelAndView modelAndView = new ModelAndView();
-            modelAndView.addObject("allCurtain",curtainDTOs);
-            modelAndView.addObject("price",filterPrice);
-            modelAndView.addObject("forColor",colorModel);
-            modelAndView.addObject("forPaint",paint);
-            modelAndView.addObject("forStructure",structure);
-            modelAndView.setViewName("allFabric/curtainModel");
-            return modelAndView;
+            return curtainController.seeAllCurtain(checkTo);
 
         } else {
 //            System.out.println(curtainDTO.getName() + "//PHOTO:= " + curtainDTO.getObjectPhotoCurtain().getOriginalFilename());
@@ -111,22 +137,10 @@ public class AddFabricController {
                 exceptionAddCurtainService.compareEnterInfoAndInDB(addPattern.getNameFile(), addPattern.getNameFile01(),
                         addPattern.getNameFile02(), addPattern.getNameFile03(), addPattern.getNameFile04(),
                         addPattern.getNameFile05(), dto.getName(), dto.getDescription(), dto.getStructure(),
-                        dto.getPaint(), dto.getHeight(), dto.getColor(), dto.getQuantity(), dto.getPrice());
+                        dto.getPaint(), dto.getHeight(), dto.getColor(), dto.getQuantity(), dto.getPrice(), checkTo);
 
-                List<CurtainDTO> curtainDTOs = curtainService.seeAllModels();
-                ArrayList colorModel =curtainService.seeColor();
-                ArrayList paint =curtainService.seePaint();
-                ArrayList structure =curtainService.seeStructure();
-                ArrayList filterPrice = curtainService.seePrice();
 
-                ModelAndView modelAndView = new ModelAndView();
-                modelAndView.addObject("allCurtain",curtainDTOs);
-                modelAndView.addObject("price",filterPrice);
-                modelAndView.addObject("forColor",colorModel);
-                modelAndView.addObject("forPaint",paint);
-                modelAndView.addObject("forStructure",structure);
-                modelAndView.setViewName("allFabric/curtainModel");
-                return modelAndView;
+                return curtainController.seeAllCurtain(checkTo);
             } catch (RuntimeException r) {
 
                 result.rejectValue("name", "error.name", "Error: Name or Photo exist");
