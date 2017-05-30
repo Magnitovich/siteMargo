@@ -3,6 +3,8 @@ html, body {
 }
 
 .background{    background-color: #020029;}
+.backgroundAdd{    background-color: #03003a;}
+
 .top {
     background-color: black;
     border-bottom: #FEFF82 2px solid;

@@ -56,7 +56,9 @@
                                 <a href="#" style="text-decoration: none" >
                                     <input type="hidden" name="photoId" id="photoId" th:value="${curtain.photo}" />
                                     <input type="hidden" name="id" id="id" th:value="${curtain.id}" />
-
+                                    <div th:if="${curtain.offer}==true" style="position: absolute">
+                                        <img src="icons/offer1.png" />
+                                    </div>
                                     <img th:attr="src=${curtain.photo}" name="photoId"  width="200" height="280"/>
                                     <div align="center">
                                         <b>   <span th:text="${curtain.name}">Name</span></b>

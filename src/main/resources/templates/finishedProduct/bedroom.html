@@ -54,6 +54,9 @@
                             <div class="pageSelected">
 
                                 <a href="#" style="text-decoration: none" >
+                                    <div th:if="${curtain.offer}==true" style="position: absolute">
+                                        <img src="icons/offer1.png" />
+                                    </div>
                                     <input type="hidden" name="photoId" id="photoId" th:value="${curtain.photo}" />
                                     <input type="hidden" name="id" id="id" th:value="${curtain.id}" />
 

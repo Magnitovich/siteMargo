@@ -46,6 +46,9 @@
                         </div>
                         <div class="pageSelected">
                             <a href="#" style="text-decoration: none" >
+                                <div th:if="${curtain.offer}==true" style="position: absolute">
+                                    <img src="icons/offer1.png" />
+                                </div>
                             <!--<a th:href="@{~/buyCurtain(hiddenModelId=${curtain.id})}" style="text-decoration: none" >-->
                                 <input type="hidden" name="id" id="id" th:value="${curtain.id}" />
                                 <img th:attr="src=${curtain.photo}"  width="200" height="280"/>
@@ -63,7 +66,6 @@
                     </div>
                 </div>
             </td>
-
             <!--<td class="searchTextColor">-->
                 <!--<div th:each="curtain : ${allCurtain}">-->
                     <!--<br/>-->
@@ -76,8 +78,6 @@
                 <!--</th:block>-->
 
             <!--</td>-->
-
-
             <td class="searchPlane">
                 Фильтр:<p/>
                 <div class="searchColor" id="filterPrice">
@@ -140,7 +140,6 @@
 <div class="down">
     <table border="0" align="center">
         <tr>
-
             <td>
                 <a href="about" > &nbsp; О нас&nbsp;&nbsp;   </a> </td>
             <td>
@@ -157,7 +156,6 @@
             <td>
                 <a href="connectWithSupplier" >&nbsp; Связаться с нами&nbsp;&nbsp;&nbsp;</a>
             </td>
-
         </tr>
     </table>
 </div>

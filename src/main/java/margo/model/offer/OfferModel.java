@@ -11,7 +11,6 @@ public class OfferModel {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Id
     private Long id;
-
     @Column(name = "ID_FROM_COMMODITY", nullable = false)
     private Long idFromCommodity;
     @Column(name = "PHOTO")
@@ -20,12 +19,40 @@ public class OfferModel {
     private String name;
     @Column(name = "PRICE")
     private BigDecimal price;
-    @Column(name = "PERCENT_OF_DISCOUNT")
-    private Double percent;
+    @Column(name = "PRICE_BEFORE_DISCOUNT")
+    private BigDecimal priceBefore;
     @Column(name = "DATE_ODER")
     private Date oderDate;
+    @Column(name = "DATE_FINISH_OFFER")
+    private Date dateFinishOffer;
     @Column(name = "OFFER")
     private Boolean offer;
+    @Column(name = "PART")
+    private String part;
+
+    public String getPart() {
+        return part;
+    }
+
+    public void setPart(String part) {
+        this.part = part;
+    }
+
+    public Date getDateFinishOffer() {
+        return dateFinishOffer;
+    }
+
+    public void setDateFinishOffer(Date dateFinishOffer) {
+        this.dateFinishOffer = dateFinishOffer;
+    }
+
+    public Boolean getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Boolean offer) {
+        this.offer = offer;
+    }
 
     public Long getId() {
         return id;
@@ -67,12 +94,12 @@ public class OfferModel {
         this.price = price;
     }
 
-    public Double getPercent() {
-        return percent;
+    public BigDecimal getPriceBefore() {
+        return priceBefore;
     }
 
-    public void setPercent(Double percent) {
-        this.percent = percent;
+    public void setPriceBefore(BigDecimal priceBefore) {
+        this.priceBefore = priceBefore;
     }
 
     public Date getOderDate() {

@@ -1,7 +1,6 @@
 package margo.controller.aboutFabric;
 
 import margo.model.modelDTO.allCurtainsDTO.*;
-import margo.service.fabric.AllFabricService;
 import margo.service.finishedProduct.MainFinishedService;
 import margo.service.offer.SelectRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,22 +1,15 @@
 package margo.service.cart;
 
-import margo.controller.finishProduct.AllFinishProduct;
 import margo.dao.cart.CustomerOrderRepository;
-import margo.dao.cart.CustomerRepository;
 import margo.dao.fabric.*;
 import margo.dao.interior.InteriorRepository;
 import margo.dao.serviceMargo.ServiceMargoRepository;
 import margo.model.allCurtains.*;
-import margo.model.cartOder.CustomerModel;
 import margo.model.cartOder.OrderCustomerModel;
-import margo.model.cartOder.cartDTO.CustomerDTO;
 import margo.model.cartOder.cartDTO.OrderCustomerDTO;
 import margo.model.finishedProduct.AllFinishProductModel;
 import margo.model.interior.InteriorModel;
-import margo.model.modelDTO.allCurtainsDTO.ClothFabricDTO;
 import margo.model.serviceMargo.ServiceMargoModel;
-import margo.service.accessories.CheckAccessoriesRepositoryService;
-import margo.service.finishedProduct.CheckRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -24,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service

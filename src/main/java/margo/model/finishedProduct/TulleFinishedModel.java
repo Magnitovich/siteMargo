@@ -41,6 +41,18 @@ public class TulleFinishedModel extends AllFinishProductModel {
     private BigDecimal price;
     @Column(name = "SEWED")
     private String itIsSewed;
+    @Column(name = "OFFER")
+    private Boolean offer;
+
+    @Override
+    public Boolean getOffer() {
+        return offer;
+    }
+
+    @Override
+    public void setOffer(Boolean offer) {
+        this.offer = offer;
+    }
 
     public String getItIsSewed() {
         return itIsSewed;

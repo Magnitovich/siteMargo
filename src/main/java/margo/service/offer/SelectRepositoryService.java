@@ -64,6 +64,7 @@ public class SelectRepositoryService {
     private final String luvers = "luvers";
     private final String pickup = "pickup";
     private final String various = "various";
+
     private final String bedroom = "bedroom";
     private final String cabinet = "cabinet";
     private final String children = "children";
@@ -72,11 +73,13 @@ public class SelectRepositoryService {
     private final String lambr = "lambr";
     private final String curtFinish = "curtFinish";
     private final String tulleFinish = "tulleFinish";
+
     final String clothFabric = "clothFabric";
     final String curtainFabric = "curtain";
     final String orderFabric = "orderCurtain";
     final String tulleFabric = "tulle";
     final String upholsteryFabric = "upholsteryFabric";
+
     final String interior = "pillow";
 
     private CrudRepository repository = null;

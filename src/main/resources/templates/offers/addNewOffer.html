@@ -2,27 +2,33 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
+
+    <script src="js/jquery-1.12.3.min.js" type="text/javascript"></script>
+    <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+
     <link href="css/back.css" rel="stylesheet" type="text/css"/>
+
 </head>
-<body class="background">
+<body class="backgroundAdd">
 <table border="1" align="center" style="color: white;"><p/>
-    <form action="addNewOffer"  th:object = "${comparePhotoNameWithDB}" method="post" enctype="multipart/form-data">
+    <form action="addInfoAboutNewOffer"  th:object = "${comparePhotoNameWithDB}" method="post" enctype="multipart/form-data">
         <tr>
             <td> Введите процент скидки </td>
             <td align="left">
                 <input type="text" pattern="[0-9]{2}" required="required" autofocus="true"
                        style="color:black; width: 40px" name="percent" id="percent"/> %
             </td></tr>
-        <tr style=" margin-top: 15px"><td><br/> Введите кол-во товара участвующего в акции: </td>
-            <td align="left"><br/>
-                <input type="text" pattern="[0-9]{1,}" required="required" style="color:black; width: 40px"
+        <!--<tr style=" margin-top: 15px"><td><br/> Введите кол-во товара участвующего в акции: </td>-->
+            <!--<td align="left"><br/>-->
+                <!--<input type="text" pattern="[0-9]{1,}" required="required" style="color:black; width: 40px"-->
 
-                       name="quantityInOffer" id="quantityInOffer"/>
-            </td>
-        </tr>
+                       <!--name="quantityInOffer" id="quantityInOffer"/>-->
+            <!--</td>-->
+        <!--</tr>-->
         <tr style=" margin-top: 15px"><td><br/> Введите кол-во дней данной акции: </td>
             <td align="left"><br/>
-                <input type="date"  required="required" name="dateOffer" id="dateOffer"/>
+                <input type="date" pattern = "dd-MM-yyyy"  required="required" name="dateOffer" id="dateOffer"/>
+
             </td>
         </tr>
 
@@ -67,8 +73,7 @@
             <!--<form action="../yacht.html">-->
 
             <td colspan="2" align="right">
-                <input type="submit" class="buttons" formaction="/addNewOffer" style="width: 65px" name="enter"
-                       id="enter" value="Save"/> </td>
+                <input type="submit" class="tableBtn" style="width: 65px" value="Запустить акцию"/> </td>
         </tr>
     </form>
 </table>

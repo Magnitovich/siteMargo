@@ -40,6 +40,18 @@ public class CurtainModel extends AllFinishProductModel{
         private Double quantity;
         @Column(name = "PRICE")
         private BigDecimal price;
+    @Column(name = "OFFER")
+    private Boolean offer;
+
+    @Override
+    public Boolean getOffer() {
+        return offer;
+    }
+
+    @Override
+    public void setOffer(Boolean offer) {
+        this.offer = offer;
+    }
 
     public String getPhoto() {
         return photo;
