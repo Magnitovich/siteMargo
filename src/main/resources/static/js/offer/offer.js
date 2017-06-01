@@ -1,4 +1,13 @@
 $(document).ready(function() {
+
+    $( ".selector" ).datepicker({
+        showOn: "both"
+    });
+    var showOn = $( ".selector" ).datepicker( "option", "showOn" );
+
+// Setter
+    $( ".selector" ).datepicker( "option", "showOn", "both" );
+
     $('.pageSelected a').on('click', function (e) {
         var id = $(this).find('input[name=idCommodity]').val();
         var addPage = $(this).find('input[name=partBackEnd]').val();
@@ -55,3 +64,6 @@ function sendInfoAboutOffer(){
 
     //alert("Q: "+q+" offerQ: "+offerQ+", percent: "+percent)
 }
+//$( function() {
+//    $( "#datepicker" ).datepicker();
+//} );

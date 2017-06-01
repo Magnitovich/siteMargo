@@ -34,16 +34,16 @@ public class MainOfferService {
         Collections.shuffle(mainList);
         System.out.println();
 //        System.out.println("LIST after: "+listAccessories);
-        System.out.println();
-        System.out.println("first get(0): "+mainList.get(0));
-        System.out.println();
-        System.out.println("get(1): "+mainList.get(1));
+//        System.out.println();
+//        System.out.println("first get(0): "+mainList.get(0));
+//        System.out.println();
+//        System.out.println("get(1): "+mainList.get(1));
 
         for (int i = 0; i<quantity; i++){
             forOffer.add(mainList.get(i));
         }
-        System.out.println();
-        System.out.println("Size: "+forOffer);
+//        System.out.println();
+//        System.out.println("Size: "+forOffer);
         return forOffer;
     }
 
@@ -95,7 +95,6 @@ public class MainOfferService {
         }
         return forPage;
     }
-
     private void finishOffer(Long idFromCommodity, String part, Long id, BigDecimal priceBefore) {
 
         CrudRepository repository = repositoryService.selectRepository(part);
@@ -105,8 +104,6 @@ public class MainOfferService {
         repository.save(one);
         offerRepository.delete(offerRepository.findOne(id));
     }
-
-
     public void delete(List<Long> idDeleted) {
 
         for(Long id:idDeleted){
