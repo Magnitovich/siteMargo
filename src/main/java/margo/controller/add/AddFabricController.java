@@ -69,17 +69,25 @@ public class AddFabricController {
     public ModelAndView seePageAddCurtain(@RequestParam(required = false) Long id,
                                           @RequestParam(value = "part")String part) {
         ModelAndView modelAndView = new ModelAndView();
+        if(part.equals(tulleFabric)) {
+            modelAndView.setViewName("allFabric/addFabric/addTulleNew");
+        } else if (part.equals(orderFabric)){
+            modelAndView.setViewName("allFabric/addFabric/addOrderFabric");
+        }
+        else {
+
+            modelAndView.setViewName("allFabric/addFabric/addFabricNew");
+        }
         checkTo = part;
         if (id != null ) {
-
             AllFabricDTO curtain = mainFinishedService.viewSelectedFinishProduct(id, repositoryService.selectRepository(part));
             curtain.setIdForEditCurtain(id);
             modelAndView.addObject("comparePhotoNameWithDB", curtain);
-            modelAndView.setViewName("allFabric/addFabric/addFabricNew");
+
             return modelAndView;
 
         } else {
-            modelAndView.setViewName("allFabric/addFabric/addFabricNew");
+//            modelAndView.setViewName("allFabric/addFabric/addFabricNew");
             return modelAndView;
         }
     }

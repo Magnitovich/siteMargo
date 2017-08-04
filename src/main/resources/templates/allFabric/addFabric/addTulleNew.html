@@ -7,7 +7,7 @@
     <link href="css/selectColor.css" rel="stylesheet" type="text/css"/>
     <!--<link href="../../static/css/selectColor.css" rel="stylesheet" type="text/css"/>-->
 </head>
-<body class="backgroundAdd">
+<body  class="backgroundAdd">
 <table border="1" style="color: white;" align="center"><p/>
     <form action="addSuccessfulCurtain"  th:object = "${comparePhotoNameWithDB}" method="post" enctype="multipart/form-data">
         <input class="buttons" type="hidden" th:field="*{idForEditCurtain}"/>
@@ -91,7 +91,7 @@
 
 
         <tr>
-            <td> Ткань </td>
+            <td> Название </td>
             <td><input class="buttons" type="text" th:field="*{name}" style="width: 255px" name="name" id="name" required=""/>
 
                 <span style="color: red; font-style: italic; font-size: 10px" th:if="${#fields.hasErrors('name')}"
@@ -113,23 +113,30 @@
                 Структура
             </td>
             <td>
-                <input type="radio" name="structureRbn" id="len" th:field="*{structure}" value="Лен" checked="checked"/>Лен
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="thread" th:field="*{structure}" value="Нити"/>Нити&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="twoLayers" th:field="*{structure}" value="Двухслойная"/>Двухслойная
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="squeeze" th:field="*{structure}" value="Жатая"/>Жатая&nbsp;
+                <input type="radio" name="structureRbn" id="len" th:field="*{structure}" value="Органза" checked="checked"/>Органза
                 &nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="jacard" th:field="*{structure}" value="Жаккард "/>Жаккард
+                <input type="radio" name="structureRbn" id="thread" th:field="*{structure}" value="Полуорганза"/>Полуорганза
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="twoLayers" th:field="*{structure}" value="Вуаль"/>Вуаль
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="squeeze" th:field="*{structure}" value="Лен(батист)"/>Лен(батист)
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="jacard" th:field="*{structure}" value="Сетка"/>Сетка
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="sateen" th:field="*{structure}" value="Нити" />Нити
                 <br/>
-                <input type="radio" name="structureRbn" id="sateen" th:field="*{structure}" value="Сатин" />Сатин
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="taffeta" th:field="*{structure}" value="Тафта"/>Тафта&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="twoSides" th:field="*{structure}" value="Двухсторонняя"/>Двухсторонняя
-                &nbsp;
-                <input type="radio" name="structureRbn" id="velvet" th:field="*{structure}" value="Бархат"/>Бархат&nbsp;
+                <input type="radio" name="structureRbn" id="taffeta" th:field="*{structure}" value="Кружево"/>Кружево
+                &nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="twoSides" th:field="*{structure}" value="Двухслойная"/>Двухслойная
+                &nbsp;&nbsp;
+                <input type="radio" name="structureRbn" id="velvet" th:field="*{structure}" value="Жатая"/>Жатая
                 &nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="cover" th:field="*{structure}" value="Покрывальная"/>Для покрывал
+                <input type="radio" name="structureRbn" th:field="*{structure}" value="Сатин(атлас)"/>Сатин(атлас)
+                &nbsp;
+
+                <input type="radio" name="structureRbn"  th:field="*{structure}" value="Креп"/>Креп
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" th:field="*{structure}" value="Вышивка"/>Вышивка
             </td>
         </tr>
         <tr>
@@ -151,7 +158,8 @@
                 Высота
             </td>
             <td>
-                <input type="radio" name="heightRbn" th:field="*{height}" id="27" value="2.7-2.9м" checked="checked"/>2,7-2,9м
+                <input type="radio" name="heightRbn" th:field="*{height}" id="20" value="2.0-2.5м" checked="checked"/>2,0-2,5м
+                <input type="radio" name="heightRbn" th:field="*{height}" id="27" value="2.7-2.9м" />2,7-2,9м
                 <input type="radio" name="heightRbn"  th:field="*{height}" id="29" value="2.9-3.0м"/>2,9-3,0м
                 <input type="radio" name="heightRbn"  th:field="*{height}" id="30" value="3.0-3.15м"/>3,0-3,15м
                 <input type="radio" name="heightRbn"  th:field="*{height}" id="315" value="3.15м"/>>3,15м
@@ -210,8 +218,8 @@
         </tr>
         <tr>
             <td>Цена </td>
-            <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}" th:field="*{price}"
-                       value="1" name="priceYacht" id="priceYacht" required=""/> </td>
+            <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}" th:field="*{price}" required=""
+                       value="1" name="priceYacht" id="priceYacht"/> </td>
         </tr>
         <tr>
             <!--<form action="../yacht.html">-->

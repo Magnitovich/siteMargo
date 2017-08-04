@@ -18,6 +18,7 @@
 
 <!--ADD, EDIT, DELETE-->
 <!--<div  >-->
+<div class="admin">
     <p align="right" sec:authorize="hasAuthority('admin')">
         <input type="submit"  style="width: 60px" name="addOffer" id="addOffer"
            onclick="addOffer()"  class="searchMenu" value="Акция"/>
@@ -29,6 +30,7 @@
         <input type="submit" style="width: 60px" onclick="deleteSelectedElementsBedroom()"
            name="DeleteYacht" id="DeleteYacht" class="searchMenu" value="Delete"/>
 </p>
+    </div>
 <!--</div>-->
 <!--********************************SHOW*******************************-->
 <input type="hidden" th:value="${namePage}" id="selectPage"/>

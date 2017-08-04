@@ -1,6 +1,7 @@
 package margo.dao.fabric;
 
 import margo.model.allCurtains.CurtainModel;
+import org.hibernate.sql.Select;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

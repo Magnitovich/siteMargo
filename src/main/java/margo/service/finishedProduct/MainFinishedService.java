@@ -121,6 +121,10 @@ public class MainFinishedService {
         List<AllFabricDTO> fabricDTOs = convertListModelToDTO((List<AllFinishProductModel>) models);
 
         List<AllFabricDTO> allFabricDTOs = checkOnAuthentication(fabricDTOs);
+//        System.out.println(allFabricDTOs);
+//        System.out.println();
+        Collections.sort(allFabricDTOs, (o1, o2) -> o1.getName().compareTo(o2.getName()));
+//        System.out.println(allFabricDTOs);
         forFilter = allFabricDTOs;
         return allFabricDTOs;
     }

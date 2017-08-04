@@ -16,74 +16,74 @@
 
         <tr>
         <tr th:if="${param.id}">
-            <td>Current photo</td>
+            <td>Текущее photo</td>
             <td>
                 <img th:attr="src=*{photo}" style="max-width: 200px; max-height: 180px;"/>
             </td>
 
         </tr>
-        <td>Path to new photo</td>
+        <td>Путь для нового photo</td>
         <td>
             <input type="hidden" th:field="*{id}" />
             <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain}"/>
         </td>
         </tr>
         <tr>
-            <td>Current photo01</td>
+            <td>Текущее photo01</td>
             <td>
                 <img th:attr="src=*{photo01}" style="max-width: 200px; max-height: 140px;"/>
             </td>
         </tr>
         <tr>
-            <td>Path to new photo</td>
+            <td>Путь для нового photo</td>
             <td>
                 <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain01}" />
             </td>
         </tr>
         <tr>
-            <td>Current photo02</td>
+            <td>Текущее photo02</td>
             <td>
                 <img th:attr="src=*{photo02}" style="max-width: 200px; max-height: 140px;"/>
             </td>
         </tr>
         <tr>
-            <td>Path to new photo</td>
+            <td>Путь для нового photo</td>
             <td>
                 <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain02}"/>
             </td>
         </tr>
         <tr>
-            <td>Current photo03</td>
+            <td>Текущее photo03</td>
             <td>
                 <img th:attr="src=*{photo03}" style="max-width: 200px; max-height: 140px;"/>
             </td>
         </tr>
         <tr>
-            <td>Path to new photo</td>
+            <td>Путь для нового photo</td>
             <td>
                 <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain03}"  />
             </td>
         </tr>
         <tr>
-            <td>Current photo04</td>
+            <td>Текущее photo04</td>
             <td>
                 <img th:attr="src=*{photo04}" style="max-width: 200px; max-height: 140px;"/>
             </td>
         </tr>
         <tr>
-            <td>Path to new photo</td>
+            <td>Путь для нового photo</td>
             <td>
                 <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain04}"/>
             </td>
         </tr>
         <tr>
-            <td>Current photo05</td>
+            <td>Текущее photo05</td>
             <td>
                 <img th:attr="src=*{photo05}" style="max-width: 200px; max-height: 140px;"/>
             </td>
         </tr>
         <tr>
-            <td>Path to new photo</td>
+            <td>Путь для нового photo</td>
             <td>
                 <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain05}"/>
             </td>
@@ -91,7 +91,7 @@
 
 
         <tr>
-            <td> Ткань </td>
+            <td>Название</td>
             <td><input class="buttons" type="text" th:field="*{name}" style="width: 255px" name="name" id="name" required=""/>
 
                 <span style="color: red; font-style: italic; font-size: 10px" th:if="${#fields.hasErrors('name')}"
@@ -101,15 +101,11 @@
         <tr>
             <td>Описание:</td>
             <td>
-
-                <!--<textarea class="buttons" rows="8" cols="35" th:field="*{descriptions}" name="describeCars"-->
-                <!--id="describeCars" maxlength="455"-->
-                <!--placeholder="max length 255">-->
             <textarea class="buttons" rows="8" cols="35" th:field="*{description}"  name="describeYacht"
                       id="describeYacht" maxlength="255" placeholder="max length 255"></textarea></td>
         </tr>
         <tr>
-            <td>
+            <td rowspan="2">
                 Структура
             </td>
             <td>
@@ -120,7 +116,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="structureRbn" id="squeeze" th:field="*{structure}" value="Жатая"/>Жатая&nbsp;
                 &nbsp;&nbsp;&nbsp;
-                <input type="radio" name="structureRbn" id="jacard" th:field="*{structure}" value="Жаккард "/>Жаккард
+                <input type="radio" name="structureRbn" id="jacard" th:field="*{structure}" value="Жаккард"/>Жаккард
                 <br/>
                 <input type="radio" name="structureRbn" id="sateen" th:field="*{structure}" value="Сатин" />Сатин
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -130,6 +126,34 @@
                 <input type="radio" name="structureRbn" id="velvet" th:field="*{structure}" value="Бархат"/>Бархат&nbsp;
                 &nbsp;&nbsp;&nbsp;
                 <input type="radio" name="structureRbn" id="cover" th:field="*{structure}" value="Покрывальная"/>Для покрывал
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" name="structureRbn"  th:field="*{structure}" value="Органза" />Органза
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn"  th:field="*{structure}" value="Полуорганза"/>Полуорганза
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn"  th:field="*{structure}" value="Вуаль"/>Вуаль
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" th:field="*{structure}" value="Лен(батист)"/>Лен(батист)
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn"  th:field="*{structure}" value="Сетка"/>Сетка
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn"  th:field="*{structure}" value="Нити" />Нити
+                <br/>
+                <input type="radio" name="structureRbn"  th:field="*{structure}" value="Кружево"/>Кружево
+                &nbsp;&nbsp;
+                <input type="radio" name="structureRbn"  th:field="*{structure}" value="Двухслойная"/>Двухслойная
+                &nbsp;&nbsp;
+                <input type="radio" name="structureRbn"  th:field="*{structure}" value="Жатая"/>Жатая
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" th:field="*{structure}" value="Сатин(атлас)"/>Сатин(атлас)
+                &nbsp;
+
+                <input type="radio" name="structureRbn"  th:field="*{structure}" value="Креп"/>Креп
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="structureRbn" th:field="*{structure}" value="Вышивка"/>Вышивка
             </td>
         </tr>
         <tr>
@@ -162,6 +186,7 @@
             <td>
                 Цвет:
                 <br/>
+
             </td>
 
             <td>
@@ -205,13 +230,13 @@
 
         <tr>
             <td>Количество на складе</td>
-            <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}"
+            <td><input type="text" style="width: 255px" pattern="[0-9]{0,9}.[0-9]{0,2}"
                        th:field="*{quantity}" name="quantityYacht" id="quantityYacht" required=""/> </td>
         </tr>
         <tr>
             <td>Цена </td>
-            <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}" th:field="*{price}"
-                       value="1" name="priceYacht" id="priceYacht" required=""/> </td>
+            <td><input type="text" style="width: 255px" pattern="[0-9]{0,9}.[0-9]{0,2}" th:field="*{price}" required=""
+                       value="1" name="priceYacht" id="priceYacht"/> </td>
         </tr>
         <tr>
             <!--<form action="../yacht.html">-->

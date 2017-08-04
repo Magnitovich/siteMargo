@@ -16,6 +16,7 @@
 <div th:replace="headerMain :: header"></div>
 
 <!--ADD, EDIT, DELETE-->
+<div class="admin">
 <p align="right" sec:authorize="hasAuthority('admin')">
     <input type="submit"  style="width: 60px" name="addOffer" id="addOffer"
            onclick="addOffer()"  class="searchMenu" value="Акция"/>
@@ -28,6 +29,7 @@
     <input type="submit" style="width: 60px" onclick="deleteSelectedElementsAccessories()"
            name="DeleteYacht" id="DeleteYacht" class="searchMenu" value="Delete"/>
 </p>
+    </div>
 <!--********************************SHOW*******************************-->
 <input type="hidden" th:value="${namePage}" id="selectPage"/>
     <table border="0" width="95%">

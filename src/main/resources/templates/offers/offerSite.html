@@ -15,11 +15,13 @@
 <div th:replace="headerMain :: header"></div>
 
 <!--ADD, EDIT, DELETE-->
+<div class="admin">
 <div sec:authorize="hasAuthority('admin')" align="right">
     <p/>
     <input type="submit" style="width: 60px" sec:authorize="hasAuthority('admin')" onclick="deleteSelectedElements()"
            name="DeleteYacht" id="DeleteYacht" class="searchMenu" value="Delete"/>
 </div>
+    </div>
 <!--********************************SHOW*******************************-->
 <input type="hidden" th:value="${namePage}" id="selectPage"/>
     <table border="0" width="95%">
