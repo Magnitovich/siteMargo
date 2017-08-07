@@ -12,12 +12,12 @@
         <p/>&nbsp;<p/>
         <tr>
         <tr th:if="${param.id}">
-            <td>Current photo</td>
+            <td>Текущее photo</td>
             <td>
                 <img th:attr="src=*{photo}" style="max-width: 200px; max-height: 180px;"/>
             </td>
         </tr>
-        <td>Path to new photo</td>
+        <td>Путь для нового photo</td>
         <td>
             <input type="hidden" th:field="*{id}" />
             <input class="buttons" type="file" style="width: 255px" th:field="*{objectPhotoCurtain}"/>
@@ -39,12 +39,12 @@
         </tr>
         <tr>
             <td>Количество на складе</td>
-            <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}"
+            <td><input type="text" style="width: 255px" pattern="[0-9]{0,9}.[0-9]{0,2}"
                        th:field="*{quantity}" name="quantityYacht" id="quantityYacht" required=""/> </td>
         </tr>
         <tr>
             <td>Цена </td>
-            <td><input type="text" style="width: 255px" pattern="[0-9]{1,9}.[0-9]{0,2}" th:field="*{price}"
+            <td><input type="text" style="width: 255px" pattern="[0-9]{0,9}.[0-9]{0,2}" th:field="*{price}"
                        required="" value="1" name="priceYacht" id="priceYacht"/> </td>
         </tr>
         <tr>

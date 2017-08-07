@@ -95,7 +95,7 @@ $(document).ready(function() {
 
                             addItemToCart(idGoods,photo, name, describe, quantity, price);
                             saveCart();
-                            comeBack(); //возвращаемся на главную страницу без изменения кол-ва виски, т.к. оно в корзине.
+                            comeBack(); //возвращаемся на главную страницу без изменения кол-ва, т.к. оно в корзине.
                             //sendBuyWhiskyInJava();
                         }
                 } else if(Number(quantity) ==0){
@@ -119,8 +119,8 @@ $(document).ready(function() {
 
                     if (summQuantityOrder <= quantityInDBFromJava) {
                         quantity = cartWhisky[i].quantity + quantity;
-                        console.log("quantity=Number(cartWhisky[i].quantity + quantity): " + quantity);
-                        console.log("cartWhisky[i].quantity: " + cartWhisky[i].quantity);
+                        //console.log("quantity=Number(cartWhisky[i].quantity + quantity): " + quantity);
+                        //console.log("cartWhisky[i].quantity: " + cartWhisky[i].quantity);
                         var itemName = new itemCart(idGoods, photo, name, describe, quantity, price);
                         removeAllItemsFromCart(name);
                         cartWhisky.push(itemName);
@@ -353,7 +353,7 @@ var cartWhisky = new Array;
 
             success: function (msg) {
                 //clearCart(); //clear Local Storage
-                window.location.href = "/";
+                window.location.href = "/?orderSuccessful";
                 console.log(data)
             },
             error: function(e) {

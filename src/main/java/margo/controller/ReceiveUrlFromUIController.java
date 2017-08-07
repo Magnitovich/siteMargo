@@ -40,7 +40,8 @@ public class ReceiveUrlFromUIController {
             adminRoleService.activationUser(verification);
             ModelAndView modelAndView = new ModelAndView();
             System.out.println(verification);
-            String congratulate = "We congratulate you!!! You successfully registered";
+            String congratulate = "Поздравляем!!! Вы успешно зарегистрированны";
+//            String congratulate = "We congratulate you!!! You successfully registered";
             modelAndView.addObject("successful", congratulate);
             modelAndView.setViewName("index");
             return modelAndView;

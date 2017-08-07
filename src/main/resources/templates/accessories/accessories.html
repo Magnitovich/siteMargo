@@ -45,7 +45,7 @@
                         <div class="pic" id="mainDiv">
                             <div align="center"  sec:authorize="hasAuthority('admin')">
                                 Quantity: &nbsp;
-                                <span  th:text="${curtain.quantity}">quantity</span>шт.
+                                <span  th:text="${curtain.quantity}">Количество</span>шт.
                                 <input type="checkbox" name="selectCurtainForChange" th:attr="id=${curtain.id}"
                                       style="background-color: #0f0f0f"/>
                                 <br/>

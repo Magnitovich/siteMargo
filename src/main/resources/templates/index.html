@@ -31,6 +31,10 @@
 <h2 class="linkTop">
     <b><span th:text="${successful}"/></b>
 </h2>
+
+<div th:if="${param.orderSuccessful}" class="linkTop">
+    <b><i><h4 style="color: white">Спасибо за заказ, в ближайшее время с Вами свяжется наш менеджер</h4></i></b>
+</div>
 <!--***********************************SLIDER****************************************-->
 <div align="sliderFrame">
     <div id="slider" >

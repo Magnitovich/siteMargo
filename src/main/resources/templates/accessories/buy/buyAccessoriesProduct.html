@@ -44,7 +44,7 @@
             </td>
 
             <td class="buy" width="25%"><span th:text="${curtain.name}" >Name</span>
-                <p/>Описание:
+                <p/>Описание: <br/>
             <span th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(curtain.description),'\n','&lt;br /&gt;'))}">description</span>
             <p/>
                 Цвет: <span th:text="${curtain.color}">color</span>
@@ -116,8 +116,8 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <input type="button" class="btn btn-primary" id="buyFromJS"  value="Buy"/>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                                <input type="button" class="btn btn-primary" id="buyFromJS"  value="Купить"/>
                             </div>
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
