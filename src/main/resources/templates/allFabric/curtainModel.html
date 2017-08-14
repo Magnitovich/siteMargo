@@ -32,9 +32,9 @@
 <!--********************************SHOW*******************************-->
 <input type="hidden" th:value="${namePage}" id="selectPage"/>
 
-    <table border="0" width="95%">
-        <tr>
-            <td class="main" valign="top">
+    <table border="0" width="95%" style="margin:0 auto;" >
+        <tr >
+            <td class="main" valign="top" >
                 <div th:each="curtain : ${allCurtain}">
                     <div class="color" th:classappend="${curtain.color} +' '+ ${curtain.paint}+ ' '
                     +${curtain.price}+' '+${curtain.structure}+' '+${curtain.height}">
@@ -53,7 +53,7 @@
                                 </div>
                             <!--<a th:href="@{~/buyCurtain(hiddenModelId=${curtain.id})}" style="text-decoration: none" >-->
                                 <input type="hidden" name="id" id="id" th:value="${curtain.id}" />
-                                <img th:attr="src=${curtain.photo}"  width="200" height="280"/>
+                                <img  th:attr="src=${curtain.photo}"  width="206" height="286"/>
                                 <div align="center">
                                     <b>   <span th:text="${curtain.name}">Name</span></b>
                                     <br/>

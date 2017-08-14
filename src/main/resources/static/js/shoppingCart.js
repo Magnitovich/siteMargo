@@ -23,7 +23,7 @@ $(document).ready(function() {
         $('#goBuy').modal();
 
         idGoods = $("#idGood").val();
-        console.log("ID: "+idGoods);
+        //console.log("ID: "+idGoods);
         photo = $("#photoId").val();
         name = $("#name").val();
         describe = $("#describeID").val();
@@ -51,7 +51,7 @@ $(document).ready(function() {
             }
             if (Number($(this).val()) > 0) {
                 quantity = $(this).val();
-                console.log("Number($(this).val()) >0" + quantity);
+                console.log("Number($(this).val()) >0 +" + quantity);
                 var changePriceUI = (price * $(this).val()).toFixed(2);
                 $("#changePrice").html(changePriceUI);
             } else {
@@ -89,13 +89,24 @@ $(document).ready(function() {
                             cartWhisky = new Array;
                             addItemToCart(idGoods, photo, name, describe, quantity, price);
                             saveCart();
-                            comeBack();
+                                $('#askAboutCart').modal({
+                                    backdrop: 'static',
+                                    keyboard: false
+                                });
+                            $('#goBuy').modal().close();
+                            //comeBack();
                         } else {
                             loadCart();
 
                             addItemToCart(idGoods,photo, name, describe, quantity, price);
                             saveCart();
-                            comeBack(); //возвращаемся на главную страницу без изменения кол-ва, т.к. оно в корзине.
+                            $('#askAboutCart').modal({
+                                    backdrop: 'static',
+                                    keyboard: false
+                                }
+                            );
+                            $('#goBuy').modal('hide');
+                            //comeBack(); //возвращаемся на главную страницу без изменения кол-ва, т.к. оно в корзине.
                             //sendBuyWhiskyInJava();
                         }
                 } else if(Number(quantity) ==0){
@@ -115,10 +126,11 @@ $(document).ready(function() {
                 if (cartWhisky[i].name === name) {
                     cartArray = listCart();
                     var quantityInLocalStorage = cartWhisky[i].quantity;
-                    var summQuantityOrder = Number(quantityInLocalStorage + quantity);
+                    var summQuantityOrder = Number(quantityInLocalStorage)+Number(quantity);
+                    console.log("SumQuantity: "+summQuantityOrder);
 
                     if (summQuantityOrder <= quantityInDBFromJava) {
-                        quantity = cartWhisky[i].quantity + quantity;
+                        quantity = Number(cartWhisky[i].quantity) + Number(quantity);
                         //console.log("quantity=Number(cartWhisky[i].quantity + quantity): " + quantity);
                         //console.log("cartWhisky[i].quantity: " + cartWhisky[i].quantity);
                         var itemName = new itemCart(idGoods, photo, name, describe, quantity, price);
@@ -163,6 +175,8 @@ $(document).ready(function() {
         function comeBack() {
             var k = photo.split("/");
             console.log(k[1] + "----K");
+            console.log(k[2] + "----K");
+            console.log(k[3] + "----K");
             if (k[1] === "curtain") {
                 window.location.href = "curtainModels";
             } else if (k[1] === "tulle") {
@@ -256,7 +270,9 @@ $(document).ready(function() {
         function removeOneItemsFromCart(name) {
             for (var i in cartWhisky) {
                 if (cartWhisky[i].name === name) {//"3" == 3 true, "3"===3 false - because "3" is a string
-                    cartWhisky[i].quantity -= 1;
+                    cartWhisky[i].quantity =parseFloat((cartWhisky[i].quantity - 0.1).toFixed(2));
+                    //cartWhisky[i].quantity -=1;
+
                     if (cartWhisky[i].quantity === 0) {
                         //Метод splice() изменяет содержимое массива, удаляя существующие элементы и/или добавляя новые.
                         cartWhisky.splice(i, 1);
@@ -272,7 +288,8 @@ $(document).ready(function() {
         function addOneItemsToCart(name) {
             for (var i in cartWhisky) {
                 if (cartWhisky[i].name === name) {
-                    cartWhisky[i].quantity++;
+                    cartWhisky[i].quantity = parseFloat((cartWhisky[i].quantity + 0.1).toFixed(2));
+                    //cartWhisky[i].quantity++;
                     if (cartWhisky[i].quantity === 0) {
                         cartWhisky.splice(i, 1);
                     }
@@ -352,7 +369,8 @@ var cartWhisky = new Array;
             data: JSON.stringify(newArray),
 
             success: function (msg) {
-                //clearCart(); //clear Local Storage
+                //clear Local Storage
+                clearCart();
                 window.location.href = "/?orderSuccessful";
                 console.log(data)
             },

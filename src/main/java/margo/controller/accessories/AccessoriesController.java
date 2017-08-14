@@ -30,17 +30,27 @@ public class AccessoriesController {
 
     @RequestMapping(value = "/accessoriesProduct", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView showBedroom(@RequestParam(value = "part", required = false)String part){
-        repository = repositoryService.selectRepository(part);
         ModelAndView modelAndView = new ModelAndView();
-        List<AccessoriesDTO> curtainDTOs = service.seeAllModels(repository);
-        ArrayList colorModel =service.seeColor();
-        ArrayList filterPrice = service.seePrice();
+        if (part != null) {
+            repository = repositoryService.selectRepository(part);
+            List<AccessoriesDTO> curtainDTOs = service.seeAllModels(repository);
+            ArrayList colorModel = service.seeColor();
+            ArrayList filterPrice = service.seePrice();
 
-        modelAndView.addObject("namePage", part);
-        modelAndView.addObject("allCurtain",curtainDTOs);
-        modelAndView.addObject("price",filterPrice);
-        modelAndView.addObject("forColor",colorModel);
+            modelAndView.addObject("namePage", part);
+            modelAndView.addObject("allCurtain", curtainDTOs);
+            modelAndView.addObject("price", filterPrice);
+            modelAndView.addObject("forColor", colorModel);
+        } else {
+            List<AccessoriesDTO> accessoriesDTOs = service.seeAll();
+            ArrayList colorModel = service.seeColor();
+            ArrayList filterPrice = service.seePrice();
 
+            modelAndView.addObject("namePage", "allAccessories");
+            modelAndView.addObject("allCurtain", accessoriesDTOs);
+            modelAndView.addObject("price", filterPrice);
+            modelAndView.addObject("forColor", colorModel);
+        }
         modelAndView.setViewName("accessories/accessories");
         return modelAndView;
     }

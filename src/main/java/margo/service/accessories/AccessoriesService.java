@@ -1,5 +1,6 @@
 package margo.service.accessories;
 
+import margo.dao.accessories.BandRepository;
 import margo.model.finishedProduct.AllFinishProductModel;
 import margo.model.modelDTO.accessories.AccessoriesDTO;
 import margo.model.modelDTO.allCurtainsDTO.AllFabricDTO;
@@ -16,6 +17,8 @@ public class AccessoriesService {
 
     @Autowired
     private AdminRoleService adminRoleService;
+    @Autowired
+    private CheckAccessoriesRepositoryService accessoriesRepositoryService;
 
     private List<AccessoriesDTO> forFilter = new ArrayList<>();
 
@@ -92,6 +95,29 @@ public class AccessoriesService {
             //moderator
             return null;
         }
+    }
+    public List<AccessoriesDTO> seeAll(){
+        List<AccessoriesDTO> all = new ArrayList<>();
+        CrudRepository repository = accessoriesRepositoryService.selectRepository("band");
+        CrudRepository fringe = accessoriesRepositoryService.selectRepository("fringe");
+        CrudRepository luvers = accessoriesRepositoryService.selectRepository("luvers");
+        CrudRepository pickup = accessoriesRepositoryService.selectRepository("pickup");
+        CrudRepository various = accessoriesRepositoryService.selectRepository("various");
+        List<AccessoriesDTO> accessoriesDTOs1 = seeAllModels(fringe);
+        List<AccessoriesDTO> accessoriesDTOs2 = seeAllModels(luvers);
+        List<AccessoriesDTO> accessoriesDTOs3 = seeAllModels(pickup);
+        List<AccessoriesDTO> accessoriesDTOs4 = seeAllModels(various);
+        List<AccessoriesDTO> accessoriesDTOs5 = seeAllModels(repository);
+        all.addAll(accessoriesDTOs1);
+        all.addAll(accessoriesDTOs2);
+        all.addAll(accessoriesDTOs3);
+        all.addAll(accessoriesDTOs4);
+        all.addAll(accessoriesDTOs5);
+
+        forFilter = all;
+        List<AccessoriesDTO> accessoriesDTOs = checkOnAuthentication(all);
+        return accessoriesDTOs;
+
     }
     public List<AccessoriesDTO> seeAllModels(CrudRepository repository) {
         Iterable<AllFinishProductModel> models = repository.findAll();
