@@ -1,12 +1,15 @@
 $(document).ready(function() {
+    $.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
+    $( ".selector" ).datepicker({ dateFormat: 'yy-mm-dd' });
+    //var date = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();
 
-    $( ".selector" ).datepicker({
-        showOn: "both"
-    });
-    var showOn = $( ".selector" ).datepicker( "option", "showOn" );
-
-// Setter
-    $( ".selector" ).datepicker( "option", "showOn", "both" );
+    //$( ".selector" ).datepicker({
+    //    showOn: "both"
+    //});
+//    var showOn = $( ".selector" ).datepicker( "option", "showOn" );
+//
+//// Setter
+//    $( ".selector" ).datepicker( "option", "showOn", "both" );
 
     $('.pageSelected a').on('click', function (e) {
         var id = $(this).find('input[name=idCommodity]').val();

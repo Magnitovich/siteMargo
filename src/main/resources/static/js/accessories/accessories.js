@@ -3,8 +3,13 @@ $(document).ready(function() {
     $('.pageSelected a').on('click', function (e) {
         var addPage = $("#selectPage").val();
         var id = $(this).find('input[name=id]').val();
-        //alert("ID: "+id + "  photo: "+photo);
-        window.location.href ="buyAccessoriesProduct?modelId="+id+"&part="+addPage;
+        var photo = $(this).find('input[name=photoId]').val();
+        var k = photo.split("/");
+        //console.log(k[1] + "----K");
+        //console.log(k[2] + "----K");
+        //console.log(k[3] + "----K");
+        //alert("ID: "+id + "  photo: "+photo+"-K[1]"+k[1]+"-K[2]"+k[2]+"-K[3]"+k[3] );
+        window.location.href ="buyAccessoriesProduct?modelId="+id+"&part="+k[2];
     })
 });
 function addOffer() {

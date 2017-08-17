@@ -11,6 +11,7 @@ padding: 0;
 #nav ul{list-style: none}
 /*horizontal menu*/
 #nav > ul > li{
+    z-index: 100;
     float: left;
     width: auto;
     position: relative;

@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("#startModalImage").click(function (event) {
             event.preventDefault();
-    $('#goImage').modal();
+    $('#goImage').modal('show');
 
             showDivs(slideIndex);
 }

@@ -41,8 +41,18 @@ public class CurtainService {
         model.setPaint(curtainDTO.getPaint());
         model.setHeight(curtainDTO.getHeight());
         model.setColor(curtainDTO.getColor());
-        model.setQuantity(curtainDTO.getQuantity());
-        model.setPrice(curtainDTO.getPrice());
+        if(curtainDTO.getQuantity() == null){
+            model.setQuantity(0.00);
+        } else {
+            model.setQuantity(curtainDTO.getQuantity());
+        }
+        if(curtainDTO.getPrice() == null){
+            model.setPrice(new BigDecimal(0));
+        } else {
+            model.setPrice(curtainDTO.getPrice());
+        }
+//        model.setQuantity(curtainDTO.getQuantity());
+//        model.setPrice(curtainDTO.getPrice());
 
         repository.save(model);
     }
@@ -67,8 +77,16 @@ public class CurtainService {
         curtainModel.setPaint(paint);
         curtainModel.setHeight(height);
         curtainModel.setColor(color);
+    if(quantity == null){
+        curtainModel.setQuantity(0.00);
+    } else {
         curtainModel.setQuantity(quantity);
+    }
+    if(price == null){
+        curtainModel.setPrice(new BigDecimal(0));
+    } else {
         curtainModel.setPrice(price);
+    }
         repository.save(curtainModel);
     }
 }

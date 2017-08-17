@@ -3,8 +3,8 @@
 <head th:replace="headerMain :: header-libs"></head>
 <head>
     <title>Curtain, ткани, портьеры</title>
-    <link rel="stylesheet" href="css/w3.css" />
-    <script src="js/modalImage.js" type="text/javascript"></script>
+    <!--<link rel="stylesheet" href="css/w3.css" />-->
+    <!--<script src="js/modalImage.js" type="text/javascript"></script>-->
 
     <!--<script src="js/jquery.modal.js"></script>-->
 
@@ -19,62 +19,63 @@
         <tr >
             <td align="right" width="40%" height="10%">
 
-                <a href="" id="startModalImage" style="text-decoration: none">
-                <!--<a href="" data-toggle="modal" data-target="#goImage" style="text-decoration: none">-->
-                    <img th:attr="src=${curtain.photo}" style="margin-right: 10px" width="350" height="500"/>
-                    </a>
+                <!--<a href="" id="startModalImage" style="text-decoration: none">-->
+                    <img class="buyImage" data-toggle="modal" data-target="#goImage" th:attr="src=${curtain.photo}" style="margin-right: 10px" width="350" height="500"/>
+                    <!--</a>-->
             </td>
                 <td align="left">
-                <a href="" data-toggle="modal" data-target="#goImage" style="text-decoration: none">
-                    <img th:unless="${curtain.photo01}==null" th:attr="src=${curtain.photo01}" width="80" height="56" />
+                <a class="buyImage" data-toggle="modal" data-target="#goImage">
+                    <img th:unless="${curtain.photo01}==null" th:attr="src=${curtain.photo01}" width="50" height="75" />
                     <p/>
-                    <img id="smallImg02" th:unless="${curtain.photo02}==null" th:attr="src=${curtain.photo02}" width="80" height="56"/>
+                    <img id="smallImg02" th:unless="${curtain.photo02}==null" th:attr="src=${curtain.photo02}" width="50" height="75"/>
                     <p/>
-                    <img id="smallImg03" th:unless="${curtain.photo03}==null" th:attr="src=${curtain.photo03}" width="80" height="56"/>
-                    <img id="smallImg04" th:unless="${curtain.photo04}==null" th:attr="src=${curtain.photo04}" width="80" height="56"/>
-                    <img id="smallImg05" th:unless="${curtain.photo05}==null" th:attr="src=${curtain.photo05}" width="80" height="56"/>
+                    <img id="smallImg03" th:unless="${curtain.photo03}==null" th:attr="src=${curtain.photo03}" width="50" height="75"/>
+                    <p/>
+                    <img id="smallImg04" th:unless="${curtain.photo04}==null" th:attr="src=${curtain.photo04}" width="50" height="75"/>
+                    <p/>
+                    <img id="smallImg05" th:unless="${curtain.photo05}==null" th:attr="src=${curtain.photo05}" width="50" height="75"/>
                 </a>
 
                 <!--****************************MODAL WINDOW FOR IMAGE**********************************-->
-                <div class="modal fade" tabindex="-1" id="goImage" style="margin:0 auto; margin-top: 5%; width: 380px;
-                 height: 560px" >
-                    <!--<div align="right">-->
+                <!--<div class="modal fade" tabindex="-1" id="goImage" style="margin:0 auto; margin-top: 5%; width: 380px;-->
+                 <!--height: 560px" >-->
+                    <!--&lt;!&ndash;<div align="right">&ndash;&gt;-->
 
-                            <div class="w3-content w3-display-container" style="margin: 0 auto">
-                                <img align="right" src="icons/close-iconWhite.png" class="sliderBtn" onclick="closeModal()"/>
-                                <img class="mySlides"  th:attr="src=${curtain.photo}" width="350px" height="500px" style="width:100%"/>
-                                <img class="mySlides"  th:unless="${curtain.photo05}==null" th:attr="src=${curtain.photo05}" width="350px" height="500px" style="z-index:-1; width:100%"/>
-                                <img class="mySlides"  th:unless="${curtain.photo04}==null" th:attr="src=${curtain.photo04}" width="350px" height="500px" style="z-index:-1; width:100%"/>
-                                <img class="mySlides"  th:unless="${curtain.photo03}==null" th:attr="src=${curtain.photo03}" width="350px" height="500px" style="z-index:-1; width:100%"/>
-                                <img class="mySlides"  th:unless="${curtain.photo02}==null" th:attr="src=${curtain.photo02}" width="350px" height="500px" style="z-index:-1; width:100%" />
-                                <img class="mySlides"  th:unless="${curtain.photo01}==null" th:attr="src=${curtain.photo01}" width="350px" height="500px" style="z-index:-1; width:100%"/>
-                                <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-                                <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-                            </div>
-                        <!--</div>-->
-                </div>
-
-                    <!--<div class="modal fade" tabindex="-1" role="dialog" id="goImage" >-->
-                    <!--<div class="modal-dialog" align="left" >-->
-                        <!--<div class="modal-content" style="background-color: #030020; width: 420px;" >-->
-                            <!--<div class="modal-header" >-->
-                                <!--<button type="button" class="close" data-dismiss="modal"-->
-                                        <!--style="color: white;">-->
-                               <!--Закрыть-->
-                                <!--</button>-->
+                            <!--<div class="w3-content w3-display-container" style="margin: 0 auto">-->
+                                <!--<img align="right" src="icons/close-iconWhite.png" class="sliderBtn" onclick="closeModal()"/>-->
+                                <!--<img class="mySlides"  th:attr="src=${curtain.photo}" width="350px" height="500px" style="width:100%"/>-->
+                                <!--<img class="mySlides"  th:unless="${curtain.photo05}==null" th:attr="src=${curtain.photo05}" width="350px" height="500px" style="z-index:-1; width:100%"/>-->
+                                <!--<img class="mySlides"  th:unle+ss="${curtain.photo04}==null" th:attr="src=${curtain.photo04}" width="350px" height="500px" style="z-index:-1; width:100%"/>-->
+                                <!--<img class="mySlides"  th:unless="${curtain.photo03}==null" th:attr="src=${curtain.photo03}" width="350px" height="500px" style="z-index:-1; width:100%"/>-->
+                                <!--<img class="mySlides"  th:unless="${curtain.photo02}==null" th:attr="src=${curtain.photo02}" width="350px" height="500px" style="z-index:-1; width:100%" />-->
+                                <!--<img class="mySlides"  th:unless="${curtain.photo01}==null" th:attr="src=${curtain.photo01}" width="350px" height="500px" style="z-index:-1; width:100%"/>-->
+                                <!--<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>-->
+                                <!--<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>-->
                             <!--</div>-->
-                            <!--<div class="modal-body" style="margin: 0 auto">-->
-                                <!--<img  th:attr="src=${curtain.photo}" width="350px" height="500px" />-->
-                                    <!--<img   th:unless="${curtain.photo05}==null" th:attr="src=${curtain.photo05}" width="350px" height="500px" />-->
-                                    <!--<img   th:unless="${curtain.photo04}==null" th:attr="src=${curtain.photo04}" width="350px" height="500px" />-->
-                                    <!--<img   th:unless="${curtain.photo03}==null" th:attr="src=${curtain.photo03}" width="350px" height="500px" />-->
-                                    <!--<img   th:unless="${curtain.photo02}==null" th:attr="src=${curtain.photo02}" width="350px" height="500px"  />-->
-                                    <!--<img   th:unless="${curtain.photo01}==null" th:attr="src=${curtain.photo01}" width="350px" height="500px"  />-->
-
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
                 <!--</div>-->
+
+                    <div class="modal fade" tabindex="-1" role="dialog" id="goImage" >
+                    <div class="modal-dialog" style="width: 380px" align="left" >
+                        <div class="modal-content" style="background-color: #030020;" >
+                            <div class="modal-header" >
+                                <button type="button" class="close" data-dismiss="modal" style=" color: white;"  aria-label="Close">
+                                <span aria-hidden="true" style="opacity: 20"> &times;
+                                </span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <img  th:attr="src=${curtain.photo}" width="350px" height="500px" />
+                                    <img   th:unless="${curtain.photo05}==null" th:attr="src=${curtain.photo05}" width="350px" height="500px" />
+                                    <img   th:unless="${curtain.photo04}==null" th:attr="src=${curtain.photo04}" width="350px" height="500px" />
+                                    <img   th:unless="${curtain.photo03}==null" th:attr="src=${curtain.photo03}" width="350px" height="500px" />
+                                    <img   th:unless="${curtain.photo02}==null" th:attr="src=${curtain.photo02}" width="350px" height="500px"  />
+                                    <img   th:unless="${curtain.photo01}==null" th:attr="src=${curtain.photo01}" width="350px" height="500px"  />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </td>
 
             <td class="buy" width="25%"><span th:text="${curtain.name}" >Name</span>

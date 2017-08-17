@@ -198,3 +198,6 @@ table span .textColor{
     animation-iteration-count: infinite;
     cursor: pointer;
 }
+.buyImage:hover{
+    cursor: pointer;
+}

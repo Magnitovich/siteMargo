@@ -142,8 +142,16 @@ public class AddEditService {
         curtainModel.setHeight(height);
         curtainModel.setColor(color);
         curtainModel.setItIsSewed(sewed);
-        curtainModel.setQuantity(quantity);
-        curtainModel.setPrice(price);
+        if(quantity == null){
+            curtainModel.setQuantity(0.00);
+        } else {
+            curtainModel.setQuantity(quantity);
+        }
+        if(price == null){
+            curtainModel.setPrice(new BigDecimal(0));
+        } else {
+            curtainModel.setPrice(price);
+        }
         repository.save(curtainModel);
 
 //        Iterable<AllFinishProductModel> models = repository.findAll();
@@ -179,8 +187,16 @@ public class AddEditService {
         model.setHeight(dto.getHeight());
         model.setColor(dto.getColor());
         model.setItIsSewed(dto.getItIsSewed());
-        model.setQuantity(dto.getQuantity());
-        model.setPrice(dto.getPrice());
+        if(dto.getQuantity() == null){
+            model.setQuantity(0.00);
+        } else {
+            model.setQuantity(dto.getQuantity());
+        }
+        if(dto.getPrice() == null){
+            model.setPrice(new BigDecimal(0));
+        } else {
+            model.setPrice(dto.getPrice());
+        }
 
         repository.save(model);
     }

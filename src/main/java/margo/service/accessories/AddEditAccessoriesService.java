@@ -90,8 +90,16 @@ public class AddEditAccessoriesService {
         curtainModel.setName(name);
         curtainModel.setDescription(describe);
         curtainModel.setColor(color);
-        curtainModel.setQuantity(quantity);
-        curtainModel.setPrice(price);
+        if(quantity == null){
+            curtainModel.setQuantity(0.00);
+        } else {
+            curtainModel.setQuantity(quantity);
+        }
+        if(price == null){
+            curtainModel.setPrice(new BigDecimal(0));
+        } else {
+            curtainModel.setPrice(price);
+        }
         repository.save(curtainModel);
     }
     @Transactional
@@ -110,8 +118,16 @@ public class AddEditAccessoriesService {
         model.setName(dto.getName());
         model.setDescription(dto.getDescription());
         model.setColor(dto.getColor());
-        model.setQuantity(dto.getQuantity());
-        model.setPrice(dto.getPrice());
+        if(dto.getQuantity() == null){
+            model.setQuantity(0.00);
+        } else {
+            model.setQuantity(dto.getQuantity());
+        }
+        if(dto.getPrice() == null){
+            model.setPrice(new BigDecimal(0));
+        } else {
+            model.setPrice(dto.getPrice());
+        }
 
         repository.save(model);
     }

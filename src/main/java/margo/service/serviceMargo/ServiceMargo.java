@@ -102,9 +102,19 @@ public class ServiceMargo {
         model.setPhoto(photo);
         model.setName(name);
         model.setDescription(describe);
-        model.setQuantity(quantity);
-        model.setPrice(price);
-        System.out.println("Service Margo,Model to String "+model);
+        if(quantity == null){
+            model.setQuantity(0.00);
+        } else {
+            model.setQuantity(quantity);
+        }
+        if(price == null){
+            model.setPrice(new BigDecimal(0));
+        } else {
+            model.setPrice(price);
+        }
+//        model.setQuantity(quantity);
+//        model.setPrice(price);
+//        System.out.println("Service Margo,Model to String "+model);
         serviceMargoRepository.save(model);
     }
     @Transactional
@@ -116,8 +126,18 @@ public class ServiceMargo {
         }
         model.setName(dto.getName());
         model.setDescription(dto.getDescription());
-        model.setQuantity(dto.getQuantity());
-        model.setPrice(dto.getPrice());
+        if(dto.getQuantity() == null){
+            model.setQuantity(0.00);
+        } else {
+            model.setQuantity(dto.getQuantity());
+        }
+        if(dto.getPrice() == null){
+            model.setPrice(new BigDecimal(0));
+        } else {
+            model.setPrice(dto.getPrice());
+        }
+//        model.setQuantity(dto.getQuantity());
+//        model.setPrice(dto.getPrice());
 
         serviceMargoRepository.save(model);
     }

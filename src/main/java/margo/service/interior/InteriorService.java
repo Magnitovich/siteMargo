@@ -184,8 +184,16 @@ public class InteriorService {
         model.setName(name);
         model.setDescription(describe);
         model.setColor(color);
-        model.setQuantity(quantity);
-        model.setPrice(price);
+        if(quantity == null){
+            model.setQuantity(0.00);
+        } else {
+            model.setQuantity(quantity);
+        }
+        if(price == null){
+            model.setPrice(new BigDecimal(0));
+        } else {
+            model.setPrice(price);
+        }
         repository.save(model);
     }
 
@@ -205,8 +213,18 @@ public class InteriorService {
         model.setName(dto.getName());
         model.setDescription(dto.getDescription());
         model.setColor(dto.getColor());
-        model.setQuantity(dto.getQuantity());
-        model.setPrice(dto.getPrice());
+        if(dto.getQuantity() == null){
+            model.setQuantity(0.00);
+        } else {
+            model.setQuantity(dto.getQuantity());
+        }
+        if(dto.getPrice() == null){
+            model.setPrice(new BigDecimal(0));
+        } else {
+            model.setPrice(dto.getPrice());
+        }
+//        model.setQuantity(dto.getQuantity());
+//        model.setPrice(dto.getPrice());
 
         repository.save(model);
     }
