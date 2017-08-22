@@ -43,7 +43,7 @@
             <span th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(curtain.description),'\n','&lt;br /&gt;'))}">description</span>
             <p/>
             </td>
-            <td class="buy" width="15%" th:text="${curtain.price}">Name</td>
+            <td class="buy" width="15%"> <span  th:text="${curtain.price}">Name</span>&nbsp;грн.</td>
 
         </tr>
         <tr th:each="curtain : ${selectedCurtain}">

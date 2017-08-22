@@ -201,3 +201,6 @@ table span .textColor{
 .buyImage:hover{
     cursor: pointer;
 }
+table.buyDescription td {
+    padding-bottom: 10px;
+}

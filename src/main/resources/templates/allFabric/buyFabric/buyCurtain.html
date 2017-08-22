@@ -15,15 +15,15 @@
 <!--***********************//////////////***********SHOW***********\\\\\\\\\\\\\\\\\\\\\********************-->
 <p/>
 <div th:each="curtain : ${selectedCurtain}" align="center">
-    <table border="0" width="80%">
+    <table border="0" width="70%">
         <tr >
-            <td align="right" width="40%" height="10%">
+            <td align="right" width="20%" height="10%">
 
                 <!--<a href="" id="startModalImage" style="text-decoration: none">-->
                     <img class="buyImage" data-toggle="modal" data-target="#goImage" th:attr="src=${curtain.photo}" style="margin-right: 10px" width="350" height="500"/>
                     <!--</a>-->
             </td>
-                <td align="left">
+                <td align="left" width="7%">
                 <a class="buyImage" data-toggle="modal" data-target="#goImage">
                     <img th:unless="${curtain.photo01}==null" th:attr="src=${curtain.photo01}" width="50" height="75" />
                     <p/>
@@ -65,11 +65,11 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <img  th:attr="src=${curtain.photo}" width="350px" height="500px" />
-                                    <img   th:unless="${curtain.photo05}==null" th:attr="src=${curtain.photo05}" width="350px" height="500px" />
-                                    <img   th:unless="${curtain.photo04}==null" th:attr="src=${curtain.photo04}" width="350px" height="500px" />
-                                    <img   th:unless="${curtain.photo03}==null" th:attr="src=${curtain.photo03}" width="350px" height="500px" />
-                                    <img   th:unless="${curtain.photo02}==null" th:attr="src=${curtain.photo02}" width="350px" height="500px"  />
+                                <img  th:attr="src=${curtain.photo}" width="350px" height="500px" /><p/>
+                                    <img   th:unless="${curtain.photo05}==null" th:attr="src=${curtain.photo05}" width="350px" height="500px" /><p/>
+                                    <img   th:unless="${curtain.photo04}==null" th:attr="src=${curtain.photo04}" width="350px" height="500px" /><p/>
+                                    <img   th:unless="${curtain.photo03}==null" th:attr="src=${curtain.photo03}" width="350px" height="500px" /><p/>
+                                    <img   th:unless="${curtain.photo02}==null" th:attr="src=${curtain.photo02}" width="350px" height="500px"  /><p/>
                                     <img   th:unless="${curtain.photo01}==null" th:attr="src=${curtain.photo01}" width="350px" height="500px"  />
 
                             </div>
@@ -78,26 +78,41 @@
                 </div>
             </td>
 
-            <td class="buy" width="25%"><span th:text="${curtain.name}" >Name</span>
-                <p/>Описание: <br/>
-            <span th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(curtain.description),'\n','&lt;br /&gt;'))}">description</span>
-            <p/>
-                Структура:
-                <span th:text="${curtain.structure}">structure</span>
-            <p/>
-                Рисунок: <span th:text="${curtain.paint}">paint</span>
-            <p/>
-                Высота: <span th:text="${curtain.height}">height</span>
-            <p/>
-                Цвет: <span th:text="${curtain.color}">color</span>
-            </td>
+            <td class="buy" width="35%">
+                <table class="buyDescription" width="100%"  border="0">
+                    <tr>
+                        <td width="25%"> <i>Название:</i></td>
+                        <td> <span th:text="${curtain.name}" >Name</span>  </td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><i>Описание:</i></td>
+                <!--<p/> <br/>-->
+                        <td>
+                            <span th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(curtain.description),'\n','&lt;br /&gt;'))}">description</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <i>Структура:</i> </td>
+                        <td><span th:text="${curtain.structure}">structure</span></td>
+                    </tr>
+                    <tr>
+                        <td><i>Рисунок:</i></td>
+                        <td> <span th:text="${curtain.paint}">paint</span></td>
+                    </tr>
+                <!--Высота: <span th:text="${curtain.height}">height</span>-->
+            <!--<p/>-->
+                    <tr>
+                        <td><i>Цвет:</i></td>
+                        <td><span th:text="${curtain.color}">color</span></td>
+                    </tr>
             <!--озн, что *{moduleAtributeQuantity} присоединяется к  baySuccessfulCars-->
-
-            <td class="buy" width="15%" th:text="${curtain.price}">Name</td>
-
-        </tr>
-        <tr th:each="curtain : ${selectedCurtain}">
-            <td colspan="5" align="Right" width="80">
+                </table>
+            </td>
+            <td class="buy" width="5%"> <span  th:text="${curtain.price}">Name</span>&nbsp;грн.
+            </td>
+        <!--</tr>-->
+        <!--<tr>-->
+            <td align="center">
                 <input type="hidden" name="quantityInDB" id="quantityInDB" th:value="${curtain.quantity}"/>
                 <input type="hidden"  id="describeID" th:value="${curtain.description}"/>
                 <input type="hidden" name="photoId" id="photoId" th:value="${curtain.photo}"/>
@@ -105,7 +120,7 @@
 
                 <!--********************************NameWhisky*********************************-->
                 <input type="hidden" id="name" name="name" th:value="${curtain.name}" />
-                <input type="button" class="buyMenu" id="clickToSummonsBuy"  style="width: 60px" value="Купить"/>
+                <input type="button" class="buyMenu" id="clickToSummonsBuy"  style="width: 60px; height: 40px" value="Купить"/>
                 <!--<input type="button"  data-toggle="modal" data-target="#goBuy" id="clickToSummonsBuy"  style="width: 60px" value="Купить"/>-->
 
                 <!--****************************MODAL WINDOW****************************-->
