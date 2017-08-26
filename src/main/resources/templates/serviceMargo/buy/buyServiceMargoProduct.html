@@ -37,17 +37,24 @@
                     </div>
                 </div>
             </td>
-
-            <td class="buy" width="25%"><span th:text="${curtain.name}" >Name</span>
-                <p/>Описание:<br/>
-            <span th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(curtain.description),'\n','&lt;br /&gt;'))}">description</span>
-            <p/>
+            <td class="buy" width="35%">
+                <table class="buyDescription" width="100%"  border="0">
+                    <tr>
+                        <td width="25%"> <i>Название:</i></td>
+                        <td> <span th:text="${curtain.name}" >Name</span>  </td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><i>Описание:</i></td>
+                        <!--<p/> <br/>-->
+                        <td>
+                            <span th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(curtain.description),'\n','&lt;br /&gt;'))}">description</span>
+                        </td>
+                    </tr>
+                </table>
             </td>
-            <td class="buy" width="15%"> <span  th:text="${curtain.price}">Name</span>&nbsp;грн.</td>
+            <td class="buy" width="7%"> <span  th:text="${curtain.price}">Name</span>&nbsp;грн.</td>
 
-        </tr>
-        <tr th:each="curtain : ${selectedCurtain}">
-            <td colspan="5" align="Right" width="80">
+            <td align="center">
                 <input type="hidden" name="quantityInDB" id="quantityInDB" th:value="${curtain.quantity}"/>
                 <input type="hidden"  id="describeID" th:value="${curtain.description}"/>
                 <input type="hidden" name="photoId" id="photoId" th:value="${curtain.photo}"/>
@@ -55,7 +62,7 @@
 
                 <!--********************************NameWhisky*********************************-->
                 <input type="hidden" id="name" name="name" th:value="${curtain.name}" />
-                <input type="button" class="buyMenu" id="clickToSummonsBuy"  style="width: 60px" value="Купить"/>
+                <input type="button" class="buyMenu" id="clickToSummonsBuy"  style="width: 60px; height: 40px" value="Купить"/>
                 <!--<input type="button"  data-toggle="modal" data-target="#goBuy" id="clickToSummonsBuy"  style="width: 60px" value="Купить"/>-->
 
                 <!--****************************MODAL WINDOW****************************-->

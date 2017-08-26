@@ -51,7 +51,7 @@ $(document).ready(function() {
             }
             if (Number($(this).val()) > 0) {
                 quantity = $(this).val();
-                console.log("Number($(this).val()) >0 +" + quantity);
+                //console.log("Number($(this).val()) >0 +" + quantity);
                 var changePriceUI = (price * $(this).val()).toFixed(2);
                 $("#changePrice").html(changePriceUI);
             } else {
