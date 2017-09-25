@@ -13,13 +13,15 @@ import java.util.Date;
 @Service
 public class SendingMail {
 
-    @Value("${spring.mail.username}")
-    private String emailFrom;
+//    @Value("${spring.mail.username}")
+//    private String emailFrom;
 
     @Autowired
     private JavaMailSender javaMailSender;
 
     public void sendingMessage(String toAddress, String confirmationUrl, String subject) throws MessagingException {
+
+        String emailFrom = "newspace-inf-ua@1gb.ua";
 
         MimeMessage mimeMessage =  javaMailSender.createMimeMessage();
 
@@ -34,10 +36,7 @@ public class SendingMail {
 
         javaMailSender.send(mimeMessage);
 
-
-
     }
-
 }
 
 

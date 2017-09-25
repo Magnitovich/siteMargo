@@ -52,8 +52,11 @@ public class LoginController {
         adminRoleService.addNewUser(name, password, phone, email, activityFalse, verification, description);
         String subject = "Confirmation Registration";
         String confirmationUrl =  "<a href='" +
-                "http://newSpace.cfapps.io/registrationConfirm.html?verification="
+                "http://newspace-inf-ua.1gb.ua/registrationConfirm.html?verification="
                 + verification+"'>Click for end Registration</a>";
+//        String confirmationUrl =  "<a href='" +
+//                "http://newSpace.cfapps.io/registrationConfirm.html?verification="
+//                + verification+"'>Click for end Registration</a>";
         sendingMail.sendingMessage(email, confirmationUrl, subject);
 
 //        System.out.println("LoginController"+name + " pass:= " + password+ " email: "+email);

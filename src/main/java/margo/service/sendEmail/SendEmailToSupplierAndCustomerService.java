@@ -17,8 +17,11 @@ import java.util.List;
 public class SendEmailToSupplierAndCustomerService {
     @Value("${img.imageMail.path}")
     private String imagePath;
-    @Value("${spring.mail.username}")
-    private String emailFrom;
+
+    private String emailFrom = "newspace-inf-ua@1gb.ua";
+//    @Value("${spring.mail.username}")
+//    private String emailFrom;
+
     @Autowired
     private JavaMailSender javaMailSender;
 

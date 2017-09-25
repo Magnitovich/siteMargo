@@ -43,8 +43,12 @@ public class UserService {
 
             String subject = "Change Password";
             String confirmationUrl =  "<a href='" +
-                    "http://localhost:8080/changePassword.html?verification="
+                    "http://newspace-inf-ua.1gb.ua/changePassword.html?verification="
                     + verification+"'>Нажмите для изменения пароля</a>";
+//            String confirmationUrl =  "<a href='" +
+//                    "http://localhost:8080/changePassword.html?verification="
+//                    + verification+"'>Нажмите для изменения пароля</a>";
+//
             changePassword.sendingMessage(email,confirmationUrl,subject);
         }
     }

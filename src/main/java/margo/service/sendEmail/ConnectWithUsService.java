@@ -13,8 +13,9 @@ import java.util.Date;
 @Service
 public class ConnectWithUsService {
 
-    @Value("${spring.mail.username}")
-    private String emailFrom;
+    private String emailFrom = "newspace-inf-ua@1gb.ua";
+//    @Value("${spring.mail.username}")
+//    private String emailFrom;
 
     @Autowired
     private JavaMailSender javaMailSender;
